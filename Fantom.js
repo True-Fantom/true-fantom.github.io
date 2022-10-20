@@ -121,11 +121,11 @@ class Fantom {
           arguments: {
             START: {
               type: Scratch.ArgumentType.NUMBER,
-              defaultValue: 5
+              defaultValue: 1
             },
             END: {
               type: Scratch.ArgumentType.NUMBER,
-              defaultValue: 7
+              defaultValue: 3
             },
             STRING: {
               type: Scratch.ArgumentType.STRING,
