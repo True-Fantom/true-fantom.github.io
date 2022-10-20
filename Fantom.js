@@ -18,7 +18,7 @@ class Fantom {
 
           blockType: Scratch.BlockType.BOOLEAN,
 
-          text: 'is [A] exactly [B]?',
+          text: '[A] == [B]',
           arguments: {
             A: {
               type: Scratch.ArgumentType.STRING,
