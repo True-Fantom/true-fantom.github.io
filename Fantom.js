@@ -129,25 +129,20 @@ class Fantom {
             },
             STRING: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'red apple'
+              defaultValue: 'apple'
             }
           }
-        },
-        {
-          opcode: 'currentMillisecond',
-          blockType: Scratch.BlockType.REPORTER,
-          text: 'current millisecond'
         },
         {
           opcode: 'fetchFrom',
 
           blockType: Scratch.BlockType.REPORTER,
 
-          text: 'get content from [URL]',
+          text: 'get [URL]',
           arguments: {
             URL: {
               type: Scratch.ArgumentType.STRING,
-              defaultValue: 'https://translate-service.scratch.mit.edu/translate?language=eo&text=hello'
+              defaultValue: 'https://extensions.turbowarp.org/hello.txt'
             }
           }
         },
@@ -240,10 +235,6 @@ class Fantom {
 
   letters({STRING, START, END}) {
     return STRING.slice(Math.max(1, START) - 1, Math.min(STRING.length, END));
-  }
-
-  currentMillisecond() {
-    return Date.now() % 1000;
   }
 
   fetchFrom({URL}) {
