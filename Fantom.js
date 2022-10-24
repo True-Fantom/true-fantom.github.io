@@ -7,7 +7,7 @@ class Fantom {
   getInfo() {
     return {
       
-      id: 'fantom-408.github.io/Fantom.js',
+      id: 'fantom',
       name: 'Fantom',
 
       menuIconURI: icon,
