@@ -7,7 +7,7 @@ class Fantom {
   getInfo() {
     return {
       
-      id: 'fant-om',
+      id: 'fant/om',
       name: 'Fantom',
 
       menuIconURI: icon,
