@@ -200,7 +200,7 @@
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'rixxyx'
+                defaultValue: 'apple'
               }
             }
           },
@@ -213,7 +213,7 @@
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'RIXXYX'
+                defaultValue: 'APPLE'
               }
             }
           },
@@ -226,7 +226,7 @@
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'rixxyX is cool, right?'
+                defaultValue: 'apples is cool'
               }
             }
           },          
