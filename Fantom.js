@@ -190,6 +190,45 @@
                 defaultValue: 'apple'
               }
             }
+          },
+          {
+            opcode: 'toUppercase',
+            
+            blockType: Scratch.BlockType.REPORTER,
+            
+            text: '[TEXT] to uppercase',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'rixxyx'
+              }
+            }
+          },
+          {
+            opcode: 'toLowercase',
+            
+            blockType: Scratch.BlockType.REPORTER,
+            
+            text: '[TEXT] to lowercase',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'RIXXYX'
+              }
+            }
+          },
+          {
+            opcode: 'toCapitalize',
+            
+            blockType: Scratch.BlockType.REPORTER,
+            
+            text: 'capitalize [TEXT]',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'rixxyX is cool, right?'
+              }
+            }
           },          
           {
             opcode: 'regexReplace',
@@ -278,6 +317,18 @@
       }
     }
 
+    toUppercase(args) {
+      return args.TEXT.toUpperCase();
+    }
+    
+    toLowercase(args) {
+      return args.TEXT.toLowerCase();
+    }
+    
+    toCapitalize(args) {
+      return args.TEXT.charAt(0).toUpperCase() + args.TEXT.slice(1);
+    }    
+    
     reverseTxt(args) {
       var emptyStr = "";
       var txt = args.TEXT.toString();
