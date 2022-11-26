@@ -229,6 +229,19 @@
                 defaultValue: 'apples is cool'
               }
             }
+          }, 
+          {
+            opcode: 'toCapitalizeAll',
+            
+            blockType: Scratch.BlockType.REPORTER,
+            
+            text: 'capitalize all [TEXT]',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apples is cool'
+              }
+            }
           },          
           {
             opcode: 'regexReplace',
@@ -328,6 +341,16 @@
     toCapitalize(args) {
       return args.TEXT.charAt(0).toUpperCase() + args.TEXT.slice(1);
     }    
+    
+    toCapitalizeAll(args) {
+      const mySentence = TEXT;
+      const words = mySentence.split(" ");
+      for (let i = 0; i < words.length; i++) {
+        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+      }
+
+      return words.join();
+    }      
     
     reverseTxt(args) {
       var emptyStr = "";
