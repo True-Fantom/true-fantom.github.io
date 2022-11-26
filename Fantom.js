@@ -196,7 +196,7 @@
             
             blockType: Scratch.BlockType.REPORTER,
             
-            text: '[TEXT] to uppercase',
+            text: 'uppercase [TEXT]',
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
@@ -209,7 +209,7 @@
             
             blockType: Scratch.BlockType.REPORTER,
             
-            text: '[TEXT] to lowercase',
+            text: 'lowercase [TEXT]',
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
