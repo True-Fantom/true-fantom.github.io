@@ -13,6 +13,10 @@
         id: 'Fantom',
         name: 'Fantøm',
 
+        color1: '#282828',
+        color2: '#282828',
+        color3: '#282828',
+        
         menuIconURI: icon,
 
         blocks: [
