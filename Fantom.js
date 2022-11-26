@@ -179,6 +179,19 @@
             }
           },
           {
+            opcode: 'reverseTxt',
+            
+            blockType: Scratch.BlockType.REPORTER,
+            
+            text: 'reverse text [TEXT]',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },          
+          {
             opcode: 'regexReplace',
 
             blockType: Scratch.BlockType.REPORTER,
@@ -265,6 +278,17 @@
       }
     }
 
+    reverseTxt(args) {
+      var emptyStr = "";
+      var txt = args.TEXT.toString();
+      var localCount = args.TEXT.length - 1;
+      while (localCount != -1) {
+        emptyStr = emptyStr + txt.charAt(localCount);
+        localCount -= 1;
+      }
+      return emptyStr;    
+    }
+    
     regexReplace({STRING, REGEX, NEWSTRING}) {
       return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING);
     }
