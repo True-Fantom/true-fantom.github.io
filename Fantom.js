@@ -188,7 +188,7 @@
 
             blockType: Scratch.BlockType.REPORTER,
 
-            text: 'replace [STRING] using the rule [REGEX] with [NEWSTRING]',
+            text: 'replace [REGEX] with [NEWSTRING] in [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
