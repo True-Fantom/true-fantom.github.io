@@ -112,7 +112,7 @@
 
             blockType: Scratch.BlockType.REPORTER,
 
-            text: 'if [A] then [B] else [C]',
+            text: 'if [B] else [C] in [A]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.BOOLEAN
