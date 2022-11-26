@@ -95,11 +95,6 @@
             }
           },
           {
-            opcode: 'pi',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'pi'
-          },
-          {
             opcode: 'ternaryOperator',
 
             blockType: Scratch.BlockType.REPORTER,
@@ -230,10 +225,6 @@
 
     exponent({A, B}) {
       return Math.pow(A, B);
-    }
-
-    pi() {
-      return Math.PI;
     }
 
     ternaryOperator({A, B, C}) {
