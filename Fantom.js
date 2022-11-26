@@ -10,7 +10,7 @@
     getInfo() {
       return {
 
-        id: 'Fantom',
+        id: 'Fantøm',
         name: 'Fantøm',
 
         menuIconURI: icon,
