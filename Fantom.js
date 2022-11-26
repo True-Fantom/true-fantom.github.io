@@ -70,6 +70,19 @@
             }
           },
           {
+            opcode: 'stringToBoolean',
+
+            blockType: Scratch.BlockType.BOOLEAN,
+
+            text: '[STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'true'
+              }
+            }
+          },
+          {
             opcode: 'trueBlock',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'true'
@@ -166,19 +179,6 @@
             }
           },
           {
-            opcode: 'stringToBoolean',
-
-            blockType: Scratch.BlockType.BOOLEAN,
-
-            text: '[STRING]',
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'true'
-              }
-            }
-          },
-          {
             opcode: 'regexReplace',
 
             blockType: Scratch.BlockType.REPORTER,
@@ -215,6 +215,10 @@
       return A >= B;
     }
 
+    stringToBoolean({STRING}) {
+      return STRING;
+    }    
+    
     trueBlock() {
       return true;
     }
@@ -259,10 +263,6 @@
       } catch (err) {
         return '';
       }
-    }
-
-    stringToBoolean({STRING}) {
-      return STRING;
     }
 
     regexReplace({STRING, REGEX, NEWSTRING}) {
