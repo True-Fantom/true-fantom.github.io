@@ -343,13 +343,11 @@
     }    
     
     toCapitalizeAll(args) {
-      const mySentence = TEXT;
-      const words = mySentence.split(" ");
-      for (let i = 0; i < words.length; i++) {
-        words[i] = words[i][0].toUpperCase() + words[i].substr(1);
+      var splitStr = args.TEXT.toLowerCase().split(' ');
+      for (var i = 0; i < splitStr.length; i++) {
+        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
       }
-
-      return words.join();
+      return splitStr.join(' '); 
     }      
     
     reverseTxt(args) {
