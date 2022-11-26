@@ -192,7 +192,7 @@
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'bananas are awesome. i like bananas.'
+                defaultValue: 'bananas are awesome.'
               },
               REGEX: {
                 type: Scratch.ArgumentType.STRING,
