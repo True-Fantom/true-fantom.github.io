@@ -8,7 +8,7 @@ class Fantom {
     return {
       
       id: 'fantom',
-      name: 'Fantom',
+      name: 'Fantøm',
 
       menuIconURI: icon,
 
