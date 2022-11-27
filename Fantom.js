@@ -269,13 +269,13 @@
               }
             }
           }
-        ],
+          ],
         menus: {
           supermath: this._formatMenu(['+', '-', '/', '*', '^', 'sqrt']),
         }
       }
     }
-
+    
     isExactly({A, B}) {
       return A === B;
     }
