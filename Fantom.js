@@ -150,6 +150,22 @@
           },
           
           {
+            opcode: 'root_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[root] root of [num]',
+            arguments: {
+              root: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
+              },
+              num: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '4'
+              }
+            }
+          }, 
+          
+          {
             opcode: 'ternaryOperator',
             blockType: Scratch.BlockType.REPORTER,
             text: 'if [B] else [C] in [A]',
@@ -365,6 +381,10 @@
       return Math.pow(A, B);
     }
 
+    root_block({root, num}) {
+      return root ** (1/num);
+    }
+    
     ternaryOperator({A, B, C}) {
       return A ? B : C;
     }
