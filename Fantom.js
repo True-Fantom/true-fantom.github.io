@@ -265,7 +265,7 @@
       return A >= B;
     }
     
-    xor({A, B}) {
+    xor_block({A, B}) {
       if (A ^ B > 0) {
         return true;
       }
