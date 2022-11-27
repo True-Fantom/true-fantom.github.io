@@ -266,7 +266,7 @@
     }
     
     xor_block({A, B}) {
-      if (Boolean(A) ^ Boolean(B) > 0) {
+      if (A ^ B > 0) {
         return true;
       }
       else {
