@@ -56,7 +56,7 @@
           {
             opcode: 'isLessOrEqual',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] <= [B]',
+            text: '[A] ≤ [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER
@@ -71,7 +71,7 @@
           {
             opcode: 'isMoreOrEqual',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] >= [B]',
+            text: '[A] ≥ [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER
@@ -152,7 +152,7 @@
           {
             opcode: 'root_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[root] root of [num]',
+            text: '[root] √ [num]',
             arguments: {
               root: {
                 type: Scratch.ArgumentType.NUMBER,
