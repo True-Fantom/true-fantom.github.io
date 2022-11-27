@@ -65,21 +65,7 @@
                 defaultValue: 50
               }
             }
-          },
-          
-          {
-            opcode: 'bool_xor_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] bool xor [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              },
-              B: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              }
-            }
-          },          
+          },        
 
           {
             opcode: 'stringToBoolean',
@@ -104,6 +90,20 @@
               }
             }
           },
+
+          {
+            opcode: 'bool_xor_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] bool xor [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              },
+              B: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },            
           
           {
             opcode: 'num_xor_block',
