@@ -245,6 +245,26 @@
           },
           
           {
+            opcode: 'word_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'word [num] of [string] separated by [seper]',
+            arguments: {
+              num: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
+              },
+              string: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'red apple'
+              },
+              seper: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              } 
+            }
+          },
+            
+          {
             opcode: 'regexReplace',
             blockType: Scratch.BlockType.REPORTER,
             text: 'replace [REGEX] with [NEWSTRING] in [STRING]',
@@ -430,6 +450,12 @@
         return str2;
       }
     }
+    
+    word_block({num, string, seper}) {
+      var str = string;
+      var res = str.split(seper);
+      return (res[num - 1]);
+    }    
     
     regexReplace({STRING, REGEX, NEWSTRING}) {
       return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING);
