@@ -68,7 +68,7 @@
           },
           
           {
-            opcode: 'xor_block',
+            opcode: 'bool_xor_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] xor [B]',
             arguments: {
@@ -104,6 +104,20 @@
               }
             }
           },
+          
+          {
+            opcode: 'num_xor_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] xor [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+              }
+            }
+          },          
           
           {
             opcode: 'exponent',
@@ -265,7 +279,7 @@
       return A >= B;
     }
     
-    xor_block({A, B}) {
+    bool_xor_block({A, B}) {
       if (A ^ B > 0) {
         return true;
       }
@@ -287,6 +301,10 @@
       }
     }
 
+    num_xor_block({A, B}) {
+      return A ^ B;
+    }    
+    
     exponent({A, B}) {
       return Math.pow(A, B);
     }
