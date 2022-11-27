@@ -223,6 +223,7 @@
             opcode: 'value_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A]',
+            disableMonitor: true,
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
