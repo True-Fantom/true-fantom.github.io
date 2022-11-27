@@ -192,12 +192,17 @@
             }
           },
           {
-            opcode: 'toUppercase',
+            opcode: 'letterCaseBlock',
             
             blockType: Scratch.BlockType.REPORTER,
             
-            text: 'uppercase [TEXT]',
+            text: '[oper] [TEXT]',
             arguments: {
+              "oper": {
+              "type": "string",
+              "menu": "supermath",
+              "defaultValue": ""
+               },
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
@@ -330,8 +335,24 @@
       }
     }
 
-    toUppercase(args) {
-      return args.TEXT.toUpperCase();
+    letterCaseBlock({oper, TEXT}) {
+      
+      if (oper === 'uppercase') {
+        return TEXT.toUpperCase();
+      }
+      if (oper === 'lowercase') {
+        return TEXT.toLowerCase();
+      }
+      if (oper === 'capitalize') {
+        return TEXT.charAt(0).toUpperCase() + TEXT.slice(1);
+      }
+      if (oper === 'capitalizeAll') {
+        var splitStr = args.TEXT.toLowerCase().split(' ');
+        for (var i = 0; i < splitStr.length; i++) {
+          splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
+        }
+        return splitStr.join(' ');
+      }          
     }
     
     toLowercase(args) {
