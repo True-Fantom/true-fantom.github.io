@@ -204,46 +204,7 @@
               },
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              }
-            }
-          },
-          {
-            opcode: 'toLowercase',
-            
-            blockType: Scratch.BlockType.REPORTER,
-            
-            text: 'lowercase [TEXT]',
-            arguments: {
-              TEXT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'APPLE'
-              }
-            }
-          },
-          {
-            opcode: 'toCapitalize',
-            
-            blockType: Scratch.BlockType.REPORTER,
-            
-            text: 'capitalize [TEXT]',
-            arguments: {
-              TEXT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apples is cool'
-              }
-            }
-          }, 
-          {
-            opcode: 'toCapitalizeAll',
-            
-            blockType: Scratch.BlockType.REPORTER,
-            
-            text: 'capitalize all [TEXT]',
-            arguments: {
-              TEXT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apples is cool'
+                defaultValue: 'APPLES is cool'
               }
             }
           },          
@@ -352,7 +313,7 @@
         return TEXT.charAt(0).toUpperCase() + TEXT.slice(1);
       }
       if (oper === 'capitalizeAll') {
-        var splitStr = args.TEXT.toLowerCase().split(' ');
+        var splitStr = TEXT.toLowerCase().split(' ');
         for (var i = 0; i < splitStr.length; i++) {
           splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
         }
