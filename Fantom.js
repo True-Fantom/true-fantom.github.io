@@ -265,9 +265,9 @@
           },
             
           {
-            opcode: 'equal_word_block',
+            opcode: 'word_count_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'number of words separated by [seper] in [string]',
+            text: 'word count separated by [seper] in [string]',
             arguments: {
               string: {
                 type: Scratch.ArgumentType.STRING,
@@ -473,7 +473,7 @@
       return (res[num - 1]);
     }  
     
-    equal_word_block({string, seper}) {
+    word_count_block({string, seper}) {
       var str = string;
       var res = str.split(seper);
       return res.length;
