@@ -272,7 +272,7 @@
         ],
         menus: {
           
-          supermath: this._formatMenu(['+', '-', '/', '*', '^', 'sqrt']),
+          supermath: this._formatMenu(['uppercase', 'lowercase', 'capitalize', 'capitalizeAll']),
         }
       }
     }
