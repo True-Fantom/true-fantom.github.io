@@ -163,7 +163,8 @@
                 menu: "cot_sec_csc_menu"
               },
               B: {
-                type: Scratch.ArgumentType.NUMBER
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
               }
             }
           },          
