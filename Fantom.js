@@ -80,14 +80,15 @@
           },
           
           {
-            opcode: 'trueBlock',
+            opcode: 'bool_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'true'
-          },
-          {
-            opcode: 'falseBlock',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'false'
+            text: '[bool]',
+            arguments: {
+              bool: {
+                type: Scratch.ArgumentType.BOOLEAN,  
+                menu: "bool_menu"
+              }
+            }
           },
           
           {
@@ -190,7 +191,7 @@
             arguments: {
               oper: {
                 type: Scratch.ArgumentType.STRING,
-                menu: "letter_case"
+                menu: "letter_case_menu"
               },
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
@@ -222,14 +223,14 @@
         ],
         
         menus: 
-        
           {
-          letter_case: {  
+           
+          letter_case_menu: {  
             items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all'],
             acceptReporters: true
           },
 
-          bool: {  
+          bool_menu: {  
             items: ['true', 'false'],
             acceptReporters: true
           }             
@@ -254,12 +255,13 @@
       return STRING;
     }    
     
-    trueBlock() {
-      return true;
-    }
-
-    falseBlock() {
-      return false;
+    bool_block({bool}) {
+      if (bool === 'true') {
+        return true;
+      }
+      else {
+        return false;
+      }
     }
 
     exponent({A, B}) {
