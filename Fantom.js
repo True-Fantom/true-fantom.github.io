@@ -44,11 +44,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'APPLES is cool'
+                defaultValue: 'APPLE'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
+                defaultValue: 'a'
               }
             }          
           },
