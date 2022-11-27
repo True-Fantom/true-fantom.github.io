@@ -91,7 +91,8 @@
             text: 'matrix [matrix]',
             arguments: {
               matrix: {
-                type: Scratch.ArgumentType.MATRIX
+                type: Scratch.ArgumentType.MATRIX,
+                defaultValue: '1111111111111111111111111'
               }
             }
           },          
