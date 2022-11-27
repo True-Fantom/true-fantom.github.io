@@ -331,6 +331,22 @@
           },          
           
           {
+            opcode: 'repeat_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'repeat [NUM] times [TEXT]',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              NUM: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 2
+              }
+            }
+          },          
+          
+          {
             opcode: 'regexReplace',
             blockType: Scratch.BlockType.REPORTER,
             text: 'replace [REGEX] with [NEWSTRING] in [STRING]',
@@ -552,6 +568,10 @@
       var res = str.split(seper);
       return res.length;
     }
+    
+    repeat_block({NUM, TEXT}) {
+      return TEXT.repeat(Math.floor(NUM));
+    }    
     
     regexReplace({STRING, REGEX, NEWSTRING}) {
       return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING);
