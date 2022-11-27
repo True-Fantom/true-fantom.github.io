@@ -226,7 +226,7 @@
           {
            
           letter_case_menu: {  
-            items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all', 'swap'],
+            items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all', 'swap', 'wave one', 'wave two'],
             acceptReporters: true
           },
 
@@ -346,7 +346,29 @@
           else {str2 += str[i]};
         } 
         return str2;
-      }    
+      }
+      if (oper === 'wave one') {
+        let str = TEXT;
+        let str2 = '';
+        for (let i = 0; i < str.length; i++) {
+          if (str[i]%2==0) {
+            str2 += str[i].toLowerCase();  
+          }
+          else {str2 += str[i].toUpperCase()};
+        } 
+        return str2;
+      }  
+      if (oper === 'wave two') {
+        let str = TEXT;
+        let str2 = '';
+        for (let i = 0; i < str.length; i++) {
+          if (str[i]%2==0) {
+            str2 += str[i].toUpperCase();  
+          }
+          else {str2 += str[i].toLowerCase()};
+        } 
+        return str2;
+      }
     }
     
     regexReplace({STRING, REGEX, NEWSTRING}) {
