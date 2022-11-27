@@ -321,7 +321,7 @@
         return TEXT.toLowerCase();
       }
       if (oper === 'capitalize') {
-        return TEXT.charAt(0).toUpperCase() + TEXT.slice(1);
+        return TEXT.charAt(0).toUpperCase() + TEXT.slice(1).toLowerCase();
       }
       if (oper === 'capitalizeAll') {
         var splitStr = TEXT.toLowerCase().split(' ');
