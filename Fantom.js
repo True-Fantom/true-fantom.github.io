@@ -183,7 +183,7 @@
             
             blockType: Scratch.BlockType.REPORTER,
             
-            text: 'reverse text [TEXT]',
+            text: 'reverse [TEXT]',
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
