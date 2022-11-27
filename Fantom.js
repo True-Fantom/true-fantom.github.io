@@ -198,11 +198,11 @@
             
             text: '[oper] [TEXT]',
             arguments: {
-              "oper": {
-              "type": "string",
-              "menu": "supermath",
-              "defaultValue": ""
-               },
+              oper: {
+                type: "string",
+                menu: "supermath",
+                defaultValue: ""
+              },
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
