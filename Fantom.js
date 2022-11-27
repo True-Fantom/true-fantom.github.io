@@ -247,7 +247,7 @@
           {
             opcode: 'word_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word [num] separated by [seper] of [string]',
+            text: 'word [num] separated by [seper] in [string]',
             arguments: {
               num: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -264,6 +264,22 @@
             }
           },
             
+          {
+            opcode: 'equal_word_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'number of words separated by [seper] in [string]',
+            arguments: {
+              string: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'red apple'
+              },
+              seper: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              } 
+            }
+          },          
+          
           {
             opcode: 'regexReplace',
             blockType: Scratch.BlockType.REPORTER,
@@ -455,7 +471,13 @@
       var str = string;
       var res = str.split(seper);
       return (res[num - 1]);
-    }    
+    }  
+    
+    equal_word_block({string, seper}) {
+      var str = string;
+      var res = str.split(seper);
+      return res.length;
+    }
     
     regexReplace({STRING, REGEX, NEWSTRING}) {
       return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING);
