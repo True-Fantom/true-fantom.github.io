@@ -150,6 +150,21 @@
           },
           
           {
+            opcode: 'cot_sec_csc_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: "cot_sec_csc_menu"
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER
+              }
+            }
+          },          
+          
+          {
             opcode: 'root_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[root] √ [num]',
@@ -318,8 +333,7 @@
           
         ],
         
-        menus: 
-          {
+        menus: {
            
           letter_case_menu: {  
             items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all', 'swap', 'wave one', 'wave two'],
@@ -329,7 +343,12 @@
           bool_menu: {  
             items: ['true', 'false'],
             acceptReporters: true
-          }             
+          },
+            
+          cot_sec_csc_menu: {  
+            items: ['cot', 'sec', 'csc'],
+            acceptReporters: true
+          }            
           
         }
       }
@@ -379,6 +398,18 @@
     
     exponent({A, B}) {
       return Math.pow(A, B);
+    }
+    
+    cot_sec_csc_block({A, B}) {
+      if (A === 'cot') {
+        return 1/Math.tan(B);
+      }
+      if (A === 'sec') {
+        return 1/Math.cos(B);
+      }
+      if (A === 'csc') {
+        return 1/Math.sin(B);
+      }
     }
 
     root_block({root, num}) {
