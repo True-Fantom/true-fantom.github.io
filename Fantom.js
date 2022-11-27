@@ -217,7 +217,19 @@
                 menu: "bitwise_menu"
               }
             }
-          }, 
+          },
+          
+          {
+            opcode: 'value_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: "value_menu"
+              }
+            }
+          },
           
           {
             opcode: 'ternaryOperator',
@@ -408,6 +420,11 @@
           bitwise_menu: {  
             items: ['<<', '>>', '&', '|', '^'],
             acceptReporters: true
+          },
+        
+          value_menu: {  
+            items: ['pi', 'e', 'infinity'],
+            acceptReporters: true
           }
           
         }
@@ -495,6 +512,18 @@
       }
       if (bitwise === '^') {
         return A ^ B;
+      }
+    }
+    
+    value_block({A}) {
+      if (A === 'pi') {
+        return Math.PI
+      }
+      if (A === 'e') {
+        return Math.E
+      }
+      if (A === 'infinity') {
+        return Infinity
       }
     }
     
