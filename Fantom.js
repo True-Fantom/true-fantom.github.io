@@ -68,6 +68,20 @@
           },
           
           {
+            opcode: 'xor_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] xor [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              },
+              B: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },          
+
+          {
             opcode: 'stringToBoolean',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[STRING]',
@@ -250,7 +264,16 @@
     isMoreOrEqual({A, B}) {
       return A >= B;
     }
-
+    
+    xor({A, B}) {
+      if (A ^ B > 0) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }
+    
     stringToBoolean({STRING}) {
       return STRING;
     }    
