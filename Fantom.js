@@ -197,6 +197,26 @@
                 defaultValue: '4'
               }
             }
+          },
+          
+          {
+            opcode: 'bitwise_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] [bitwise] [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              bitwise: {
+                type: Scratch.ArgumentType.STRING,
+                menu: "bitwise_menu"
+              }
+            }
           }, 
           
           {
@@ -383,7 +403,12 @@
           cot_sec_csc_menu: {  
             items: ['cot', 'sec', 'csc'],
             acceptReporters: true
-          }            
+          },
+          
+          bitwise_menu: {  
+            items: ['<<', '>>', '&', '|', '^'],
+            acceptReporters: true
+          }
           
         }
       }
@@ -453,6 +478,24 @@
 
     root_block({root, num}) {
       return num ** (1/root);
+    }
+    
+    bitwise_block({A, B, bitwise}) {
+      if (bitwise === '<<') {
+        return A << B;
+      }
+      if (bitwise === '>>') {
+        return A >> B;
+      }
+      if (bitwise === '&') {
+        return A & B;
+      }
+      if (bitwise === '|') {
+        return A | B;
+      }
+      if (bitwise === '^') {
+        return A ^ B;
+      }
     }
     
     ternaryOperator({A, B, C}) {
