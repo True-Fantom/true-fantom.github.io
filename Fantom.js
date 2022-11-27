@@ -94,7 +94,7 @@
           {
             opcode: 'bool_xor_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] bool xor [B]',
+            text: '[A] xor [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.BOOLEAN,
