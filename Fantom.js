@@ -266,7 +266,7 @@
     }
     
     xor_block({A, B}) {
-      if (A ^ B > 0) {
+      if (String(A) ^ String(B) > 0) {
         return true;
       }
       else {
