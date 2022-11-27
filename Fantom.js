@@ -226,7 +226,6 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                disableMonitor: false,
                 menu: "value_menu"
               }
             }
