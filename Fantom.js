@@ -270,11 +270,10 @@
             }
           }
         ],
-        menus: [
-          {
-            supermath: this._formatMenu(['+', '-', '/', '*', '^', 'sqrt']),
-          }
-        ]
+        menus: {
+          
+          supermath: this._formatMenu(['+', '-', '/', '*', '^', 'sqrt']),
+        }
       }
     }
     
