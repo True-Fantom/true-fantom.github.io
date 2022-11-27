@@ -301,6 +301,17 @@
       }
     }
 
+    reverseTxt({TEXT}) {
+      var emptyStr = "";
+      var txt = TEXT.toString();
+      var localCount = TEXT.length - 1;
+      while (localCount != -1) {
+        emptyStr = emptyStr + txt.charAt(localCount);
+        localCount -= 1;
+      }
+      return emptyStr;    
+    }    
+    
     letterCaseBlock({oper, TEXT}) {
       
       if (oper === 'uppercase') {
@@ -320,17 +331,6 @@
         return splitStr.join(' ');
       }          
     }    
-    
-    reverseTxt({TEXT}) {
-      var emptyStr = "";
-      var txt = TEXT.toString();
-      var localCount = TEXT.length - 1;
-      while (localCount != -1) {
-        emptyStr = emptyStr + txt.charAt(localCount);
-        localCount -= 1;
-      }
-      return emptyStr;    
-    }
     
     regexReplace({STRING, REGEX, NEWSTRING}) {
       return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING);
