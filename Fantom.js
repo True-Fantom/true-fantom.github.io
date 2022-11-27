@@ -40,7 +40,7 @@
           {
             opcode: 'str_cont_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is [B] in [A] ?',
+            text: '[A] contains [B] ?',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
