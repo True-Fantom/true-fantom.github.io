@@ -199,8 +199,8 @@
             text: '[oper] [TEXT]',
             arguments: {
               oper: {
-                type: "string",
-                menu: "supermath",
+                type: Scratch.ArgumentType.STRING,
+                menu: supermath,
                 defaultValue: ""
               },
               TEXT: {
