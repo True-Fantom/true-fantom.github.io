@@ -232,7 +232,7 @@
         ],
         menus: {
           supermath: {  
-            items: ['uppercase', 'lowercase', 'capitalize', 'capitalizeAll'],
+            items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all'],
             acceptReporters: true
           }
         }
@@ -323,7 +323,7 @@
       if (oper === 'capitalize') {
         return TEXT.charAt(0).toUpperCase() + TEXT.slice(1).toLowerCase();
       }
-      if (oper === 'capitalizeAll') {
+      if (oper === 'capitalize all') {
         var splitStr = TEXT.toLowerCase().split(' ');
         for (var i = 0; i < splitStr.length; i++) {
           splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
