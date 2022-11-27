@@ -279,15 +279,6 @@
       return A >= B;
     }
     
-    bool_xor_block({A, B}) {
-      if (A ^ B > 0) {
-        return true;
-      }
-      else {
-        return false;
-      }
-    }
-    
     stringToBoolean({STRING}) {
       return STRING;
     }    
@@ -301,6 +292,15 @@
       }
     }
 
+    bool_xor_block({A, B}) {
+      if (A ^ B > 0) {
+        return true;
+      }
+      else {
+        return false;
+      }
+    }    
+    
     num_xor_block({A, B}) {
       return A ^ B;
     }    
