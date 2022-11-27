@@ -382,7 +382,7 @@
     }
 
     root_block({root, num}) {
-      return root ** (1/num);
+      return num ** (1/root);
     }
     
     ternaryOperator({A, B, C}) {
