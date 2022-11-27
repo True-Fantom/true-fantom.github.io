@@ -84,6 +84,19 @@
           },        
 
           {
+            opcode: 'matrix_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: 'matrix [matrix]',
+            arguments: {
+              matrix: {
+                type: Scratch.ArgumentType.MATRIX
+              }
+            }
+          },          
+          
+          {
             opcode: 'stringToBoolean',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[STRING]',
@@ -373,6 +386,10 @@
 
     isMoreOrEqual({A, B}) {
       return A >= B;
+    }
+    
+    matrix_block({matrix}) {
+      return matrix    
     }
     
     stringToBoolean({STRING}) {
