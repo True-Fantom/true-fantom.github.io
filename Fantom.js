@@ -21,10 +21,9 @@
 
         blocks: [
           {
+            
             opcode: 'isExactly',
-
             blockType: Scratch.BlockType.BOOLEAN,
-
             text: '[A] == [B]',
             arguments: {
               A: {
@@ -37,11 +36,10 @@
               }
             }
           },
+          
           {
             opcode: 'isLessOrEqual',
-
             blockType: Scratch.BlockType.BOOLEAN,
-
             text: '[A] <= [B]',
             arguments: {
               A: {
@@ -53,11 +51,10 @@
               }
             }
           },
+          
           {
             opcode: 'isMoreOrEqual',
-
             blockType: Scratch.BlockType.BOOLEAN,
-
             text: '[A] >= [B]',
             arguments: {
               A: {
@@ -69,11 +66,10 @@
               }
             }
           },
+          
           {
             opcode: 'stringToBoolean',
-
             blockType: Scratch.BlockType.BOOLEAN,
-
             text: '[STRING]',
             arguments: {
               STRING: {
@@ -82,6 +78,7 @@
               }
             }
           },
+          
           {
             opcode: 'trueBlock',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -92,11 +89,10 @@
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'false'
           },
+          
           {
             opcode: 'exponent',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: '[A] ^ [B]',
             arguments: {
               A: {
@@ -107,11 +103,10 @@
               }
             }
           },
+          
           {
             opcode: 'ternaryOperator',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'if [B] else [C] in [A]',
             arguments: {
               A: {
@@ -127,11 +122,10 @@
               }
             }
           },
+          
           {
             opcode: 'letters',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'letters [START] to [END] of [STRING]',
             arguments: {
               START: {
@@ -148,11 +142,10 @@
               }
             }
           },
+          
           {
             opcode: 'fetchFrom',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'get [URL]',
             arguments: {
               URL: {
@@ -161,11 +154,10 @@
               }
             }
           },
+          
           {
             opcode: 'parseJSON',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: '[PATH] of [JSON_STRING]',
             arguments: {
               PATH: {
@@ -178,11 +170,10 @@
               }
             }
           },
+          
           {
             opcode: 'reverseTxt',
-            
             blockType: Scratch.BlockType.REPORTER,
-            
             text: 'reverse [TEXT]',
             arguments: {
               TEXT: {
@@ -191,11 +182,10 @@
               }
             }
           },
+          
           {
             opcode: 'letterCaseBlock',
-            
             blockType: Scratch.BlockType.REPORTER,
-            
             text: '[oper] [TEXT]',
             arguments: {
               oper: {
@@ -207,12 +197,11 @@
                 defaultValue: 'APPLES is cool'
               }
             }
-          },          
+          },
+          
           {
             opcode: 'regexReplace',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'replace [REGEX] with [NEWSTRING] in [STRING]',
             arguments: {
               STRING: {
@@ -229,12 +218,16 @@
               }
             }
           }
+          
         ],
+        
         menus: {
+          
           letter_case: {  
             items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all'],
             acceptReporters: true
           }
+          
         }
       }
     }
