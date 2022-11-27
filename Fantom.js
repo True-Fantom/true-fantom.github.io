@@ -313,8 +313,7 @@
       return emptyStr;    
     }    
     
-    letterCaseBlock({oper, TEXT}) {
-      
+    letterCaseBlock({oper, TEXT}) {  
       if (oper === 'uppercase') {
         return TEXT.toUpperCase();
       }
@@ -352,20 +351,20 @@
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
           if (i%2 == 0) {
-            str2 += str[i].toLowerCase();  
+            str2 += str[i].toUpperCase();  
           }
-          else {str2 += str[i].toUpperCase()};
+          else {str2 += str[i].toLowerCase()};
         } 
         return str2;
-      }  
+      }      
       if (oper === 'wave two') {
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
           if (i%2 == 0) {
-            str2 += str[i].toUpperCase();  
+            str2 += str[i].toLowerCase();  
           }
-          else {str2 += str[i].toLowerCase()};
+          else {str2 += str[i].toUpperCase()};
         } 
         return str2;
       }
@@ -374,7 +373,7 @@
     regexReplace({STRING, REGEX, NEWSTRING}) {
       return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING);
     }
-
+    
   }
 
   Scratch.extensions.register(new Fantøm());
