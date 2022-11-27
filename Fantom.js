@@ -38,6 +38,22 @@
           },
           
           {
+            opcode: 'str_cont_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is [B] in [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue": 'APPLES is cool'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue": 'apple'
+              }
+            }          
+          },
+          
+          {
             opcode: 'isLessOrEqual',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] <= [B]',
@@ -271,6 +287,10 @@
       return A === B;
     }
 
+    str_cont_block({A, B}) {
+      return A.includes(B);
+    }    
+    
     isLessOrEqual({A, B}) {
       return A <= B;
     }
