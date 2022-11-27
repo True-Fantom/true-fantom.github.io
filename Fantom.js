@@ -319,23 +319,7 @@
         }
         return splitStr.join(' ');
       }          
-    }
-    
-    toLowercase(args) {
-      return args.TEXT.toLowerCase();
-    }
-    
-    toCapitalize(args) {
-      return args.TEXT.charAt(0).toUpperCase() + args.TEXT.slice(1);
     }    
-    
-    toCapitalizeAll(args) {
-      var splitStr = args.TEXT.toLowerCase().split(' ');
-      for (var i = 0; i < splitStr.length; i++) {
-        splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
-      }
-      return splitStr.join(' '); 
-    }      
     
     reverseTxt(args) {
       var emptyStr = "";
