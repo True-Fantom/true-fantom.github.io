@@ -108,7 +108,7 @@
           {
             opcode: 'num_xor_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] num xor [B]',
+            text: '[A] xor [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
