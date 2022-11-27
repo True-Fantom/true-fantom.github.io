@@ -247,7 +247,7 @@
           {
             opcode: 'word_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word [num] of [string] separated by [seper]',
+            text: 'word [num] separated by [seper] of [string]',
             arguments: {
               num: {
                 type: Scratch.ArgumentType.NUMBER,
