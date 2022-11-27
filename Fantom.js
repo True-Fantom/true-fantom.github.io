@@ -269,7 +269,10 @@
               }
             }
           }
-        ]
+        ],
+        menus: {
+          supermath: this._formatMenu(['+', '-', '/', '*', '^', 'sqrt']),
+        }
       }
     }
 
