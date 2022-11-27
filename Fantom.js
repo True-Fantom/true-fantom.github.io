@@ -351,7 +351,7 @@
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
-          if (str[i]%2==0) {
+          if (i%2 == 0) {
             str2 += str[i].toLowerCase();  
           }
           else {str2 += str[i].toUpperCase()};
@@ -362,7 +362,7 @@
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
-          if (str[i]%2==0) {
+          if (i%2 == 0) {
             str2 += str[i].toUpperCase();  
           }
           else {str2 += str[i].toLowerCase()};
