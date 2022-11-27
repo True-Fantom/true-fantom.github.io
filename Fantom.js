@@ -227,7 +227,12 @@
           letter_case: {  
             items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all'],
             acceptReporters: true
-          }
+          },
+
+          bool: {  
+            items: ['true', 'false'],
+            acceptReporters: true
+          }             
           
         }
       }
