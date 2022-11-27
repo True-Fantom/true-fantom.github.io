@@ -321,10 +321,10 @@
       }          
     }    
     
-    reverseTxt(args) {
+    reverseTxt({TEXT}) {
       var emptyStr = "";
-      var txt = args.TEXT.toString();
-      var localCount = args.TEXT.length - 1;
+      var txt = TEXT.toString();
+      var localCount = TEXT.length - 1;
       while (localCount != -1) {
         emptyStr = emptyStr + txt.charAt(localCount);
         localCount -= 1;
