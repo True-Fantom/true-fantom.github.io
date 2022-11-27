@@ -85,7 +85,7 @@
             text: '[bool]',
             arguments: {
               bool: {
-                type: Scratch.ArgumentType.BOOLEAN,  
+                type: Scratch.ArgumentType.STRING,  
                 menu: "bool_menu"
               }
             }
