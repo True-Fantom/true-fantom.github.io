@@ -200,8 +200,7 @@
             arguments: {
               oper: {
                 type: Scratch.ArgumentType.STRING,
-                menu: supermath,
-                defaultValue: ""
+                menu: "supermath"
               },
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
@@ -271,8 +270,10 @@
           }
         ],
         menus: {
-          
-          supermath: this._formatMenu(['uppercase', 'lowercase', 'capitalize', 'capitalizeAll']),
+          supermath: {  
+            items: ['uppercase', 'lowercase', 'capitalize', 'capitalizeAll'],
+            acceptReporters: true
+          }
         }
       }
     }
