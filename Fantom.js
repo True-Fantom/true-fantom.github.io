@@ -22,7 +22,7 @@
         blocks: [
           
           { 
-            opcode: 'isExactly',
+            opcode: 'str_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] == [B]',
             arguments: {
@@ -283,7 +283,7 @@
       }
     }
     
-    isExactly({A, B}) {
+    str_equal_block({A, B}) {
       return A === B;
     }
 
