@@ -128,9 +128,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '4'
               }
             }
           },          
@@ -141,10 +143,12 @@
             text: '[A] ^ [B]',
             arguments: {
               A: {
-                type: Scratch.ArgumentType.NUMBER
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
               },
               B: {
-                type: Scratch.ArgumentType.NUMBER
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '4'
               }
             }
           },
