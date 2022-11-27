@@ -20,8 +20,8 @@
         menuIconURI: icon,
 
         blocks: [
-          {
-            
+          
+          { 
             opcode: 'isExactly',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] == [B]',
@@ -221,8 +221,9 @@
           
         ],
         
-        menus: {
-          
+        menus: 
+        
+          {
           letter_case: {  
             items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all'],
             acceptReporters: true
