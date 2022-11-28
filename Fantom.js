@@ -104,7 +104,7 @@
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'true'
+                defaultValue: 'apple'
               }
             }
           },
