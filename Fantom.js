@@ -253,7 +253,7 @@
           {
             opcode: 'letters',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'letters [START] to [END] of [STRING]',
+            text: 'letters [START] to [END] in [STRING]',
             arguments: {
               START: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -285,7 +285,7 @@
           {
             opcode: 'parseJSON',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] of [JSON_STRING]',
+            text: '[PATH] in [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
