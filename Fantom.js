@@ -220,6 +220,18 @@
           },
           
           {
+            opcode: 'bitwise_no_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '~ [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              }
+            }
+          },
+          
+          {
             opcode: 'value_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A]',
@@ -516,6 +528,10 @@
       if (bitwise === '^') {
         return A ^ B;
       }
+    }
+    
+    bitwise_no_block({A}) {
+      return ~A;
     }
     
     value_block({A}) {
