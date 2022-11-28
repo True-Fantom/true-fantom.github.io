@@ -81,21 +81,7 @@
                 defaultValue: 50
               }
             }
-          },        
-
-          {
-            opcode: 'matrix_block',
-
-            blockType: Scratch.BlockType.REPORTER,
-
-            text: 'matrix [matrix]',
-            arguments: {
-              matrix: {
-                type: Scratch.ArgumentType.MATRIX,
-                defaultValue: '1111111111111111111111111'
-              }
-            }
-          },          
+          },                
           
           {
             opcode: 'stringToBoolean',
@@ -195,38 +181,6 @@
               num: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '4'
-              }
-            }
-          },
-          
-          {
-            opcode: 'bitwise_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A] [bitwise] [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
-              },
-              bitwise: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "bitwise_menu"
-              }
-            }
-          },
-          
-          {
-            opcode: 'bitwise_no_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '~ [A]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
               }
             }
           },
@@ -428,11 +382,6 @@
             items: ['cot', 'sec', 'csc'],
             acceptReporters: true
           },
-          
-          bitwise_menu: {  
-            items: ['<<', '>>', '>>>', '&', '|', '^'],
-            acceptReporters: true
-          },
         
           value_menu: {  
             items: ['pi', 'e', 'infinity'],
@@ -457,10 +406,6 @@
 
     isMoreOrEqual({A, B}) {
       return A >= B;
-    }
-    
-    matrix_block({matrix}) {
-      return matrix    
     }
     
     stringToBoolean({STRING}) {
@@ -507,31 +452,6 @@
 
     root_block({root, num}) {
       return num ** (1/root);
-    }
-    
-    bitwise_block({A, B, bitwise}) {
-      if (bitwise === '<<') {
-        return A << B;
-      }
-      if (bitwise === '>>') {
-        return A >> B;
-      }
-      if (bitwise === '>>>') {
-        return A >>> B;
-      }      
-      if (bitwise === '&') {
-        return A & B;
-      }
-      if (bitwise === '|') {
-        return A | B;
-      }
-      if (bitwise === '^') {
-        return A ^ B;
-      }
-    }
-    
-    bitwise_no_block({A}) {
-      return ~A;
     }
     
     value_block({A}) {
