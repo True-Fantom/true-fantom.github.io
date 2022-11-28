@@ -418,7 +418,7 @@
           },
           
           bitwise_menu: {  
-            items: ['<<', '>>', '&', '|', '^'],
+            items: ['⋖', '⋗', '⫸', '~', '&', '|', '^'],
             acceptReporters: true
           },
         
@@ -498,10 +498,10 @@
     }
     
     bitwise_block({A, B, bitwise}) {
-      if (bitwise === '<<') {
+      if (bitwise === '⋖') {
         return A << B;
       }
-      if (bitwise === '>>') {
+      if (bitwise === '⋗') {
         return A >> B;
       }
       if (bitwise === '&') {
@@ -512,6 +512,12 @@
       }
       if (bitwise === '^') {
         return A ^ B;
+      }
+      if (bitwise === '⫸') {
+        return A >>> B;
+      }
+      if (bitwise === '~') {
+        return A ~ B;
       }
     }
     
