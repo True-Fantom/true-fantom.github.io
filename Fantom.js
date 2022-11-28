@@ -418,7 +418,7 @@
           },
           
           bitwise_menu: {  
-            items: ['<<', '>>', '>>>', '~', '&', '|', '^'],
+            items: ['<<', '>>', '>>>', '&', '|', '^'],
             acceptReporters: true
           },
         
@@ -506,9 +506,6 @@
       }
       if (bitwise === '>>>') {
         return A >>> B;
-      }
-      if (bitwise === '~') {
-        return A ~ B;
       }      
       if (bitwise === '&') {
         return A & B;
