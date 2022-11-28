@@ -144,11 +144,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '2'
+                defaultValue: '3'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '4'
+                defaultValue: '2'
               }
             }
           },
