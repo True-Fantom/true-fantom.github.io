@@ -98,9 +98,9 @@
           {
             opcode: 'bool_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[bool]',
+            text: '[BOOL]',
             arguments: {
-              bool: {
+              BOOL: {
                 type: Scratch.ArgumentType.STRING,  
                 menu: "bool_menu"
               }
@@ -172,13 +172,13 @@
           {
             opcode: 'root_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[root] √ [num]',
+            text: '[ROOT] √ [NUM]',
             arguments: {
-              root: {
+              ROOT: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '2'
               },
-              num: {
+              NUM: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '4'
               }
@@ -430,8 +430,8 @@
       return STRING;
     }    
     
-    bool_block({bool}) {
-      if (bool === 'true') {
+    bool_block({BOOL}) {
+      if (BOOL === 'true') {
         return true;
       }
       else {
@@ -468,8 +468,8 @@
       }
     }
 
-    root_block({root, num}) {
-      return num ** (1/root);
+    root_block({ROOT, NUM}) {
+      return NUM ** (1/ROOT);
     }
     
     negative_block({A}) {
