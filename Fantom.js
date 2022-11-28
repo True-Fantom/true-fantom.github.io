@@ -202,7 +202,7 @@
           {
             opcode: 'bitwise_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] [bitwise] [B]',
+            text: '[bitwise] [A] [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
