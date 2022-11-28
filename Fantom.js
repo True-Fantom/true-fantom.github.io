@@ -54,7 +54,7 @@
           },
           
           {
-            opcode: 'isLessOrEqual',
+            opcode: 'less_or_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≤ [B]',
             arguments: {
@@ -69,7 +69,7 @@
           },
           
           {
-            opcode: 'isMoreOrEqual',
+            opcode: 'more_or_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≥ [B]',
             arguments: {
@@ -207,6 +207,12 @@
                 menu: "value_menu"
               }
             }
+          },
+          
+          {
+            opcode: 'millisecond_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'current millisecond'
           },
           
           {
@@ -412,11 +418,11 @@
       return A.includes(B);
     }    
     
-    isLessOrEqual({A, B}) {
+    less_or_equal_block({A, B}) {
       return A <= B;
     }
 
-    isMoreOrEqual({A, B}) {
+    more_or_equal_block({A, B}) {
       return A >= B;
     }
     
@@ -480,6 +486,10 @@
       if (A === 'infinity') {
         return Infinity
       }
+    }
+    
+    millisecond_block() {
+      return Date.now() % 1000;
     }
     
     ternaryOperator({A, B, C}) {
