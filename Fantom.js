@@ -84,7 +84,7 @@
           },                
           
           {
-            opcode: 'stringToBoolean',
+            opcode: 'string_in_boolean_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[STRING]',
             arguments: {
@@ -138,7 +138,7 @@
           },          
           
           {
-            opcode: 'exponent',
+            opcode: 'exponent_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] ^ [B]',
             arguments: {
@@ -216,7 +216,7 @@
           },
           
           {
-            opcode: 'ternaryOperator',
+            opcode: 'ternary_operator_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'if [A] else [B] in [BOOL]',
             arguments: {
@@ -235,7 +235,7 @@
           },
           
           {
-            opcode: 'letters',
+            opcode: 'start_end_letters_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'letters [START] to [END] in [STRING]',
             arguments: {
@@ -255,7 +255,7 @@
           },
           
           {
-            opcode: 'fetchFrom',
+            opcode: 'get_url_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'get [URL]',
             arguments: {
@@ -267,7 +267,7 @@
           },
           
           {
-            opcode: 'parseJSON',
+            opcode: 'parse_json_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[PATH] in [JSON_STRING]',
             arguments: {
@@ -283,7 +283,7 @@
           },
           
           {
-            opcode: 'reverseTxt',
+            opcode: 'reverse_string_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'reverse [TEXT]',
             arguments: {
@@ -295,7 +295,7 @@
           },
           
           {
-            opcode: 'letterCaseBlock',
+            opcode: 'letter_case_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[OPER] [TEXT]',
             arguments: {
@@ -363,13 +363,33 @@
           },          
           
           {
-            opcode: 'regexReplace',
+            opcode: 'replace_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'replace [REGEX] with [NEWSTRING] in [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'bananas'
+                defaultValue: 'BANANAs'
+              },
+              REGEX: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'banana'
+              },
+              NEWSTRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          
+          {
+            opcode: 'str_replace_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'str replace [REGEX] with [NEWSTRING] in [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'BANANAs'
               },
               REGEX: {
                 type: Scratch.ArgumentType.STRING,
@@ -426,7 +446,7 @@
       return A >= B;
     }
     
-    stringToBoolean({STRING}) {
+    string_in_boolean_block({STRING}) {
       return STRING;
     }    
     
@@ -452,7 +472,7 @@
       return A ^ B;
     }    
     
-    exponent({A, B}) {
+    exponent_block({A, B}) {
       return Math.pow(A, B);
     }
     
@@ -492,20 +512,20 @@
       return Date.now() % 1000;
     }
     
-    ternaryOperator({BOOL, A, B}) {
+    ternary_operator_block({BOOL, A, B}) {
       return BOOL ? A : B;
     }
 
-    letters({STRING, START, END}) {
+    start_end_letters_block({STRING, START, END}) {
       return STRING.slice(Math.max(1, START) - 1, Math.min(STRING.length, END));
     }
 
-    fetchFrom({URL}) {
+    get_url_block({URL}) {
       return fetch(URL).then(res => res.text())
         .catch(err => '');
     }
 
-    parseJSON({PATH, JSON_STRING}) {
+    parse_json_block({PATH, JSON_STRING}) {
       try {
         const path = PATH.toString().split('/').map(prop => decodeURIComponent(prop));
         if (path[0] === '') path.splice(0, 1);
@@ -526,7 +546,7 @@
       }
     }
 
-    reverseTxt({TEXT}) {
+    reverse_string_block({TEXT}) {
       var emptyStr = "";
       var txt = TEXT.toString();
       var localCount = TEXT.length - 1;
@@ -537,7 +557,7 @@
       return emptyStr;    
     }    
     
-    letterCaseBlock({OPER, TEXT}) {  
+    letter_case_block({OPER, TEXT}) {  
       if (OPER === 'uppercase') {
         return TEXT.toUpperCase();
       }
@@ -610,8 +630,12 @@
       return TEXT.repeat(Math.floor(NUM));
     }    
     
-    regexReplace({STRING, REGEX, NEWSTRING}) {
+    replace_block({STRING, REGEX, NEWSTRING}) {
       return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING);
+    }
+    
+    str_replace_block({STRING, REGEX, NEWSTRING}) { 
+      return STRING.toString().replace(new RegExp(REGEX, 'g'), NEWSTRING);
     }
     
   }
