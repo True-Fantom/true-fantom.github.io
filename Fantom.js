@@ -183,7 +183,19 @@
                 defaultValue: '4'
               }
             }
-          },
+          }, 
+           
+          {
+            opcode: 'negative_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '- [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '5'
+              }
+            }
+          },  
           
           {
             opcode: 'value_block',
@@ -452,6 +464,10 @@
 
     root_block({root, num}) {
       return num ** (1/root);
+    }
+    
+    negative_block({A}) {
+      return 0 - A;
     }
     
     value_block({A}) {
