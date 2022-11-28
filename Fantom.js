@@ -218,16 +218,16 @@
           {
             opcode: 'ternaryOperator',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'if [B] else [C] in [A]',
+            text: 'if [A] else [B] in [BOOL]',
             arguments: {
-              A: {
+              BOOL: {
                 type: Scratch.ArgumentType.BOOLEAN
               },
-              B: {
+              A: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'banana'
               },
-              C: {
+              B: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
               }
@@ -297,9 +297,9 @@
           {
             opcode: 'letterCaseBlock',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[oper] [TEXT]',
+            text: '[OPER] [TEXT]',
             arguments: {
-              oper: {
+              OPER: {
                 type: Scratch.ArgumentType.STRING,
                 menu: "letter_case_menu"
               },
@@ -313,17 +313,17 @@
           {
             opcode: 'word_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word [num] separated by [seper] in [string]',
+            text: 'word [NUM] separated by [SEPER] in [STRING]',
             arguments: {
-              num: {
+              NUM: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '2'
               },
-              string: {
+              STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'red apple'
               },
-              seper: {
+              SEPER: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               } 
@@ -333,13 +333,13 @@
           {
             opcode: 'word_count_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word count separated by [seper] in [string]',
+            text: 'word count separated by [SEPER] in [STRING]',
             arguments: {
-              string: {
+              STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'red apple'
               },
-              seper: {
+              SEPER: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               } 
@@ -492,8 +492,8 @@
       return Date.now() % 1000;
     }
     
-    ternaryOperator({A, B, C}) {
-      return A ? B : C;
+    ternaryOperator({BOOL, A, B}) {
+      return BOOL ? A : B;
     }
 
     letters({STRING, START, END}) {
@@ -537,24 +537,24 @@
       return emptyStr;    
     }    
     
-    letterCaseBlock({oper, TEXT}) {  
-      if (oper === 'uppercase') {
+    letterCaseBlock({OPER, TEXT}) {  
+      if (OPER === 'uppercase') {
         return TEXT.toUpperCase();
       }
-      if (oper === 'lowercase') {
+      if (OPER === 'lowercase') {
         return TEXT.toLowerCase();
       }
-      if (oper === 'capitalize') {
+      if (OPER === 'capitalize') {
         return TEXT.charAt(0).toUpperCase() + TEXT.slice(1).toLowerCase();
       }
-      if (oper === 'capitalize all') {
+      if (OPER === 'capitalize all') {
         var splitStr = TEXT.toLowerCase().split(' ');
         for (var i = 0; i < splitStr.length; i++) {
           splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
         }
         return splitStr.join(' ');
       }
-      if (oper === 'swap') {
+      if (OPER === 'swap') {
         let str = TEXT;
         let str2 = '';  
         for (let i = 0; i < str.length; i++) {
@@ -570,7 +570,7 @@
         } 
         return str2;
       }
-      if (oper === 'wave one') {
+      if (OPER === 'wave one') {
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
@@ -581,7 +581,7 @@
         } 
         return str2;
       }      
-      if (oper === 'wave two') {
+      if (OPER === 'wave two') {
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
@@ -594,15 +594,15 @@
       }
     }
     
-    word_block({num, string, seper}) {
-      var str = string;
-      var res = str.split(seper);
-      return (res[num - 1]);
+    word_block({NUM, STRING, SEPER}) {
+      var str = STRING;
+      var res = str.split(SEPER);
+      return (res[NUM - 1]);
     }  
     
-    word_count_block({string, seper}) {
-      var str = string;
-      var res = str.split(seper);
+    word_count_block({STRING, SEPER}) {
+      var str = STRING;
+      var res = str.split(SEPER);
       return res.length;
     }
     
