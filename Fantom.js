@@ -161,8 +161,6 @@
             }
           },
           
-          '---',
-          
           {
             opcode: 'negative_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -178,6 +176,14 @@
           '---',
           
           {
+            opcode: 'millisecond_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'current millisecond'
+          },
+          
+          '---',
+          
+          {
             opcode: 'value_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A]',
@@ -187,14 +193,6 @@
                 menu: "value_menu"
               }
             }
-          },
-          
-          '---',
-          
-          {
-            opcode: 'millisecond_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'current millisecond'
           },
           
           '---',
