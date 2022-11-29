@@ -352,6 +352,26 @@
           '---',
           
           {
+            opcode: 'triple_join_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'join on new line [A] [B] [C]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple '
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'banana '
+              },
+              C: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'orange'
+              }
+            }
+          },
+          
+          {
             opcode: 'reverse_string_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'reverse [TEXT]',
@@ -532,13 +552,13 @@
     
     value_block({A}) {
       if (A === 'pi') {
-        return Math.PI
+        return Math.PI;
       }
       if (A === 'e') {
-        return Math.E
+        return Math.E;
       }
       if (A === 'infinity') {
-        return Infinity
+        return Infinity;
       }
     }
     
@@ -699,11 +719,15 @@
     }
     
     new_line_block(){
-      return '\n'
+      return '\n';
     }
     
     join_new_line_block({A, B}){
-      return A + '\n' + B
+      return A + '\n' + B;
+    }
+    
+    triple_join_block({A, B, C}){
+      return A + B + C;
     }
     
     repeat_block({NUM, TEXT}) {
