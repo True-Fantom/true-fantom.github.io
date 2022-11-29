@@ -143,23 +143,7 @@
                 defaultValue: '2'
               }
             }
-          },
-          
-          {
-            opcode: 'cot_sec_csc_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A] [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                menu: "cot_sec_csc_menu"
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '2'
-              }
-            }
-          },          
+          },       
           
           {
             opcode: 'root_block',
@@ -177,6 +161,26 @@
             }
           }, 
            
+          '---',
+          
+          {
+            opcode: 'cot_sec_csc_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: "cot_sec_csc_menu"
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
+              }
+            }
+          },   
+          
+          '---',
+          
           {
             opcode: 'negative_block',
             blockType: Scratch.BlockType.REPORTER,
