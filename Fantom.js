@@ -302,6 +302,34 @@
             }
           },
           
+          {
+            opcode: 'defining_case_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'first character is [OPER] in [TEXT]',
+            arguments: {
+              OPER: {
+                type: Scratch.ArgumentType.STRING,
+                menu: "defining_case_menu"
+              },
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          
+          {
+            opcode: 'sensitive_case_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'first character is case sensitive in [TEXT]',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '1 apple'
+              }
+            }
+          },
+          
           '---',
           
           {
@@ -420,8 +448,13 @@
             items: ['uppercase', 'lowercase', 'capitalize', 'capitalize all', 'swap', 'wave one', 'wave two'],
             acceptReporters: true
           },
+          
+          defining_case_menu: {
+            items: ['uppercase', 'lowercase'],
+            acceptReporters: true
+          },
 
-          bool_menu: {  
+          bool_menu: {
             items: ['true', 'false'],
             acceptReporters: true
           },
@@ -617,6 +650,34 @@
           else {str2 += str[i].toUpperCase()};
         } 
         return str2;
+      }
+    }
+    
+    defining_case_block({OPER, TEXT}) {
+      if (OPER === 'uppercase') {
+        if (TEXT === TEXT.toLowerCase()) {
+          return false;
+        }
+        else {
+          return true;
+        }
+      }
+      if (OPER === 'lowercase') {
+        if (TEXT === TEXT.toLowerCase();) {
+          return true;
+        }
+        else {
+          return false;
+        }
+      }
+    }
+    
+    sensitive_case_block({TEXT}) {
+      if (TEXT.toUpperCase() === TEXT.toLowerCase()) {
+        return false;
+      }
+      else {
+        return true;
       }
     }
     
