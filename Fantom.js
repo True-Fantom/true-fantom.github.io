@@ -655,7 +655,7 @@
     
     defining_case_block({OPER, TEXT}) {
       if (OPER === 'uppercase') {
-        if (TEXT === TEXT.toLowerCase()) {
+        if (TEXT[0] === TEXT[0].toLowerCase()) {
           return false;
         }
         else {
@@ -663,7 +663,7 @@
         }
       }
       if (OPER === 'lowercase') {
-        if (TEXT === TEXT.toLowerCase()) {
+        if (TEXT[0] === TEXT[0].toLowerCase()) {
           return true;
         }
         else {
@@ -673,7 +673,7 @@
     }
     
     sensitive_case_block({TEXT}) {
-      if (TEXT.toUpperCase() === TEXT.toLowerCase()) {
+      if (TEXT[0].toUpperCase() === TEXT[0].toLowerCase()) {
         return false;
       }
       else {
