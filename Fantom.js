@@ -325,6 +325,15 @@
           '---',
           
           {
+            opcode: 'new_line_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'new line',
+            arguments: {}
+          },
+          
+          '---',
+          
+          {
             opcode: 'reverse_string_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'reverse [TEXT]',
@@ -669,6 +678,10 @@
       var str = STRING;
       var res = str.split(SEPER);
       return res.length;
+    }
+    
+    new_line_block(){
+      return '\n'
     }
     
     repeat_block({NUM, TEXT}) {
