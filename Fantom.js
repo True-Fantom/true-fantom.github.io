@@ -69,6 +69,8 @@
             }
           },    
           
+          '---',
+          
           {
             opcode: 'less_or_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
