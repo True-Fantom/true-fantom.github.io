@@ -56,6 +56,20 @@
           '---',
           
           {
+            opcode: 'xor_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] xor [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              },
+              B: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },    
+          
+          {
             opcode: 'less_or_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≤ [B]',
@@ -111,21 +125,7 @@
             }
           },
           
-          '---',
-          
-          {
-            opcode: 'xor_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] xor [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              },
-              B: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              }
-            }
-          },                 
+          '---',             
           
           {
             opcode: 'exponent_block',
