@@ -53,6 +53,8 @@
             }          
           },
           
+          '---',
+          
           {
             opcode: 'less_or_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -83,6 +85,8 @@
             }
           },                
           
+          '---',
+          
           {
             opcode: 'string_in_boolean_block',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -106,9 +110,11 @@
               }
             }
           },
-
+          
+          '---',
+          
           {
-            opcode: 'bool_xor_block',
+            opcode: 'xor_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] xor [B]',
             arguments: {
@@ -119,23 +125,7 @@
                 type: Scratch.ArgumentType.BOOLEAN,
               }
             }
-          },            
-          
-          {
-            opcode: 'num_xor_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A] xor [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '2'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '4'
-              }
-            }
-          },          
+          },                 
           
           {
             opcode: 'exponent_block',
@@ -197,6 +187,8 @@
             }
           },  
           
+          '---',
+          
           {
             opcode: 'value_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -209,11 +201,15 @@
             }
           },
           
+          '---',
+          
           {
             opcode: 'millisecond_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'current millisecond'
           },
+          
+          '---',
           
           {
             opcode: 'ternary_operator_block',
@@ -233,6 +229,8 @@
               }
             }
           },
+          
+          '---',
           
           {
             opcode: 'start_end_letters_block',
@@ -254,6 +252,8 @@
             }
           },
           
+          '---',
+          
           {
             opcode: 'get_url_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -265,6 +265,8 @@
               }
             }
           },
+          
+          '---',
           
           {
             opcode: 'parse_json_block',
@@ -282,6 +284,8 @@
             }
           },
           
+          '---',
+          
           {
             opcode: 'reverse_string_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -293,6 +297,8 @@
               }
             }
           },
+          
+          '---',
           
           {
             opcode: 'letter_case_block',
@@ -309,6 +315,8 @@
               }
             }
           },
+          
+          '---',
           
           {
             opcode: 'word_block',
@@ -346,6 +354,8 @@
             }
           },          
           
+          '---',
+          
           {
             opcode: 'repeat_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -361,6 +371,8 @@
               }
             }
           },          
+          
+          '---',
           
           {
             opcode: 'replace_block',
@@ -459,17 +471,13 @@
       }
     }
 
-    bool_xor_block({A, B}) {
+    xor_block({A, B}) {
       if (A ^ B > 0) {
         return true;
       }
       else {
         return false;
       }
-    }    
-    
-    num_xor_block({A, B}) {
-      return A ^ B;
     }    
     
     exponent_block({A, B}) {
