@@ -287,20 +287,6 @@
           '---',
           
           {
-            opcode: 'reverse_string_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'reverse [TEXT]',
-            arguments: {
-              TEXT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              }
-            }
-          },
-          
-          '---',
-          
-          {
             opcode: 'letter_case_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[OPER] [TEXT]',
@@ -355,6 +341,18 @@
           },          
           
           '---',
+          
+          {
+            opcode: 'reverse_string_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'reverse [TEXT]',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
           
           {
             opcode: 'repeat_block',
