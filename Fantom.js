@@ -261,38 +261,6 @@
           '---',
           
           {
-            opcode: 'get_url_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'get [URL]',
-            arguments: {
-              URL: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://extensions.turbowarp.org/hello.txt'
-              }
-            }
-          },
-          
-          '---',
-          
-          {
-            opcode: 'parse_json_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] in [JSON_STRING]',
-            arguments: {
-              PATH: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'fruit/apples'
-              },
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
-              }
-            }
-          },
-          
-          '---',
-          
-          {
             opcode: 'letter_case_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[OPER] [TEXT]',
@@ -444,8 +412,39 @@
                 defaultValue: 'apple'
               }
             }
-          }
+          },
           
+          '---',
+          
+          {
+            opcode: 'parse_json_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[PATH] in [JSON_STRING]',
+            arguments: {
+              PATH: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'fruit/apples'
+              },
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
+              }
+            }
+          },
+          
+          '---',
+          
+          {
+            opcode: 'get_url_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'get [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://extensions.turbowarp.org/hello.txt'
+              }
+            }
+          }
         ],
         
         menus: {
