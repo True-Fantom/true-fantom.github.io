@@ -354,7 +354,7 @@
           {
             opcode: 'triple_join_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'join on new line [A] [B] [C]',
+            text: 'join [A] [B] [C]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
