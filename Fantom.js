@@ -654,30 +654,40 @@
     }
     
     defining_case_block({OPER, TEXT}) {
-      if (OPER === 'uppercase') {
-        if (TEXT[0] === TEXT[0].toLowerCase()) {
-          return false;
-        }
-        else {
-          return true;
-        }
+      if (TEXT === '') {
+        return '';
       }
-      if (OPER === 'lowercase') {
-        if (TEXT[0] === TEXT[0].toLowerCase()) {
-          return true;
+      else {
+        if (OPER === 'uppercase') {
+          if (TEXT[0] === TEXT[0].toLowerCase()) {
+            return false;
+          }
+          else {
+            return true;
+          }
         }
-        else {
-          return false;
+        if (OPER === 'lowercase') {
+          if (TEXT[0] === TEXT[0].toLowerCase()) {
+            return true;
+          }
+          else {
+            return false;
+          }
         }
       }
     }
     
     sensitive_case_block({TEXT}) {
-      if (TEXT[0].toUpperCase() === TEXT[0].toLowerCase()) {
-        return false;
+      if (TEXT === '') {
+        return '';
       }
       else {
-        return true;
+        if (TEXT[0].toUpperCase() === TEXT[0].toLowerCase()) {
+          return false;
+        }
+        else {
+          return true;
+        }
       }
     }
     
