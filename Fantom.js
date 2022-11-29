@@ -349,6 +349,18 @@
             }
           },
           
+          {
+            opcode: 'line_count_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'word count in [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'red apple'
+              }
+            }
+          }, 
+          
           '---',
           
           {
@@ -724,6 +736,11 @@
     
     join_new_line_block({A, B}){
       return A + '\n' + B;
+    }
+    
+    line_count_block({STRING}) {
+      var lines = STRING.split(/\r\n|\r|\n/);
+      return lines.length;
     }
     
     triple_join_block({A, B, C}){
