@@ -663,7 +663,7 @@
         }
       }
       if (OPER === 'lowercase') {
-        if (TEXT === TEXT.toLowerCase();) {
+        if (TEXT === TEXT.toLowerCase()) {
           return true;
         }
         else {
