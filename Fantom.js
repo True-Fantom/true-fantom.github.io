@@ -352,7 +352,7 @@
           {
             opcode: 'line_count_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word count in [STRING]',
+            text: 'line count in [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
