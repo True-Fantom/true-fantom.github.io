@@ -178,7 +178,8 @@
           {
             opcode: 'millisecond_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'current millisecond'
+            text: 'current millisecond',
+            arguments: {}
           },
           
           '---',
@@ -328,6 +329,7 @@
             opcode: 'new_line_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'new line',
+            disableMonitor: true,
             arguments: {}
           },
           
