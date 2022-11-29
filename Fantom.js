@@ -69,6 +69,20 @@
             }
           },    
           
+          {
+            opcode: 'equ_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] equ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              },
+              B: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },
+          
           '---',
           
           {
@@ -549,6 +563,10 @@
         return false;
       }
     }    
+    
+    equ_block({A, B}) {
+      return (A === B);
+    }   
     
     exponent_block({A, B}) {
       return Math.pow(A, B);
