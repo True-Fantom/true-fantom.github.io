@@ -331,6 +331,22 @@
             arguments: {}
           },
           
+          {
+            opcode: 'join_new_line_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'join on new line [A] [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'banana'
+              }
+            }
+          },
+          
           '---',
           
           {
@@ -682,6 +698,10 @@
     
     new_line_block(){
       return '\n'
+    }
+    
+    join_new_line_block({A, B}){
+      return A + '\n' + B
     }
     
     repeat_block({NUM, TEXT}) {
