@@ -556,7 +556,7 @@
     }
 
     xor_block({A, B}) {
-      if (A ^ B > 0) {
+      if (Boolean(A) ^ Boolean(B) > 0) {
         return true;
       }
       else {
@@ -565,7 +565,7 @@
     }    
     
     equ_block({A, B}) {
-      return (A === B);
+      return (Boolean(A) == Boolean(B));
     }   
     
     exponent_block({A, B}) {
