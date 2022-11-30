@@ -549,7 +549,7 @@
     }    
     
     bool_block({BOOL}) {
-      if (Boolean(BOOL) === Boolean('false')) {
+      if (Boolean(BOOL).toLowerCase() === Boolean('false')) {
         return false;
       }
       else {
@@ -598,13 +598,13 @@
     }
     
     value_block({A}) {
-      if (String(A) === 'pi') {
+      if (String(A).toLowerCase() === 'pi') {
         return Math.PI;
       }
-      else if (String(A) === 'e') {
+      else if (String(A).toLowerCase() === 'e') {
         return Math.E;
       }
-      else if (String(A) === 'infinity') {
+      else if (String(A).toLowerCase() === 'infinity') {
         return Infinity;
       }
       else {
@@ -662,23 +662,23 @@
     }    
     
     letter_case_block({OPER, TEXT}) {  
-      if (String(OPER) === 'uppercase') {
+      if (String(OPER).toLowerCase() === 'uppercase') {
         return TEXT.toUpperCase();
       }
-      else if (String(OPER) === 'lowercase') {
+      else if (String(OPER).toLowerCase() === 'lowercase') {
         return TEXT.toLowerCase();
       }
-      else if (String(OPER) === 'capitalize') {
+      else if (String(OPER).toLowerCase() === 'capitalize') {
         return TEXT.charAt(0).toUpperCase() + TEXT.slice(1).toLowerCase();
       }
-      else if (String(OPER) === 'capitalize all') {
+      else if (String(OPER).toLowerCase() === 'capitalize all') {
         var splitStr = TEXT.toLowerCase().split(' ');
         for (var i = 0; i < splitStr.length; i++) {
           splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
         }
         return splitStr.join(' ');
       }
-      else if (String(OPER) === 'swap') {
+      else if (String(OPER).toLowerCase() === 'swap') {
         let str = TEXT;
         let str2 = '';  
         for (let i = 0; i < str.length; i++) {
@@ -694,7 +694,7 @@
         } 
         return str2;
       }
-      else if (String(OPER) === 'wave one') {
+      else if (String(OPER).toLowerCase() === 'wave one') {
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
@@ -705,7 +705,7 @@
         } 
         return str2;
       }      
-      else if (String(OPER) === 'wave two') {
+      else if (String(OPER).toLowerCase() === 'wave two') {
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
@@ -726,7 +726,7 @@
         return '';
       }
       else {
-        if (String(OPER) === 'uppercase') {
+        if (String(OPER).toLowerCase() === 'uppercase') {
           if (TEXT[0] === TEXT[0].toLowerCase()) {
             return false;
           }
@@ -734,7 +734,7 @@
             return true;
           }
         }
-        else if (String(OPER) === 'lowercase') {
+        else if (String(OPER).toLowerCase() === 'lowercase') {
           if (TEXT[0] === TEXT[0].toLowerCase()) {
             return true;
           }
