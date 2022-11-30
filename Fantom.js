@@ -569,15 +569,30 @@
     }   
     
     exponent_block({A, B}) {
-      return Math.pow(A, B);
+      if (Math.pow(A, B) === NaN) {
+        return 0;
+      }
+      else {
+        return Math.pow(A, B);
+      }
     }
 
     root_block({ROOT, NUM}) {
-      return NUM ** (1/ROOT);
+      if (NUM ** (1/ROOT) === NaN) {
+        return 0;
+      }
+      else {
+        return NUM ** (1/ROOT);
+      }
     }
     
     negative_block({A}) {
-      return 0 - A;
+      if (0 - A === NaN) {
+        return 0;
+      }
+      else {
+        return 0 - A;
+      }
     }
     
     value_block({A}) {
