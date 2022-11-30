@@ -120,6 +120,18 @@
           '---',
           
           {
+            opcode: 'string_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          
+          {
             opcode: 'string_in_boolean_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[STRING]',
@@ -139,18 +151,6 @@
               BOOL: {
                 type: Scratch.ArgumentType.STRING,  
                 menu: 'bool_menu'
-              }
-            }
-          },
-          
-          {
-            opcode: 'string_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
               }
             }
           },
