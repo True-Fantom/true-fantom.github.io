@@ -201,6 +201,18 @@
           '---',
           
           {
+            opcode: 'string_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          
+          {
             opcode: 'value_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A]',
@@ -610,6 +622,10 @@
       else {
         return '';
       }
+    }
+    
+    string_block({A}) {
+      return String(A);
     }
     
     millisecond_block() {
