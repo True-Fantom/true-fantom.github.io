@@ -92,7 +92,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "\0"
+                defaultValue: ""
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -108,7 +108,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "\0"
+                defaultValue: ""
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
