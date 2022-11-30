@@ -596,13 +596,13 @@
     }
     
     value_block({A}) {
-      if (A === 'pi') {
+      if (String(A) === 'pi') {
         return Math.PI;
       }
-      if (A === 'e') {
+      if (String(A) === 'e') {
         return Math.E;
       }
-      if (A === 'infinity') {
+      if (String(A) === 'infinity') {
         return Infinity;
       }
     }
@@ -612,7 +612,7 @@
     }
     
     ternary_operator_block({BOOL, A, B}) {
-      return BOOL ? A : B;
+      return Boolean(BOOL) ? String(A) : String(B);
     }
 
     start_end_letters_block({STRING, START, END}) {
