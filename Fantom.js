@@ -527,11 +527,11 @@
     }
     
     str_equal_block({A, B}) {
-      return A === B;
+      return String(A) == String(B);
     }
 
     str_cont_block({A, B}) {
-      return A.includes(B);
+      return String(A).includes(String(B));
     }    
     
     less_or_equal_block({A, B}) {
