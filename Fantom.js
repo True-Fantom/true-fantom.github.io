@@ -547,11 +547,11 @@
     }    
     
     bool_block({BOOL}) {
-      if (BOOL === 'true') {
-        return true;
+      if (Boolean(BOOL) === 'false') {
+        return false;
       }
       else {
-        return false;
+        return true;
       }
     }
 
