@@ -569,7 +569,7 @@
     }   
     
     exponent_block({A, B}) {
-      if (Math.pow(A, B) === NaN) {
+      if (isNaN(Math.pow(A, B))) {
         return 0;
       }
       else {
@@ -578,7 +578,7 @@
     }
 
     root_block({ROOT, NUM}) {
-      if (NUM ** (1/ROOT) === NaN) {
+      if (isNaN(NUM ** (1/ROOT))) {
         return 0;
       }
       else {
@@ -587,7 +587,7 @@
     }
     
     negative_block({A}) {
-      if (0 - A === NaN) {
+      if (isNaN(0 - A)) {
         return 0;
       }
       else {
