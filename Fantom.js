@@ -601,11 +601,14 @@
       if (String(A) === 'pi') {
         return Math.PI;
       }
-      if (String(A) === 'e') {
+      else if (String(A) === 'e') {
         return Math.E;
       }
-      if (String(A) === 'infinity') {
+      else if (String(A) === 'infinity') {
         return Infinity;
+      }
+      else {
+        return '';
       }
     }
     
@@ -659,23 +662,23 @@
     }    
     
     letter_case_block({OPER, TEXT}) {  
-      if (OPER === 'uppercase') {
+      if (String(OPER) === 'uppercase') {
         return TEXT.toUpperCase();
       }
-      if (OPER === 'lowercase') {
+      else if (String(OPER) === 'lowercase') {
         return TEXT.toLowerCase();
       }
-      if (OPER === 'capitalize') {
+      else if (String(OPER) === 'capitalize') {
         return TEXT.charAt(0).toUpperCase() + TEXT.slice(1).toLowerCase();
       }
-      if (OPER === 'capitalize all') {
+      else if (String(OPER) === 'capitalize all') {
         var splitStr = TEXT.toLowerCase().split(' ');
         for (var i = 0; i < splitStr.length; i++) {
           splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
         }
         return splitStr.join(' ');
       }
-      if (OPER === 'swap') {
+      else if (String(OPER) === 'swap') {
         let str = TEXT;
         let str2 = '';  
         for (let i = 0; i < str.length; i++) {
@@ -691,7 +694,7 @@
         } 
         return str2;
       }
-      if (OPER === 'wave one') {
+      else if (String(OPER) === 'wave one') {
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
@@ -702,7 +705,7 @@
         } 
         return str2;
       }      
-      if (OPER === 'wave two') {
+      else if (String(OPER) === 'wave two') {
         let str = TEXT;
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
@@ -710,8 +713,11 @@
             str2 += str[i].toLowerCase();  
           }
           else {str2 += str[i].toUpperCase()};
-        } 
+        }
         return str2;
+      }
+      else {
+        return '';  
       }
     }
     
@@ -720,7 +726,7 @@
         return '';
       }
       else {
-        if (OPER === 'uppercase') {
+        if (String(OPER) === 'uppercase') {
           if (TEXT[0] === TEXT[0].toLowerCase()) {
             return false;
           }
@@ -728,13 +734,16 @@
             return true;
           }
         }
-        if (OPER === 'lowercase') {
+        else if (String(OPER) === 'lowercase') {
           if (TEXT[0] === TEXT[0].toLowerCase()) {
             return true;
           }
           else {
             return false;
           }
+        }
+        else {
+          return '';
         }
       }
     }
