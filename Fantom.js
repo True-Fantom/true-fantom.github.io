@@ -543,7 +543,7 @@
     }
     
     string_in_boolean_block({STRING}) {
-      return STRING;
+      return String(STRING);
     }    
     
     bool_block({BOOL}) {
