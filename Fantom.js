@@ -91,7 +91,8 @@
             text: '[A] ≤ [B]',
             arguments: {
               A: {
-                type: Scratch.ArgumentType.STRING
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ''
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -106,7 +107,8 @@
             text: '[A] ≥ [B]',
             arguments: {
               A: {
-                type: Scratch.ArgumentType.STRING
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ''
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
