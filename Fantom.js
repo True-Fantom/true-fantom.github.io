@@ -204,10 +204,15 @@
           '---',
           
           {
-            opcode: 'millisecond_block',
+            opcode: 'date_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'current millisecond',
-            arguments: {}
+            text: 'current [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'date_menu'
+              }  
+            }
           },
           
           '---',
@@ -530,10 +535,15 @@
             items: ['true', 'false'],
             acceptReporters: true
           },
+          
+          date_menu: {  
+            items: ['millisecond', 'e', 'infinity'],
+            acceptReporters: false
+          },
         
           value_menu: {  
             items: ['pi', 'e', 'infinity'],
-            acceptReporters: false
+            acceptReporters: true
           }
           
         }
@@ -628,8 +638,19 @@
       return String(A);
     }
     
-    millisecond_block() {
-      return Date.now() % 1000;
+    date_block() {
+      if (String(A).toLowerCase() === 'millisecond') {
+        return Date.now() % 1000;
+      }
+      else if (String(A).toLowerCase() === 'e') {
+        return Date.now() % 1000;
+      }
+      else if (String(A).toLowerCase() === 'infinity') {
+        return Date.now() % 1000;
+      }
+      else {
+        return '';
+      }
     }
     
     ternary_operator_block({BOOL, A, B}) {
