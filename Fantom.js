@@ -638,7 +638,7 @@
       return String(A);
     }
     
-    date_block() {
+    date_block({A}) {
       if (String(A).toLowerCase() === 'millisecond') {
         return Date.now() % 1000;
       }
