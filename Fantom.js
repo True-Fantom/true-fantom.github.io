@@ -533,7 +533,7 @@
         
           value_menu: {  
             items: ['pi', 'e', 'infinity'],
-            acceptReporters: true
+            acceptReporters: false
           }
           
         }
