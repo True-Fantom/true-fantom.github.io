@@ -537,7 +537,7 @@
           },
           
           date_menu: {  
-            items: ['millisecond', 'week number', 'week number in year'],
+            items: ['millisecond', 'week number'],
             acceptReporters: false
           },
         
@@ -643,10 +643,7 @@
         return Date.now() % 1000;
       }
       else if (String(A).toLowerCase() === 'week number') {
-        return Date.now() % 1000;
-      }
-      else if (String(A).toLowerCase() === 'week number in year') {
-        return Date.now() % 1000;
+        return Math.ceil(getDate() / 7);
       }
       else {
         return '';
