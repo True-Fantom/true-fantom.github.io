@@ -537,7 +537,7 @@
           },
           
           date_menu: {  
-            items: ['millisecond', 'e', 'infinity'],
+            items: ['millisecond', 'week number', 'week number in year'],
             acceptReporters: false
           },
         
@@ -642,10 +642,10 @@
       if (String(A).toLowerCase() === 'millisecond') {
         return Date.now() % 1000;
       }
-      else if (String(A).toLowerCase() === 'e') {
+      else if (String(A).toLowerCase() === 'week number') {
         return Date.now() % 1000;
       }
-      else if (String(A).toLowerCase() === 'infinity') {
+      else if (String(A).toLowerCase() === 'week number in year') {
         return Date.now() % 1000;
       }
       else {
