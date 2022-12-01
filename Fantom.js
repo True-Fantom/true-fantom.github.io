@@ -643,7 +643,7 @@
         return Date.now() % 1000;
       }
       else if (String(A).toLowerCase() === 'week number') {
-        return Math.ceil(getDate() / 7);
+        return Math.ceil(Date.now().getDate() / 7);
       }
       else {
         return '';
