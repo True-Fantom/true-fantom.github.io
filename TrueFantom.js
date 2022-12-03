@@ -533,7 +533,7 @@
 
           bool_menu: {
             items: ['true', 'false'],
-            acceptReporters: true
+            acceptReporters: false
           },
           
           date_menu: {  
@@ -571,7 +571,7 @@
     }    
     
     bool_block({BOOL}) {
-      if (Boolean(BOOL) == Boolean(false)) {
+      if (BOOL === "false") {
         return false;
       }
       else {
