@@ -572,10 +572,10 @@
     
     bool_block({BOOL}) {
       if (Boolean(BOOL).toLowerCase() === Boolean('false')) {
-        return false;
+        return Boolean(false);
       }
       else {
-        return true;
+        return Boolean(true);
       }
     }
 
