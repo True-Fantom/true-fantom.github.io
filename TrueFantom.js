@@ -571,7 +571,7 @@
     }    
     
     bool_block({BOOL}) {
-      if (Boolean(BOOL)) {
+      if (Boolean(BOOL) && BOOL!=="false") {
         return true;
       }
       else {
