@@ -580,6 +580,12 @@
     }
 
     xor_block({A, B}) {
+      if (A==="false") {
+        A = false;
+      }
+      if (B==="false") {
+        B = false;
+      }
       if (Boolean(A) ^ Boolean(B) > 0) {
         return true;
       }
@@ -589,6 +595,12 @@
     }    
     
     equ_block({A, B}) {
+      if (A==="false") {
+        A = false;
+      }
+      if (B==="false") {
+        B = false;
+      }
       return (Boolean(A) == Boolean(B));
     }   
     
@@ -652,6 +664,12 @@
     }
     
     ternary_operator_block({BOOL, A, B}) {
+      if (A==="false") {
+        A = false;
+      }
+      if (B==="false") {
+        B = false;
+      }
       return Boolean(BOOL) ? String(A) : String(B);
     }
 
