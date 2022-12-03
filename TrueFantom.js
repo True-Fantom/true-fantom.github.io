@@ -13,6 +13,8 @@
         id: 'Fantom',
         name: 'Fantøm',
 
+        docsURI: 'https://truefantom.github.io/TrueFantom/',
+        
         color1: '#404040',
         color2: '#303030',
         color3: '#1c1c1c',
