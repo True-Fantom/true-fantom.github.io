@@ -571,11 +571,11 @@
     }    
     
     bool_block({BOOL}) {
-      if (Boolean(BOOL).toLowerCase() === Boolean('false')) {
-        return Boolean(false);
+      if (Boolean(BOOL) === false) {
+        return false;
       }
       else {
-        return Boolean(true);
+        return true;
       }
     }
 
