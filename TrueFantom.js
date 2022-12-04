@@ -585,9 +585,9 @@
           A = false;
         }
       }
-      if (typeof A === "string") {
-        if (A.toLowerCase() === "false") {
-          A = false;
+      if (typeof B === "string") {
+        if (B.toLowerCase() === "false") {
+          B = false;
         }
       }
       if (Boolean(A) ^ Boolean(B) > 0) {
@@ -604,9 +604,9 @@
           A = false;
         }
       }
-      if (typeof A === "string") {
-        if (A.toLowerCase() === "false") {
-          A = false;
+      if (typeof B === "string") {
+        if (B.toLowerCase() === "false") {
+          B = false;
         }
       }
       return (Boolean(A) == Boolean(B));
@@ -677,9 +677,9 @@
           A = false;
         }
       }
-      if (typeof A === "string") {
-        if (A.toLowerCase() === "false") {
-          A = false;
+      if (typeof B === "string") {
+        if (B.toLowerCase() === "false") {
+          B = false;
         }
       }
       return Boolean(BOOL) ? String(A) : String(B);
