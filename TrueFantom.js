@@ -383,6 +383,22 @@
           },
           
           {
+            opcode: 'line_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'line [NUM] in [STRING]',
+            arguments: {
+              NUM: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'red apple'
+              }
+            }
+          },
+          
+          {
             opcode: 'line_count_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'line count in [STRING]',
@@ -843,6 +859,12 @@
     
     join_new_line_block({A, B}){
       return A + '\n' + B;
+    }
+    
+    line_block({NUM, STRING}) {
+      var str = STRING;
+      var res = str.split("\n");
+      return (res[NUM - 1]);
     }
     
     line_count_block({STRING}) {
