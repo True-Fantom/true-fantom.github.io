@@ -672,14 +672,9 @@
     }
     
     ternary_operator_block({BOOL, A, B}) {
-      if (typeof A === "string") {
-        if (A.toLowerCase() === "false") {
-          A = false;
-        }
-      }
-      if (typeof B === "string") {
-        if (B.toLowerCase() === "false") {
-          B = false;
+      if (typeof BOOL === "string") {
+        if (BOOL.toLowerCase() === "false") {
+          BOOL = false;
         }
       }
       return Boolean(BOOL) ? String(A) : String(B);
