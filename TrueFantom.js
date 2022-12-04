@@ -513,7 +513,7 @@
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'NaN'
+                defaultValue: 'apple'
               }
             }
           },
