@@ -234,7 +234,7 @@
           {
             opcode: 'ternary_operator_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'if [A] else [B] in [BOOL]',
+            text: 'if [A] else [B] of [BOOL]',
             arguments: {
               BOOL: {
                 type: Scratch.ArgumentType.BOOLEAN
