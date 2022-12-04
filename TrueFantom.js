@@ -580,11 +580,15 @@
     }
 
     xor_block({A, B}) {
-      if (A.toLowerCase()==="false") {
-        A = false;
+      if (typeof A === "string") {
+        if (A.toLowerCase() === "false") {
+          A = false;
+        }
       }
-      if (B.toLowerCase()==="false") {
-        B = false;
+      if (typeof A === "string") {
+        if (A.toLowerCase() === "false") {
+          A = false;
+        }
       }
       if (Boolean(A) ^ Boolean(B) > 0) {
         return true;
@@ -595,11 +599,15 @@
     }    
     
     equ_block({A, B}) {
-      if (A.toLowerCase()==="false") {
-        A = false;
+      if (typeof A === "string") {
+        if (A.toLowerCase() === "false") {
+          A = false;
+        }
       }
-      if (B.toLowerCase()==="false") {
-        B = false;
+      if (typeof A === "string") {
+        if (A.toLowerCase() === "false") {
+          A = false;
+        }
       }
       return (Boolean(A) == Boolean(B));
     }   
@@ -664,11 +672,15 @@
     }
     
     ternary_operator_block({BOOL, A, B}) {
-      if (A.toLowerCase()==="false") {
-        A = false;
+      if (typeof A === "string") {
+        if (A.toLowerCase() === "false") {
+          A = false;
+        }
       }
-      if (B.toLowerCase()==="false") {
-        B = false;
+      if (typeof A === "string") {
+        if (A.toLowerCase() === "false") {
+          A = false;
+        }
       }
       return Boolean(BOOL) ? String(A) : String(B);
     }
