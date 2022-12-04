@@ -507,6 +507,20 @@
           '---',
           
           {
+            opcode: 'is_nan_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is NaN [TEXT] ?',
+            arguments: {
+              TEXT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'NaN'
+              }
+            }
+          },
+          
+          '---',
+          
+          {
             opcode: 'get_url_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'get [URL]',
@@ -684,6 +698,10 @@
       return STRING.slice(Math.max(1, START) - 1, Math.min(STRING.length, END));
     }
 
+    is_nan_block({TEXT}) {
+      return isNaN(TEXT);
+    }
+    
     get_url_block({URL}) {
       return fetch(URL).then(res => res.text())
         .catch(err => '');
