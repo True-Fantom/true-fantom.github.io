@@ -627,30 +627,15 @@
     }   
     
     exponent_block({A, B}) {
-      if (isNaN(Math.pow(A, B))) {
-        return 0;
-      }
-      else {
-        return Math.pow(A, B);
-      }
+      return Math.pow(A, B);
     }
 
     root_block({ROOT, NUM}) {
-      if (isNaN(NUM ** (1/ROOT))) {
-        return 0;
-      }
-      else {
-        return NUM ** (1/ROOT);
-      }
+      return NUM ** (1/ROOT);
     }
     
     negative_block({A}) {
-      if (isNaN(0 - A)) {
-        return 0;
-      }
-      else {
-        return 0 - A;
-      }
+      return 0 - A;
     }
     
     value_block({A}) {
