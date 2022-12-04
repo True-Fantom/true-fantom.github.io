@@ -585,7 +585,7 @@
     }    
     
     bool_block({BOOL}) {
-      if (Boolean(BOOL) && BOOL!=="false") {
+      if (Boolean(BOOL) && BOOL!=='false') {
         return true;
       }
       else {
@@ -594,13 +594,13 @@
     }
 
     xor_block({A, B}) {
-      if (typeof A === "string") {
-        if (A.toLowerCase() === "false") {
+      if (typeof A === 'string') {
+        if (A.toLowerCase() === 'false') {
           A = false;
         }
       }
-      if (typeof B === "string") {
-        if (B.toLowerCase() === "false") {
+      if (typeof B === 'string') {
+        if (B.toLowerCase() === 'false') {
           B = false;
         }
       }
@@ -613,13 +613,13 @@
     }    
     
     equ_block({A, B}) {
-      if (typeof A === "string") {
-        if (A.toLowerCase() === "false") {
+      if (typeof A === 'string') {
+        if (A.toLowerCase() === 'false') {
           A = false;
         }
       }
-      if (typeof B === "string") {
-        if (B.toLowerCase() === "false") {
+      if (typeof B === 'string') {
+        if (B.toLowerCase() === 'false') {
           B = false;
         }
       }
@@ -671,8 +671,8 @@
     }
     
     ternary_operator_block({BOOL, A, B}) {
-      if (typeof BOOL === "string") {
-        if (BOOL.toLowerCase() === "false") {
+      if (typeof BOOL === 'string') {
+        if (BOOL.toLowerCase() === 'false') {
           BOOL = false;
         }
       }
