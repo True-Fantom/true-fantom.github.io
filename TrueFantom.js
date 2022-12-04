@@ -323,7 +323,7 @@
           {
             opcode: 'word_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word [NUM] separated by [SEPER] in [STRING]',
+            text: 'word [NUM] separated by [SEPER] of [STRING]',
             arguments: {
               NUM: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -385,7 +385,7 @@
           {
             opcode: 'line_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'line [NUM] in [STRING]',
+            text: 'line [NUM] of [STRING]',
             arguments: {
               NUM: {
                 type: Scratch.ArgumentType.NUMBER,
