@@ -293,7 +293,7 @@
           {
             opcode: 'defining_case_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'first character is [OPER] in [TEXT]',
+            text: 'first character is [OPER] in [TEXT] ?',
             arguments: {
               OPER: {
                 type: Scratch.ArgumentType.STRING,
@@ -309,7 +309,7 @@
           {
             opcode: 'sensitive_case_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'first character is case sensitive in [TEXT]',
+            text: 'first character is case sensitive in [TEXT] ?',
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
