@@ -255,7 +255,7 @@
           {
             opcode: 'start_end_letters_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'letters [START] to [END] in [STRING]',
+            text: 'letters [START] to [END] of [STRING]',
             arguments: {
               START: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -293,7 +293,7 @@
           {
             opcode: 'defining_case_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'first character is [OPER] in [TEXT] ?',
+            text: 'first character is [OPER] of [TEXT] ?',
             arguments: {
               OPER: {
                 type: Scratch.ArgumentType.STRING,
@@ -309,7 +309,7 @@
           {
             opcode: 'sensitive_case_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'first character is case sensitive in [TEXT] ?',
+            text: 'first character is case sensitive of [TEXT] ?',
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
@@ -343,7 +343,7 @@
           {
             opcode: 'word_count_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word count separated by [SEPER] in [STRING]',
+            text: 'word count separated by [SEPER] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -401,7 +401,7 @@
           {
             opcode: 'line_count_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'line count in [STRING]',
+            text: 'line count of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -465,7 +465,7 @@
           {
             opcode: 'replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace [REGEX] with [NEWSTRING] in [STRING]',
+            text: 'replace [REGEX] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -485,7 +485,7 @@
           {
             opcode: 'str_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'str replace [REGEX] with [NEWSTRING] in [STRING]',
+            text: 'str replace [REGEX] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -507,7 +507,7 @@
           {
             opcode: 'parse_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] in [JSON_STRING]',
+            text: '[PATH] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
