@@ -383,6 +383,38 @@
           },
           
           {
+            opcode: 'new_line_replace_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'replace [REGEX] with new line of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'red apple'
+              },
+              REGEX: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              }
+            }
+          },
+          
+          {
+            opcode: 'new_line_str_replace_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'str replace [REGEX] with new line of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'red apple'
+              },
+              REGEX: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              }
+            }
+          },
+          
+          {
             opcode: 'line_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'line [NUM] of [STRING]',
@@ -859,6 +891,14 @@
     
     join_new_line_block({A, B}){
       return A + '\n' + B;
+    }
+    
+    new_line_replace_block({STRING, REGEX}) {
+      return STRING.toString().replace(new RegExp(REGEX, 'gi'), '\n');
+    }
+    
+    new_line_str_replace_block({STRING, REGEX}) { 
+      return STRING.toString().replace(new RegExp(REGEX, 'g'), '\n');
     }
     
     line_block({NUM, STRING}) {
