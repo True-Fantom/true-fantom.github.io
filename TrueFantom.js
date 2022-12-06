@@ -389,11 +389,11 @@
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'red apple'
+                defaultValue: 'red a apple'
               },
               REGEX: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
+                defaultValue: ' A '
               }
             }
           },
@@ -405,11 +405,11 @@
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'red apple'
+                defaultValue: 'red a apple'
               },
               REGEX: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
+                defaultValue: ' A '
               }
             }
           },
