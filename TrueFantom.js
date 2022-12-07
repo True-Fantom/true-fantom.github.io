@@ -894,10 +894,12 @@
     }
     
     new_line_replace_block({STRING, REGEX}) {
+      REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       return STRING.toString().replace(new RegExp(REGEX, 'gi'), '\n');
     }
     
-    new_line_str_replace_block({STRING, REGEX}) { 
+    new_line_str_replace_block({STRING, REGEX}) {
+      REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       return STRING.toString().replace(new RegExp(REGEX, 'g'), '\n');
     }
     
@@ -917,7 +919,7 @@
     }
     
     repeat_block({NUM, TEXT}) {
-      return TEXT.repeat(Math.floor(NUM));
+      return TEXT.toString().repeat(Math.floor(NUM));
     }    
     
     replace_block({STRING, REGEX, NEWSTRING}) {
