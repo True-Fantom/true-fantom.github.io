@@ -925,9 +925,9 @@
       return STRING.toString().replace(new RegExp(A, 'gi'), NEWSTRING.toString());
     }
     
-    str_replace_block({STRING, REGEX, NEWSTRING}) { 
-      const re = new RegExp(REGEX.toString(), 'g');
-      return STRING.toString().replace(re, NEWSTRING.toString());
+    str_replace_block({STRING, REGEX, NEWSTRING}) {
+      REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");;
+      return STRING.toString().replace(new RegExp(REGEX.toString();, 'gi'), NEWSTRING.toString());
     }
     
   }
