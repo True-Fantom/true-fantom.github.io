@@ -926,8 +926,8 @@
     }
     
     str_replace_block({STRING, REGEX, NEWSTRING}) { 
-      const A = REGEX.toString();
-      return STRING.toString().replace(new RegExp(A, 'g'), NEWSTRING.toString());
+      const re = new RegExp(REGEX.toString(), 'g');
+      return STRING.toString().replace(re, NEWSTRING.toString());
     }
     
   }
