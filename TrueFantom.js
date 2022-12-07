@@ -921,8 +921,8 @@
     }    
     
     replace_block({STRING, REGEX, NEWSTRING}) {
-      const A = REGEX.toString();
-      return STRING.toString().replace(new RegExp(A, 'gi'), NEWSTRING.toString());
+      REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return STRING.toString().replace(new RegExp(REGEX.toString(), 'gi'), NEWSTRING.toString());
     }
     
     str_replace_block({STRING, REGEX, NEWSTRING}) {
