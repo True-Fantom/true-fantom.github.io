@@ -927,7 +927,7 @@
     
     str_replace_block({STRING, REGEX, NEWSTRING}) {
       REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return STRING.toString().replace(new RegExp(REGEX.toString();, 'gi'), NEWSTRING.toString());
+      return STRING.toString().replace(new RegExp(REGEX.toString(), 'gi'), NEWSTRING.toString());
     }
     
   }
