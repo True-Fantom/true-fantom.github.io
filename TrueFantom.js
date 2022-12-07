@@ -906,7 +906,7 @@
     line_block({NUM, STRING}) {
       var str = STRING.toString();
       var res = str.split("\n");
-      return (res[NUM.toNumber() - 1]);
+      return (res[Number(NUM) - 1]);
     }
     
     line_count_block({STRING}) {
