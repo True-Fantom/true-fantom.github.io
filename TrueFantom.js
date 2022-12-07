@@ -921,11 +921,13 @@
     }    
     
     replace_block({STRING, REGEX, NEWSTRING}) {
-      return STRING.toString().replace(new RegExp(REGEX.toString(), 'gi'), NEWSTRING.toString());
+      const A = REGEX.toString();
+      return STRING.toString().replace(new RegExp(A, 'gi'), NEWSTRING.toString());
     }
     
     str_replace_block({STRING, REGEX, NEWSTRING}) { 
-      return STRING.toString().replace(new RegExp(REGEX.toString(), 'g'), NEWSTRING.toString());
+      const A = REGEX.toString();
+      return STRING.toString().replace(new RegExp(A, 'g'), NEWSTRING.toString());
     }
     
   }
