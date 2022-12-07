@@ -904,9 +904,9 @@
     }
     
     line_block({NUM, STRING}) {
-      var str = STRING;
+      var str = STRING.toString();
       var res = str.split("\n");
-      return (res[NUM - 1]);
+      return (res[NUM.toNumber() - 1]);
     }
     
     line_count_block({STRING}) {
@@ -915,7 +915,7 @@
     }
     
     triple_join_block({A, B, C}){
-      return A + B + C;
+      return A.toString() + B.toString() + C.toString();
     }
     
     repeat_block({NUM, TEXT}) {
