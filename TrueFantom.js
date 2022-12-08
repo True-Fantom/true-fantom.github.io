@@ -774,23 +774,23 @@
     
     letter_case_block({OPER, TEXT}) {  
       if (String(OPER).toLowerCase() === 'uppercase') {
-        return TEXT.toUpperCase();
+        return String(TEXT).toUpperCase();
       }
       else if (String(OPER).toLowerCase() === 'lowercase') {
-        return TEXT.toLowerCase();
+        return String(TEXT).toLowerCase();
       }
       else if (String(OPER).toLowerCase() === 'capitalize') {
-        return TEXT.charAt(0).toUpperCase() + TEXT.slice(1).toLowerCase();
+        return String(TEXT).charAt(0).toUpperCase() + String(TEXT).slice(1).toLowerCase();
       }
       else if (String(OPER).toLowerCase() === 'capitalize all') {
-        var splitStr = TEXT.toLowerCase().split(' ');
+        var splitStr = String(TEXT).toLowerCase().split(' ');
         for (var i = 0; i < splitStr.length; i++) {
           splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);     
         }
         return splitStr.join(' ');
       }
       else if (String(OPER).toLowerCase() === 'swap') {
-        let str = TEXT;
+        let str = String(TEXT);
         let str2 = '';  
         for (let i = 0; i < str.length; i++) {
           if (str[i].toUpperCase()!=str[i].toLowerCase()) {
@@ -806,7 +806,7 @@
         return str2;
       }
       else if (String(OPER).toLowerCase() === 'wave one') {
-        let str = TEXT;
+        let str = String(TEXT);
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
           if (i%2 == 0) {
@@ -817,7 +817,7 @@
         return str2;
       }      
       else if (String(OPER).toLowerCase() === 'wave two') {
-        let str = TEXT;
+        let str = String(TEXT);
         let str2 = '';
         for (let i = 0; i < str.length; i++) {
           if (i%2 == 0) {
@@ -838,7 +838,7 @@
       }
       else {
         if (String(OPER).toLowerCase() === 'uppercase') {
-          if (TEXT[0] === TEXT[0].toLowerCase()) {
+          if (TEXT.toString()[0] === TEXT.toString()[0].toLowerCase()) {
             return false;
           }
           else {
@@ -846,7 +846,7 @@
           }
         }
         else if (String(OPER).toLowerCase() === 'lowercase') {
-          if (TEXT[0] === TEXT[0].toLowerCase()) {
+          if (TEXT.toString()[0] === TEXT.toString()[0].toLowerCase()) {
             return true;
           }
           else {
@@ -864,7 +864,7 @@
         return '';
       }
       else {
-        if (TEXT[0].toUpperCase() === TEXT[0].toLowerCase()) {
+        if (TEXT.toString()[0].toUpperCase() === TEXT.toString()[0].toLowerCase()) {
           return false;
         }
         else {
@@ -874,14 +874,14 @@
     }
     
     word_block({NUM, STRING, SEPER}) {
-      var str = STRING;
-      var res = str.split(SEPER);
-      return (res[NUM - 1]);
+      var str = STRING.toString();
+      var res = str.split(SEPER.toString());
+      return (res[Number(NUM) - 1]);
     }  
     
     word_count_block({STRING, SEPER}) {
-      var str = STRING;
-      var res = str.split(SEPER);
+      var str = STRING.toString();
+      var res = str.split(SEPER.toString());
       return res.length;
     }
     
@@ -890,7 +890,7 @@
     }
     
     join_new_line_block({A, B}){
-      return A + '\n' + B;
+      return A.toString() + '\n' + B.toString();
     }
     
     new_line_replace_block({STRING, REGEX}) {
@@ -929,12 +929,12 @@
     
     replace_block({STRING, REGEX, NEWSTRING}) {
       REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return STRING.toString().replace(new RegExp(REGEX.toString(), 'gi'), NEWSTRING.toString());
+      return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING.toString());
     }
     
     str_replace_block({STRING, REGEX, NEWSTRING}) {
       REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return STRING.toString().replace(new RegExp(REGEX.toString(), 'g'), NEWSTRING.toString());
+      return STRING.toString().replace(new RegExp(REGEX, 'g'), NEWSTRING.toString());
     }
     
   }
