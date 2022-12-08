@@ -736,7 +736,7 @@
     }
     
     get_url_block({URL}) {
-      return fetch(URL).then(res => res.text())
+      return fetch(String(URL)).then(res => res.text())
         .catch(err => '');
     }
 
@@ -747,7 +747,7 @@
         if (path[path.length - 1] === '') path.splice(-1, 1);
         let json;
         try {
-          json = JSON.parse(' ' + JSON_STRING);
+          json = JSON.parse(' ' + String(JSON_STRING));
         } catch (e) {
           return e.message;
         }
