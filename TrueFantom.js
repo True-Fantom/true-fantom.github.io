@@ -415,6 +415,22 @@
           },
           
           {
+            opcode: 'replace_new_line_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'replace new line with [NEWSTRING] of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'fresh red apple'
+              },
+              NEWSTRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' RED '
+              }
+            }
+          },
+          
+          {
             opcode: 'line_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'line [NUM] of [STRING]',
@@ -906,6 +922,10 @@
     new_line_str_replace_block({STRING, REGEX}) {
       REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       return String(STRING).replace(new RegExp(REGEX, 'g'), '\n');
+    }
+    
+    replace_new_line_block({STRING, NEWSTRING}) {
+      return String(STRING).replace(new RegExp('\n', 'g'), String(NEWSTRING));
     }
     
     line_block({NUM, STRING}) {
