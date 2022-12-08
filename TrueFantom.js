@@ -906,11 +906,16 @@
     line_block({NUM, STRING}) {
       var str = STRING.toString();
       var res = str.split("\n");
-      return (res[Number(NUM) - 1]);
+      if (res[Number(NUM) - 1] === undefined) {
+        return '';
+      }
+      else {
+        return res[Number(NUM) - 1];
+      }
     }
     
     line_count_block({STRING}) {
-      var lines = STRING.split(/\r\n|\r|\n/);
+      var lines = STRING.toString().split(/\r\n|\r|\n/);
       return lines.length;
     }
     
