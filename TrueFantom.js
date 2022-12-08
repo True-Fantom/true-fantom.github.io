@@ -919,7 +919,7 @@
     }
     
     repeat_block({NUM, TEXT}) {
-      return TEXT.toString().repeat(Math.floor(NUM));
+      return TEXT.toString().repeat(Math.floor(Number(NUM)));
     }    
     
     replace_block({STRING, REGEX, NEWSTRING}) {
