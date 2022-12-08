@@ -742,7 +742,7 @@
 
     parse_json_block({PATH, JSON_STRING}) {
       try {
-        const path = PATH.toString().split('/').map(prop => decodeURIComponent(prop));
+        const path = String(PATH).split('/').map(prop => decodeURIComponent(prop));
         if (path[0] === '') path.splice(0, 1);
         if (path[path.length - 1] === '') path.splice(-1, 1);
         let json;
@@ -755,7 +755,7 @@
         if (json === null) return 'null';
         else if (json === undefined) return '';
         else if (typeof json === 'object') return JSON.stringify(json);
-        else return json.toString();
+        else return String(json);
       } catch (err) {
         return '';
       }
@@ -763,7 +763,7 @@
 
     reverse_string_block({TEXT}) {
       var emptyStr = '';
-      var txt = TEXT.toString();
+      var txt = String(TEXT);
       var localCount = TEXT.length - 1;
       while (localCount != -1) {
         emptyStr = emptyStr + txt.charAt(localCount);
@@ -838,7 +838,7 @@
       }
       else {
         if (String(OPER).toLowerCase() === 'uppercase') {
-          if (TEXT.toString()[0] === TEXT.toString()[0].toLowerCase()) {
+          if (String(TEXT)[0] === String(TEXT)[0].toLowerCase()) {
             return false;
           }
           else {
@@ -846,7 +846,7 @@
           }
         }
         else if (String(OPER).toLowerCase() === 'lowercase') {
-          if (TEXT.toString()[0] === TEXT.toString()[0].toLowerCase()) {
+          if (String(TEXT)[0] === String(TEXT)[0].toLowerCase()) {
             return true;
           }
           else {
@@ -864,7 +864,7 @@
         return '';
       }
       else {
-        if (TEXT.toString()[0].toUpperCase() === TEXT.toString()[0].toLowerCase()) {
+        if (String(TEXT)[0].toUpperCase() === String(TEXT)[0].toLowerCase()) {
           return false;
         }
         else {
@@ -874,14 +874,14 @@
     }
     
     word_block({NUM, STRING, SEPER}) {
-      var str = STRING.toString();
-      var res = str.split(SEPER.toString());
+      var str = String(STRING);
+      var res = str.split(String(SEPER));
       return (res[Number(NUM) - 1]);
     }  
     
     word_count_block({STRING, SEPER}) {
-      var str = STRING.toString();
-      var res = str.split(SEPER.toString());
+      var str = String(STRING);
+      var res = str.split(String(SEPER));
       return res.length;
     }
     
@@ -890,21 +890,21 @@
     }
     
     join_new_line_block({A, B}){
-      return A.toString() + '\n' + B.toString();
+      return String(A) + '\n' + String(B);
     }
     
     new_line_replace_block({STRING, REGEX}) {
-      REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return STRING.toString().replace(new RegExp(REGEX, 'gi'), '\n');
+      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return String(STRING).replace(new RegExp(REGEX, 'gi'), '\n');
     }
     
     new_line_str_replace_block({STRING, REGEX}) {
-      REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return STRING.toString().replace(new RegExp(REGEX, 'g'), '\n');
+      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return String(STRING).replace(new RegExp(REGEX, 'g'), '\n');
     }
     
     line_block({NUM, STRING}) {
-      var str = STRING.toString();
+      var str = String(STRING);
       var res = str.split("\n");
       if (res[Number(NUM) - 1] === undefined) {
         return '';
@@ -915,26 +915,26 @@
     }
     
     line_count_block({STRING}) {
-      var lines = STRING.toString().split(/\r\n|\r|\n/);
+      var lines = String(STRING).split(/\r\n|\r|\n/);
       return lines.length;
     }
     
     triple_join_block({A, B, C}){
-      return A.toString() + B.toString() + C.toString();
+      return String(A) + String(B) + String(C);
     }
     
     repeat_block({NUM, TEXT}) {
-      return TEXT.toString().repeat(Math.floor(Number(NUM)));
+      return String(TEXT).repeat(Math.floor(Number(NUM)));
     }    
     
     replace_block({STRING, REGEX, NEWSTRING}) {
-      REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return STRING.toString().replace(new RegExp(REGEX, 'gi'), NEWSTRING.toString());
+      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return String(STRING).replace(new RegExp(REGEX, 'gi'), String(NEWSTRING));
     }
     
     str_replace_block({STRING, REGEX, NEWSTRING}) {
-      REGEX = REGEX.toString().replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return STRING.toString().replace(new RegExp(REGEX, 'g'), NEWSTRING.toString());
+      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      return String(STRING).replace(new RegExp(REGEX, 'g'), NEWSTRING);
     }
     
   }
