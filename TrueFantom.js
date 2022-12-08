@@ -383,6 +383,22 @@
           },
           
           {
+            opcode: 'replace_new_line_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'replace new line with [NEWSTRING] of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'red apple'
+              },
+              NEWSTRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              }
+            }
+          },
+          
+          {
             opcode: 'new_line_replace_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'replace [REGEX] with new line of [STRING]',
@@ -408,22 +424,6 @@
                 defaultValue: 'fresh red apple'
               },
               REGEX: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' RED '
-              }
-            }
-          },
-          
-          {
-            opcode: 'replace_new_line_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'replace new line with [NEWSTRING] of [STRING]',
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'fresh red apple'
-              },
-              NEWSTRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' RED '
               }
