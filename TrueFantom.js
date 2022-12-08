@@ -633,7 +633,12 @@
     }    
     
     bool_block({BOOL}) {
-      if (Boolean(BOOL) && BOOL!=='false') {
+      if (typeof BOOL === 'string') {
+        if (BOOL.toLowerCase() === 'false') {
+          BOOL = false;
+        }
+      }
+      if (Boolean(BOOL)) {
         return true;
       }
       else {
@@ -675,15 +680,15 @@
     }   
     
     exponent_block({A, B}) {
-      return Math.pow(A, B);
+      return Math.pow(Number(A), Number(B));
     }
 
     root_block({ROOT, NUM}) {
-      return NUM ** (1/ROOT);
+      return Number(NUM) ** (1/Number(ROOT));
     }
     
     negative_block({A}) {
-      return 0 - A;
+      return 0 - Number(A);
     }
     
     value_block({A}) {
@@ -728,7 +733,7 @@
     }
 
     start_end_letters_block({STRING, START, END}) {
-      return STRING.slice(Math.max(1, START) - 1, Math.min(STRING.length, END));
+      return STRING.slice(Math.max(1, Number(START)) - 1, Math.min(String(STRING).length, Number(END)));
     }
 
     is_nan_block({TEXT}) {
