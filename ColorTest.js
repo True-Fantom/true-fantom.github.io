@@ -14,8 +14,8 @@
         name: 'Color Test',
         
         color1: '#ff0000',
-        color2: '#00ff00',
-        color3: '#0000ff',
+        color2: '#0000ff',
+        color3: '#00ff00',
         
         menuIconURI: icon,
 
