@@ -533,9 +533,9 @@
           },
           
           {
-            opcode: 'unicode_to_character_block',
+            opcode: 'unicode_character_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'unicode to character [UNICODE]',
+            text: 'unicode character [UNICODE]',
             arguments: {
               UNICODE: {
                 type: Scratch.ArgumentType.STRING,
@@ -893,7 +893,7 @@
       return String(STRING).replace(new RegExp(REGEX, 'g'), NEWSTRING);
     }
     
-    unicode_to_character_block({UNICODE}) {
+    unicode_character_block({UNICODE}) {
       if (/^[a-fA-F0-9]+$/.test(String(UNICODE)) && String(UNICODE).length === 4) {
         return String.fromCodePoint(parseInt(String(UNICODE), 16));
       }
