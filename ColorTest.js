@@ -27,7 +27,7 @@
             text: '[bool]',
             arguments: {
               bool: {
-                type: Scratch.ArgumentType.STRING,
+                type: Scratch.ArgumentType.BOOLEAN,
               }
             }
           },
@@ -39,7 +39,6 @@
             arguments: {
               string: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
               }
             }
           },
