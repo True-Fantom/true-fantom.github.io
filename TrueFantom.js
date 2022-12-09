@@ -894,7 +894,7 @@
     }
     
     unicode_to_character_block({UNICODE}) {
-      if (/^[a-fA-F0-9]+$/.test(String(UNICODE))) {
+      if (/^[a-fA-F0-9]+$/.test(String(UNICODE)) && String(UNICODE).length === 4) {
         return String.fromCodePoint(parseInt(String(UNICODE), 16));
       }
       else {
