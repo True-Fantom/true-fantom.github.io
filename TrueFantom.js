@@ -530,6 +530,18 @@
                 defaultValue: 'https://extensions.turbowarp.org/hello.txt'
               }
             }
+          },
+          
+          {
+            opcode: 'unicode_to_character_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'unicode to character [UNICODE]',
+            arguments: {
+              UNICODE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '\u2601'
+              }
+            }
           }
           
         ],
@@ -879,6 +891,10 @@
     str_replace_block({STRING, REGEX, NEWSTRING}) {
       REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
       return String(STRING).replace(new RegExp(REGEX, 'g'), NEWSTRING);
+    }
+    
+    unicode_to_character_block({UNICODE}) {
+      return String.fromCodePoint(parseInt(UNICODE, 16));
     }
     
   }
