@@ -521,18 +521,6 @@
           '---',
           
           {
-            opcode: 'get_url_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'get [URL]',
-            arguments: {
-              URL: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://extensions.turbowarp.org/hello.txt'
-              }
-            }
-          },
-          
-          {
             opcode: 'unicode_character_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'unicode character [UNICODE]',
@@ -540,6 +528,20 @@
               UNICODE: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '2601'
+              }
+            }
+          },
+          
+          '---',
+          
+          {
+            opcode: 'get_url_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'get [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://extensions.turbowarp.org/hello.txt'
               }
             }
           }
