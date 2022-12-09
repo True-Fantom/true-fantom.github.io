@@ -489,6 +489,20 @@
           '---',
           
           {
+            opcode: 'unicode_character_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'unicode character [UNICODE]',
+            arguments: {
+              UNICODE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '2601'
+              }
+            }
+          },
+          
+          '---',
+          
+          {
             opcode: 'parse_json_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[PATH] of [JSON_STRING]',
@@ -514,20 +528,6 @@
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
-              }
-            }
-          },
-          
-          '---',
-          
-          {
-            opcode: 'unicode_character_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'unicode character [UNICODE]',
-            arguments: {
-              UNICODE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '2601'
               }
             }
           },
