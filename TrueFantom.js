@@ -894,7 +894,7 @@
     }
     
     unicode_to_character_block({UNICODE}) {
-      return String.fromCodePoint(parseInt(UNICODE, 16));
+      return String.fromCodePoint(parseInt(String(UNICODE), 16));
     }
     
   }
