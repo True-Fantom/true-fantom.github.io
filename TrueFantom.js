@@ -367,70 +367,6 @@
           },
           
           {
-            opcode: 'join_new_line_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'join on new line [A] [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              },
-              B: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'banana'
-              }
-            }
-          },
-          
-          {
-            opcode: 'replace_new_line_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'replace new line with [NEWSTRING] of [STRING]',
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'red apple'
-              },
-              NEWSTRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
-              }
-            }
-          },
-          
-          {
-            opcode: 'new_line_replace_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'replace [REGEX] with new line of [STRING]',
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'fresh red apple'
-              },
-              REGEX: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' RED '
-              }
-            }
-          },
-          
-          {
-            opcode: 'new_line_str_replace_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'str replace [REGEX] with new line of [STRING]',
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'fresh red apple'
-              },
-              REGEX: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' RED '
-              }
-            }
-          },
-          
-          {
             opcode: 'line_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'line [NUM] of [STRING]',
@@ -909,24 +845,6 @@
     
     new_line_block(){
       return '\n';
-    }
-    
-    join_new_line_block({A, B}){
-      return String(A) + '\n' + String(B);
-    }
-    
-    new_line_replace_block({STRING, REGEX}) {
-      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return String(STRING).replace(new RegExp(REGEX, 'gi'), '\n');
-    }
-    
-    new_line_str_replace_block({STRING, REGEX}) {
-      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      return String(STRING).replace(new RegExp(REGEX, 'g'), '\n');
-    }
-    
-    replace_new_line_block({STRING, NEWSTRING}) {
-      return String(STRING).replace(new RegExp('\n', 'g'), String(NEWSTRING));
     }
     
     line_block({NUM, STRING}) {
