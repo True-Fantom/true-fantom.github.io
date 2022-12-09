@@ -894,7 +894,12 @@
     }
     
     unicode_to_character_block({UNICODE}) {
-      return String.fromCodePoint(parseInt(String(UNICODE), 16));
+      if (isNaN(parseInt(String(UNICODE), 16))) {
+        return NaN;
+      }
+      else {
+        return String.fromCodePoint(parseInt(String(UNICODE), 16));
+      } 
     }
     
   }
