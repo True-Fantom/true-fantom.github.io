@@ -120,6 +120,7 @@
               }
             }
           },
+          
         ],
         
         menus: {
@@ -128,6 +129,7 @@
             items: ['true', 'false'],
             acceptReporters: true
           }
+          
         }
       }
     } 
