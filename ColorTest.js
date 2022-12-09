@@ -199,6 +199,6 @@
     
   }
 
-  Scratch.extensions.register(new Color Test());
+  Scratch.extensions.register(new ColorTest());
   
 })(Scratch);
