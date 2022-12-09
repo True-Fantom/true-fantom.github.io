@@ -14,7 +14,9 @@
         name: 'Fantøm',
         
         color1: '#404040',
-        
+        color2: '#3a3a3a',
+        color3: '#333333',
+
         menuIconURI: icon,
 
         blocks: [
