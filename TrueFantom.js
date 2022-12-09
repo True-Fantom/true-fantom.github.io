@@ -539,7 +539,7 @@
             arguments: {
               UNICODE: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '\u2601'
+                defaultValue: '2601'
               }
             }
           }
