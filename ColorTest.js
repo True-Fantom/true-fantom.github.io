@@ -13,7 +13,9 @@
         id: 'Fantom',
         name: 'Fantøm',
         
-        color1: '#404040',
+        color1: '#ff0000',
+        color2: '#00ff00',
+        color3: '#0000ff',
         
         menuIconURI: icon,
 
