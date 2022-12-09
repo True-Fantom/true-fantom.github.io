@@ -861,7 +861,7 @@
     
     line_block({NUM, STRING}) {
       var str = String(STRING);
-      var res = str.split("\n");
+      var res = str.split('\n');
       if (res[Number(NUM) - 1] === undefined) {
         return '';
       }
@@ -884,12 +884,12 @@
     }    
     
     replace_block({STRING, REGEX, NEWSTRING}) {
-      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       return String(STRING).replace(new RegExp(REGEX, 'gi'), String(NEWSTRING));
     }
     
     str_replace_block({STRING, REGEX, NEWSTRING}) {
-      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       return String(STRING).replace(new RegExp(REGEX, 'g'), NEWSTRING);
     }
     
@@ -903,7 +903,7 @@
         }
       }
       else {
-        return NaN;
+        return '';
       }
     }
     
