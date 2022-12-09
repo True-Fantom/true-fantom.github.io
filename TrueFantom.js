@@ -894,12 +894,17 @@
     }
     
     unicode_to_character_block({UNICODE}) {
-      if (isNaN(parseInt(String(UNICODE), 16))) {
-        return NaN;
+      if (/^[a-fA-F0-9]+$/.test(String(UNICODE))) {
+        if (isNaN(parseInt(String(UNICODE), 16))) {
+          return NaN;
+        }
+        else {
+          return String.fromCodePoint(parseInt(String(UNICODE), 16));
+        }
       }
       else {
-        return String.fromCodePoint(parseInt(String(UNICODE), 16));
-      } 
+        return NaN;
+      }
     }
     
   }
