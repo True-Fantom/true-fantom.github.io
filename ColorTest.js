@@ -22,101 +22,48 @@
         blocks: [
           
           {
-            opcode: 'xor_block',
+            opcode: 'bool_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] xor [B]',
+            text: '[bool]',
             arguments: {
-              A: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              },
-              B: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              }
-            }
-          },    
-          
-          {
-            opcode: 'equ_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] equ [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              },
-              B: {
-                type: Scratch.ArgumentType.BOOLEAN,
+              bool: {
+                type: Scratch.ArgumentType.STRING,
               }
             }
           },
-          
-          '---',
-          
-          {
-            opcode: 'less_or_equal_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] ≤ [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
-              },
-              B: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 50
-              }
-            }
-          },
-          
-          {
-            opcode: 'more_or_equal_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] ≥ [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
-              },
-              B: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 50
-              }
-            }
-          },                
-          
-          '---',
           
           {
             opcode: 'string_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A]',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[string]',
             arguments: {
-              A: {
+              string: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
+                defaultValue: ''
               }
             }
           },
           
           {
-            opcode: 'string_in_boolean_block',
+            opcode: 'accept_reporters_true_menu_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[STRING]',
+            text: '[accept_reporters_true_menu]',
             arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              }
-            }
-          },
-          
-          {
-            opcode: 'bool_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[BOOL]',
-            arguments: {
-              BOOL: {
+              accept_reporters_true_menu: {
                 type: Scratch.ArgumentType.STRING,  
-                menu: 'bool_menu'
+                menu: 'accept_reporters_true_menu'
+              }
+            }
+          },
+          
+          {
+            opcode: 'accept_reporters_false_menu_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[accept_reporters_false_menu]',
+            arguments: {
+              accept_reporters_false_menu: {
+                type: Scratch.ArgumentType.STRING,  
+                menu: 'accept_reporters_false_menu'
               }
             }
           }
@@ -125,76 +72,34 @@
         
         menus: {
            
-          bool_menu: {
-            items: ['true', 'false'],
+          accept_reporters_true_menu: {
+            items: [''],
             acceptReporters: true
+          },
+          
+          accept_reporters_false_menu: {
+            items: [''],
+            acceptReporters: false
           }
           
         }
       }
     } 
     
-    less_or_equal_block({A, B}) {
-      return A <= B;
-    }
-
-    more_or_equal_block({A, B}) {
-      return A >= B;
+    bool_block({bool}) {
+      return '';
     }
     
-    string_in_boolean_block({STRING}) {
-      return String(STRING);
-    }    
-    
-    bool_block({BOOL}) {
-      if (typeof BOOL === 'string') {
-        if (BOOL.toLowerCase() === 'false') {
-          BOOL = false;
-        }
-      }
-      if (Boolean(BOOL)) {
-        return true;
-      }
-      else {
-        return false;
-      }
+    string_block({string}) {
+      return '';
     }
-
-    xor_block({A, B}) {
-      if (typeof A === 'string') {
-        if (A.toLowerCase() === 'false') {
-          A = false;
-        }
-      }
-      if (typeof B === 'string') {
-        if (B.toLowerCase() === 'false') {
-          B = false;
-        }
-      }
-      if (Boolean(A) ^ Boolean(B) > 0) {
-        return true;
-      }
-      else {
-        return false;
-      }
-    }    
     
-    equ_block({A, B}) {
-      if (typeof A === 'string') {
-        if (A.toLowerCase() === 'false') {
-          A = false;
-        }
-      }
-      if (typeof B === 'string') {
-        if (B.toLowerCase() === 'false') {
-          B = false;
-        }
-      }
-      return (Boolean(A) == Boolean(B));
-    }   
+    accept_reporters_true_menu_block({accept_reporters_true_menu}) {
+      return '';
+    }
     
-    string_block({A}) {
-      return String(A);
+    accept_reporters_false_menu_block({accept_reporters_false_menu}) {
+      return '';
     }
     
   }
