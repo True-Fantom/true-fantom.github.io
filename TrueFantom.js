@@ -773,7 +773,7 @@
     }
     
     letter_replace_block({NUM, NEWSTRING, STRING}) {
-      if (isNaN(NUM) || Number(NUM) <= 0 || Number(NUM) > String(NEWSTRING).length) {
+      if (isNaN(NUM) || Number(NUM) <= 0 || Number(NUM) > String(STRING).length) {
         return String(STRING);
       }
       else {
