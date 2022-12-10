@@ -777,7 +777,7 @@
         return '';
       }
       else {
-        return String(STRING).substr(0, Number(NUM)) + String(NEWSTRING) + String(STRING).substr(Number(NUM) + String(NEWSTRING).length);
+        return String(STRING).substr(0, Number(NUM)-1) + String(NEWSTRING) + String(STRING).substr(Number(NUM)-1 + String(NEWSTRING).length);
       }
     }
 
