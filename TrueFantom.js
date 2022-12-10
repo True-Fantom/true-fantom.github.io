@@ -407,6 +407,26 @@
           },
           
           {
+            opcode: 'start_end_lines_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'lines [START] to [END] of [STRING]',
+            arguments: {
+              START: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              END: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'delicious red apple'
+              }
+            }
+          },
+          
+          {
             opcode: 'line_count_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'line count of [STRING]',
@@ -902,6 +922,33 @@
             }
             else {
               var words = words + String(SEPER) + res[i-1];
+            }
+          }
+        }
+        return words;
+      }
+      else {
+        return '';
+      }
+    }
+    
+    start_end_lines_block({START, END, STRING}) {
+      if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END)) {
+        var str = String(STRING);
+        var res = str.split('\n');
+        if (res[Number(START)-1] === undefined) {
+          var words = '';
+        }
+        else {
+          var words = res[Number(START)-1];
+        }
+        for (var i = Number(START)+1; i <= Number(END); i++) {
+          if (res[i-1] !== undefined) {
+            if (words === '') {
+              var words = res[i-1];
+            }
+            else {
+              var words = words + '\n' + res[i-1];
             }
           }
         }
