@@ -878,8 +878,8 @@
     start_end_words_block({START, END, STRING, SEPER}) {
       var str = String(STRING);
       var res = str.split(String(SEPER));
-      var words = "";
-      for (let i = Number(START); i <= Number(END); i++) {
+      var words = res[Number(START)-1];
+      for (let i = Number(START)+1; i <= Number(END); i++) {
         words = words + String(SEPER) + res[i-1];
       }
       return words;
