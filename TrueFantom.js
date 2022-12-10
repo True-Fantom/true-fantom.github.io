@@ -876,7 +876,7 @@
     }
     
     start_end_words_block({START, END, STRING, SEPER}) {
-      if (START <= END) {
+      if (Number(START) <= Number(END)) {
         var str = String(STRING);
         var res = str.split(String(SEPER));
         if (res[Number(START)-1] === undefined) {
