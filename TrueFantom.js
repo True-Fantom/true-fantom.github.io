@@ -724,7 +724,12 @@
     }
 
     start_end_letters_block({STRING, START, END}) {
-      return STRING.slice(Math.max(1, Number(START)) - 1, Math.min(String(STRING).length, Number(END)));
+      if (isNaN(START) || isNaN(END)) {
+        return '';
+      }
+      else {
+        return STRING.slice(Math.max(1, Number(START)) - 1, Math.min(String(STRING).length, Number(END)));
+      }
     }
 
     is_nan_block({TEXT}) {
@@ -872,7 +877,7 @@
     word_block({NUM, STRING, SEPER}) {
       var str = String(STRING);
       var res = str.split(String(SEPER));
-      if (res[Number(NUM) - 1] === undefined) {
+      if (res[Number(NUM) - 1] === undefined || isNaN(NUM)) {
         return '';
       }
       else {
@@ -881,7 +886,7 @@
     }
     
     start_end_words_block({START, END, STRING, SEPER}) {
-      if (Number(START) <= Number(END)) {
+      if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END)) {
         var str = String(STRING);
         var res = str.split(String(SEPER));
         if (res[Number(START)-1] === undefined) {
