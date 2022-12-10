@@ -806,7 +806,7 @@
     }
     
     start_end_letters_replace_block({START, END, NEWSTRING, STRING}) {
-      if (isNaN(START) || isNaN(END)) {
+      if (isNaN(START) || isNaN(END) || Number(START) > Number(END)) {
         return String(STRING);
       }
       else {
