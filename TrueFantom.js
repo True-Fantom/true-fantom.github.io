@@ -793,7 +793,7 @@
       else if (String(OPER).toLowerCase() === 'swap') {
         let str = String(TEXT);
         let str2 = '';  
-        for (let i = 0; i < str.length; i++) {
+        for (var i = 0; i < str.length; i++) {
           if (str[i].toUpperCase()!=str[i].toLowerCase()) {
             if (str[i].toUpperCase()==str[i]) {
               str2 += str[i].toLowerCase();
@@ -809,7 +809,7 @@
       else if (String(OPER).toLowerCase() === 'wave one') {
         let str = String(TEXT);
         let str2 = '';
-        for (let i = 0; i < str.length; i++) {
+        for (var i = 0; i < str.length; i++) {
           if (i%2 == 0) {
             str2 += str[i].toUpperCase();  
           }
@@ -820,7 +820,7 @@
       else if (String(OPER).toLowerCase() === 'wave two') {
         let str = String(TEXT);
         let str2 = '';
-        for (let i = 0; i < str.length; i++) {
+        for (var i = 0; i < str.length; i++) {
           if (i%2 == 0) {
             str2 += str[i].toLowerCase();  
           }
@@ -895,7 +895,7 @@
         else {
           var words = res[Number(START)-1];
         }
-        for (let i = Number(START)+1; i <= Number(END); i++) {
+        for (var i = Number(START)+1; i <= Number(END); i++) {
           if (res[i-1] !== undefined) {
             if (words === '') {
               var words = res[i-1];
