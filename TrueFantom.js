@@ -343,7 +343,7 @@
           {
             opcode: 'start_end_words_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word [START] [END] separated by [SEPER] of [STRING]',
+            text: 'words [START] to [END] separated by [SEPER] of [STRING]',
             arguments: {
               START: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -880,7 +880,7 @@
       var res = str.split(String(SEPER));
       var words = "";
       for (let i = Number(START); i <= Number(END); i++) {
-        words = words + " " + res[i-1];
+        words = words + String(SEPER) + res[i-1];
       }
       return words;
     }
