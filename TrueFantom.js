@@ -706,7 +706,7 @@
         return Date.now() % 1000;
       }
       else if (String(A).toLowerCase() === 'week number') {
-        let date = new Date(Date.now());
+        var date = new Date(Date.now());
         return Math.ceil(date.getDate() / 7);
       }
       else {
@@ -743,10 +743,10 @@
 
     parse_json_block({PATH, JSON_STRING}) {
       try {
-        const path = String(PATH).split('/').map(prop => decodeURIComponent(prop));
+        var path = String(PATH).split('/').map(prop => decodeURIComponent(prop));
         if (path[0] === '') path.splice(0, 1);
         if (path[path.length - 1] === '') path.splice(-1, 1);
-        let json;
+        var json;
         try {
           json = JSON.parse(' ' + String(JSON_STRING));
         } catch (e) {
@@ -791,8 +791,8 @@
         return splitStr.join(' ');
       }
       else if (String(OPER).toLowerCase() === 'swap') {
-        let str = String(TEXT);
-        let str2 = '';  
+        var str = String(TEXT);
+        var str2 = '';  
         for (var i = 0; i < str.length; i++) {
           if (str[i].toUpperCase()!=str[i].toLowerCase()) {
             if (str[i].toUpperCase()==str[i]) {
@@ -807,8 +807,8 @@
         return str2;
       }
       else if (String(OPER).toLowerCase() === 'wave one') {
-        let str = String(TEXT);
-        let str2 = '';
+        var str = String(TEXT);
+        var str2 = '';
         for (var i = 0; i < str.length; i++) {
           if (i%2 == 0) {
             str2 += str[i].toUpperCase();  
@@ -818,8 +818,8 @@
         return str2;
       }      
       else if (String(OPER).toLowerCase() === 'wave two') {
-        let str = String(TEXT);
-        let str2 = '';
+        var str = String(TEXT);
+        var str2 = '';
         for (var i = 0; i < str.length; i++) {
           if (i%2 == 0) {
             str2 += str[i].toLowerCase();  
