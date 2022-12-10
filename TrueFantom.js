@@ -347,7 +347,7 @@
             arguments: {
               START: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '2'
               },
               END: {
                 type: Scratch.ArgumentType.NUMBER,
