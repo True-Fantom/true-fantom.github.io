@@ -96,7 +96,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 50
+                defaultValue: '50'
               }
             }
           },
@@ -112,7 +112,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 50
+                defaultValue: '50'
               }
             }
           },                
@@ -259,15 +259,35 @@
             arguments: {
               START: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 1
+                defaultValue: '1'
               },
               END: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 3
+                defaultValue: '3'
               },
               STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
+              }
+            }
+          },
+          
+          {
+            opcode: 'letter_replace_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'replace letter [NUM] with [NEWSTRING] of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              NUM: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '3'
+              },
+              NEWSTRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'l'
               }
             }
           },
@@ -483,7 +503,7 @@
               },
               NUM: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 2
+                defaultValue: '2'
               }
             }
           },          
@@ -749,6 +769,15 @@
       }
       else {
         return STRING.slice(Math.max(1, Number(START)) - 1, Math.min(String(STRING).length, Number(END)));
+      }
+    }
+    
+    letter_replace_block({NUM, NEWSTRING, STRING}) {
+      if (isNaN(NUM)) {
+        return '';
+      }
+      else {
+        return String(STRING).substr(0, Number(NUM)) + String(NEWSTRING) + String(STRING).substr(Number(NUM) + String(NEWSTRING).length);
       }
     }
 
