@@ -339,6 +339,30 @@
               } 
             }
           },
+          
+          {
+            opcode: 'start_end_words_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'word [START] [END] separated by [SEPER] of [STRING]',
+            arguments: {
+              START: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              END: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '3'
+              },
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'delicious red apple'
+              },
+              SEPER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              } 
+            }
+          },
             
           {
             opcode: 'word_count_block',
@@ -643,7 +667,7 @@
           B = false;
         }
       }
-      return (Boolean(A) == Boolean(B));
+      return Boolean(A) == Boolean(B);
     }   
     
     exponent_block({A, B}) {
@@ -848,8 +872,18 @@
     word_block({NUM, STRING, SEPER}) {
       var str = String(STRING);
       var res = str.split(String(SEPER));
-      return (res[Number(NUM) - 1]);
-    }  
+      return res[Number(NUM) - 1];
+    }
+    
+    start_end_words_block({START, END, STRING, SEPER}) {
+      var str = String(STRING);
+      var res = str.split(String(SEPER));
+      var words = "";
+      for (let i = Number(START); i <= Number(END); i++) {
+        words = words + " " + res[i-1];
+      }
+      return words;
+    }
     
     word_count_block({STRING, SEPER}) {
       var str = String(STRING);
