@@ -292,6 +292,30 @@
             }
           },
           
+          {
+            opcode: 'start_end_letters_replace_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'replace letters [START] to [END] with [NEWSTRING] of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              START: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              END: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '3'
+              },
+              NEWSTRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'ggg'
+              }
+            }
+          },
+          
           '---',
           
           {
@@ -778,6 +802,15 @@
       }
       else {
         return String(STRING).substr(0, Number(NUM)-1) + String(NEWSTRING) + String(STRING).substr(Number(NUM)-1 + String(NEWSTRING).length);
+      }
+    }
+    
+    start_end_letters_replace_block({START, END, NEWSTRING, STRING}) {
+      if (isNaN(START) || isNaN(END)) {
+        return String(STRING);
+      }
+      else {
+        return String(STRING).substr(0, Number(START)-1) + String(NEWSTRING) + String(STRING).substr(Number(END)-1 + String(NEWSTRING).length);
       }
     }
 
