@@ -876,13 +876,30 @@
     }
     
     start_end_words_block({START, END, STRING, SEPER}) {
-      var str = String(STRING);
-      var res = str.split(String(SEPER));
-      var words = res[Number(START)-1];
-      for (let i = Number(START)+1; i <= Number(END); i++) {
-        words = words + String(SEPER) + res[i-1];
+      if (START <= END) {
+        var str = String(STRING);
+        var res = str.split(String(SEPER));
+        if (res[Number(START)-1] === undefined) {
+          var words = '';
+        }
+        else {
+          var words = res[Number(START)-1];
+        }
+        for (let i = Number(START)+1; i <= Number(END); i++) {
+          if (res[i-1] !== undefined) {
+            if (words === '') {
+              var words = res[i-1];
+            }
+            else {
+              var words = words + String(SEPER) + res[i-1];
+            }
+          }
+        }
+        return words;
       }
-      return words;
+      else {
+        return '';
+      }
     }
     
     word_count_block({STRING, SEPER}) {
