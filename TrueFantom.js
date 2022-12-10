@@ -872,7 +872,12 @@
     word_block({NUM, STRING, SEPER}) {
       var str = String(STRING);
       var res = str.split(String(SEPER));
-      return res[Number(NUM) - 1];
+      if (res[Number(NUM) - 1] === undefined) {
+        return '';
+      }
+      else {
+        return res[Number(NUM) - 1];
+      }
     }
     
     start_end_words_block({START, END, STRING, SEPER}) {
