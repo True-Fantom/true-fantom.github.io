@@ -810,7 +810,21 @@
         return String(STRING);
       }
       else {
-        return String(STRING).substr(0, Number(START)-1) + String(NEWSTRING) + String(STRING).substr(Number(END)-1 + String(NEWSTRING).length);
+        var letters1 = '';
+        var letters2 = '';
+        var str = String(STRING);
+        var res = str.split('');
+        for (var i = 0; i < Number(START)-1; i++) {
+          if (res[i] !== undefined) {
+            letters1 = letters1 + res[i];
+          }
+        }
+        for (var i = Number(START); i <= String(STRING).length; i++) {
+          if (res[i] !== undefined) {
+            var letters2 = letters2 + res[i];
+          }
+        }
+        return letters1 + String(NEWSTRING) + letters2;
       }
     }
 
