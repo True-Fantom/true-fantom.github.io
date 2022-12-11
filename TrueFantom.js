@@ -806,25 +806,34 @@
     }
     
     start_end_letters_replace_block({START, END, NEWSTRING, STRING}) {
-      if (isNaN(START) || isNaN(END) || Number(START) > Number(END) || START === null || START === '' || START === ' ') {
+      if (isNaN(START) || isNaN(END) || START === null || START === '' || START === ' ') {
         return String(STRING);
       }
       else {
-        var letters1 = '';
-        var letters2 = '';
-        var str = String(STRING);
-        var res = str.split('');
-        for (var i = 0; i < Number(START)-1; i++) {
-          if (res[i] !== undefined) {
-            letters1 = letters1 + res[i];
+        if (Number(START) <= 0){
+          START = 1;
+          if (Number(START) > Number(END)){
+            return String(STRING);
+          }
+          else {
+            var letters1 = '';
+            var letters2 = '';
+            var str = String(STRING);
+            var res = str.split('');
+
+            for (var a = 0; a < Number(START) - 1; a++) {
+              if (res[a] !== undefined) {
+                letters1 = letters1 + res[a];
+              }
+            }
+            for (var b = Number(END); b <= String(STRING).length; b++) {
+              if (res[b] !== undefined) {
+                letters2 = letters2 + res[b];
+              }
+            }
+            return letters1 + String(NEWSTRING) + letters2;
           }
         }
-        for (var i = Number(START); i <= String(STRING).length; i++) {
-          if (res[i] !== undefined) {
-            var letters2 = letters2 + res[i];
-          }
-        }
-        return letters1 + String(NEWSTRING) + letters2;
       }
     }
 
