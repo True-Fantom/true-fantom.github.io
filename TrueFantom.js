@@ -995,44 +995,52 @@
     word_replace_block({NUM, SEPER, NEWSTRING, STRING}) {
       var str = String(STRING);
       var res = str.split(String(SEPER));
-      
-      if (res[0] === undefined) {
-        var words1 = '';
+      if (res[Number(NUM)-1] === undefined) {
+        return String(STRING);
       }
       else {
-        var words1 = res[0];
-      }
-      
-      for (var a = 1; a < Number(NUM) - 1; a++) {
-        if (res[a] !== undefined) {
-          if (words1 === '') {
-            words1 = res[a];
-          }
-          else {
-            words1 = words1 + String(SEPER) + res[a];
+        if (res[0] === undefined || Number(NUM) <= 1) {
+          var words1 = '';
+        }
+        else {
+          var words1 = res[0];
+        }
+        for (var a = 1; a < Number(NUM) - 1; a++) {
+          if (res[a] !== undefined) {
+            if (words1 === '') {
+              words1 = res[a];
+            }
+            else {
+              words1 = words1 + String(SEPER) + res[a];
+            }
           }
         }
-      }
-      
-      if (res[Number(NUM)] === undefined) {
-        var words2 = '';
-      }
-      else {
-        var words2 = res[Number(NUM)];
-      }
-      
-      for (var b = Number(NUM)+1; b <= res.length; b++) {
-        if (res[b] !== undefined) {
-          if (words2 === '') {
-            words2 = res[b];
-          }
-          else {
-            words2 = words2 + String(SEPER) + res[b];
+        if (res[Number(NUM)] === undefined) {
+          var words2 = '';
+        }
+        else {
+          var words2 = res[Number(NUM)];
+        }
+        for (var b = Number(NUM) + 1; b <= res.length; b++) {
+          if (res[b] !== undefined) {
+            if (words2 === '') {
+              words2 = res[b];
+            }
+            else {
+              words2 = words2 + String(SEPER) + res[b];
+            }
           }
         }
+        var words = '';  
+        if (words1 !== '') {
+          words = words + words1 + String(SEPER);
+        }
+        words = words + String(NEWSTRING);
+        if (words2 !== '') {
+          words = words + String(SEPER) + words2;
+        }
+        return words;
       }
-      
-      return words1 + String(SEPER) + String(NEWSTRING) + String(SEPER) + words2;
     }
     
     word_count_block({STRING, SEPER}) {
