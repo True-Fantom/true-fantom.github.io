@@ -999,15 +999,15 @@
       var res = str.split(String(SEPER));
       for (var a = 0; a < Number(NUM) - 1; a++) {
         if (res[a] !== undefined) {
-          letters1 = letters1 + res[a];
+          words1 = words1 + String(SEPER) + res[a];
         }
       }
       for (var b = Number(NUM); b <= res.length; b++) {
         if (res[b] !== undefined) {
-          letters2 = letters2 + res[b];
+          words2 = words2 + String(SEPER) + res[b];
         }
       }
-      return letters1 + String(NEWSTRING) + letters2;
+      return words1 + String(SEPER) + String(NEWSTRING) + String(SEPER) + words2;
     }
     
     word_count_block({STRING, SEPER}) {
