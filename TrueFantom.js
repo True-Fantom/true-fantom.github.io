@@ -409,6 +409,30 @@
           },
             
           {
+            opcode: 'word_replace_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'replace word [NUM] with [NEWSTRING] separated by [SEPER] of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'delicious red apple'
+              },
+              NUM: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
+              },
+              NEWSTRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'green'
+              },
+              SEPER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              }
+            }
+          },
+          
+          {
             opcode: 'word_count_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'word count separated by [SEPER] of [STRING]',
@@ -773,7 +797,6 @@
           var letters2 = '';
           var str = String(STRING);
           var res = str.split('');
-
           for (var a = 0; a < Number(START) - 1; a++) {
             if (res[a] !== undefined) {
               letters1 = letters1 + res[a];
@@ -967,6 +990,24 @@
       else {
         return '';
       }
+    }
+    
+    word_replace_block({NUM, SEPER, NEWSTRING, STRING}) {
+      var words1 = '';
+      var words2 = '';
+      var str = String(STRING);
+      var res = str.split(String(SEPER));
+      for (var a = 0; a < Number(NUM) - 1; a++) {
+        if (res[a] !== undefined) {
+          letters1 = letters1 + res[a];
+        }
+      }
+      for (var b = Number(NUM); b <= res.length; b++) {
+        if (res[b] !== undefined) {
+          letters2 = letters2 + res[b];
+        }
+      }
+      return letters1 + String(NEWSTRING) + letters2;
     }
     
     word_count_block({STRING, SEPER}) {
