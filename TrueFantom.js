@@ -978,10 +978,10 @@
         for (var i = Number(START)+1; i <= Number(END); i++) {
           if (res[i-1] !== undefined) {
             if (words === '') {
-              var words = res[i-1];
+              words = res[i-1];
             }
             else {
-              var words = words + String(SEPER) + res[i-1];
+              words = words + String(SEPER) + res[i-1];
             }
           }
         }
@@ -993,20 +993,46 @@
     }
     
     word_replace_block({NUM, SEPER, NEWSTRING, STRING}) {
-      var words1 = '';
       var words2 = '';
       var str = String(STRING);
       var res = str.split(String(SEPER));
+      
+      if (res[Number(NUM)-1] === undefined) {
+        var words1 = '';
+      }
+      else {
+        var words1 = res[Number(NUM)-1];
+      }
+      
       for (var a = 0; a < Number(NUM) - 1; a++) {
         if (res[a] !== undefined) {
-          words1 = words1 + String(SEPER) + res[a];
+          if (words1 === '') {
+            words1 = res[a-1];
+          }
+          else {
+            words1 = words1 + String(SEPER) + res[a-1];
+          }
         }
       }
+      
+      if (res[Number(NUM)-1] === undefined) {
+        var words2 = '';
+      }
+      else {
+        var words2 = res[Number(NUM)-1];
+      }
+      
       for (var b = Number(NUM); b <= res.length; b++) {
         if (res[b] !== undefined) {
-          words2 = words2 + String(SEPER) + res[b];
+          if (words2 === '') {
+            words2 = res[b-1];
+          }
+          else {
+            words2 = words2 + String(SEPER) + res[b-1];
+          }
         }
       }
+      
       return words1 + String(SEPER) + String(NEWSTRING) + String(SEPER) + words2;
     }
     
