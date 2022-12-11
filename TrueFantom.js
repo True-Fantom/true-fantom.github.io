@@ -303,15 +303,15 @@
               },
               START: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '2'
               },
               END: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '3'
+                defaultValue: '5'
               },
               NEWSTRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'ggg'
+                defaultValue: 'pricot'
               }
             }
           },
