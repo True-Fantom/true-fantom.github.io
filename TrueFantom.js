@@ -1071,7 +1071,7 @@
       }
     }
     
-    start_end_words_replace_block(START, END, SEPER, NEWSTRING, STRING}) {
+    start_end_words_replace_block({START, END, SEPER, NEWSTRING, STRING}) {
       if (isNaN(START) || isNaN(END) || START === null || START === '' || START === ' ') {
         return String(STRING);
       }
