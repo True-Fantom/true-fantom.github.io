@@ -411,7 +411,7 @@
           {
             opcode: 'word_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace word [NUM] with [NEWSTRING] separated by [SEPER] of [STRING]',
+            text: 'replace word [NUM] separated by [SEPER] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -424,6 +424,34 @@
               NEWSTRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'green'
+              },
+              SEPER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              }
+            }
+          },
+          
+          {
+            opcode: 'start_end_words_replace_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'replace words [START] to [END] separated by [SEPER] with [NEWSTRING] of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'delicious red apple'
+              },
+              START: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
+              },
+              END: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '3'
+              },
+              NEWSTRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'yellow banana'
               },
               SEPER: {
                 type: Scratch.ArgumentType.STRING,
@@ -1040,6 +1068,70 @@
           words = words + String(SEPER) + words2;
         }
         return words;
+      }
+    }
+    
+    start_end_words_replace_block(START, END, SEPER, NEWSTRING, STRING}) {
+      if (isNaN(START) || isNaN(END) || START === null || START === '' || START === ' ') {
+        return String(STRING);
+      }
+      else {
+        var str = String(STRING);
+        var res = str.split(String(SEPER));
+        if (res[Number(NUM)-1] === undefined) {
+          return String(STRING);
+        }
+        else {
+          if (Number(START) <= 0){
+            START = 1;
+          }
+          if (Number(START) > Number(END)){
+            return String(STRING);
+          }
+          else {
+            if (res[0] === undefined || Number(NUM) <= 1) {
+              var words1 = '';
+            }
+            else {
+              var words1 = res[0];
+            }
+            for (var a = 1; a < Number(START) - 1; a++) {
+              if (res[a] !== undefined) {
+                if (words1 === '') {
+                  words1 = res[a];
+                }
+                else {
+                  words1 = words1 + String(SEPER) + res[a];
+                }
+              }
+            }
+            if (res[Number(END)] === undefined) {
+              var words2 = '';
+            }
+            else {
+              var words2 = res[Number(END)];
+            }
+            for (var b = Number(END) + 1; b <= res.length; b++) {
+              if (res[b] !== undefined) {
+                if (words2 === '') {
+                  words2 = res[b];
+                }
+                else {
+                  words2 = words2 + String(SEPER) + res[b];
+                }
+              }
+            }
+            var words = '';  
+            if (words1 !== '') {
+              words = words + words1 + String(SEPER);
+            }
+            words = words + String(NEWSTRING);
+            if (words2 !== '') {
+              words = words + String(SEPER) + words2;
+            }
+            return words;
+          }
+        }
       }
     }
     
