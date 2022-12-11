@@ -434,54 +434,6 @@
             arguments: {}
           },
           
-          {
-            opcode: 'line_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'line [NUM] of [STRING]',
-            arguments: {
-              NUM: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
-              },
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'red apple'
-              }
-            }
-          },
-          
-          {
-            opcode: 'start_end_lines_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'lines [START] to [END] of [STRING]',
-            arguments: {
-              START: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
-              },
-              END: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
-              },
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'delicious red apple'
-              }
-            }
-          },
-          
-          {
-            opcode: 'line_count_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'line count of [STRING]',
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'red apple'
-              }
-            }
-          }, 
-          
           '---',
           
           {
@@ -1017,33 +969,6 @@
       }
     }
     
-    start_end_lines_block({START, END, STRING}) {
-      if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END) && START !== null && START !== '' && START !== ' ') {
-        var str = String(STRING);
-        var res = str.split('\n');
-        if (res[Number(START)-1] === undefined) {
-          var words = '';
-        }
-        else {
-          var words = res[Number(START)-1];
-        }
-        for (var i = Number(START)+1; i <= Number(END); i++) {
-          if (res[i-1] !== undefined) {
-            if (words === '') {
-              var words = res[i-1];
-            }
-            else {
-              var words = words + '\n' + res[i-1];
-            }
-          }
-        }
-        return words;
-      }
-      else {
-        return '';
-      }
-    }
-    
     word_count_block({STRING, SEPER}) {
       var str = String(STRING);
       var res = str.split(String(SEPER));
@@ -1052,22 +977,6 @@
     
     new_line_block(){
       return '\n';
-    }
-    
-    line_block({NUM, STRING}) {
-      var str = String(STRING);
-      var res = str.split('\n');
-      if (res[Number(NUM) - 1] === undefined) {
-        return '';
-      }
-      else {
-        return res[Number(NUM) - 1];
-      }
-    }
-    
-    line_count_block({STRING}) {
-      var lines = String(STRING).split(/\r\n|\r|\n/);
-      return lines.length;
     }
     
     triple_join_block({A, B, C}){
