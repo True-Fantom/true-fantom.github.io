@@ -788,7 +788,7 @@
     }
 
     start_end_letters_block({STRING, START, END}) {
-      if (isNaN(START) || isNaN(END)) {
+      if (isNaN(START) || isNaN(END) || START === null || START === '' || START === ' ') {
         return '';
       }
       else {
@@ -806,7 +806,7 @@
     }
     
     start_end_letters_replace_block({START, END, NEWSTRING, STRING}) {
-      if (isNaN(START) || isNaN(END) || Number(START) > Number(END)) {
+      if (isNaN(START) || isNaN(END) || Number(START) > Number(END) || START === null || START === '' || START === ' ') {
         return String(STRING);
       }
       else {
@@ -982,7 +982,7 @@
     }
     
     start_end_words_block({START, END, STRING, SEPER}) {
-      if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END)) {
+      if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END) && START === null && START === '' && START === ' ') {
         var str = String(STRING);
         var res = str.split(String(SEPER));
         if (res[Number(START)-1] === undefined) {
@@ -1009,7 +1009,7 @@
     }
     
     start_end_lines_block({START, END, STRING}) {
-      if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END)) {
+      if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END) && START === null && START === '' && START === ' ') {
         var str = String(STRING);
         var res = str.split('\n');
         if (res[Number(START)-1] === undefined) {
