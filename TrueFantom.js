@@ -411,7 +411,7 @@
           {
             opcode: 'word_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace word [NUM] separated by [SEPER] with [NEWSTRING] of [STRING]',
+            text: 'replace word [NUM] separated by [SEPER] considering seper [SEPER_TYPE] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -439,7 +439,7 @@
           {
             opcode: 'start_end_words_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace words [START] to [END] separated by [SEPER] with [NEWSTRING] of [STRING]',
+            text: 'replace words [START] to [END] separated by [SEPER] considering seper [SEPER_TYPE] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
