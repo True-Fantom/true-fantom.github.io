@@ -1201,7 +1201,7 @@
     
     to_unicode_block({STRING}) {
       if (String(STRING).length === 1) {
-        return String(STRING).charCodeAt(0); 
+        return String(STRING).charCodeAt(0).toString(16); 
       }
       else {
         return '';
