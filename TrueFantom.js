@@ -283,11 +283,11 @@
               },
               NUM: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '3'
+                defaultValue: '5'
               },
               NEWSTRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'l'
+                defaultValue: 'es'
               }
             }
           },
