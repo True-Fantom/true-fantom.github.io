@@ -120,14 +120,6 @@
           '---',
           
           {
-            opcode: 'empty_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '',
-            disableMonitor: true,
-            arguments: {}
-          },
-          
-          {
             opcode: 'string_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A]',
@@ -684,7 +676,7 @@
           },
         
           value_menu: {  
-            items: ['pi', 'e', 'infinity'],
+            items: ['pi', 'e', 'infinity', 'empty'],
             acceptReporters: true
           }
           
@@ -780,6 +772,9 @@
       }
       else if (String(A).toLowerCase() === 'infinity') {
         return Infinity;
+      }
+      else if (String(A).toLowerCase() === 'empty') {
+        return '';
       }
       else {
         return '';
