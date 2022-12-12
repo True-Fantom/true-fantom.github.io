@@ -600,6 +600,18 @@
             }
           },
           
+          {
+            opcode: 'to_unicode_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'first character to unicode of [STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '☁'
+              }
+            }
+          },
+          
           '---',
           
           {
@@ -1181,6 +1193,15 @@
     unicode_character_block({UNICODE}) {
       if (/^[a-fA-F0-9]+$/.test(String(UNICODE)) && String(UNICODE).length <= 4) {
         return String.fromCodePoint(parseInt(String(UNICODE), 16));
+      }
+      else {
+        return '';
+      }
+    }
+    
+    to_unicode_block({STRING}) {
+      if (String(STRING).length === 1) {
+        return String.charCodeAt(0);
       }
       else {
         return '';
