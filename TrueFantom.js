@@ -428,6 +428,10 @@
               SEPER: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
+              },
+              SEPER_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'seper_replace_menu'
               }
             }
           },
@@ -456,6 +460,10 @@
               SEPER: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
+              },
+              SEPER_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'seper_replace_menu'
               }
             }
           },
@@ -649,6 +657,11 @@
           
           defining_case_menu: {
             items: ['uppercase', 'lowercase'],
+            acceptReporters: true
+          },
+          
+          seper_replace_menu: {
+            items: ['none', 'start', 'end', 'all'],
             acceptReporters: true
           },
 
@@ -1020,7 +1033,7 @@
       }
     }
     
-    word_replace_block({NUM, SEPER, NEWSTRING, STRING}) {
+    word_replace_block({NUM, SEPER, NEWSTRING, STRING, SEPER_TYPE}) {
       var str = String(STRING);
       var res = str.split(String(SEPER));
       if (res[Number(NUM)-1] === undefined) {
@@ -1071,7 +1084,7 @@
       }
     }
     
-    start_end_words_replace_block({START, END, SEPER, NEWSTRING, STRING}) {
+    start_end_words_replace_block({START, END, SEPER, NEWSTRING, STRING, SEPER_TYPE}) {
       if (isNaN(START) || isNaN(END) || START === null || START === '' || START === ' ') {
         return String(STRING);
       }
