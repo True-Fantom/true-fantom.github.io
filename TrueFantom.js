@@ -120,6 +120,14 @@
           '---',
           
           {
+            opcode: 'empty_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '',
+            disableMonitor: true,
+            arguments: {}
+          },
+          
+          {
             opcode: 'string_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A]',
@@ -1151,6 +1159,10 @@
     
     new_line_block(){
       return '\n';
+    }
+    
+    empty_block(){
+      return '';
     }
     
     triple_join_block({A, B, C}){
