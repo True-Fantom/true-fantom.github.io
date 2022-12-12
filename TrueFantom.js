@@ -367,7 +367,7 @@
           {
             opcode: 'word_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word [NUM] separated by [SEPER] of [STRING]',
+            text: 'word [NUM] separated by [SEPAR] of [STRING]',
             arguments: {
               NUM: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -377,7 +377,7 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'red apple'
               },
-              SEPER: {
+              SEPAR: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               } 
@@ -387,7 +387,7 @@
           {
             opcode: 'start_end_words_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'words [START] to [END] separated by [SEPER] of [STRING]',
+            text: 'words [START] to [END] separated by [SEPAR] of [STRING]',
             arguments: {
               START: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -401,7 +401,7 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'delicious red apple'
               },
-              SEPER: {
+              SEPAR: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               } 
@@ -411,7 +411,7 @@
           {
             opcode: 'word_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace word [NUM] separated by [SEPER] considering seper [SEPER_TYPE] with [NEWSTRING] of [STRING]',
+            text: 'replace word [NUM] separated by [SEPAR] considering separ [SEPAR_TYPE] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -425,13 +425,13 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'green'
               },
-              SEPER: {
+              SEPAR: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               },
-              SEPER_TYPE: {
+              SEPAR_TYPE: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'seper_replace_menu'
+                menu: 'separ_replace_menu'
               }
             }
           },
@@ -439,7 +439,7 @@
           {
             opcode: 'start_end_words_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace words [START] to [END] separated by [SEPER] considering seper [SEPER_TYPE] with [NEWSTRING] of [STRING]',
+            text: 'replace words [START] to [END] separated by [SEPAR] considering separ [SEPAR_TYPE] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -457,13 +457,13 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'yellow banana'
               },
-              SEPER: {
+              SEPAR: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               },
-              SEPER_TYPE: {
+              SEPAR_TYPE: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'seper_replace_menu'
+                menu: 'separ_replace_menu'
               }
             }
           },
@@ -471,13 +471,13 @@
           {
             opcode: 'word_count_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word count separated by [SEPER] of [STRING]',
+            text: 'word count separated by [SEPAR] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'red apple'
               },
-              SEPER: {
+              SEPAR: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               } 
@@ -660,7 +660,7 @@
             acceptReporters: true
           },
           
-          seper_replace_menu: {
+          separ_replace_menu: {
             items: ['none', 'start', 'end', 'all'],
             acceptReporters: true
           },
@@ -995,9 +995,9 @@
       }
     }
     
-    word_block({NUM, STRING, SEPER}) {
+    word_block({NUM, STRING, SEPAR}) {
       var str = String(STRING);
-      var res = str.split(String(SEPER));
+      var res = str.split(String(SEPAR));
       if (res[Number(NUM) - 1] === undefined || isNaN(NUM)) {
         return '';
       }
@@ -1006,10 +1006,10 @@
       }
     }
     
-    start_end_words_block({START, END, STRING, SEPER}) {
+    start_end_words_block({START, END, STRING, SEPAR}) {
       if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END) && START !== null && START !== '' && START !== ' ') {
         var str = String(STRING);
-        var res = str.split(String(SEPER));
+        var res = str.split(String(SEPAR));
         if (res[Number(START)-1] === undefined) {
           var words = '';
         }
@@ -1022,7 +1022,7 @@
               words = res[i-1];
             }
             else {
-              words = words + String(SEPER) + res[i-1];
+              words = words + String(SEPAR) + res[i-1];
             }
           }
         }
@@ -1033,9 +1033,9 @@
       }
     }
     
-    word_replace_block({NUM, SEPER, NEWSTRING, STRING, SEPER_TYPE}) {
+    word_replace_block({NUM, SEPAR, NEWSTRING, STRING, SEPAR_TYPE}) {
       var str = String(STRING);
-      var res = str.split(String(SEPER));
+      var res = str.split(String(SEPAR));
       if (res[Number(NUM)-1] === undefined) {
         return String(STRING);
       }
@@ -1052,7 +1052,7 @@
               words1 = res[a];
             }
             else {
-              words1 = words1 + String(SEPER) + res[a];
+              words1 = words1 + String(SEPAR) + res[a];
             }
           }
         }
@@ -1068,29 +1068,29 @@
               words2 = res[b];
             }
             else {
-              words2 = words2 + String(SEPER) + res[b];
+              words2 = words2 + String(SEPAR) + res[b];
             }
           }
         }
         var words = '';  
         if (words1 !== '') {
-          words = words + words1 + String(SEPER);
+          words = words + words1 + String(SEPAR);
         }
         words = words + String(NEWSTRING);
         if (words2 !== '') {
-          words = words + String(SEPER) + words2;
+          words = words + String(SEPAR) + words2;
         }
         return words;
       }
     }
     
-    start_end_words_replace_block({START, END, SEPER, NEWSTRING, STRING, SEPER_TYPE}) {
+    start_end_words_replace_block({START, END, SEPAR, NEWSTRING, STRING, SEPAR_TYPE}) {
       if (isNaN(START) || isNaN(END) || START === null || START === '' || START === ' ') {
         return String(STRING);
       }
       else {
       var str = String(STRING);
-      var res = str.split(String(SEPER));
+      var res = str.split(String(SEPAR));
         if (Number(START) <= 0){
           START = 1;
         }
@@ -1110,7 +1110,7 @@
                 words1 = res[a];
               }
               else {
-                words1 = words1 + String(SEPER) + res[a];
+                words1 = words1 + String(SEPAR) + res[a];
               }
             }
           }
@@ -1126,26 +1126,26 @@
                 words2 = res[b];
               }
               else {
-                words2 = words2 + String(SEPER) + res[b];
+                words2 = words2 + String(SEPAR) + res[b];
               }
             }
           }
           var words = '';  
           if (words1 !== '') {
-            words = words + words1 + String(SEPER);
+            words = words + words1 + String(SEPAR);
           }
           words = words + String(NEWSTRING);
           if (words2 !== '') {
-            words = words + String(SEPER) + words2;
+            words = words + String(SEPAR) + words2;
           }
           return words;
         }
       }
     }
     
-    word_count_block({STRING, SEPER}) {
+    word_count_block({STRING, SEPAR}) {
       var str = String(STRING);
-      var res = str.split(String(SEPER));
+      var res = str.split(String(SEPAR));
       return res.length;
     }
     
