@@ -92,7 +92,7 @@
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://extensions.turbowarp.org/hello.txt'
+                defaultValue: 'https://httpbin.org/get'
               }
             }
           },
@@ -100,11 +100,11 @@
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'POST [BODY] to [URL]',
+            text: 'post [BODY] to [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'wss://clouddata.turbowarp.org'
+                defaultValue: 'https://httpbin.org/post'
               },
               BODY: {
                 type: Scratch.ArgumentType.STRING,
