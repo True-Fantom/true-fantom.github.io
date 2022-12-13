@@ -431,7 +431,7 @@
               },
               SPLIT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'separ_replace_menu'
+                menu: 'split_replace_menu'
               }
             }
           },
@@ -463,7 +463,7 @@
               },
               SPLIT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'separ_replace_menu'
+                menu: 'split_replace_menu'
               }
             }
           },
@@ -676,7 +676,7 @@
             acceptReporters: true
           },
           
-          separ_replace_menu: {
+          split_replace_menu: {
             items: ['none', 'start', 'end', 'all'],
             acceptReporters: true
           },
