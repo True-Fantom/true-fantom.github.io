@@ -22,7 +22,7 @@
         blocks: [
           
           { 
-            opcode: 'str_equal_block',
+            opcode: 'exactly_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] == [B]',
             arguments: {
@@ -38,9 +38,9 @@
           },
           
           {
-            opcode: 'str_cont_block',
+            opcode: 'exactly_cont_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] contains [B] ?',
+            text: '[A] exactly contains [B] ?',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -567,9 +567,9 @@
           },
           
           {
-            opcode: 'str_replace_block',
+            opcode: 'exactly_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'str replace [REGEX] with [NEWSTRING] of [STRING]',
+            text: 'exactly replace [REGEX] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -700,11 +700,11 @@
       }
     }
     
-    str_equal_block({A, B}) {
+    exactly_equal_block({A, B}) {
       return String(A) == String(B);
     }
 
-    str_cont_block({A, B}) {
+    exactly_cont_block({A, B}) {
       return String(A).includes(String(B));
     }    
     
@@ -1189,7 +1189,7 @@
       return String(STRING).replace(new RegExp(REGEX, 'gi'), String(NEWSTRING));
     }
     
-    str_replace_block({STRING, REGEX, NEWSTRING}) {
+    exactly_replace_block({STRING, REGEX, NEWSTRING}) {
       REGEX = String(REGEX).replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
       return String(STRING).replace(new RegExp(REGEX, 'g'), NEWSTRING);
     }
