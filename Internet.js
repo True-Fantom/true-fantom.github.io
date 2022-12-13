@@ -8,7 +8,6 @@
   const computed = new Map();
 
   const pingWebSocket = async (uri) => {
-    /** @type {WebSocket} */
     let ws;
     try {
       ws = new WebSocket(uri);
@@ -80,15 +79,10 @@
         blocks: [
           
           {
-            opcode: "ping",
+            opcode: 'connected_to_internet_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: "is cloud data server [SERVER] up?",
-            arguments: {
-              SERVER: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "wss://clouddata.turbowarp.org",
-              }
-            }
+            text: 'connected to internet?',
+            arguments: {}
           },
           
           {
@@ -104,10 +98,15 @@
           },
           
           {
-            opcode: 'connected_to_internet_block',
+            opcode: "ping_block",
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'connected to internet?',
-            arguments: {}
+            text: "is cloud data server up [SERVER] ?",
+            arguments: {
+              SERVER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: "wss://clouddata.turbowarp.org",
+              }
+            }
           }
 
         ],
@@ -118,18 +117,18 @@
       }
     }
 
-    ping({SERVER}) {
-      return cachedPingWebSocket(SERVER);
+    connected_to_internet_block() {
+      return navigator.onLine;
     }
     
     get_url_block({URL}) {
       return fetch(String(URL)).then(res => res.text()).catch(err => '');
     }
     
-    connected_to_internet_block() {
-      return navigator.onLine;
+    ping_block({SERVER}) {
+      return cachedPingWebSocket(SERVER);
     }
-    
+ 
   }
 
   Scratch.extensions.register(new Internet());
