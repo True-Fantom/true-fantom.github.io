@@ -98,6 +98,22 @@
           },
           
           {
+            opcode: 'post_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'POST [BODY] to [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'wss://clouddata.turbowarp.org'
+              },
+              BODY: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          
+          {
             opcode: "ping_block",
             blockType: Scratch.BlockType.BOOLEAN,
             text: "is cloud data server up [SERVER] ?",
@@ -122,7 +138,15 @@
     }
     
     get_url_block({URL}) {
-      return fetch(String(URL)).then(res => res.text()).catch(err => '');
+      return fetch(String(URL), {method:'GET'})
+        .then(res => res.text())
+        .catch(err => '');
+    }
+    
+    post_block({URL, BODY}) {
+      return fetch(String(URL), {method:'POST', body:String(BODY)})
+        .then(res => res.text())
+        .catch(err => '');
     }
     
     ping_block({SERVER}) {
