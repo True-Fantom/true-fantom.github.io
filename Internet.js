@@ -126,7 +126,7 @@
     }
     
     ping_block({SERVER}) {
-      return cachedPingWebSocket(SERVER);
+      return cachedPingWebSocket(String(SERVER));
     }
  
   }
