@@ -889,15 +889,7 @@
     }
     
     connected_to_internet_block() {
-      var req = ({
-      method: 'GET',
-      url: 'http://google.com'
-      });
-      $http(req).then(function successCallback(successData){
-      //при удачном 
-      },function errorCallback(errorData){
-      //при ошибке
-      });
+      return navigator.onLine;
     }
     
     parse_json_block({PATH, JSON_STRING, SPLIT}) {
