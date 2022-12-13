@@ -877,23 +877,23 @@
         .catch(err => '');
     }
 
-    parse_json_block({PATH, JSON_STRING}) {
+    parse_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
-        var path = String(PATH).split('/').map(prop => decodeURIComponent(prop));
+        var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') path.splice(0, 1);
         if (path[path.length - 1] === '') path.splice(-1, 1);
         var json;
         try {
           json = JSON.parse(' ' + String(JSON_STRING));
-        } catch (e) {
-          return e.message;
+        } catch () {
+          return '';
         }
         path.forEach(prop => json = json[prop]);
         if (json === null) return 'null';
         else if (json === undefined) return '';
         else if (typeof json === 'object') return JSON.stringify(json);
         else return String(json);
-      } catch (err) {
+      } catch () {
         return '';
       }
     }
