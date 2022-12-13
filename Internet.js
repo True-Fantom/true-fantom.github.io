@@ -118,13 +118,13 @@
           '---',
           
           {
-            opcode: "ping_block",
+            opcode: 'ping_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: "is cloud data server up [SERVER] ?",
+            text: 'is cloud data server up [SERVER] ?',
             arguments: {
               SERVER: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "wss://clouddata.turbowarp.org",
+                defaultValue: 'wss://clouddata.turbowarp.org',
               }
             }
           }
