@@ -66,12 +66,10 @@
     if (computingEntry) {
       return computingEntry.then((entry) => entry.value);
     }
-
     const computedEntry = computed.get(uri);
     if (computedEntry && Date.now() < computedEntry.expires) {
       return computedEntry.value;
     }
-
     const promise = pingWebSocket(uri);
     computing.set(uri, promise);
     return promise.then((entry) => {
