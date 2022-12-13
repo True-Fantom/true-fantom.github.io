@@ -879,7 +879,15 @@
     get_url_block({URL}) {
       return fetch(String(URL)).then(res => res.text()).catch(err => '');
     }
-
+    
+    connected_to_internet_block() {
+      try {
+        await fetch("https://google.com");
+        return true;
+      }
+      return false;
+    }
+    
     parse_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
