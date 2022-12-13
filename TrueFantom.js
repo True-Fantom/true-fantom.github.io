@@ -889,13 +889,10 @@
     }
     
     connected_to_internet_block() {
-      var checkOnlineStatus = async () => {
-        try {
-          var online = await fetch("https://google.com");
-          return true;
-        } catch (err) {
-          return false;
-        }
+      try {
+        return fetch('https://google.com');
+      } catch (err) {
+        return false;
       }
     }
     
