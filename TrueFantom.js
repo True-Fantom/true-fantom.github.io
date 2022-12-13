@@ -884,8 +884,11 @@
     }
     
     get_url_block({URL}) {
-      return fetch(String(URL))
-        .then(res => res.text()).catch(err => '');
+      try {
+        return fetch(String(URL)).then(response => response.text())
+      } catch (err) {
+        return '';
+      }
     }
     
     connected_to_internet_block() {
