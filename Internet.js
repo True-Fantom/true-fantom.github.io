@@ -85,6 +85,8 @@
             arguments: {}
           },
           
+          '---',
+          
           {
             opcode: 'get_url_block',
             blockType: Scratch.BlockType.REPORTER,
