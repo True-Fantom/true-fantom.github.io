@@ -29,7 +29,6 @@
         value: false
       };
     }
-
     let timeoutId;
     const isUp = await new Promise((resolve) => {
       ws.onopen = () => {
@@ -47,10 +46,8 @@
         ws.close();
       }, 5000);
     });
-    
     ws.close();
     clearTimeout(timeoutId);
-
     return {
       expires: Date.now() + 60000,
       value: isUp
