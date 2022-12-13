@@ -884,11 +884,19 @@
     }
     
     get_url_block({URL}) {
-      return fetch(String(URL)).then(res => res.text()).catch(err => '');
+      return fetch(String(URL))
+        .then(res => res.text()).catch(err => '');
     }
     
     connected_to_internet_block() {
-      navigator.onLine ? true : false;
+      var checkOnlineStatus = async () => {
+        try {
+          var online = await fetch("https://google.com");
+          return online.status >= 200 && online.status < 300;
+        } catch (err) {
+          return false;
+        }
+      }
     }
     
     parse_json_block({PATH, JSON_STRING, SPLIT}) {
@@ -899,7 +907,7 @@
         var json;
         try {
           json = JSON.parse(' ' + String(JSON_STRING));
-        } catch (ERROR) {
+        } catch (err) {
           return '';
         }
         path.forEach(prop => json = json[prop]);
@@ -907,7 +915,7 @@
         else if (json === undefined) return '';
         else if (typeof json === 'object') return JSON.stringify(json);
         else return String(json);
-      } catch (ERROR) {
+      } catch (err) {
         return '';
       }
     }
