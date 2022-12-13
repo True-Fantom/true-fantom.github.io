@@ -617,7 +617,7 @@
           {
             opcode: 'parse_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] of [JSON_STRING]',
+            text: '[PATH] split by [SEPAR] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -626,6 +626,10 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/'
               }
             }
           },
@@ -885,7 +889,7 @@
         var json;
         try {
           json = JSON.parse(' ' + String(JSON_STRING));
-        } catch () {
+        } catch (ERROR) {
           return '';
         }
         path.forEach(prop => json = json[prop]);
@@ -893,7 +897,7 @@
         else if (json === undefined) return '';
         else if (typeof json === 'object') return JSON.stringify(json);
         else return String(json);
-      } catch () {
+      } catch (ERROR) {
         return '';
       }
     }
