@@ -72,6 +72,8 @@
         name: 'Internet',
         
         color1: '#006616',
+        color2: '#005212',
+        color3: '#005C14',
 
         menuIconURI: icon,
 
