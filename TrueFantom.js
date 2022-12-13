@@ -880,12 +880,13 @@
       return fetch(String(URL)).then(res => res.text()).catch(err => '');
     }
     
-    connected_to_internet_block() {
+    async connected_to_internet_block() {
       try {
         await fetch("https://google.com");
         return true;
+      } catch (ERROR) {
+        return false;
       }
-      return false;
     }
     
     parse_json_block({PATH, JSON_STRING, SPLIT}) {
