@@ -892,7 +892,7 @@
       var checkOnlineStatus = async () => {
         try {
           var online = await fetch("https://google.com");
-          return online.status >= 200 && online.status < 300;
+          return true;
         } catch (err) {
           return false;
         }
