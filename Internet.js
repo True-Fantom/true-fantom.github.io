@@ -85,6 +85,8 @@
             arguments: {}
           },
           
+          '---',
+          
           {
             opcode: 'get_url_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -112,6 +114,8 @@
               }
             }
           },
+          
+          '---',
           
           {
             opcode: "ping_block",
