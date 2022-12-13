@@ -877,8 +877,7 @@
     }
     
     get_url_block({URL}) {
-      return fetch(String(URL)).then(res => res.text())
-        .catch(err => '');
+      return fetch(String(URL)).then(res => res.text()).catch(err => '');
     }
 
     parse_json_block({PATH, JSON_STRING, SPLIT}) {
