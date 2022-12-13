@@ -660,6 +660,13 @@
                 defaultValue: 'https://extensions.turbowarp.org/hello.txt'
               }
             }
+          },
+          
+          {
+            opcode: 'connected_to_internet_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'connected to internet?',
+            arguments: {}
           }
           
         ],
