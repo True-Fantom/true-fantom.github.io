@@ -367,7 +367,7 @@
           {
             opcode: 'word_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word [NUM] separated by [SEPAR] of [STRING]',
+            text: 'word [NUM] split by [SPLIT] of [STRING]',
             arguments: {
               NUM: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -377,7 +377,7 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'red apple'
               },
-              SEPAR: {
+              SPLIT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               } 
@@ -387,7 +387,7 @@
           {
             opcode: 'start_end_words_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'words [START] to [END] separated by [SEPAR] of [STRING]',
+            text: 'words [START] to [END] split by [SPLIT] of [STRING]',
             arguments: {
               START: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -401,7 +401,7 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'delicious red apple'
               },
-              SEPAR: {
+              SPLIT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               } 
@@ -411,7 +411,7 @@
           {
             opcode: 'word_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace word [NUM] separated by [SEPAR] considering separ [SEPAR_TYPE] with [NEWSTRING] of [STRING]',
+            text: 'replace word [NUM] split by [SPLIT] considering split [SPLIT_TYPE] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -425,11 +425,11 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'green'
               },
-              SEPAR: {
+              SPLIT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               },
-              SEPAR_TYPE: {
+              SPLIT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'separ_replace_menu'
               }
@@ -439,7 +439,7 @@
           {
             opcode: 'start_end_words_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace words [START] to [END] separated by [SEPAR] considering separ [SEPAR_TYPE] with [NEWSTRING] of [STRING]',
+            text: 'replace words [START] to [END] split by [SPLIT] considering split [SPLIT_TYPE] with [NEWSTRING] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -457,11 +457,11 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'yellow banana'
               },
-              SEPAR: {
+              SPLIT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               },
-              SEPAR_TYPE: {
+              SPLIT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'separ_replace_menu'
               }
@@ -471,13 +471,13 @@
           {
             opcode: 'word_count_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'word count separated by [SEPAR] of [STRING]',
+            text: 'word count split by [SPLIT] of [STRING]',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'red apple'
               },
-              SEPAR: {
+              SPLIT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
               } 
@@ -1014,9 +1014,9 @@
       }
     }
     
-    word_block({NUM, STRING, SEPAR}) {
+    word_block({NUM, STRING, SPLIT}) {
       var str = String(STRING);
-      var res = str.split(String(SEPAR));
+      var res = str.split(String(SPLIT));
       if (res[Number(NUM) - 1] === undefined || isNaN(NUM)) {
         return '';
       }
@@ -1025,10 +1025,10 @@
       }
     }
     
-    start_end_words_block({START, END, STRING, SEPAR}) {
+    start_end_words_block({START, END, STRING, SPLIT}) {
       if (Number(START) <= Number(END) && !isNaN(START) && !isNaN(END) && START !== null && START !== '' && START !== ' ') {
         var str = String(STRING);
-        var res = str.split(String(SEPAR));
+        var res = str.split(String(SPLIT));
         if (res[Number(START)-1] === undefined) {
           var words = '';
         }
@@ -1041,7 +1041,7 @@
               words = res[i-1];
             }
             else {
-              words = words + String(SEPAR) + res[i-1];
+              words = words + String(SPLIT) + res[i-1];
             }
           }
         }
@@ -1052,9 +1052,9 @@
       }
     }
     
-    word_replace_block({NUM, SEPAR, NEWSTRING, STRING, SEPAR_TYPE}) {
+    word_replace_block({NUM, SPLIT, NEWSTRING, STRING, SPLIT_TYPE}) {
       var str = String(STRING);
-      var res = str.split(String(SEPAR));
+      var res = str.split(String(SPLIT));
       if (res[Number(NUM)-1] === undefined) {
         return String(STRING);
       }
@@ -1071,7 +1071,7 @@
               words1 = res[a];
             }
             else {
-              words1 = words1 + String(SEPAR) + res[a];
+              words1 = words1 + String(SPLIT) + res[a];
             }
           }
         }
@@ -1087,29 +1087,29 @@
               words2 = res[b];
             }
             else {
-              words2 = words2 + String(SEPAR) + res[b];
+              words2 = words2 + String(SPLIT) + res[b];
             }
           }
         }
         var words = '';  
         if (words1 !== '') {
-          words = words + words1 + String(SEPAR);
+          words = words + words1 + String(SPLIT);
         }
         words = words + String(NEWSTRING);
         if (words2 !== '') {
-          words = words + String(SEPAR) + words2;
+          words = words + String(SPLIT) + words2;
         }
         return words;
       }
     }
     
-    start_end_words_replace_block({START, END, SEPAR, NEWSTRING, STRING, SEPAR_TYPE}) {
+    start_end_words_replace_block({START, END, SPLIT, NEWSTRING, STRING, SPLIT_TYPE}) {
       if (isNaN(START) || isNaN(END) || START === null || START === '' || START === ' ') {
         return String(STRING);
       }
       else {
       var str = String(STRING);
-      var res = str.split(String(SEPAR));
+      var res = str.split(String(SPLIT));
         if (Number(START) <= 0){
           START = 1;
         }
@@ -1129,7 +1129,7 @@
                 words1 = res[a];
               }
               else {
-                words1 = words1 + String(SEPAR) + res[a];
+                words1 = words1 + String(SPLIT) + res[a];
               }
             }
           }
@@ -1145,26 +1145,26 @@
                 words2 = res[b];
               }
               else {
-                words2 = words2 + String(SEPAR) + res[b];
+                words2 = words2 + String(SPLIT) + res[b];
               }
             }
           }
           var words = '';  
           if (words1 !== '') {
-            words = words + words1 + String(SEPAR);
+            words = words + words1 + String(SPLIT);
           }
           words = words + String(NEWSTRING);
           if (words2 !== '') {
-            words = words + String(SEPAR) + words2;
+            words = words + String(SPLIT) + words2;
           }
           return words;
         }
       }
     }
     
-    word_count_block({STRING, SEPAR}) {
+    word_count_block({STRING, SPLIT}) {
       var str = String(STRING);
-      var res = str.split(String(SEPAR));
+      var res = str.split(String(SPLIT));
       return res.length;
     }
     
