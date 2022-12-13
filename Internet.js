@@ -80,18 +80,6 @@
         blocks: [
           
           {
-            opcode: 'accept_reporters_true_menu_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[accept_reporters_true_menu]',
-            arguments: {
-              accept_reporters_true_menu: {
-                type: Scratch.ArgumentType.STRING,  
-                menu: 'accept_reporters_true_menu'
-              }
-            }
-          },
-          
-          {
             opcode: "ping",
             blockType: Scratch.BlockType.BOOLEAN,
             text: "is cloud data server [SERVER] up?",
@@ -126,11 +114,6 @@
         
         menus: {
           
-          accept_reporters_true_menu: {
-            items: [''],
-            acceptReporters: true
-          }
-          
         }
       }
     }
@@ -141,10 +124,6 @@
     
     get_url_block({URL}) {
       return fetch(String(URL)).then(res => res.text()).catch(err => '');
-    }
-    
-    accept_reporters_true_menu_block({accept_reporters_true_menu}) {
-      return '';
     }
     
     connected_to_internet_block() {
