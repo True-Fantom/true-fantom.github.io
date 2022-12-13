@@ -617,7 +617,7 @@
           {
             opcode: 'parse_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] split by [SEPAR] of [JSON_STRING]',
+            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
