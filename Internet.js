@@ -116,6 +116,22 @@
           },
           
           {
+            opcode: 'delete_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'delete [BODY] to [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://httpbin.org/post'
+              },
+              BODY: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          
+          {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'put [BODY] to [URL]',
@@ -165,6 +181,12 @@
     
     post_block({URL, BODY}) {
       return fetch(String(URL), {method:'POST', body:String(BODY)})
+        .then(res => res.text())
+        .catch(err => '');
+    }
+    
+    delete_block({URL, BODY}) {
+      return fetch(String(URL), {method:'DELETE', body:String(BODY)})
         .then(res => res.text())
         .catch(err => '');
     }
