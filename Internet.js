@@ -88,7 +88,7 @@
           '---',
           
           {
-            opcode: 'get_url_block',
+            opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'get [URL]',
             arguments: {
@@ -107,6 +107,22 @@
               URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/post'
+              },
+              BODY: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          
+          {
+            opcode: 'put_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'put [BODY] to [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://httpbin.org/put'
               },
               BODY: {
                 type: Scratch.ArgumentType.STRING,
@@ -141,7 +157,7 @@
       return navigator.onLine;
     }
     
-    get_url_block({URL}) {
+    get_block({URL}) {
       return fetch(String(URL), {method:'GET'})
         .then(res => res.text())
         .catch(err => '');
@@ -149,6 +165,12 @@
     
     post_block({URL, BODY}) {
       return fetch(String(URL), {method:'POST', body:String(BODY)})
+        .then(res => res.text())
+        .catch(err => '');
+    }
+    
+    put_block({URL, BODY}) {
+      return fetch(String(URL), {method:'PUT', body:String(BODY)})
         .then(res => res.text())
         .catch(err => '');
     }
