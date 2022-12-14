@@ -118,11 +118,11 @@
           {
             opcode: 'delete_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete [BODY] to [URL]',
+            text: 'delete [BODY] from [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://httpbin.org/post'
+                defaultValue: 'https://httpbin.org/delete'
               },
               BODY: {
                 type: Scratch.ArgumentType.STRING,
