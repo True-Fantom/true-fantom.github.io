@@ -33,9 +33,9 @@
           {
             opcode: 'string_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[string]',
+            text: '[STRING]',
             arguments: {
-              string: {
+              STRING: {
                 type: Scratch.ArgumentType.STRING,
               }
             }
@@ -87,8 +87,22 @@
       return '';
     }
     
-    string_block({string}) {
-      return '';
+    string_block({STRING}) {
+      if (Math.abs(STRING) < 1.0) {
+        var e = parseInt(STRING.toString().split('e-')[1]);
+        if (e) {
+            STRING *= Math.pow(10,e-1);
+            STRING = '0.' + (new Array(e)).join('0') + STRING.toString().substring(2);
+        }
+      } else {
+        var e = parseInt(STRING.toString().split('+')[1]);
+        if (e > 20) {
+            e -= 20;
+            STRING /= Math.pow(10,e);
+            STRING += (new Array(e+1)).join('0');
+        }
+      }
+      return STRING;
     }
     
     accept_reporters_true_menu_block({accept_reporters_true_menu}) {
