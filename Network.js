@@ -60,15 +60,15 @@
     });
   };
 
-  class Internet {
+  class Network {
 
     constructor() {}
 
     getInfo() {
       return {
 
-        id: 'Internet',
-        name: 'Internet',
+        id: 'Network',
+        name: 'Network',
         
         color1: '#146600',
         color2: '#125C00',
@@ -181,6 +181,6 @@
  
   }
 
-  Scratch.extensions.register(new Internet());
+  Scratch.extensions.register(new Network());
   
 })(Scratch);
