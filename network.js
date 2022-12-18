@@ -171,7 +171,11 @@
     }
     
     get_block({URL}) {
-      return fetch(String(URL), {method:'GET'})
+      return fetch(String(URL), {
+        method:'GET',
+        headers: {
+          ''
+        }})
         .then(res => res.text())
         .catch(err => '');
     }
