@@ -174,25 +174,25 @@
     
     post_block({URL, BODY, CONTENT_TYPE}) {
       if (String(CONTENT_TYPE).toLowerCase() === 'text') {
-        CONTENT_TYPE = 'application/x-www-form-urlencoded';
-        BODY = String(BODY);
-      }
-      else if (String(CONTENT_TYPE).toLowerCase() === 'json') {
-        CONTENT_TYPE = 'application/json';
-        BODY = JSON.stringify(BODY);
-      }
-      else {
-        CONTENT_TYPE = '';
-      }
-      if (CONTENT_TYPE !== '') {
         return fetch(String(URL), {
           method:'POST',
           headers: {
-            'Content-Type': CONTENT_TYPE
+            'Content-Type': 'application/x-www-form-urlencoded'
           },
           redirect: 'follow',
-          body: BODY})
+          body: String(BODY)})
           .then(res => res.text())
+          .catch(err => '');
+      }
+      else if (String(CONTENT_TYPE).toLowerCase() === 'json') {
+        return fetch(String(URL), {
+          method:'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          redirect: 'follow',
+          body: JSON.stringify(BODY)})
+          .then(res => res.json())
           .catch(err => '');
       }
       else {
