@@ -131,6 +131,10 @@
               BODY: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
+              },
+              CONTENT_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'content_type_menu'
               }
             }
           },
@@ -200,10 +204,32 @@
       }
     }
     
-    put_block({URL, BODY}) {
-      return fetch(String(URL), {method:'PUT', body:String(BODY)})
-        .then(res => res.text())
-        .catch(err => '');
+    put_block({URL, BODY, CONTENT_TYPE}) {
+      if (String(CONTENT_TYPE).toLowerCase() === 'text') {
+        return fetch(String(URL), {
+          method:'PUT',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          redirect: 'follow',
+          body: String(BODY)})
+          .then(res => res.text())
+          .catch(err => '');
+      }
+      else if (String(CONTENT_TYPE).toLowerCase() === 'json') {
+        return fetch(String(URL), {
+          method:'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          redirect: 'follow',
+          body: JSON.stringify(BODY)})
+          .then(res => res.json())
+          .catch(err => '');
+      }
+      else {
+        return '';
+      }
     }
     
     ping_block({SERVER}) {
