@@ -188,7 +188,7 @@
         return fetch(String(URL), {
           method:'POST',
           headers: {
-            'Content-Type':'application/x-www-form-urlencoded'
+            'Content-Type':CONTENT_TYPE
           },
           redirect: 'follow',
           body: BODY})
