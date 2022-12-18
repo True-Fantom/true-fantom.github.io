@@ -102,7 +102,7 @@
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [BODY] to [URL]',
+            text: 'post [CONTENT_TYPE] [BODY] to [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -111,6 +111,10 @@
               BODY: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
+              },
+              CONTENT_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'content_type_menu'
               }
             }
           },
@@ -149,6 +153,11 @@
         
         menus: {
           
+          content_type_menu: {  
+            items: ['text', 'json'],
+            acceptReporters: true
+          }
+          
         }
       }
     }
@@ -163,7 +172,7 @@
         .catch(err => '');
     }
     
-    post_block({URL, BODY}) {
+    post_block({URL, BODY, CONTENT_TYPE}) {
       return fetch(String(URL), {
         method:'POST',
         headers: {
