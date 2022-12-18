@@ -187,7 +187,7 @@
           },
           redirect: 'follow',
           body: String(BODY)})
-          .then(res => res.text())
+          .then(res => res)
           .catch(err => '');
       }
       else if (String(CONTENT_TYPE).toLowerCase() === 'json') {
