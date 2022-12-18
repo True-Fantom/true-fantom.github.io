@@ -122,7 +122,7 @@
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [BODY] to [URL]',
+            text: 'put [CONTENT_TYPE] [BODY] to [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
