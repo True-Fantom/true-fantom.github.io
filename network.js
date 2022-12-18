@@ -169,6 +169,7 @@
         headers: {
           'Content-Type':'application/x-www-form-urlencoded'
         },
+        redirect: 'follow',
         body:String(BODY)})
         .then(res => res.text())
         .catch(err => '');
