@@ -179,7 +179,7 @@
       }
       else if (String(CONTENT_TYPE).toLowerCase() === 'json') {
         CONTENT_TYPE = 'application/json';
-        BODY = JSON.stringify(BODY)
+        BODY = JSON.stringify(BODY);
       }
       else {
         CONTENT_TYPE = '';
