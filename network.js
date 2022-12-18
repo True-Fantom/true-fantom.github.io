@@ -192,7 +192,7 @@
           },
           redirect: 'follow',
           body: JSON.stringify(BODY)})
-          .then(res => res.json())
+          .then(res => res.text())
           .catch(err => '');
       }
       else {
