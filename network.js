@@ -173,15 +173,31 @@
     }
     
     post_block({URL, BODY, CONTENT_TYPE}) {
-      return fetch(String(URL), {
-        method:'POST',
-        headers: {
-          'Content-Type':'application/x-www-form-urlencoded'
-        },
-        redirect: 'follow',
-        body:String(BODY)})
-        .then(res => res.text())
-        .catch(err => '');
+      if (String(CONTENT_TYPE).toLowerCase() === 'text') {
+        CONTENT_TYPE = 'application/x-www-form-urlencoded';
+        BODY = String(BODY);
+      }
+      else if (String(CONTENT_TYPE).toLowerCase() === 'json') {
+        CONTENT_TYPE = 'application/json';
+        BODY = JSON.stringify(BODY)
+      }
+      else {
+        CONTENT_TYPE = '';
+      }
+      if (CONTENT_TYPE !== '') {
+        return fetch(String(URL), {
+          method:'POST',
+          headers: {
+            'Content-Type':'application/x-www-form-urlencoded'
+          },
+          redirect: 'follow',
+          body: BODY})
+          .then(res => res.text())
+          .catch(err => '');
+      }
+      else {
+        return '';
+      }
     }
     
     put_block({URL, BODY}) {
