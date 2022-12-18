@@ -139,18 +139,6 @@
             }
           },
           
-          {
-            opcode: 'delete_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'delete [URL]',
-            arguments: {
-              URL: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://httpbin.org/delete'
-              }
-            }
-          },
-          
           '---',
           
           {
@@ -244,14 +232,6 @@
       else {
         return '';
       }
-    }
-    
-    delete_block({URL}) {
-      return fetch(String(URL), {
-        method:'DELETE',
-        headers: {}})
-        .then(res => res.text())
-        .catch(err => '');
     }
     
     ping_block({SERVER}) {
