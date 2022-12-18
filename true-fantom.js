@@ -648,27 +648,6 @@
             }
           },
           
-          '---',
-          
-          {
-            opcode: 'get_url_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'get [URL]',
-            arguments: {
-              URL: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://extensions.turbowarp.org/hello.txt'
-              }
-            }
-          },
-          
-          {
-            opcode: 'connected_to_internet_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'connected to internet?',
-            arguments: {}
-          }
-          
         ],
         
         menus: {
@@ -881,14 +860,6 @@
 
     is_nan_block({TEXT}) {
       return isNaN(TEXT);
-    }
-    
-    get_url_block({URL}) {
-      return fetch(String(URL)).then(res => res.text()).catch(err => '');
-    }
-    
-    connected_to_internet_block() {
-      return navigator.onLine;
     }
     
     parse_json_block({PATH, JSON_STRING, SPLIT}) {
