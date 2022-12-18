@@ -164,7 +164,12 @@
     }
     
     post_block({URL, BODY}) {
-      return fetch(String(URL), {method:'POST', body:String(BODY)})
+      return fetch(String(URL), {
+        method:'POST',
+        headers: {
+          'Content-Type':'application/x-www-form-urlencoded'
+        },
+        body:String(BODY)})
         .then(res => res.text())
         .catch(err => '');
     }
