@@ -178,7 +178,12 @@
     }
     
     network_type_block() {
-      return navigator.connection.type;
+      if (navigator.connection.type === undefined) {
+        return '';
+      }
+      else {
+        return navigator.connection.type;
+      }
     }
     
     get_block({URL}) {
