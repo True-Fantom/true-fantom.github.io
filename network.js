@@ -101,6 +101,13 @@
             arguments: {}
           },
           
+          {
+            opcode: 'network_rtt_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'network rtt',
+            arguments: {}
+          },
+          
           '---',
           
           {
@@ -201,6 +208,15 @@
       }
       else {
         return navigator.connection.effectiveType;
+      }
+    }
+    
+    network_rtt_block() {
+      if (navigator.connection.rtt === undefined) {
+        return '';
+      }
+      else {
+        return navigator.connection.rtt;
       }
     }
     
