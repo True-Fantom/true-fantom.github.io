@@ -204,15 +204,10 @@
           '---',
           
           {
-            opcode: 'date_block',
+            opcode: 'milliseconds_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'current [A]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'date_menu'
-              }  
-            }
+            text: 'current milliseconds',
+            arguments: {}
           },
           
           '---',
@@ -671,11 +666,6 @@
             items: ['true', 'false'],
             acceptReporters: true
           },
-          
-          date_menu: {  
-            items: ['millisecond', 'week number'],
-            acceptReporters: false
-          },
         
           value_menu: {  
             items: ['pi', 'e', 'infinity', 'empty'],
@@ -787,17 +777,8 @@
       return String(A);
     }
     
-    date_block({A}) {
-      if (String(A).toLowerCase() === 'millisecond') {
-        return Date.now() % 1000;
-      }
-      else if (String(A).toLowerCase() === 'week number') {
-        var date = new Date(Date.now());
-        return Math.ceil(date.getDate() / 7);
-      }
-      else {
-        return '';
-      }
+    milliseconds_block() {
+      return Date.now() % 1000;
     }
     
     ternary_operator_block({BOOL, A, B}) {
