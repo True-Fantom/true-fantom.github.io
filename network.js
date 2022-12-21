@@ -101,6 +101,8 @@
             arguments: {}
           },
           
+          '---',
+          
           {
             opcode: 'downlink_max_speed_block',
             blockType: Scratch.BlockType.REPORTER,
