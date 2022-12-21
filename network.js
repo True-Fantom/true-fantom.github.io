@@ -95,9 +95,9 @@
           },
           
           {
-            opcode: 'effecive_network_type_block',
+            opcode: 'network_generation_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'effecive network type',
+            text: 'network generation',
             arguments: {}
           },
           
@@ -195,7 +195,7 @@
       }
     }
     
-    effecive_network_type_block() {
+    network_generation_block() {
       if (navigator.connection.effectiveType === undefined) {
         return '';
       }
