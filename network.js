@@ -102,6 +102,20 @@
           },
           
           {
+            opcode: 'downlink_max_speed_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'downlink max speed',
+            arguments: {}
+          },
+          
+          {
+            opcode: 'downlink_speed_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'downlink speed',
+            arguments: {}
+          },
+          
+          {
             opcode: 'network_rtt_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'network rtt',
@@ -208,6 +222,24 @@
       }
       else {
         return navigator.connection.effectiveType;
+      }
+    }
+    
+    downlink_max_speed_block() {
+      if (navigator.connection.downlinkMax === undefined) {
+        return '';
+      }
+      else {
+        return navigator.connection.downlinkMax;
+      }
+    }
+    
+    downlink_speed_block() {
+      if (navigator.connection.downlink === undefined) {
+        return '';
+      }
+      else {
+        return navigator.connection.downlink;
       }
     }
     
