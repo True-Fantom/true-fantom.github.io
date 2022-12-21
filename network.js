@@ -85,10 +85,19 @@
             arguments: {}
           },
           
+          '---',
+          
           {
             opcode: 'network_type_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'network type',
+            arguments: {}
+          },
+          
+          {
+            opcode: 'effecive_network_type_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'effecive network type',
             arguments: {}
           },
           
@@ -183,6 +192,15 @@
       }
       else {
         return navigator.connection.type;
+      }
+    }
+    
+    effecive_network_type_block() {
+      if (navigator.connection.effectiveType === undefined) {
+        return '';
+      }
+      else {
+        return navigator.connection.effectiveType;
       }
     }
     
