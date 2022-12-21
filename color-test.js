@@ -20,14 +20,45 @@
         blocks: [
           
           {
-            opcode: 'bool_block',
+            opcode: 'q1_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[bool]',
-            arguments: {
-              bool: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              }
-            }
+            text: '[]',
+            arguments: {}
+          },
+          
+          {
+            opcode: 'q2_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[]',
+            arguments: {}
+          },
+          
+          {
+            opcode: 'q3_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[]',
+            arguments: {}
+          },
+          
+          {
+            opcode: 'q4_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[]',
+            arguments: {}
+          },
+          
+          {
+            opcode: 'q5_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[]',
+            arguments: {}
+          },
+          
+          {
+            opcode: 'q6_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[]',
+            arguments: {}
           },
           
           {
@@ -83,8 +114,28 @@
       }
     } 
     
-    bool_block({bool}) {
-      return '';
+    q1_block() {
+      return 'type: ' + navigator.connection.type;
+    }
+    
+    q2_block() {
+      return 'downlink: ' + navigator.connection.downlink + ' Mb/s';
+    }
+    
+    q3_block() {
+      return 'rtt: ' + navigator.connection.rtt + ' ms';
+    }
+    
+    q4_block() {
+      return 'downlinkMax: ' + navigator.connection.downlinkMax + ' Mb/s';
+    }
+    
+    q5_block() {
+      return 'effectiveType: ' + navigator.connection.effectiveType;
+    }
+    
+    q6_block() {
+      return 'saveData: ' + navigator.connection.saveData;
     }
     
     string_block({STRING}) {
