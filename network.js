@@ -88,6 +88,15 @@
           '---',
           
           {
+            opcode: 'geolocation_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'user geolocation',
+            arguments: {}
+          },
+          
+          '---',
+          
+          {
             opcode: 'network_type_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'network type',
@@ -207,6 +216,16 @@
 
     connected_to_internet_block() {
       return navigator.onLine;
+    }
+    
+    geolocation_block() {
+      const successCallback = (position) => {
+        return position;
+      }
+      const errorCallback = (error) => {
+        return '';
+      }
+      navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
     }
     
     network_type_block() {
