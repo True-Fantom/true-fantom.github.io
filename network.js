@@ -85,6 +85,13 @@
             arguments: {}
           },
           
+          {
+            opcode: 'network_type_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'network type',
+            arguments: {}
+          },
+          
           '---',
           
           {
@@ -168,6 +175,10 @@
 
     connected_to_internet_block() {
       return navigator.onLine;
+    }
+    
+    network_type_block() {
+      return navigator.connection.type;
     }
     
     get_block({URL}) {
