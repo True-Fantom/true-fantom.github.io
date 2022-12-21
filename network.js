@@ -106,21 +106,21 @@
           {
             opcode: 'downlink_max_speed_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'downlink max speed',
+            text: 'downlink max speed in mb/s',
             arguments: {}
           },
           
           {
             opcode: 'downlink_speed_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'downlink speed',
+            text: 'downlink speed in mb/s',
             arguments: {}
           },
           
           {
             opcode: 'network_rtt_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'network rtt',
+            text: 'network rtt in ms',
             arguments: {}
           },
           
