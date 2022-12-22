@@ -113,16 +113,16 @@
           '---',
           
           {
-            opcode: 'downlink_max_speed_block',
+            opcode: 'downlink_speed_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'downlink max speed in mb/s',
+            text: 'downlink speed in mb/s',
             arguments: {}
           },
           
           {
-            opcode: 'downlink_speed_block',
+            opcode: 'downlink_max_speed_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'downlink speed in mb/s',
+            text: 'downlink max speed in mb/s',
             arguments: {}
           },
           
@@ -283,19 +283,6 @@
       }
     }
     
-    downlink_max_speed_block() {
-      try {
-        if (navigator.connection.downlinkMax === undefined) {
-          return '';
-        }
-        else {
-          return navigator.connection.downlinkMax;
-        }
-      } catch(err) {
-        return ''
-      }
-    }
-    
     downlink_speed_block() {
       try {
         if (navigator.connection.downlink === undefined) {
@@ -303,6 +290,19 @@
         }
         else {
           return navigator.connection.downlink;
+        }
+      } catch(err) {
+        return ''
+      }
+    }
+    
+    downlink_max_speed_block() {
+      try {
+        if (navigator.connection.downlinkMax === undefined) {
+          return '';
+        }
+        else {
+          return navigator.connection.downlinkMax;
         }
       } catch(err) {
         return ''
