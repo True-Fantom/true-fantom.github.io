@@ -88,6 +88,15 @@
           '---',
           
           {
+            opcode: 'browser_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'browser',
+            arguments: {}
+          },
+          
+          '---',
+          
+          {
             opcode: 'network_type_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'network type',
