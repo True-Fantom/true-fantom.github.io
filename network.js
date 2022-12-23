@@ -301,6 +301,30 @@
             }
           },
           
+          {
+            opcode: 'patch_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'patch [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://httpbin.org/put'
+              },
+              BODY: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              CONTENT_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'content_type_menu'
+              },
+              RESPONSE_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'response_type_menu'
+              }
+            }
+          },
+          
           '---',
           
           {
@@ -463,6 +487,13 @@
       RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT');
+    }
+    
+    patch_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
+      CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
+      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      BODY = body_check(String(BODY), CONTENT_TYPE);
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
     }
     
     ping_block({SERVER}) {
