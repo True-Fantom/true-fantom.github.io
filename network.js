@@ -91,7 +91,7 @@
   };
   
   const fetch_url = (URL, BODY, CONTENT_TYPE, RESPONSE_TYPE, METHOD) => {
-    if (METHOD === 'GET') {
+    if (METHOD === 'GET' || METHOD === 'DELETE') {
       if (RESPONSE_TYPE === 'text') {
         return fetch(URL, {
         method: METHOD,
@@ -229,6 +229,22 @@
               URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/get'
+              },
+              RESPONSE_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'response_type_menu'
+              }
+            }
+          },
+          
+          {
+            opcode: 'delete_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'delete [URL] respond [RESPONSE_TYPE]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://httpbin.org/delete'
               },
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
@@ -428,6 +444,11 @@
     get_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
       return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
+    }
+    
+    delete_block({URL, RESPONSE_TYPE}) {
+      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE');
     }
     
     post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
