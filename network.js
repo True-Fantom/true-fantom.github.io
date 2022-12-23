@@ -308,7 +308,7 @@
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://httpbin.org/put'
+                defaultValue: 'https://httpbin.org/patch'
               },
               BODY: {
                 type: Scratch.ArgumentType.STRING,
