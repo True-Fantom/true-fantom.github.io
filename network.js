@@ -60,20 +60,29 @@
     });
   };
   
-  const content_type_check = (CONTENT) => {
-    if (CONTENT.toLowerCase() === 'text' || CONTENT.toLowerCase() === 'json') {
-      return CONTENT.toLowerCase();
+  const content_type_check = (CONTENT_TYPE) => {
+    if (CONTENT_TYPE.toLowerCase() === 'text' || CONTENT_TYPE.toLowerCase() === 'json') {
+      return CONTENT_TYPE.toLowerCase();
     }
     else {
       return '';
     }
   };
   
-  const body_check = (BODY, CONTENT) => {
-    if (CONTENT === 'text') {
+  const response_type_check = (RESPONSE_TYPE) => {
+    if (RESPONSE_TYPE.toLowerCase() === 'text' || RESPONSE_TYPE.toLowerCase() === 'json') {
+      return RESPONSE_TYPE.toLowerCase();
+    }
+    else {
+      return '';
+    }
+  };
+  
+  const body_check = (BODY, CONTENT_TYPE) => {
+    if (CONTENT_TYPE === 'text') {
       return BODY;
     }
-    else if (CONTENT === 'json') {
+    else if (CONTENT_TYPE === 'json') {
       return JSON.stringify(BODY);
     }
     else {
@@ -81,16 +90,37 @@
     }
   };
   
-  const fetch_const = (METHOD, CONTENT, RESPONSE) => {
-    return fetch(String(URL), {
-      method: METHOD,
-      headers: {
-        'Content-Type': CONTENT
-      },
-      redirect: 'follow',
-      body: String(BODY)})
-      .then(res => res.text())
-      .catch(err => '');
+  const fetch_url = (URL, BODY, CONTENT_TYPE, RESPONSE_TYPE, METHOD) => {
+    if (CONTENT_TYPE !== '') {
+      if (RESPONSE_TYPE === 'text') {
+        return fetch(String(URL), {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.text())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 'json') {
+        return fetch(String(URL), {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else {
+        return '';
+      }
+    }
+    else {
+      return '';
+    }
   };
   
   class Network {
@@ -382,17 +412,9 @@
     
     post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
+      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      
-      return fetch(String(URL), {
-        method:'POST',
-        headers: {
-          'Content-Type': 'text/plain'
-        },
-        redirect: 'follow',
-        body: String(BODY)})
-        .then(res => res.text())
-        .catch(err => '');
+      return fetch_url(URL, BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
     }
     
     put_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
