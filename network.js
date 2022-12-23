@@ -171,7 +171,7 @@
           {
             opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [URL] response [RESPONSE_TYPE]',
+            text: 'get [URL] respond [RESPONSE_TYPE]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -187,7 +187,7 @@
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [CONTENT_TYPE] [BODY] to [URL] response [RESPONSE_TYPE]',
+            text: 'post [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -211,7 +211,7 @@
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [CONTENT_TYPE] [BODY] to [URL] response [RESPONSE_TYPE]',
+            text: 'put [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
