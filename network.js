@@ -91,26 +91,20 @@
   };
   
   const fetch_url = (URL, BODY, CONTENT_TYPE, RESPONSE_TYPE, METHOD) => {
-    if (CONTENT_TYPE !== '') {
+    if (METHOD === 'GET') {
       if (RESPONSE_TYPE === 'text') {
-        return fetch(String(URL), {
+        return fetch(URL, {
         method: METHOD,
-        headers: {
-          'Content-Type': CONTENT_TYPE
-        },
-        redirect: 'follow',
-        body: BODY})
+        headers: {},
+        redirect: 'follow'})
         .then(res => res.text())
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 'json') {
-        return fetch(String(URL), {
+        return fetch(URL, {
         method: METHOD,
-        headers: {
-          'Content-Type': CONTENT_TYPE
-        },
-        redirect: 'follow',
-        body: BODY})
+        headers: {},
+        redirect: 'follow'})
         .then(res => res.json())
         .catch(err => '');
       }
@@ -118,8 +112,37 @@
         return '';
       }
     }
-    else {
-      return '';
+    else {  
+      if (CONTENT_TYPE !== '') {
+        if (RESPONSE_TYPE === 'text') {
+          return fetch(URL, {
+          method: METHOD,
+          headers: {
+            'Content-Type': CONTENT_TYPE
+          },
+          redirect: 'follow',
+          body: BODY})
+          .then(res => res.text())
+          .catch(err => '');
+        }
+        else if (RESPONSE_TYPE === 'json') {
+          return fetch(URL, {
+          method: METHOD,
+          headers: {
+            'Content-Type': CONTENT_TYPE
+          },
+          redirect: 'follow',
+          body: BODY})
+          .then(res => res.json())
+          .catch(err => '');
+        }
+        else {
+          return '';
+        }
+      }
+      else {
+        return '';
+      }
     }
   };
   
@@ -403,46 +426,22 @@
     }
     
     get_block({URL, RESPONSE_TYPE}) {
-      return fetch(String(URL), {
-        method:'GET',
-        headers: {}})
-        .then(res => res.text())
-        .catch(err => '');
+      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
     }
     
     post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return fetch_url(URL, BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
     }
     
     put_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
-      if (String(CONTENT_TYPE).toLowerCase() === 'text') {
-        return fetch(String(URL), {
-          method:'PUT',
-          headers: {
-            'Content-Type': 'text/plain'
-          },
-          redirect: 'follow',
-          body: String(BODY)})
-          .then(res => res.text())
-          .catch(err => '');
-      }
-      else if (String(CONTENT_TYPE).toLowerCase() === 'json') {
-        return fetch(String(URL), {
-          method:'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          redirect: 'follow',
-          body: JSON.stringify(BODY)})
-          .then(res => res.text())
-          .catch(err => '');
-      }
-      else {
-        return '';
-      }
+      CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
+      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      BODY = body_check(String(BODY), CONTENT_TYPE);
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT');
     }
     
     ping_block({SERVER}) {
