@@ -206,7 +206,7 @@
         menus: {
           
           content_type_menu: {  
-            items: ['text', 'json'],
+            items: ['text', 'json', 'form urlencoded'],
             acceptReporters: true
           }
           
@@ -335,7 +335,7 @@
         return fetch(String(URL), {
           method:'POST',
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'text/plain'
           },
           redirect: 'follow',
           body: String(BODY)})
@@ -353,6 +353,17 @@
           .then(res => res.text())
           .catch(err => '');
       }
+      else if (String(CONTENT_TYPE).toLowerCase() === 'form urlencoded') {
+        return fetch(String(URL), {
+          method:'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          },
+          redirect: 'follow',
+          body: JSON.stringify(BODY)})
+          .then(res => res.text())
+          .catch(err => '');
+      }
       else {
         return '';
       }
@@ -363,7 +374,7 @@
         return fetch(String(URL), {
           method:'PUT',
           headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
+            'Content-Type': 'text/plain'
           },
           redirect: 'follow',
           body: String(BODY)})
@@ -375,6 +386,17 @@
           method:'PUT',
           headers: {
             'Content-Type': 'application/json'
+          },
+          redirect: 'follow',
+          body: JSON.stringify(BODY)})
+          .then(res => res.text())
+          .catch(err => '');
+      }
+      else if (String(CONTENT_TYPE).toLowerCase() === 'form urlencoded') {
+        return fetch(String(URL), {
+          method:'PUT',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
           },
           redirect: 'follow',
           body: JSON.stringify(BODY)})
