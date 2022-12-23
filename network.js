@@ -60,6 +60,10 @@
     });
   };
 
+  const fetch_const = (METHOD, CONTENT, RESPONSE) => {
+    return '';
+  };
+  
   class Network {
 
     constructor() {}
