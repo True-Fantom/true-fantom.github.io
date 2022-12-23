@@ -61,8 +61,20 @@
   };
   
   const content_type_check = (CONTENT) => {
-    if (String(CONTENT).toLowerCase() === 'text' || String(CONTENT).toLowerCase() === 'json' || String(CONTENT).toLowerCase() === 'form urlencoded') {
-      return CONTENT;
+    if (CONTENT.toLowerCase() === 'text' || CONTENT.toLowerCase() === 'json') {
+      return CONTENT.toLowerCase();
+    }
+    else {
+      return '';
+    }
+  };
+  
+  const body_check = (BODY, CONTENT) => {
+    if (CONTENT === 'text') {
+      return BODY;
+    }
+    else if (CONTENT === 'json') {
+      return JSON.stringify(BODY);
     }
     else {
       return '';
@@ -159,11 +171,15 @@
           {
             opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [URL]',
+            text: 'get [URL] response [RESPONSE_TYPE]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/get'
+              },
+              RESPONSE_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'response_type_menu'
               }
             }
           },
@@ -171,7 +187,7 @@
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [CONTENT_TYPE] [BODY] to [URL]',
+            text: 'post [CONTENT_TYPE] [BODY] to [URL] response [RESPONSE_TYPE]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -184,6 +200,10 @@
               CONTENT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'content_type_menu'
+              },
+              RESPONSE_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'response_type_menu'
               }
             }
           },
@@ -191,7 +211,7 @@
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [CONTENT_TYPE] [BODY] to [URL]',
+            text: 'put [CONTENT_TYPE] [BODY] to [URL] response [RESPONSE_TYPE]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -204,6 +224,10 @@
               CONTENT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'content_type_menu'
+              },
+              RESPONSE_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'response_type_menu'
               }
             }
           },
@@ -227,7 +251,12 @@
         menus: {
           
           content_type_menu: {  
-            items: ['text', 'json', 'form urlencoded'],
+            items: ['text', 'json'],
+            acceptReporters: true
+          },
+          
+          response_type_menu: {  
+            items: ['text', 'json'],
             acceptReporters: true
           }
           
@@ -343,7 +372,7 @@
       }
     }
     
-    get_block({URL}) {
+    get_block({URL, RESPONSE_TYPE}) {
       return fetch(String(URL), {
         method:'GET',
         headers: {}})
@@ -351,8 +380,10 @@
         .catch(err => '');
     }
     
-    post_block({URL, BODY, CONTENT_TYPE}) {
+    post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
+      BODY = body_check(String(BODY), CONTENT_TYPE);
+      
       return fetch(String(URL), {
         method:'POST',
         headers: {
@@ -364,7 +395,7 @@
         .catch(err => '');
     }
     
-    put_block({URL, BODY, CONTENT_TYPE}) {
+    put_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       if (String(CONTENT_TYPE).toLowerCase() === 'text') {
         return fetch(String(URL), {
           method:'PUT',
@@ -381,17 +412,6 @@
           method:'PUT',
           headers: {
             'Content-Type': 'application/json'
-          },
-          redirect: 'follow',
-          body: JSON.stringify(BODY)})
-          .then(res => res.text())
-          .catch(err => '');
-      }
-      else if (String(CONTENT_TYPE).toLowerCase() === 'form urlencoded') {
-        return fetch(String(URL), {
-          method:'PUT',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
           },
           redirect: 'follow',
           body: JSON.stringify(BODY)})
