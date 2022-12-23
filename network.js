@@ -7,17 +7,17 @@
   
   const computed = new Map();
 
-  const pingWebSocket = async (uri) => {
+  const ping_web_socket = async (SERVER) => {
     let ws;
     try {
-      ws = new WebSocket(uri);
+      ws = new WebSocket(SERVER);
     } catch (err) {
       return {
         expires: 0,
         value: false
       };
     }
-    let timeoutId;
+    let timeout_id;
     const isUp = await new Promise((resolve) => {
       ws.onopen = () => {
         setTimeout(() => {
@@ -30,32 +30,32 @@
       ws.onerror = () => {
         resolve(false);
       };
-      timeoutId = setTimeout(() => {
+      timeout_id = setTimeout(() => {
         ws.close();
       }, 5000);
     });
     ws.close();
-    clearTimeout(timeoutId);
+    clearTimeout(timeout_id);
     return {
       expires: Date.now() + 60000,
       value: isUp
     };
   };
 
-  const cachedPingWebSocket = (uri) => {
-    const computingEntry = computing.get(uri);
-    if (computingEntry) {
-      return computingEntry.then((entry) => entry.value);
+  const cached_ping_web_socket = (SERVER) => {
+    const computing_entry = computing.get(SERVER);
+    if (computing_entry) {
+      return computing_entry.then((entry) => entry.value);
     }
-    const computedEntry = computed.get(uri);
-    if (computedEntry && Date.now() < computedEntry.expires) {
-      return computedEntry.value;
+    const computed_entry = computed.get(SERVER);
+    if (computed_entry && Date.now() < computed_entry.expires) {
+      return computed_entry.value;
     }
-    const promise = pingWebSocket(uri);
-    computing.set(uri, promise);
+    const promise = ping_web_socket(SERVER);
+    computing.set(SERVER, promise);
     return promise.then((entry) => {
-      computing.delete(uri);
-      computed.set(uri, entry);
+      computing.delete(SERVER);
+      computed.set(SERVER, entry);
       return entry.value;
     });
   };
@@ -497,7 +497,7 @@
     }
     
     ping_block({SERVER}) {
-      return cachedPingWebSocket(String(SERVER));
+      return cached_ping_web_socket(String(SERVER));
     }
  
   }
