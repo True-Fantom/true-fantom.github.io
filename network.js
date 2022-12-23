@@ -352,7 +352,7 @@
     }
     
     post_block({URL, BODY, CONTENT_TYPE}) {
-      CONTENT_TYPE = return content_type_check(String(CONTENT_TYPE));
+      CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
       return fetch(String(URL), {
         method:'POST',
         headers: {
