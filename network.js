@@ -59,9 +59,26 @@
       return entry.value;
     });
   };
-
+  
+  const content_type_check = (CONTENT) => {
+    if (String(CONTENT).toLowerCase() === 'text' || String(CONTENT).toLowerCase() === 'json' || String(CONTENT).toLowerCase() === 'form urlencoded') {
+      return CONTENT;
+    }
+    else {
+      return '';
+    }
+  };
+  
   const fetch_const = (METHOD, CONTENT, RESPONSE) => {
-    return '';
+    return fetch(String(URL), {
+      method: METHOD,
+      headers: {
+        'Content-Type': CONTENT
+      },
+      redirect: 'follow',
+      body: String(BODY)})
+      .then(res => res.text())
+      .catch(err => '');
   };
   
   class Network {
@@ -335,42 +352,16 @@
     }
     
     post_block({URL, BODY, CONTENT_TYPE}) {
-      if (String(CONTENT_TYPE).toLowerCase() === 'text') {
-        return fetch(String(URL), {
-          method:'POST',
-          headers: {
-            'Content-Type': 'text/plain'
-          },
-          redirect: 'follow',
-          body: String(BODY)})
-          .then(res => res.text())
-          .catch(err => '');
-      }
-      else if (String(CONTENT_TYPE).toLowerCase() === 'json') {
-        return fetch(String(URL), {
-          method:'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          redirect: 'follow',
-          body: JSON.stringify(BODY)})
-          .then(res => res.text())
-          .catch(err => '');
-      }
-      else if (String(CONTENT_TYPE).toLowerCase() === 'form urlencoded') {
-        return fetch(String(URL), {
-          method:'POST',
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          },
-          redirect: 'follow',
-          body: JSON.stringify(BODY)})
-          .then(res => res.text())
-          .catch(err => '');
-      }
-      else {
-        return '';
-      }
+      CONTENT_TYPE = return content_type_check(String(CONTENT_TYPE));
+      return fetch(String(URL), {
+        method:'POST',
+        headers: {
+          'Content-Type': 'text/plain'
+        },
+        redirect: 'follow',
+        body: String(BODY)})
+        .then(res => res.text())
+        .catch(err => '');
     }
     
     put_block({URL, BODY, CONTENT_TYPE}) {
