@@ -349,7 +349,7 @@
           },
           
           response_type_menu: {  
-            items: ['text', 'json'],
+            items: ['text', 'json', 'ok', 'url', 'type', 'headers', 'body', 'status', 'status text', 'body used', 'redirected', 'error'],
             acceptReporters: true
           }
           
