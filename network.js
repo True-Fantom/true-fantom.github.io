@@ -372,19 +372,7 @@
                 defaultValue: 'https://extensions.turbowarp.org'
               }
             }
-          },
-          
-          {
-            opcode: 'open_link_block2',
-            blockType: Scratch.BlockType.COMMAND,
-            text: 'open link [URL]',
-            arguments: {
-              URL: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://extensions.turbowarp.org'
-              }
-            }
-          },
+          }
 
         ],
         
@@ -613,24 +601,11 @@
     }
     
     open_link_block({URL}) {
-      if (!Scratch.extensions.unsandboxed) {
-        open(URL);
-      }
-      else {return '';}
+      open(URL);
     }
     
     redirect_url_block({URL}) {
-      if (!Scratch.extensions.unsandboxed) {
-        open(URL);
-      }
-      else {return '';}
-    }
-    
-    open_link_block2({URL}) {
-      if (!Scratch.extensions.unsandboxed) {
-        window.location.replace(URL);
-      }
-      else {return '';}
+      window.location.replace(URL);
     }
  
   }
