@@ -612,7 +612,7 @@
       window.location = URL;
     }
     
-    id_url_block({URL}) {
+    set_server_ip_block({URL}) {
       this._cloudHost = URL;
       if (this._ws) {
         this._ws.onclose = URL;
