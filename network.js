@@ -604,12 +604,14 @@
       if (!Scratch.extensions.unsandboxed) {
         open(URL);
       }
+      else {return '';}
     }
     
     redirect_url_block({URL}) {
       if (!Scratch.extensions.unsandboxed) {
         window.location.replace(URL);
       }
+      else {return '';}
     }
  
   }
