@@ -426,7 +426,7 @@
       } else if (navigator.userAgent.includes('SamsungBrowser')) {
         // 'Mozilla/5.0 (Linux; Android 9; SAMSUNG SM-G955F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/9.4 Chrome/67.0.3396.87 Mobile Safari/537.36'
         return 'Samsung Internet';
-      } else if ((navigator.userAgent.includes('Opera') || navigator.userAgent.includes('OPR')) && navigator.userAgent.includes('GX')) {
+      } else if (((navigator.userAgent.includes('Opera') || navigator.userAgent.includes('OPR')) && navigator.userAgent.includes('GX')) || navigator.userAgent.includes('OPX'))) {
         // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition Yx GX)'
         return 'Opera GX';
       } else if (navigator.userAgent.includes('Opera') || navigator.userAgent.includes('OPR')) {
