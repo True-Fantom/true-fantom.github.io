@@ -605,7 +605,7 @@
     }
     
     redirect_url_block({URL}) {
-      window.location.replace(URL);
+      window.location.href = URL;
     }
  
   }
