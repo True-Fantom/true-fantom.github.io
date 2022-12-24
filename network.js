@@ -343,14 +343,72 @@
         
         menus: {
           
-          content_type_menu: {  
-            items: ['text', 'json'],
-            acceptReporters: true
+          content_type_menu: { 
+            acceptReporters: true,
+            items: [
+              {
+                text: '(1) text',
+                value: '1'
+              },
+              {
+                text: '(2) json',
+                value: '2'
+              }
+            ]
           },
           
           response_type_menu: {  
-            items: ['text', 'json', 'ok', 'url', 'type', 'headers', 'body', 'status', 'status text', 'body used', 'redirected', 'error'],
-            acceptReporters: true
+            acceptReporters: true,
+            items: [
+              {
+                text: '(1) text',
+                value: '1'
+              },
+              {
+                text: '(2) json',
+                value: '2'
+              },
+              {
+                text: '(3) ok',
+                value: '3'
+              },
+              {
+                text: '(4) url',
+                value: '4'
+              },
+              {
+                text: '(5) type',
+                value: '5'
+              },
+              {
+                text: '(6) headers',
+                value: '6'
+              },
+              {
+                text: '(7) body',
+                value: '7'
+              },
+              {
+                text: '(8) status',
+                value: '8'
+              },
+              {
+                text: '(9) status text',
+                value: '9'
+              },
+              {
+                text: '(10) body used',
+                value: '10'
+              },
+              {
+                text: '(11) redirected',
+                value: '11'
+              },
+              {
+                text: '(12) error',
+                value: '12'
+              }
+            ]
           }
           
         }
