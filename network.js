@@ -183,6 +183,15 @@
           '---',
           
           {
+            opcode: 'current_url_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'current url',
+            arguments: {}
+          },
+          
+          '---',
+          
+          {
             opcode: 'network_type_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'network type',
@@ -459,6 +468,10 @@
       } else {
         return '';
       }
+    }
+    
+    current_url_block() {
+      return window.location;
     }
     
     network_type_block() {
