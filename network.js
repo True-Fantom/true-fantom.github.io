@@ -609,7 +609,11 @@
     }
     
     redirect_url_block({URL}) {
-      window.location = URL;
+      try {
+        window.open(URL, '_self');
+      } catch (err) {
+        return '';
+      }
     }
  
   }
