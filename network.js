@@ -61,8 +61,8 @@
   };
   
   const content_type_check = (CONTENT_TYPE) => {
-    if (CONTENT_TYPE.toLowerCase() === 'text' || CONTENT_TYPE.toLowerCase() === 'json') {
-      return CONTENT_TYPE.toLowerCase();
+    if (CONTENT_TYPE === '1' || CONTENT_TYPE === '2') {
+      return CONTENT_TYPE;
     }
     else {
       return '';
@@ -70,8 +70,8 @@
   };
   
   const response_type_check = (RESPONSE_TYPE) => {
-    if (RESPONSE_TYPE.toLowerCase() === 'text' || RESPONSE_TYPE.toLowerCase() === 'json') {
-      return RESPONSE_TYPE.toLowerCase();
+    if (RESPONSE_TYPE === '1' || RESPONSE_TYPE === '2' || RESPONSE_TYPE === '3' || RESPONSE_TYPE === '4' || RESPONSE_TYPE === '5' || RESPONSE_TYPE === '6' || RESPONSE_TYPE === '7' || RESPONSE_TYPE === '8' || RESPONSE_TYPE === '9' || RESPONSE_TYPE === '10' || RESPONSE_TYPE === '11' || RESPONSE_TYPE === '12') {
+      return RESPONSE_TYPE;
     }
     else {
       return '';
@@ -79,10 +79,10 @@
   };
   
   const body_check = (BODY, CONTENT_TYPE) => {
-    if (CONTENT_TYPE === 'text') {
+    if (CONTENT_TYPE === '1') {
       return BODY;
     }
-    else if (CONTENT_TYPE === 'json') {
+    else if (CONTENT_TYPE === '2') {
       return JSON.stringify(BODY);
     }
     else {
@@ -92,7 +92,7 @@
   
   const fetch_url = (URL, BODY, CONTENT_TYPE, RESPONSE_TYPE, METHOD) => {
     if (METHOD === 'GET' || METHOD === 'DELETE') {
-      if (RESPONSE_TYPE === 'text') {
+      if (RESPONSE_TYPE === '1') {
         return fetch(URL, {
         method: METHOD,
         headers: {},
@@ -100,7 +100,7 @@
         .then(res => res.text())
         .catch(err => '');
       }
-      else if (RESPONSE_TYPE === 'json') {
+      else if (RESPONSE_TYPE === '2') {
         return fetch(URL, {
         method: METHOD,
         headers: {},
@@ -114,7 +114,7 @@
     }
     else {  
       if (CONTENT_TYPE !== '') {
-        if (RESPONSE_TYPE === 'text') {
+        if (RESPONSE_TYPE === '1') {
           return fetch(URL, {
           method: METHOD,
           headers: {
@@ -125,7 +125,7 @@
           .then(res => res.text())
           .catch(err => '');
         }
-        else if (RESPONSE_TYPE === 'json') {
+        else if (RESPONSE_TYPE === '2') {
           return fetch(URL, {
           method: METHOD,
           headers: {
