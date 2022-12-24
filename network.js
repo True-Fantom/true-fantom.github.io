@@ -471,7 +471,7 @@
     }
     
     current_url_block() {
-      return window.location.href;
+      return document.URL;
     }
     
     network_type_block() {
