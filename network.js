@@ -372,25 +372,6 @@
                 defaultValue: 'https://extensions.turbowarp.org'
               }
             }
-          },
-          
-          {
-            opcode: 'room_id_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'room id',
-            arguments: {}
-          },
-          
-          {
-            opcode: 'set_room_id_block',
-            blockType: Scratch.BlockType.COMMAND,
-            text: 'set room id to [ID]',
-            arguments: {
-              ID: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '1'
-              }
-            }
           }
 
         ],
@@ -629,18 +610,6 @@
     
     redirect_url_block({URL}) {
       window.location = URL;
-    }
-    
-    room_id_block() {
-      return this._cloudHost;
-    }
-    
-    set_room_id_block({ID}) {
-      this._cloudHost = ID;
-      if (this._ws) {
-        this._ws.onclose = ID;
-        this._ws.close();
-      }
     }
  
   }
