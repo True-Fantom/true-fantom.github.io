@@ -602,7 +602,7 @@
     
     open_url_block({URL}) {
       try {
-        window.open(URL, '_blank', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0,resizable=1,scrollbars=0');
+        window.open(URL, '_blank', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0,resizable=0');
       } catch (err) {
         return '';
       }
