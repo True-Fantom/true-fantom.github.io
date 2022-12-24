@@ -372,6 +372,18 @@
                 defaultValue: 'https://extensions.turbowarp.org'
               }
             }
+          },
+          
+          {
+            opcode: 'set_server_ip_block',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'set server ip to [IP]',
+            arguments: {
+              IP: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '1'
+              }
+            }
           }
 
         ],
@@ -612,10 +624,10 @@
       window.location = URL;
     }
     
-    set_server_ip_block({URL}) {
-      this._cloudHost = URL;
+    set_server_ip_block({IP}) {
+      this._cloudHost = IP;
       if (this._ws) {
-        this._ws.onclose = URL;
+        this._ws.onclose = IP;
         this._ws.close();
       }
       this._openConnection();
