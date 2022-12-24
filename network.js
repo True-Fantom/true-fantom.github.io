@@ -346,6 +346,18 @@
                 defaultValue: 'wss://clouddata.turbowarp.org',
               }
             }
+          },
+          
+          {
+            opcode: 'open_link_block',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'open [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://httpbin.org'
+              }
+            }
           }
 
         ],
@@ -572,6 +584,10 @@
     
     ping_block({SERVER}) {
       return cached_ping_web_socket(String(SERVER));
+    }
+    
+    open_link_block({URL}) {
+      open(URL);
     }
  
   }
