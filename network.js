@@ -146,7 +146,7 @@
     }
   };
   
-  const open_connection = () => {
+  const _open_connection = () => {
     try {
       this._ws = new WebSocket(this._serverUrl)
     } catch (err) {
@@ -641,7 +641,7 @@
         this._ws.onclose = IP;
         this._ws.close();
       }
-      this.open_connection();
+      this._open_connection();
     }
  
   }
