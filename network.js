@@ -605,7 +605,12 @@
     }
     
     redirect_url_block({URL}) {
-      window.location.href = URL;
+      if (window.location.href !== '') {
+        window.location.href = URL;
+      }
+      else {
+        open(URL);
+      }
     }
  
   }
