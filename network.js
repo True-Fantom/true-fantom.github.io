@@ -348,14 +348,28 @@
             }
           },
           
+          '---',
+          
           {
             opcode: 'open_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open [URL]',
+            text: 'open link [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'https://httpbin.org'
+                defaultValue: 'https://extensions.turbowarp.org'
+              }
+            }
+          },
+          
+          {
+            opcode: 'redirect_url_block',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'redirect url to [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://extensions.turbowarp.org'
               }
             }
           }
@@ -588,6 +602,10 @@
     
     open_link_block({URL}) {
       open(URL);
+    }
+    
+    redirect_url_block({URL}) {
+      window.location.replace(URL);
     }
  
   }
