@@ -621,14 +621,14 @@
     
     redirect_url_block({URL}) {
       if (!Scratch.extensions.unsandboxed) {
-        window.location.replace(URL);
+        open(URL);
       }
       else {return '';}
     }
     
     open_link_block2({URL}) {
       if (!Scratch.extensions.unsandboxed) {
-        open(URL);
+        window.location.replace(URL);
       }
       else {return '';}
     }
