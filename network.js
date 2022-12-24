@@ -444,6 +444,9 @@
       } else if (navigator.userAgent.includes('YaBrowser') || navigator.userAgent.includes('YaSearchBrowser')) {
         // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.5.715 Yowser/2.5 Safari/537.36'
         return 'Yandex';
+      } else if (navigator.userAgent.includes('Miui')) {
+        // 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/534.24 XiaoMi/MiuiBrowser/13.19.2-gn'
+        return 'Mi Browser';
       } else if (navigator.userAgent.includes('UBrowser')) {
         // 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 UBrowser/6.0.1308.1016 Safari/537.36'
         return 'UC Browser';
