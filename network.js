@@ -375,11 +375,18 @@
           },
           
           {
-            opcode: 'set_server_ip_block',
+            opcode: 'room_id_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'room id',
+            arguments: {}
+          },
+          
+          {
+            opcode: 'set_room_id_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set server ip to [IP]',
+            text: 'set room id to [ID]',
             arguments: {
-              IP: {
+              ID: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '1'
               }
@@ -624,10 +631,14 @@
       window.location = URL;
     }
     
-    set_server_ip_block({IP}) {
-      this._cloudHost = IP;
+    room_id_block() {
+      return this._cloudHost;
+    }
+    
+    set_room_id_block({ID}) {
+      this._cloudHost = ID;
       if (this._ws) {
-        this._ws.onclose = IP;
+        this._ws.onclose = ID;
         this._ws.close();
       }
     }
