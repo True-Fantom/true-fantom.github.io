@@ -601,11 +601,15 @@
     }
     
     open_link_block({URL}) {
-      open(URL);
+      if (!Scratch.extensions.unsandboxed) {
+        open(URL);
+      }
     }
     
     redirect_url_block({URL}) {
-      window.location.replace(URL);
+      if (!Scratch.extensions.unsandboxed) {
+        window.location.replace(URL);
+      }
     }
  
   }
