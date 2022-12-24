@@ -146,6 +146,17 @@
     }
   };
   
+  const open_connection () => {
+    try {
+      this._ws = new WebSocket(this._serverUrl)
+    } catch (err) {
+      return
+    }
+    this._ws.onmessage = this._handleMessage
+    this._ws.onopen = this._handleOpen
+    this._ws.onclose = this._handleClose
+  };
+  
   class Network {
 
     constructor() {}
@@ -630,7 +641,7 @@
         this._ws.onclose = IP;
         this._ws.close();
       }
-      this._openConnection();
+      this.open_connection();
     }
  
   }
