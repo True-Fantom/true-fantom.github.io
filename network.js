@@ -351,9 +351,9 @@
           '---',
           
           {
-            opcode: 'open_link_block',
+            opcode: 'open_url_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open link [URL]',
+            text: 'open url [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -600,7 +600,7 @@
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
     }
     
-    open_link_block({URL}) {
+    open_url_block({URL}) {
       try {
         window.open(URL, '_blank');
       } catch (err) {
