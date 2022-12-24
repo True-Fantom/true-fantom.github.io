@@ -146,7 +146,7 @@
     }
   };
   
-  const open_connection () => {
+  const open_connection = () => {
     try {
       this._ws = new WebSocket(this._serverUrl)
     } catch (err) {
