@@ -509,7 +509,7 @@
           return navigator.connection.type;
         }
       } catch(err) {
-        return ''
+        return '';
       }
     }
     
@@ -522,7 +522,7 @@
           return navigator.connection.effectiveType;
         }
       } catch(err) {
-        return ''
+        return '';
       }
     }
     
@@ -535,7 +535,7 @@
           return navigator.connection.downlink;
         }
       } catch(err) {
-        return ''
+        return '';
       }
     }
     
@@ -548,7 +548,7 @@
           return navigator.connection.downlinkMax;
         }
       } catch(err) {
-        return ''
+        return '';
       }
     }
     
@@ -561,7 +561,7 @@
           return navigator.connection.rtt;
         }
       } catch(err) {
-        return ''
+        return '';
       }
     }
     
@@ -601,11 +601,24 @@
     }
     
     open_link_block({URL}) {
-      open(URL);
+      try {
+        window.open(URL, '_blank');
+      } catch (err) {
+        return '';
+      }
     }
     
     redirect_url_block({URL}) {
-      document.location.href = URL;
+      window.location = URL;
+    }
+    
+    id_url_block({URL}) {
+      this._cloudHost = URL;
+      if (this._ws) {
+        this._ws.onclose = URL;
+        this._ws.close();
+      }
+      this._openConnection();
     }
  
   }
