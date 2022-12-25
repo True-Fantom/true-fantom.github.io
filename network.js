@@ -351,9 +351,9 @@
           '---',
           
           {
-            opcode: 'open_url_block',
+            opcode: 'open_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open url [URL]',
+            text: 'open [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -363,9 +363,9 @@
           },
           
           {
-            opcode: 'redirect_url_block',
+            opcode: 'redirect_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'redirect url to [URL]',
+            text: 'redirect to [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -600,7 +600,7 @@
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
     }
     
-    open_url_block({URL}) {
+    open_link_block({URL}) {
       try {
         window.open(URL, '_blank', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0,resizable=0');
       } catch (err) {
@@ -608,7 +608,7 @@
       }
     }
     
-    redirect_url_block({URL}) {
+    redirect_link_block({URL}) {
       try {
         window.open(URL, '_self');
       } catch (err) {
