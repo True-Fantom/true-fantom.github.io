@@ -20,49 +20,49 @@
         blocks: [
           
           {
-            opcode: 'q1_block',
+            opcode: 'a1_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[]',
             arguments: {}
           },
           
           {
-            opcode: 'q2_block',
+            opcode: 'a2_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[]',
             arguments: {}
           },
           
           {
-            opcode: 'q3_block',
+            opcode: 'a3_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[]',
             arguments: {}
           },
           
           {
-            opcode: 'q4_block',
+            opcode: 'a4_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[]',
             arguments: {}
           },
           
           {
-            opcode: 'q5_block',
+            opcode: 'a5_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[]',
             arguments: {}
           },
           
           {
-            opcode: 'q6_block',
+            opcode: 'a6_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[]',
             arguments: {}
           },
           
           {
-            opcode: 'string_block',
+            opcode: 'a7_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[STRING]',
             arguments: {
@@ -70,75 +70,41 @@
                 type: Scratch.ArgumentType.STRING,
               }
             }
-          },
-          
-          {
-            opcode: 'accept_reporters_true_menu_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[accept_reporters_true_menu]',
-            arguments: {
-              accept_reporters_true_menu: {
-                type: Scratch.ArgumentType.STRING,  
-                menu: 'accept_reporters_true_menu'
-              }
-            }
-          },
-          
-          {
-            opcode: 'accept_reporters_false_menu_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[accept_reporters_false_menu]',
-            arguments: {
-              accept_reporters_false_menu: {
-                type: Scratch.ArgumentType.STRING,  
-                menu: 'accept_reporters_false_menu'
-              }
-            }
           }
           
         ],
         
         menus: {
-           
-          accept_reporters_true_menu: {
-            items: [''],
-            acceptReporters: true
-          },
-          
-          accept_reporters_false_menu: {
-            items: [''],
-            acceptReporters: false
-          }
           
         }
       }
     } 
     
-    q1_block() {
+    a1_block() {
       return 'type: ' + navigator.connection.type;
     }
     
-    q2_block() {
+    a2_block() {
       return 'downlink: ' + navigator.connection.downlink + ' Mb/s';
     }
     
-    q3_block() {
+    a3_block() {
       return 'rtt: ' + navigator.connection.rtt + ' ms';
     }
     
-    q4_block() {
+    a4_block() {
       return 'downlinkMax: ' + navigator.connection.downlinkMax + ' Mb/s';
     }
     
-    q5_block() {
+    a5_block() {
       return 'effectiveType: ' + navigator.connection.effectiveType;
     }
     
-    q6_block() {
+    a6_block() {
       return 'saveData: ' + navigator.connection.saveData;
     }
     
-    string_block({STRING}) {
+    a7_block({STRING}) {
       if (Math.abs(STRING) < 1.0) {
         var e = parseInt(STRING.toString().split('e-')[1]);
         if (e) {
@@ -154,14 +120,6 @@
         }
       }
       return STRING;
-    }
-    
-    accept_reporters_true_menu_block({accept_reporters_true_menu}) {
-      return '';
-    }
-    
-    accept_reporters_false_menu_block({accept_reporters_false_menu}) {
-      return '';
     }
     
   }
