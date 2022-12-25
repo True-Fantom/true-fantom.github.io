@@ -10,7 +10,7 @@
     getInfo() {
       return {
 
-        id: 'Fantom',
+        id: 'fantom',
         name: 'Fantøm',
         
         color1: '#404040',
