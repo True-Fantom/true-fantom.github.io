@@ -110,7 +110,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.redirected)
+        .then(res => res.ok)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 4) {
@@ -118,7 +118,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
+        .then(res => res.url)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 5) {
@@ -126,7 +126,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
+        .then(res => res.type)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 6) {
@@ -134,7 +134,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
+        .then(res => res.headers)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 7) {
@@ -142,7 +142,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
+        .then(res => res.body)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 8) {
@@ -150,7 +150,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
+        .then(res => res.status)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 9) {
@@ -158,7 +158,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
+        .then(res => res.statusText)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 10) {
@@ -166,7 +166,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
+        .then(res => res.bodyUsed)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 11) {
@@ -174,7 +174,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
+        .then(res => res.redirected)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 12) {
@@ -182,8 +182,8 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.json())
-        .catch(err => '');
+        .then(res => res.error())
+        .catch(err => 'w');
       }
     }
     else {  
