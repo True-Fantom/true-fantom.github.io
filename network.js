@@ -106,12 +106,12 @@
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 3) {
-        return fetch(URL, {
+        fetch(URL, {
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.ok)
-        .catch(err => '');
+        .then(res => {return res.ok})
+        .catch(err => {return ''});
       }
       else if (RESPONSE_TYPE === 4) {
         return fetch(URL, {
