@@ -351,6 +351,18 @@
           '---',
           
           {
+            opcode: 'url_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is url [URL] ?',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'wss://clouddata.turbowarp.org',
+              }
+            }
+          },
+          
+          {
             opcode: 'ping_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is cloud data server up [SERVER] ?',
@@ -709,6 +721,11 @@
       } catch(err) {
         return '';
       }
+    }
+    
+    url_block({URL}) {
+      var url = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
+      return url.test(URL);
     }
     
     ping_block({SERVER}) {
