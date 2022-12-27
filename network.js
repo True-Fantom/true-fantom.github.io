@@ -105,6 +105,86 @@
         .then(res => res.json())
         .catch(err => '');
       }
+      else if (RESPONSE_TYPE === 3) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.ok)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 4) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 5) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 6) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 7) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 8) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 9) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 10) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 11) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 12) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {},
+        redirect: 'follow'})
+        .then(res => res.json())
+        .catch(err => '');
+      }
     }
     else {  
       if (RESPONSE_TYPE === 1) {
