@@ -736,8 +736,8 @@
     }
     
     url_block({URL}) {
-      var url = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
-      return url.test(URL);
+      var url_test = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
+      return url_test.test(URL);
     }
     
     website_block({URL}) {
