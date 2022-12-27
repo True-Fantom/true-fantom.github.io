@@ -524,7 +524,7 @@
                 value: '2'
               },
               {
-                text: '(3) status ok',
+                text: '(3) status ok?',
                 value: '3'
               },
               {
@@ -540,7 +540,7 @@
                 value: '6'
               },
               {
-                text: '(7) redirected',
+                text: '(7) redirected?',
                 value: '7'
               },
               {
@@ -562,7 +562,7 @@
                 value: '2'
               },
               {
-                text: '(3) status ok',
+                text: '(3) status ok?',
                 value: '3'
               },
               {
@@ -578,7 +578,7 @@
                 value: '6'
               },
               {
-                text: '(7) redirected',
+                text: '(7) redirected?',
                 value: '7'
               },
               {
@@ -586,7 +586,7 @@
                 value: '8'
               },
               {
-                text: '(9) body used',
+                text: '(9) body used?',
                 value: '9'
               }
             ]
