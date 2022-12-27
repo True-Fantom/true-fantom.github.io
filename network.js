@@ -69,6 +69,15 @@
     }
   };
   
+  const only_url_response_type_check = (RESPONSE_TYPE) => {
+    if (RESPONSE_TYPE === 1 || RESPONSE_TYPE === 2 || RESPONSE_TYPE === 3 || RESPONSE_TYPE === 4 || RESPONSE_TYPE === 5 || RESPONSE_TYPE === 6 || RESPONSE_TYPE === 7 || RESPONSE_TYPE === 8) {
+      return RESPONSE_TYPE;
+    }
+    else {
+      return 8;
+    }
+  };
+  
   const response_type_check = (RESPONSE_TYPE) => {
     if (RESPONSE_TYPE === 1 || RESPONSE_TYPE === 2 || RESPONSE_TYPE === 3 || RESPONSE_TYPE === 4 || RESPONSE_TYPE === 5 || RESPONSE_TYPE === 6 || RESPONSE_TYPE === 7 || RESPONSE_TYPE === 8 || RESPONSE_TYPE === 9 || RESPONSE_TYPE === 10 || RESPONSE_TYPE === 11) {
       return RESPONSE_TYPE;
@@ -79,11 +88,11 @@
   };
   
   const body_check = (BODY, CONTENT_TYPE) => {
-    if (CONTENT_TYPE === 1) {
-      return BODY;
-    }
-    else if (CONTENT_TYPE === 2) {
+    if (CONTENT_TYPE === 2) {
       return JSON.stringify(BODY);
+    }
+    else {
+      return BODY;
     }
   };
   
@@ -118,7 +127,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.url)
+        .then(res => res.status)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 5) {
@@ -126,7 +135,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.type)
+        .then(res => res.statusText)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 6) {
@@ -134,7 +143,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.headers)
+        .then(res => res.type)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 7) {
@@ -142,7 +151,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.body)
+        .then(res => res.redirected)
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 8) {
@@ -150,31 +159,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.status)
-        .catch(err => '');
-      }
-      else if (RESPONSE_TYPE === 9) {
-        return fetch(URL, {
-        method: METHOD,
-        headers: {},
-        redirect: 'follow'})
-        .then(res => res.statusText)
-        .catch(err => '');
-      }
-      else if (RESPONSE_TYPE === 10) {
-        return fetch(URL, {
-        method: METHOD,
-        headers: {},
-        redirect: 'follow'})
-        .then(res => res.bodyUsed)
-        .catch(err => '');
-      }
-      else if (RESPONSE_TYPE === 11) {
-        return fetch(URL, {
-        method: METHOD,
-        headers: {},
-        redirect: 'follow'})
-        .then(res => res.redirected)
+        .then(res => res.url)
         .catch(err => '');
       }
     }
@@ -199,6 +184,105 @@
         redirect: 'follow',
         body: BODY})
         .then(res => res.json())
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 3) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.ok)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 4) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.status)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 5) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.statusText)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 6) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.type)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 7) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.redirected)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 8) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.url)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 9) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.bodyUsed)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 10) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.body)
+        .catch(err => '');
+      }
+      else if (RESPONSE_TYPE === 11) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.headers)
         .catch(err => '');
       }
     }
@@ -313,7 +397,7 @@
               },
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'response_type_menu'
+                menu: 'only_url_response_type_menu'
               }
             }
           },
@@ -329,7 +413,7 @@
               },
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'response_type_menu'
+                menu: 'only_url_response_type_menu'
               }
             }
           },
@@ -450,6 +534,44 @@
             ]
           },
           
+          only_url_response_type_menu: {  
+            acceptReporters: true,
+            items: [
+              {
+                text: '(1) text',
+                value: '1'
+              },
+              {
+                text: '(2) json',
+                value: '2'
+              },
+              {
+                text: '(3) status ok',
+                value: '3'
+              },
+              {
+                text: '(4) status',
+                value: '4'
+              },
+              {
+                text: '(5) status text',
+                value: '5'
+              },
+              {
+                text: '(6) type',
+                value: '6'
+              },
+              {
+                text: '(7) redirected',
+                value: '7'
+              },
+              {
+                text: '(8) url',
+                value: '8'
+              }
+            ]
+          },
+          
           response_type_menu: {  
             acceptReporters: true,
             items: [
@@ -462,39 +584,39 @@
                 value: '2'
               },
               {
-                text: '(3) ok',
+                text: '(3) status ok',
                 value: '3'
               },
               {
-                text: '(4) url',
+                text: '(4) status',
                 value: '4'
               },
               {
-                text: '(5) type',
+                text: '(5) status text',
                 value: '5'
               },
               {
-                text: '(6) headers',
+                text: '(6) type',
                 value: '6'
               },
               {
-                text: '(7) body',
+                text: '(7) redirected',
                 value: '7'
               },
               {
-                text: '(8) status',
+                text: '(8) url',
                 value: '8'
               },
               {
-                text: '(9) status text',
+                text: '(9) body used',
                 value: '9'
               },
               {
-                text: '(10) body used',
+                text: '(10) body',
                 value: '10'
               },
               {
-                text: '(11) redirected',
+                text: '(11) headers',
                 value: '11'
               }
             ]
@@ -624,12 +746,12 @@
     }
     
     get_block({URL, RESPONSE_TYPE}) {
-      RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
+      RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
       return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
     }
     
     delete_block({URL, RESPONSE_TYPE}) {
-      RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
+      RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
       return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE');
     }
     
