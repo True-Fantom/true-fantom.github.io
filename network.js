@@ -79,11 +79,11 @@
   };
   
   const response_type_check = (RESPONSE_TYPE) => {
-    if (RESPONSE_TYPE === 1 || RESPONSE_TYPE === 2 || RESPONSE_TYPE === 3 || RESPONSE_TYPE === 4 || RESPONSE_TYPE === 5 || RESPONSE_TYPE === 6 || RESPONSE_TYPE === 7 || RESPONSE_TYPE === 8 || RESPONSE_TYPE === 9 || RESPONSE_TYPE === 10 || RESPONSE_TYPE === 11) {
+    if (RESPONSE_TYPE === 1 || RESPONSE_TYPE === 2 || RESPONSE_TYPE === 3 || RESPONSE_TYPE === 4 || RESPONSE_TYPE === 5 || RESPONSE_TYPE === 6 || RESPONSE_TYPE === 7 || RESPONSE_TYPE === 8 || RESPONSE_TYPE === 9) {
       return RESPONSE_TYPE;
     }
     else {
-      return 11;
+      return 9;
     }
   };
   
@@ -261,28 +261,6 @@
         redirect: 'follow',
         body: BODY})
         .then(res => res.bodyUsed)
-        .catch(err => '');
-      }
-      else if (RESPONSE_TYPE === 10) {
-        return fetch(URL, {
-        method: METHOD,
-        headers: {
-          'Content-Type': CONTENT_TYPE
-        },
-        redirect: 'follow',
-        body: BODY})
-        .then(res => res.body)
-        .catch(err => '');
-      }
-      else if (RESPONSE_TYPE === 11) {
-        return fetch(URL, {
-        method: METHOD,
-        headers: {
-          'Content-Type': CONTENT_TYPE
-        },
-        redirect: 'follow',
-        body: BODY})
-        .then(res => res.headers)
         .catch(err => '');
       }
     }
@@ -610,14 +588,6 @@
               {
                 text: '(9) body used',
                 value: '9'
-              },
-              {
-                text: '(10) body',
-                value: '10'
-              },
-              {
-                text: '(11) headers',
-                value: '11'
               }
             ]
           }
