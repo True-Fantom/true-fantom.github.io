@@ -735,6 +735,20 @@
       }
     }
     
+    url_block({URL}) {
+      var url_test = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
+      return url_test.test(URL);
+    }
+    
+    website_block({URL}) {
+      return fetch(URL, {
+      method: 'GET',
+      headers: {},
+      redirect: 'follow'})
+      .then(res => res.ok)
+      .catch(err => false);
+    }
+    
     ping_block({SERVER}) {
       return cached_ping_web_socket(String(SERVER));
     }
