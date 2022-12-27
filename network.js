@@ -61,38 +61,35 @@
   };
   
   const content_type_check = (CONTENT_TYPE) => {
-    if (CONTENT_TYPE === '1' || CONTENT_TYPE === '2') {
+    if (CONTENT_TYPE === 1 || CONTENT_TYPE === 2) {
       return CONTENT_TYPE;
     }
     else {
-      return '';
+      return 2;
     }
   };
   
   const response_type_check = (RESPONSE_TYPE) => {
-    if (RESPONSE_TYPE === '1' || RESPONSE_TYPE === '2' || RESPONSE_TYPE === '3' || RESPONSE_TYPE === '4' || RESPONSE_TYPE === '5' || RESPONSE_TYPE === '6' || RESPONSE_TYPE === '7' || RESPONSE_TYPE === '8' || RESPONSE_TYPE === '9' || RESPONSE_TYPE === '10' || RESPONSE_TYPE === '11' || RESPONSE_TYPE === '12') {
+    if (RESPONSE_TYPE === 1 || RESPONSE_TYPE === 2 || RESPONSE_TYPE === 3 || RESPONSE_TYPE === 4 || RESPONSE_TYPE === 5 || RESPONSE_TYPE === 6 || RESPONSE_TYPE === 7 || RESPONSE_TYPE === 8 || RESPONSE_TYPE === 9 || RESPONSE_TYPE === 10 || RESPONSE_TYPE === 11 || RESPONSE_TYPE === 12) {
       return RESPONSE_TYPE;
     }
     else {
-      return '';
+      return 12;
     }
   };
   
   const body_check = (BODY, CONTENT_TYPE) => {
-    if (CONTENT_TYPE === '1') {
+    if (CONTENT_TYPE === 1) {
       return BODY;
     }
-    else if (CONTENT_TYPE === '2') {
+    else if (CONTENT_TYPE === 2) {
       return JSON.stringify(BODY);
-    }
-    else {
-      return '';
     }
   };
   
   const fetch_url = (URL, BODY, CONTENT_TYPE, RESPONSE_TYPE, METHOD) => {
     if (METHOD === 'GET' || METHOD === 'DELETE') {
-      if (RESPONSE_TYPE === '1') {
+      if (RESPONSE_TYPE === 1) {
         return fetch(URL, {
         method: METHOD,
         headers: {},
@@ -100,7 +97,7 @@
         .then(res => res.text())
         .catch(err => '');
       }
-      else if (RESPONSE_TYPE === '2') {
+      else if (RESPONSE_TYPE === 2) {
         return fetch(URL, {
         method: METHOD,
         headers: {},
@@ -108,40 +105,29 @@
         .then(res => res.json())
         .catch(err => '');
       }
-      else {
-        return '';
-      }
     }
     else {  
-      if (CONTENT_TYPE !== '') {
-        if (RESPONSE_TYPE === '1') {
-          return fetch(URL, {
-          method: METHOD,
-          headers: {
-            'Content-Type': CONTENT_TYPE
-          },
-          redirect: 'follow',
-          body: BODY})
-          .then(res => res.text())
-          .catch(err => '');
-        }
-        else if (RESPONSE_TYPE === '2') {
-          return fetch(URL, {
-          method: METHOD,
-          headers: {
-            'Content-Type': CONTENT_TYPE
-          },
-          redirect: 'follow',
-          body: BODY})
-          .then(res => res.json())
-          .catch(err => '');
-        }
-        else {
-          return '';
-        }
+      if (RESPONSE_TYPE === 1) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.text())
+        .catch(err => '');
       }
-      else {
-        return '';
+      else if (RESPONSE_TYPE === 2) {
+        return fetch(URL, {
+        method: METHOD,
+        headers: {
+          'Content-Type': CONTENT_TYPE
+        },
+        redirect: 'follow',
+        body: BODY})
+        .then(res => res.json())
+        .catch(err => '');
       }
     }
   };
@@ -383,11 +369,11 @@
             items: [
               {
                 text: '(1) text',
-                value: '1'
+                value: 1
               },
               {
                 text: '(2) json',
-                value: '2'
+                value: 2
               }
             ]
           },
@@ -397,51 +383,51 @@
             items: [
               {
                 text: '(1) text',
-                value: '1'
+                value: 1
               },
               {
                 text: '(2) json',
-                value: '2'
+                value: 2
               },
               {
                 text: '(3) ok',
-                value: '3'
+                value: 3
               },
               {
                 text: '(4) url',
-                value: '4'
+                value: 4
               },
               {
                 text: '(5) type',
-                value: '5'
+                value: 5
               },
               {
                 text: '(6) headers',
-                value: '6'
+                value: 6
               },
               {
                 text: '(7) body',
-                value: '7'
+                value: 7
               },
               {
                 text: '(8) status',
-                value: '8'
+                value: 8
               },
               {
                 text: '(9) status text',
-                value: '9'
+                value: 9
               },
               {
                 text: '(10) body used',
-                value: '10'
+                value: 10
               },
               {
                 text: '(11) redirected',
-                value: '11'
+                value: 11
               },
               {
                 text: '(12) error',
-                value: '12'
+                value: 12
               }
             ]
           }
@@ -570,32 +556,32 @@
     }
     
     get_block({URL, RESPONSE_TYPE}) {
-      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
     }
     
     delete_block({URL, RESPONSE_TYPE}) {
-      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE');
     }
     
     post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
-      CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
-      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
+      RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
     }
     
     put_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
-      CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
-      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
+      RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT');
     }
     
     patch_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
-      CONTENT_TYPE = content_type_check(String(CONTENT_TYPE));
-      RESPONSE_TYPE = response_type_check(String(RESPONSE_TYPE));
+      CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
+      RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
     }
