@@ -70,11 +70,11 @@
   };
   
   const response_type_check = (RESPONSE_TYPE) => {
-    if (RESPONSE_TYPE === 1 || RESPONSE_TYPE === 2 || RESPONSE_TYPE === 3 || RESPONSE_TYPE === 4 || RESPONSE_TYPE === 5 || RESPONSE_TYPE === 6 || RESPONSE_TYPE === 7 || RESPONSE_TYPE === 8 || RESPONSE_TYPE === 9 || RESPONSE_TYPE === 10 || RESPONSE_TYPE === 11 || RESPONSE_TYPE === 12) {
+    if (RESPONSE_TYPE === 1 || RESPONSE_TYPE === 2 || RESPONSE_TYPE === 3 || RESPONSE_TYPE === 4 || RESPONSE_TYPE === 5 || RESPONSE_TYPE === 6 || RESPONSE_TYPE === 7 || RESPONSE_TYPE === 8 || RESPONSE_TYPE === 9 || RESPONSE_TYPE === 10 || RESPONSE_TYPE === 11) {
       return RESPONSE_TYPE;
     }
     else {
-      return 12;
+      return 11;
     }
   };
   
@@ -175,14 +175,6 @@
         headers: {},
         redirect: 'follow'})
         .then(res => res.redirected)
-        .catch(err => '');
-      }
-      else if (RESPONSE_TYPE === 12) {
-        return fetch(URL, {
-        method: METHOD,
-        headers: {},
-        redirect: 'follow'})
-        .then(res => res.error())
         .catch(err => '');
       }
     }
@@ -504,10 +496,6 @@
               {
                 text: '(11) redirected',
                 value: '11'
-              },
-              {
-                text: '(12) error',
-                value: '12'
               }
             ]
           }
