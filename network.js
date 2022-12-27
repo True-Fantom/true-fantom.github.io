@@ -159,7 +159,7 @@
         headers: {},
         redirect: 'follow'})
         .then(res => res.statusText)
-        .catch(err => '');
+        .catch(err => 'w');
       }
       else if (RESPONSE_TYPE === 10) {
         return fetch(URL, {
@@ -183,7 +183,7 @@
         headers: {},
         redirect: 'follow'})
         .then(res => res.error())
-        .catch(err => 'w');
+        .catch(err => '');
       }
     }
     else {  
