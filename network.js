@@ -363,6 +363,18 @@
           },
           
           {
+            opcode: 'website_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is website [URL] ?',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'wss://clouddata.turbowarp.org',
+              }
+            }
+          },
+          
+          {
             opcode: 'ping_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is cloud data server up [SERVER] ?',
@@ -728,55 +740,56 @@
       return url.test(URL);
     }
     
+    website_block({URL}) {
+      return fetch(URL, {
+      method: 'GET',
+      headers: {},
+      redirect: 'follow'})
+      .then(res => res.ok)
+      .catch(err => false);
+    }
+    
     ping_block({SERVER}) {
       return cached_ping_web_socket(String(SERVER));
     }
     
     get_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
-      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
+      return String(fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET'));
     }
     
     delete_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
-      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE');
+      return String(fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE'));
     }
     
     post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
+      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST'));
     }
     
     put_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT');
+      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT'));
     }
     
     patch_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
+      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH'));
     }
     
     open_link_block({URL}) {
-      try {
-        window.open(URL, '_blank', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0');
-      } catch (err) {
-        return '';
-      }
+      window.open(URL, '_blank', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0');
     }
     
     redirect_link_block({URL}) {
-      try {
-        window.open(URL, '_self');
-      } catch (err) {
-        return '';
-      }
+      window.open(URL, '_self');
     }
  
   }
