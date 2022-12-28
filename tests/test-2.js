@@ -776,33 +776,33 @@
     
     get_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
-      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
+      return String(fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET'));
     }
     
     delete_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
-      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE');
+      return String(fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE'));
     }
     
     post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
+      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST'));
     }
     
     put_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT');
+      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT'));
     }
     
     patch_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
+      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH'));
     }
     
     open_link_block({URL}) {
