@@ -753,12 +753,21 @@
     }
     
     website_block({URL}) {
-      return fetch(URL, {
-      method: 'GET',
-      headers: {},
-      redirect: 'follow'})
-      .then(res => res.ok)
-      .catch(err => '');
+      try {
+        if (navigator.onLine) {
+          return fetch(URL, {
+          method: 'GET',
+          headers: {},
+          redirect: 'follow'})
+          .then(res => res.ok)
+          .catch(err => false);
+            }
+        else {
+          return '';
+        }
+      } catch(err) {
+        return '';
+      }
     }
     
     ping_block({SERVER}) {
