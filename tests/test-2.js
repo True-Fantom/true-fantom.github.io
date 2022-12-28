@@ -119,7 +119,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.ok)
+        .then(res => String(res.ok))
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 4) {
@@ -151,7 +151,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.redirected)
+        .then(res => String(res.redirected))
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 8) {
@@ -194,7 +194,7 @@
         },
         redirect: 'follow',
         body: BODY})
-        .then(res => res.ok)
+        .then(res => String(res.ok))
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 4) {
@@ -238,7 +238,7 @@
         },
         redirect: 'follow',
         body: BODY})
-        .then(res => res.redirected)
+        .then(res => String(res.redirected))
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 8) {
@@ -260,7 +260,7 @@
         },
         redirect: 'follow',
         body: BODY})
-        .then(res => res.bodyUsed)
+        .then(res => String(res.bodyUsed))
         .catch(err => '');
       }
     }
@@ -776,38 +776,33 @@
     
     get_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
-      var output = fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
-      return String(output);
+      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
     }
     
     delete_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
-      var output = fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE');
-      return String(output);
+      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE');
     }
     
     post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      var output = fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
-      return String(output);
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
     }
     
     put_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      var output = fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT');
-      return String(output);
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT');
     }
     
     patch_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      var output = fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
-      return String(output);
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
     }
     
     open_link_block({URL}) {
