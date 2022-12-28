@@ -365,20 +365,6 @@
           '---',
           
           {
-            opcode: 'ping_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is cloud data server up [SERVER] ?',
-            arguments: {
-              SERVER: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'wss://clouddata.turbowarp.org',
-              }
-            }
-          },
-          
-          '---',
-          
-          {
             opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'get [URL] respond [RESPONSE_TYPE]',
@@ -478,6 +464,20 @@
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type_menu'
+              }
+            }
+          },
+          
+          '---',
+          
+          {
+            opcode: 'ping_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is cloud data server up [SERVER] ?',
+            arguments: {
+              SERVER: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'wss://clouddata.turbowarp.org',
               }
             }
           },
@@ -742,10 +742,6 @@
       return url_test.test(URL);
     }
     
-    ping_block({SERVER}) {
-      return cached_ping_web_socket(String(SERVER));
-    }
-    
     get_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
       return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
@@ -775,6 +771,10 @@
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
+    }
+    
+    ping_block({SERVER}) {
+      return cached_ping_web_socket(String(SERVER));
     }
     
     open_link_block({URL}) {
