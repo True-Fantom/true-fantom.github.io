@@ -60,6 +60,15 @@
     });
   };
   
+  const ping_rtt = async (URL) => {
+    let start = Date.now();
+    try {
+      await fetch(Number(URL));
+    }
+    catch(err) {}
+    return (Date.now() - start);
+  };
+  
   const content_type_check = (CONTENT_TYPE) => {
     if (CONTENT_TYPE === 1 || CONTENT_TYPE === 2) {
       return CONTENT_TYPE;
@@ -757,14 +766,7 @@
     }
     
     ping_rtt_block({URL}) {
-      const ping = async () => {
-        let start = Date.now();
-        try {
-          await fetch(Number(URL));
-        }
-        catch(err) {}
-        return (Date.now() - start);
-      }
+      return ping_rtt(URL);
     }
     
     get_block({URL, RESPONSE_TYPE}) {
