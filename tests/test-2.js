@@ -746,7 +746,7 @@
       headers: {},
       redirect: 'follow'})
       .then(res => res.ok)
-      .catch(err => false);
+      .catch(err => '');
     }
     
     ping_block({SERVER}) {
