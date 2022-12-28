@@ -60,15 +60,6 @@
     });
   };
   
-  const ping_rtt = async (URL) => {
-    let start = Date.now();
-    try {
-      await fetch(Number(URL));
-    }
-    catch(err) {}
-    return (Date.now() - start);
-  };
-  
   const content_type_check = (CONTENT_TYPE) => {
     if (CONTENT_TYPE === 1 || CONTENT_TYPE === 2) {
       return CONTENT_TYPE;
@@ -374,11 +365,11 @@
           '---',
           
           {
-            opcode: 'ping_rtt_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'rtt of [URL]',
+            opcode: 'ping_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is cloud data server up [SERVER] ?',
             arguments: {
-              URL: {
+              SERVER: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'wss://clouddata.turbowarp.org',
               }
@@ -487,20 +478,6 @@
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type_menu'
-              }
-            }
-          },
-          
-          '---',
-          
-          {
-            opcode: 'ping_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is cloud data server up [SERVER] ?',
-            arguments: {
-              SERVER: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'wss://clouddata.turbowarp.org',
               }
             }
           },
@@ -765,8 +742,8 @@
       return url_test.test(URL);
     }
     
-    ping_rtt_block({URL}) {
-      return ping_rtt(URL);
+    ping_block({SERVER}) {
+      return cached_ping_web_socket(String(SERVER));
     }
     
     get_block({URL, RESPONSE_TYPE}) {
@@ -798,10 +775,6 @@
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
-    }
-    
-    ping_block({SERVER}) {
-      return cached_ping_web_socket(String(SERVER));
     }
     
     open_link_block({URL}) {
