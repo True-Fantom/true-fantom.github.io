@@ -365,6 +365,20 @@
           '---',
           
           {
+            opcode: 'ping_rtt_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'rtt of [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'wss://clouddata.turbowarp.org',
+              }
+            }
+          },
+          
+          '---',
+          
+          {
             opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'get [URL] respond [RESPONSE_TYPE]',
@@ -740,6 +754,17 @@
     url_block({URL}) {
       var url_test = /(^https?:\/\/)?[a-z0-9~_\-\.]+\.[a-z]{2,9}(\/|:|\?[!-~]*)?$/i;
       return url_test.test(URL);
+    }
+    
+    ping_rtt_block({URL}) {
+      const ping = async () => {
+        let start = Date.now();
+        try {
+          await fetch(Number(URL));
+        }
+        catch(err) {}
+        return (Date.now() - start);
+      }
     }
     
     get_block({URL, RESPONSE_TYPE}) {
