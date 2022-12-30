@@ -266,6 +266,15 @@
     }
   };
   
+  const yes_no_check = (YES_OR_NO) => {
+    if (YES_OR_NO === 1) {
+      return 'yes';
+    }
+    else {
+      return 'no';
+    }
+  };
+  
   class Network {
 
     constructor() {}
@@ -511,19 +520,19 @@
               },
               MENUBAR: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                menu: 'yes_no_menu'
               },
               TOOLBAR: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                menu: 'yes_no_menu'
               },
               LOCATION: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                menu: 'yes_no_menu'
               },
               STATUS: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                menu: 'yes_no_menu'
               }
             }
           },
@@ -634,6 +643,20 @@
               {
                 text: '(9) body used?',
                 value: '9'
+              }
+            ]
+          },
+          
+          yes_no_menu: {  
+            acceptReporters: true,
+            items: [
+              {
+                text: '(1) yes',
+                value: '1'
+              },
+              {
+                text: '(2) no',
+                value: '2'
               }
             ]
           }
@@ -811,6 +834,10 @@
     
     open_link_block({URL,WIDTH,HEIGHT,LEFT,TOP,MENUBAR,TOOLBAR,LOCATION,STATUS}) {
       try {
+        MENUBAR = yes_no_check(Number(MENUBAR));
+        TOOLBAR = yes_no_check(Number(TOOLBAR));
+        LOCATION = yes_no_check(Number(LOCATION));
+        STATUS = yes_no_check(Number(STATUS));
         let params = `width=${WIDTH},height=${HEIGHT},left=${LEFT},top=${TOP},menubar=${MENUBAR},toolbar=${TOOLBAR},location=${LOCATION},status=${STATUS}`;
         window.open(URL, '_blank', params);
       } catch (err) {}
