@@ -487,11 +487,43 @@
           {
             opcode: 'open_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open [URL]',
+            text: 'open [URL] width: [WIDTH] height: [HEIGHT] left: [LEFT] top: [TOP] menubar: [MENUBAR] toolbar: [TOOLBAR] location: [LOCATION] status: [STATUS]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://extensions.turbowarp.org'
+              },
+              WIDTH: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '500'
+              },
+              HEIGHT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '500'
+              },
+              LEFT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '0'
+              },
+              TOP: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '0'
+              },
+              MENUBAR: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              TOOLBAR: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              LOCATION: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              STATUS: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
               }
             }
           },
@@ -777,15 +809,16 @@
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
     }
     
-    open_link_block({URL}) {
+    open_link_block({URL,WIDTH,HEIGHT,LEFT,TOP,MENUBAR,TOOLBAR,LOCATION,STATUS}) {
       try {
-        window.open(URL, '_blank', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0');
+        let params = `width=${WIDTH},height=${HEIGHT},left=${LEFT},top=${TOP},menubar=${MENUBAR},toolbar=${TOOLBAR},location=${LOCATION},status=${STATUS}`;
+        window.open(URL, '_blank', params);
       } catch (err) {}
     }
     
     redirect_link_block({URL}) {
       try {
-        window.open(URL, '_self', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0');
+        window.open(URL, '_self');
       } catch (err) {}
     }
  
