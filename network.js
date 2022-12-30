@@ -119,7 +119,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.ok)
+        .then(res => String(res.ok))
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 4) {
@@ -151,7 +151,7 @@
         method: METHOD,
         headers: {},
         redirect: 'follow'})
-        .then(res => res.redirected)
+        .then(res => String(res.redirected))
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 8) {
@@ -194,7 +194,7 @@
         },
         redirect: 'follow',
         body: BODY})
-        .then(res => res.ok)
+        .then(res => String(res.ok))
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 4) {
@@ -238,7 +238,7 @@
         },
         redirect: 'follow',
         body: BODY})
-        .then(res => res.redirected)
+        .then(res => String(res.redirected))
         .catch(err => '');
       }
       else if (RESPONSE_TYPE === 8) {
@@ -260,7 +260,7 @@
         },
         redirect: 'follow',
         body: BODY})
-        .then(res => res.bodyUsed)
+        .then(res => String(res.bodyUsed))
         .catch(err => '');
       }
     }
@@ -362,17 +362,7 @@
             }
           },
           
-          {
-            opcode: 'website_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is website [URL] ?',
-            arguments: {
-              URL: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'wss://clouddata.turbowarp.org',
-              }
-            }
-          },
+          '---',
           
           {
             opcode: 'ping_block',
@@ -621,53 +611,65 @@
     }
 
     connected_to_internet_block() {
-      return navigator.onLine;
+      try {
+        return navigator.onLine;
+      } catch(err) {
+        return '';
+      }
     }
     
     browser_block() {
-      if (navigator.userAgent.includes('Firefox')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0'
-        return 'Firefox';
-      } else if (navigator.userAgent.includes('SamsungBrowser')) {
-        // 'Mozilla/5.0 (Linux; Android 9; SAMSUNG SM-G955F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/9.4 Chrome/67.0.3396.87 Mobile Safari/537.36'
-        return 'Samsung Internet';
-      } else if (((navigator.userAgent.includes('Opera') || navigator.userAgent.includes('OPR')) && navigator.userAgent.includes('GX')) || navigator.userAgent.includes('OPX')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition Yx GX)'
-        return 'Opera GX';
-      } else if (navigator.userAgent.includes('Opera') || navigator.userAgent.includes('OPR')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 OPR/94.0.0.0 (Edition Yx 05)'
-        return 'Opera';
-      } else if (navigator.userAgent.includes('Trident')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; Zoom 3.6.0; rv:11.0) like Gecko'
-        return 'Internet Explorer';
-      } else if (navigator.userAgent.includes('Edge')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299'
-        return 'Edge Legacy';
-      } else if (navigator.userAgent.includes('Edg')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36 Edg/104.0.1293.70'
-        return 'Edge Chromium';
-      } else if (navigator.userAgent.includes('YaBrowser') || navigator.userAgent.includes('YaSearchBrowser')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.5.715 Yowser/2.5 Safari/537.36'
-        return 'Yandex';
-      } else if (navigator.userAgent.includes('Miui')) {
-        // 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/534.24 XiaoMi/MiuiBrowser/13.19.2-gn'
-        return 'Mi Browser';
-      } else if (navigator.userAgent.includes('UBrowser')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 UBrowser/6.0.1308.1016 Safari/537.36'
-        return 'UC Browser';
-      } else if (navigator.userAgent.includes('Chrome')) {
-        // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
-        return 'Chromium';
-      } else if (navigator.userAgent.includes('Safari')) {
-        // 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1'
-        return 'Safari';
-      } else {
+      try {
+        if (navigator.userAgent.includes('Firefox')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0'
+          return 'Firefox';
+        } else if (navigator.userAgent.includes('SamsungBrowser')) {
+          // 'Mozilla/5.0 (Linux; Android 9; SAMSUNG SM-G955F Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/9.4 Chrome/67.0.3396.87 Mobile Safari/537.36'
+          return 'Samsung Internet';
+        } else if (((navigator.userAgent.includes('Opera') || navigator.userAgent.includes('OPR')) && navigator.userAgent.includes('GX')) || navigator.userAgent.includes('OPX')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36 OPR/93.0.0.0 (Edition Yx GX)'
+          return 'Opera GX';
+        } else if (navigator.userAgent.includes('Opera') || navigator.userAgent.includes('OPR')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36 OPR/94.0.0.0 (Edition Yx 05)'
+          return 'Opera';
+        } else if (navigator.userAgent.includes('Trident')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; WOW64; Trident/7.0; .NET4.0C; .NET4.0E; .NET CLR 2.0.50727; .NET CLR 3.0.30729; .NET CLR 3.5.30729; Zoom 3.6.0; rv:11.0) like Gecko'
+          return 'Internet Explorer';
+        } else if (navigator.userAgent.includes('Edge')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 Edge/16.16299'
+          return 'Edge Legacy';
+        } else if (navigator.userAgent.includes('Edg')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36 Edg/104.0.1293.70'
+          return 'Edge Chromium';
+        } else if (navigator.userAgent.includes('YaBrowser') || navigator.userAgent.includes('YaSearchBrowser')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 YaBrowser/22.11.5.715 Yowser/2.5 Safari/537.36'
+          return 'Yandex';
+        } else if (navigator.userAgent.includes('Miui')) {
+          // 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/534.24 (KHTML, like Gecko) Chrome/100.0.4896.127 Safari/534.24 XiaoMi/MiuiBrowser/13.19.2-gn'
+          return 'Mi Browser';
+        } else if (navigator.userAgent.includes('UBrowser')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 UBrowser/6.0.1308.1016 Safari/537.36'
+          return 'UC Browser';
+        } else if (navigator.userAgent.includes('Chrome')) {
+          // 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36'
+          return 'Chromium';
+        } else if (navigator.userAgent.includes('Safari')) {
+          // 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.6 Mobile/15E148 Safari/604.1'
+          return 'Safari';
+        } else {
+          return '';
+        }
+      } catch(err) {
         return '';
       }
     }
     
     current_url_block() {
-      return document.URL;
+      try {
+        return document.URL;
+      } catch(err) {
+        return '';
+      }
     }
     
     network_type_block() {
@@ -740,56 +742,51 @@
       return url_test.test(URL);
     }
     
-    website_block({URL}) {
-      return fetch(URL, {
-      method: 'GET',
-      headers: {},
-      redirect: 'follow'})
-      .then(res => res.ok)
-      .catch(err => false);
-    }
-    
     ping_block({SERVER}) {
       return cached_ping_web_socket(String(SERVER));
     }
     
     get_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
-      return String(fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET'));
+      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'GET');
     }
     
     delete_block({URL, RESPONSE_TYPE}) {
       RESPONSE_TYPE = only_url_response_type_check(Number(RESPONSE_TYPE));
-      return String(fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE'));
+      return fetch_url(String(URL), '', '', RESPONSE_TYPE, 'DELETE');
     }
     
     post_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST'));
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'POST');
     }
     
     put_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT'));
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PUT');
     }
     
     patch_block({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}) {
       CONTENT_TYPE = content_type_check(Number(CONTENT_TYPE));
       RESPONSE_TYPE = response_type_check(Number(RESPONSE_TYPE));
       BODY = body_check(String(BODY), CONTENT_TYPE);
-      return String(fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH'));
+      return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
     }
     
     open_link_block({URL}) {
-      window.open(URL, '_blank', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0');
+      try {
+        window.open(URL, '_blank', 'width=1,height=1,left=0,top=0,menubar=0,toolbar=0,location=0,status=0');
+      } catch (err) {}
     }
     
     redirect_link_block({URL}) {
-      window.open(URL, '_self');
+      try {
+        window.open(URL, '_self');
+      } catch (err) {}
     }
  
   }
