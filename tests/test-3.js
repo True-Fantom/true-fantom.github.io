@@ -67,29 +67,28 @@
     
     a1_block() {
       try {
-        let params = 'menubar=0,toolbar=0,location=0,status=0';
-        window.open('https://extensions.turbowarp.org/', 'namek', params);
+        window.open('https://extensions.turbowarp.org/', '_blank');
       } catch (err) {}
     }
     
     a2_block() {
       try {
         let params = 'menubar=0';
-        window.open('https://extensions.turbowarp.org/', 'name', params);
+        window.open('https://extensions.turbowarp.org/', '_blank', params);
       } catch (err) {}
     }
     
     a3_block() {
       try {
         let params = 'toolbar=0';
-        window.open('https://extensions.turbowarp.org/', 'name', params);
+        window.open('https://extensions.turbowarp.org/', '_blank', params);
       } catch (err) {}
     }
     
     a4_block() {
       try {
         let params = 'location=0';
-        window.open('https://extensions.turbowarp.org/', 'name', params);
+        window.open('https://extensions.turbowarp.org/', '_blank', params);
       } catch (err) {}
     }
     
@@ -102,7 +101,7 @@
     
     a6_block() {
       try {
-        window.open('https://extensions.turbowarp.org/', 'aaaaaaaaaaaaaaaaaaaaaa');
+        window.open('https://extensions.turbowarp.org/', '_blank');
       } catch (err) {}
     }
     
