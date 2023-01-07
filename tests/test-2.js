@@ -262,28 +262,28 @@
       };
     }
 
-    play({ path }, util) {
-      playSound(path, util.target);
+    play({path}) {
+      return "";
     }
 
-    playUntilDone({ path }, util) {
-      return playSound(path, util.target);
+    playUntilDone({path}) {
+      return "";
     }
     
-    save({ path, name }, util) {
-      playSound(path, util.target);
+    save({path, name}) {
+      return "";
     }
     
-    play_file({ path, typee }, util) {
-      playSound(path, util.target);
+    play_file({path, typee}) {
+      return "";
     }
     
-    playUntilDone_file({ path, typee }, util) {
-      playSound(path, util.target);
+    playUntilDone_file({path, typee}) {
+      return "";
     }
     
-    save_file({ path, typee, name }, util) {
-      playSound(path, util.target);
+    save_file({path, typee, name}) {
+      return "";
     }
   }
 
