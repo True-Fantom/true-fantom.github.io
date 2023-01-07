@@ -6,8 +6,8 @@
     getInfo() {
       return {
         // 'sound' would conflict with normal Scratch
-        id: 'notSound',
-        name: 'Sound',
+        id: 'notSoundt',
+        name: 'Soundt',
         blocks: [
           {
             opcode: 'play',
