@@ -558,19 +558,19 @@
               },
               WIDTH: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '500'
+                defaultValue: ''
               },
               HEIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '500'
+                defaultValue: ''
               },
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: ''
               },
               TOP: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: ''
               }
             }
           },
