@@ -267,7 +267,7 @@
   };
   
   const width_or_height_check = (WIDTH_OR_HEIGHT) => {
-    if (!isNaN(WIDTH_OR_HEIGHT) && WIDTH_OR_HEIGHT >= 100) {
+    if ((!isNaN(WIDTH_OR_HEIGHT)) && WIDTH_OR_HEIGHT >= 100) {
       return WIDTH_OR_HEIGHT;
     }
     else {
@@ -276,7 +276,7 @@
   };
   
   const left_or_top_check = (LEFT_OR_TOP) => {
-    if (!isNaN(LEFT_OR_TOP) && LEFT_OR_TOP >= 0) {
+    if ((!isNaN(LEFT_OR_TOP)) && LEFT_OR_TOP >= 0) {
       return LEFT_OR_TOP;
     }
     else {
