@@ -94,14 +94,14 @@
     
     a2_block() {
       try {
-        let params = 'menubar=0';
+        let params = 'titlebar=0';
         window.open('https://extensions.turbowarp.org/', '_blank', params);
       } catch (err) {}
     }
     
     a3_block() {
       try {
-        let params = 'menubar=1';
+        let params = 'titlebar=1';
         window.open('https://extensions.turbowarp.org/', '_blank', params);
       } catch (err) {}
     }
@@ -150,7 +150,7 @@
     
     a0_block() {
       try {
-        let params = 'width=100,height=100,left=0,top=0,menubar=1,toolbar=0,location=1,status=0';
+        let params = 'width=100,height=100,left=0,top=0,titlebar=1,toolbar=0,location=1,status=0';
         window.open('https://extensions.turbowarp.org/', '_blank', params);
       } catch (err) {}
     }
