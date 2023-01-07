@@ -266,8 +266,16 @@
     }
   };
   
+  const window_check = (WINDOW) => {
+    if (!isNaN(WINDOW)) {
+      return WINDOW;
+    else {
+      return '';
+    }
+  };
+  
   const width_check = (WIDTH) => {
-    if ((!isNaN(WIDTH)) && Number(WIDTH) >= 100) {
+    if (Number(WIDTH) >= 100) {
       if (Number(WIDTH) <= window.screen.width) {
         return Number(WIDTH);
       }
@@ -281,7 +289,7 @@
   };
   
   const height_check = (HEIGHT) => {
-    if ((!isNaN(HEIGHT)) && Number(HEIGHT) >= 100) {
+    if (Number(HEIGHT) >= 100) {
       if (Number(HEIGHT) <= window.screen.height) {
         return Number(HEIGHT);
       }
@@ -295,7 +303,7 @@
   };
   
   const left_check = (LEFT) => {
-    if ((!isNaN(LEFT)) && Number(LEFT) >= 0) {
+    if (Number(LEFT) >= 0) {
       if (Number(LEFT) <= window.screen.width) {
         return Number(LEFT);
       }
@@ -309,7 +317,7 @@
   };
   
   const top_check = (TOP) => {
-    if ((!isNaN(TOP)) && Number(TOP) >= 0) {
+    if (Number(TOP) >= 0) {
       if (Number(TOP) <= window.screen.height) {
         return Number(TOP);
       }
@@ -850,11 +858,11 @@
     
     open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
       try {
-        WIDTH = width_check(WIDTH);
-        HEIGHT = height_check(HEIGHT);
-        LEFT = left_check(LEFT);
-        TOP = top_check(TOP);
-        let params = `popup=1,width=${WIDTH},height=${HEIGHT},left=${LEFT},top=${TOP}`;
+        let params = 'popup=1';
+        if (window_check(WIDTH) !== '') {params = params + `,width=${width_check(WIDTH)}`}
+        if (window_check(HEIGHT) !== '') {params = params + `,height=${height_check(HEIGHT)}`}
+        if (window_check(LEFT) !== '') {params = params + `,left=${left_check(LEFT)}`}
+        if (window_check(TOP) !== '') {params = params + `,top=${top_check(TOP)}`}
         window.open(URL, '_blank', params);
       } catch (err) {}
     }
