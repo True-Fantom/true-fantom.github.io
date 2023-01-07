@@ -65,7 +65,7 @@
           {
             opcode: 'playplayUntilDone_file',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'start [typee] sound from [path] until done',
+            text: 'play [typee] sound from [path] until done',
             arguments: {
               path: {
                 type: Scratch.ArgumentType.STRING,
