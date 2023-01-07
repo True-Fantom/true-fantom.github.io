@@ -17,42 +17,42 @@
           
           {
             opcode: 'a1_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.COMMAND,
             text: '',
             arguments: {}
           },
           
           {
             opcode: 'a2_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.COMMAND,
             text: '',
             arguments: {}
           },
           
           {
             opcode: 'a3_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.COMMAND,
             text: '',
             arguments: {}
           },
           
           {
             opcode: 'a4_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.COMMAND,
             text: '',
             arguments: {}
           },
           
           {
             opcode: 'a5_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.COMMAND,
             text: '',
             arguments: {}
           },
           
           {
             opcode: 'a6_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.COMMAND,
             text: '',
             arguments: {}
           }
