@@ -107,6 +107,23 @@
                 defaultValue: 'recording1',
               }
             }
+          },
+          {
+            opcode: 'all_sounds',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'all exist sounds split by [a]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' ',
+              }
+            }
+          },
+          {
+            opcode: 'count_sounds',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'exist sounds count',
+            arguments: {}
           }
         ],
         menus: {
@@ -160,6 +177,14 @@
     }
     
     sound({a}) {
+      return "";
+    }
+    
+    all_sounds({a}) {
+      return "";
+    }
+    
+    count_sounds({a}) {
       return "";
     }
   }
