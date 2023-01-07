@@ -5,7 +5,6 @@
     constructor() {}
     getInfo() {
       return {
-        // 'sound' would conflict with normal Scratch
         id: 'notSoundt',
         name: 'Soundt',
         blocks: [
