@@ -812,10 +812,10 @@
     
     open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
       try {
-        WIDTH = width_or_height_check(Number(WIDTH));
-        HEIGHT = width_or_height_check(Number(HEIGHT));
-        LEFT = left_or_top_check(Number(LEFT));
-        TOP = left_or_top_check(Number(TOP));
+        WIDTH = width_or_height_check(WIDTH);
+        HEIGHT = width_or_height_check(HEIGHT);
+        LEFT = left_or_top_check(LEFT);
+        TOP = left_or_top_check(TOP);
         let params = `popup=1,width=${WIDTH},height=${HEIGHT},left=${LEFT},top=${TOP}`;
         window.open(URL, '_blank', params);
       } catch (err) {}
