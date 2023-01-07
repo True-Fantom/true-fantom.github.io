@@ -482,7 +482,19 @@
           {
             opcode: 'open_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open [URL] width: [WIDTH] height: [HEIGHT] left: [LEFT] top: [TOP] menubar: [MENUBAR] toolbar: [TOOLBAR] location: [LOCATION] status: [STATUS]',
+            text: 'open [URL]',
+            arguments: {
+              URL: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'https://extensions.turbowarp.org'
+              }
+            }
+          },
+          
+          {
+            opcode: 'open_window_block',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'open [URL] width: [WIDTH] height: [HEIGHT] left: [LEFT] top: [TOP]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -503,22 +515,6 @@
               TOP: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '0'
-              },
-              MENUBAR: {
-                type: Scratch.ArgumentType.NUMBER,
-                menu: 'yes_no_menu'
-              },
-              TOOLBAR: {
-                type: Scratch.ArgumentType.NUMBER,
-                menu: 'yes_no_menu'
-              },
-              LOCATION: {
-                type: Scratch.ArgumentType.NUMBER,
-                menu: 'yes_no_menu'
-              },
-              STATUS: {
-                type: Scratch.ArgumentType.NUMBER,
-                menu: 'yes_no_menu'
               }
             }
           },
@@ -629,20 +625,6 @@
               {
                 text: '(9) body used?',
                 value: '9'
-              }
-            ]
-          },
-          
-          yes_no_menu: {  
-            acceptReporters: true,
-            items: [
-              {
-                text: '(1) yes',
-                value: '1'
-              },
-              {
-                text: '(2) no',
-                value: '2'
               }
             ]
           }
@@ -813,13 +795,15 @@
       return fetch_url(String(URL), BODY, CONTENT_TYPE, RESPONSE_TYPE, 'PATCH');
     }
     
-    open_link_block({URL,WIDTH,HEIGHT,LEFT,TOP,MENUBAR,TOOLBAR,LOCATION,STATUS}) {
+    open_link_block({URL}) {
       try {
-        MENUBAR = yes_no_check(Number(MENUBAR));
-        TOOLBAR = yes_no_check(Number(TOOLBAR));
-        LOCATION = yes_no_check(Number(LOCATION));
-        STATUS = yes_no_check(Number(STATUS));
-        let params = `width=${WIDTH},height=${HEIGHT},left=${LEFT},top=${TOP},menubar=${MENUBAR},toolbar=${TOOLBAR},location=${LOCATION},status=${STATUS}`;
+        window.open(URL, '_blank');
+      } catch (err) {}
+    }
+    
+    open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
+      try {
+        let params = `popup=1,width=${WIDTH},height=${HEIGHT},left=${LEFT},top=${TOP}`;
         window.open(URL, '_blank', params);
       } catch (err) {}
     }
