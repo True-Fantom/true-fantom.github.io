@@ -93,15 +93,15 @@
     }
     
     a4_block() {
-      return 'downlinkMax: ' + navigator.connection.downlinkMax + ' Mb/s';
+      return 'downlink max: ' + navigator.connection.downlinkMax + ' Mb/s';
     }
     
     a5_block() {
-      return 'effectiveType: ' + navigator.connection.effectiveType;
+      return 'effective type: ' + navigator.connection.effectiveType;
     }
     
     a6_block() {
-      return 'saveData: ' + navigator.connection.saveData;
+      return 'save data: ' + navigator.connection.saveData;
     }
     
     a7_block({STRING}) {
