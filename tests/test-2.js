@@ -96,6 +96,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'sound',
             blockType: Scratch.BlockType.BOOLEAN,
