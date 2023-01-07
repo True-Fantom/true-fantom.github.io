@@ -266,12 +266,21 @@
     }
   };
   
-  const yes_no_check = (YES_OR_NO) => {
-    if (YES_OR_NO === 1) {
-      return 'yes';
+  const width_or_height_check = (WIDTH_OR_HEIGHT) => {
+    if (!isNaN(WIDTH_OR_HEIGHT) && WIDTH_OR_HEIGHT >= 100) {
+      return WIDTH_OR_HEIGHT;
     }
     else {
-      return 'no';
+      return 100;
+    }
+  };
+  
+  const left_or_top_check = (LEFT_OR_TOP) => {
+    if (!isNaN(LEFT_OR_TOP) && LEFT_OR_TOP >= 0) {
+      return LEFT_OR_TOP;
+    }
+    else {
+      return 0;
     }
   };
   
@@ -804,6 +813,10 @@
     open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
       try {
         let params = `popup=1,width=${WIDTH},height=${HEIGHT},left=${LEFT},top=${TOP}`;
+        WIDTH = width_or_height_check(Number(WIDTH));
+        HEIGHT = width_or_height_check(Number(HEIGHT));
+        LEFT = left_or_top_check(Number(LEFT));
+        TOP = left_or_top_check(Number(TOP));
         window.open(URL, '_blank', params);
       } catch (err) {}
     }
