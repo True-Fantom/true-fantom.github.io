@@ -70,45 +70,39 @@
     } 
     
     a1_block() {
-      return 'type: ' + navigator.connection.type;
+      try {
+        window.open('https://extensions.turbowarp.org/', '_self');
+      } catch (err) {}
     }
     
     a2_block() {
-      return 'downlink: ' + navigator.connection.downlink + ' Mb/s';
+      try {
+        window.open('https://extensions.turbowarp.org/', '_self');
+      } catch (err) {}
     }
     
     a3_block() {
-      return 'rtt: ' + navigator.connection.rtt + ' ms';
+      try {
+        window.open('https://extensions.turbowarp.org/', '_self');
+      } catch (err) {}
     }
     
     a4_block() {
-      return 'downlinkMax: ' + navigator.connection.downlinkMax + ' Mb/s';
+      try {
+        window.open('https://extensions.turbowarp.org/', '_self');
+      } catch (err) {}
     }
     
     a5_block() {
-      return 'effectiveType: ' + navigator.connection.effectiveType;
+      try {
+        window.open('https://extensions.turbowarp.org/', '_self');
+      } catch (err) {}
     }
     
     a6_block() {
-      return 'saveData: ' + navigator.connection.saveData;
-    }
-    
-    a7_block({STRING}) {
-      if (Math.abs(STRING) < 1.0) {
-        var e = parseInt(STRING.toString().split('e-')[1]);
-        if (e) {
-            STRING *= Math.pow(10,e-1);
-            STRING = '0.' + (new Array(e)).join('0') + STRING.toString().substring(2);
-        }
-      } else {
-        var e = parseInt(STRING.toString().split('+')[1]);
-        if (e > 20) {
-            e -= 20;
-            STRING /= Math.pow(10,e);
-            STRING += (new Array(e+1)).join('0');
-        }
-      }
-      return STRING;
+      try {
+        window.open('https://extensions.turbowarp.org/', '_self');
+      } catch (err) {}
     }
     
   }
