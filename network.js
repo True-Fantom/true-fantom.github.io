@@ -269,6 +269,7 @@
   const window_check = (WINDOW) => {
     if (!isNaN(WINDOW)) {
       return WINDOW;
+    }
     else {
       return '';
     }
