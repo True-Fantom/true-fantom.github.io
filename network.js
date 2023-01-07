@@ -266,18 +266,56 @@
     }
   };
   
-  const width_or_height_check = (WIDTH_OR_HEIGHT) => {
-    if ((!isNaN(WIDTH_OR_HEIGHT)) && Number(WIDTH_OR_HEIGHT) >= 100) {
-      return Number(WIDTH_OR_HEIGHT);
+  const width_check = (WIDTH) => {
+    if ((!isNaN(WIDTH)) && Number(WIDTH) >= 100) {
+      if (Number(WIDTH) <= window.screen.width) {
+        return Number(WIDTH);
+      }
+      else {
+        return window.screen.width;
+      }
     }
     else {
       return 100;
     }
   };
   
-  const left_or_top_check = (LEFT_OR_TOP) => {
-    if ((!isNaN(LEFT_OR_TOP)) && Number(LEFT_OR_TOP) >= 0) {
-      return Number(LEFT_OR_TOP);
+  const height_check = (HEIGHT) => {
+    if ((!isNaN(HEIGHT)) && Number(HEIGHT) >= 100) {
+      if (Number(HEIGHT) <= window.screen.height) {
+        return Number(HEIGHT);
+      }
+      else {
+        return window.screen.height;
+      }
+    }
+    else {
+      return 100;
+    }
+  };
+  
+  const left_check = (LEFT) => {
+    if ((!isNaN(LEFT)) && Number(LEFT) >= 0) {
+      if (Number(LEFT) <= window.screen.width) {
+        return Number(LEFT);
+      }
+      else {
+        return window.screen.width;
+      }
+    }
+    else {
+      return 0;
+    }
+  };
+  
+  const top_check = (TOP) => {
+    if ((!isNaN(TOP)) && Number(TOP) >= 0) {
+      if (Number(TOP) <= window.screen.height) {
+        return Number(TOP);
+      }
+      else {
+        return window.screen.height;
+      }
     }
     else {
       return 0;
@@ -812,10 +850,10 @@
     
     open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
       try {
-        WIDTH = width_or_height_check(WIDTH);
-        HEIGHT = width_or_height_check(HEIGHT);
-        LEFT = left_or_top_check(LEFT);
-        TOP = left_or_top_check(TOP);
+        WIDTH = width_check(WIDTH);
+        HEIGHT = height_check(HEIGHT);
+        LEFT = left_check(LEFT);
+        TOP = top_check(TOP);
         let params = `popup=1,width=${WIDTH},height=${HEIGHT},left=${LEFT},top=${TOP}`;
         window.open(URL, '_blank', params);
       } catch (err) {}
