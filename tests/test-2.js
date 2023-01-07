@@ -100,6 +100,17 @@
           {
             opcode: 'sound',
             blockType: Scratch.BlockType.BOOLEAN,
+            text: 'does [a] sound exist in this sprite?',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'recording1',
+              }
+            }
+          },
+          {
+            opcode: 'sound_all',
+            blockType: Scratch.BlockType.BOOLEAN,
             text: 'does [a] sound exist?',
             arguments: {
               a: {
@@ -111,6 +122,17 @@
           {
             opcode: 'all_sounds',
             blockType: Scratch.BlockType.REPORTER,
+            text: 'all exist sounds in this sprite split by [a]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' ',
+              }
+            }
+          },
+          {
+            opcode: 'all_sounds_all',
+            blockType: Scratch.BlockType.REPORTER,
             text: 'all exist sounds split by [a]',
             arguments: {
               a: {
@@ -121,6 +143,12 @@
           },
           {
             opcode: 'count_sounds',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'exist sounds in this sprite count',
+            arguments: {}
+          },
+          {
+            opcode: 'count_sounds_all',
             blockType: Scratch.BlockType.REPORTER,
             text: 'exist sounds count',
             arguments: {}
@@ -180,11 +208,23 @@
       return "";
     }
     
+    sound_all({a}) {
+      return "";
+    }
+    
     all_sounds({a}) {
       return "";
     }
     
-    count_sounds({a}) {
+    all_sounds_all({a}) {
+      return "";
+    }
+    
+    count_sounds() {
+      return "";
+    }
+    
+    count_sounds_all() {
       return "";
     }
   }
