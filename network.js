@@ -482,7 +482,7 @@
           {
             opcode: 'open_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open [URL]',
+            text: 'open [URL] in new tab',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -494,7 +494,7 @@
           {
             opcode: 'open_window_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open [URL] width: [WIDTH] height: [HEIGHT] left: [LEFT] top: [TOP]',
+            text: 'open [URL] in new window with width: [WIDTH] height: [HEIGHT] left: [LEFT] top: [TOP]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -522,7 +522,7 @@
           {
             opcode: 'redirect_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'redirect to [URL]',
+            text: 'redirect this tab to [URL]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
