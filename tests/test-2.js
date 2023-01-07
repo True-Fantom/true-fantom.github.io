@@ -95,6 +95,17 @@
                 defaultValue: 'recording1'
               }
             }
+          },
+          {
+            opcode: 'sound',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'does [a] sound exist?',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'recording1',
+              }
+            }
           }
         ],
         menus: {
@@ -144,6 +155,10 @@
     }
     
     save_file({path, typee, name}) {
+      return "";
+    }
+    
+    sound({a}) {
       return "";
     }
   }
