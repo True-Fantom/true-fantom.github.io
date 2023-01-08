@@ -45,9 +45,9 @@
     RESPONSE_TYPE = Number(RESPONSE_TYPE); CONTENT_TYPE = Number(CONTENT_TYPE);
     return fetch(URL, {
       method: METHOD,
-      headers: METHOD === 'GET' || METHOD === 'DELETE' ? {}:{'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE:2},
+      headers: METHOD === 'GET' || METHOD === 'DELETE' ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE:2},
       redirect: 'follow',
-      body: CONTENT_TYPE === 2 ? JSON.stringify(BODY):BODY})
+      body: CONTENT_TYPE === 2 ? JSON.stringify(BODY) : String(BODY)})
     .then(response => {
       switch (RESPONSE_TYPE) {
         case 1:
@@ -74,8 +74,10 @@
   };
   
   class Network {
+    
     getInfo() {
       return {
+        
         id: 'network',
         name: 'Network',
         
@@ -265,19 +267,19 @@
               },
               WIDTH: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                menu: 'default'
               },
               HEIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                menu: 'default'
               },
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                menu: 'default'
               },
               TOP: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                menu: 'default'
               }
             }
           },
@@ -293,6 +295,7 @@
             }
           }
         ],
+        
         menus: {
           content_type: { 
             acceptReporters: true,
@@ -384,10 +387,20 @@
                 value: '9'
               }
             ]
+          },
+          default: { 
+            acceptReporters: true,
+            items: [
+              {
+                text: 'default',
+                value: 'default'
+              }
+            ]
           }
         }
       }
     }
+    
     connected_to_internet_block() {
       return navigator.onLine;
     }
@@ -411,7 +424,8 @@
       return document.URL || '';
     }
     network_type_block() {
-      return navigator.connection.type || ''; // none and unknown types are not that critical
+      let type = navigator.connection.type;
+      return type === undefined || type === 'none' || type === 'unknown' ? '' : type;
     }
     network_generation_block() {
       return navigator.connection.effectiveType || '';
@@ -426,7 +440,7 @@
       return navigator.connection.rtt || '';
     }
     ping_block({SERVER}) {
-      return cached_ping_web_socket(SERVER);
+      return cached_ping_web_socket(String(SERVER));
     }
     get_block(args) {
       return fetch_url(args, 'GET');
@@ -448,15 +462,16 @@
     }
     open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
       let params = 'popup=1';
-      params += `,width=${WIDTH || 100}`;
-      params += `,height=${HEIGHT || 100}`;
-      params += `,left=${LEFT}`;
-      params += `,top=${TOP}`;
-      window.open(URL, '_blank', params); // window.open is failsafe
+      params += isNaN(WIDTH) ? '' : `,width=${Number(WIDTH) < 100 ? 100 : Number(WIDTH) > window.screen.width ? window.screen.width : Number(WIDTH)}`;
+      params += isNaN(HEIGHT) ? '' : `,height=${Number(HEIGHT) < 100 ? 100 : Number(HEIGHT) > window.screen.height ? window.screen.height : Number(HEIGHT)}`;
+      params += isNaN(LEFT) ? '' : `,left=${Number(LEFT) < 0 ? 0 : Number(LEFT) > window.screen.width ? window.screen.width : Number(LEFT)}`;
+      params += isNaN(TOP) ? '' : `,top=${Number(TOP) < 0 ? 0 : Number(TOP) > window.screen.height ? window.screen.height : Number(TOP)}`;
+      window.open(URL, '_blank', params);
     }
     redirect_link_block({URL}) {
       window.open(URL, '_self');
     }
   }
+  
   Scratch.extensions.register(new Network());
 })(Scratch);
