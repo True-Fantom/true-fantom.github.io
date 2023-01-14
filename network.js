@@ -7,7 +7,8 @@
   const computed = new Map();
 
   const ping_web_socket = async (SERVER) => {
-    let ws = new WebSocket(SERVER);
+    let ws;
+    try {ws = new WebSocket(SERVER)} catch (err) {return false}
     let timeout_id;
     const isUp = await new Promise(resolve => {
       ws.onopen = () => setTimeout(() => resolve(true), 2000);
@@ -45,7 +46,7 @@
     RESPONSE_TYPE = Number(RESPONSE_TYPE); CONTENT_TYPE = Number(CONTENT_TYPE);
     return fetch(URL, {
       method: METHOD,
-      headers: METHOD === 'GET' || METHOD === 'DELETE' ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE:2},
+      headers: METHOD === 'GET' || METHOD === 'DELETE' ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE: 2},
       redirect: 'follow',
       body: CONTENT_TYPE === 2 ? JSON.stringify(BODY) : String(BODY)})
     .then(response => {
