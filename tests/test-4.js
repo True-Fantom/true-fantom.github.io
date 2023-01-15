@@ -459,7 +459,8 @@
       return fetch_url(args, 'PATCH');
     }
     open_link_block({URL}) {
-      window.open(URL, '_blank');
+      var result = confirm(`Open ${URL} in new tab?`);
+      if (result) {window.open(URL, '_blank')}
     }
     open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
       let params = 'popup=1';
