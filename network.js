@@ -41,8 +41,8 @@
         computed.set(SERVER, entry);
         return entry.value;
       });
-    };
-  } catch(err) {return false}
+    } catch(err) {return false}
+  };
   
   const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}, METHOD) => {
     RESPONSE_TYPE = Number(RESPONSE_TYPE); CONTENT_TYPE = Number(CONTENT_TYPE);
@@ -70,7 +70,7 @@
         case 8:
           return response.url;
         case 9: default:
-          return response.bodyUsed;
+          return METHOD === 'GET' || METHOD === 'DELETE' ? response.url : response.bodyUsed;
       }
     })
     .catch(() => '');
