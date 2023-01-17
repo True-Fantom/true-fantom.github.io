@@ -7,20 +7,26 @@
   const computed = new Map();
 
   const ping_web_socket = async (SERVER) => {
-    let ws = new WebSocket(SERVER);
-    let timeout_id;
-    const isUp = await new Promise(resolve => {
-      ws.onopen = () => setTimeout(() => resolve(true), 2000);
-      ws.onclose = () => resolve(false);
-      ws.onerror = () => resolve(false);
-      timeout_id = setTimeout(() => resolve(false), 5000);
-    });
-    ws.close();
-    clearTimeout(timeout_id);
-    return {
-      expires: Date.now() + 60000,
-      value: isUp
-    };
+    try {
+      let ws = new WebSocket(SERVER);
+      let timeout_id;
+      const isUp = await new Promise(resolve => {
+        ws.onopen = () => setTimeout(() => resolve(true), 2000);
+        ws.onclose = () => resolve(false);
+        ws.onerror = () => resolve(false);
+        timeout_id = setTimeout(() => resolve(false), 5000);
+      });
+      ws.close();
+      clearTimeout(timeout_id);
+      return {
+        expires: Date.now() + 60000,
+        value: isUp
+      };
+    } catch(err) {
+      return {
+        expires: 0,
+        value: false
+      };
   };
 
   const cached_ping_web_socket = (SERVER) => {
