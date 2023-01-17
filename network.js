@@ -27,6 +27,7 @@
         expires: 0,
         value: false
       };
+    }
   };
 
   const cached_ping_web_socket = (SERVER) => {
