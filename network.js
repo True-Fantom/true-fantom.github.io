@@ -74,7 +74,7 @@
           return METHOD === 'GET' || METHOD === 'DELETE' ? response.url : response.bodyUsed;
       }
     })
-    .catch(() => '');
+    .catch(() => 'test');
   };
   
   class Network {
