@@ -18,15 +18,9 @@
       });
       ws.close();
       clearTimeout(timeout_id);
-      return {
-        expires: Date.now() + 60000,
-        value: isUp
-      };
+      return Date.now() + 60000;
     } catch(err) {
-      return {
-        expires: 0,
-        value: false
-      };
+      return 0;
     }
   };
 
