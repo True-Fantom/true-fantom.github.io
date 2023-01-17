@@ -22,7 +22,7 @@
         case 2:
           return res.json();
         case 3:
-          return res.ok;
+          return String(res.ok);
         case 4:
           return res.status;
         case 5:
@@ -30,11 +30,11 @@
         case 6:
           return res.type;
         case 7:
-          return res.redirected;
+          return String(res.redirected);
         case 8:
           return res.url;
         case 9: default:
-          return single ? res.url : res.bodyUsed;
+          return single ? res.url : String(res.bodyUsed);
       }
     })
     .catch(err => '');
