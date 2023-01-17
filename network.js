@@ -6,44 +6,6 @@
   const computing = new Map();
   const computed = new Map();
 
-  const ping_web_socket = async (SERVER) => {
-    try {
-      let ws = new WebSocket(SERVER);
-      let timeout_id;
-      const isUp = await new Promise(resolve => {
-        ws.onopen = () => setTimeout(() => resolve(true), 2000);
-        ws.onclose = () => resolve(false);
-        ws.onerror = () => resolve(false);
-        timeout_id = setTimeout(() => resolve(false), 5000);
-      });
-      ws.close();
-      clearTimeout(timeout_id);
-      return Date.now() + 60000;
-    } catch(err) {
-      return 0;
-    }
-  };
-
-  const cached_ping_web_socket = (SERVER) => {
-    try {
-      const computing_entry = computing.get(SERVER);
-      if (computing_entry) {
-        return computing_entry.then(entry => entry.value);
-      }
-      const computed_entry = computed.get(SERVER);
-      if (computed_entry && Date.now() < computed_entry.expires) {
-        return computed_entry.value;
-      }
-      const promise = ping_web_socket(SERVER);
-      computing.set(SERVER, promise);
-      return promise.then(entry => {
-        computing.delete(SERVER);
-        computed.set(SERVER, entry);
-        return entry.value;
-      });
-    } catch(err) {return false}
-  };
-  
   const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}, METHOD) => {
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSE_TYPE = Number(RESPONSE_TYPE);
@@ -76,9 +38,9 @@
     })
     .catch(err => 't');
   };
-  
+
   class Network {
-    
+
     getInfo() {
       return {
         
@@ -135,18 +97,6 @@
             opcode: 'network_rtt_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'network rtt in ms'
-          },
-          '---',
-          {
-            opcode: 'ping_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is cloud data server up [SERVER] ?',
-            arguments: {
-              SERVER: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'wss://clouddata.turbowarp.org',
-              }
-            }
           },
           '---',
           {
@@ -445,9 +395,6 @@
     }
     network_rtt_block() {
       try {return navigator.connection.rtt || ''} catch(err) {return ''}
-    }
-    ping_block({SERVER}) {
-      return ping_web_socket(String(SERVER));
     }
     get_block(args) {
       return fetch_url(args, 'GET');
