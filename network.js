@@ -52,29 +52,29 @@
       headers: METHOD === 'GET' || METHOD === 'DELETE' ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE: 2},
       redirect: 'follow',
       body: CONTENT_TYPE === 2 ? JSON.stringify(BODY) : String(BODY)})
-    .then(response => {
+    .then(res => {
       switch (RESPONSE_TYPE) {
         case 1:
-          return response.text();
+          return res.text();
         case 2:
-          return response.json();
+          return res.json();
         case 3:
-          return response.ok;
+          return res.ok;
         case 4:
-          return response.status;
+          return res.status;
         case 5:
-          return response.statusText;
+          return res.statusText;
         case 6:
-          return response.type;
+          return res.type;
         case 7:
-          return response.redirected;
+          return res.redirected;
         case 8:
-          return response.url;
+          return res.url;
         case 9: default:
-          return METHOD === 'GET' || METHOD === 'DELETE' ? response.url : response.bodyUsed;
+          return METHOD === 'GET' || METHOD === 'DELETE' ? res.url : res.bodyUsed;
       }
     })
-    .catch(() => 'test');
+    .catch(err => 't');
   };
   
   class Network {
