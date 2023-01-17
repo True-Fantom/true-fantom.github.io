@@ -12,8 +12,8 @@
     let single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(URL, {
       method: METHOD,
-      headers: single ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE: 2},
-      redirect: single ? 'follow' : 'follow', body: CONTENT_TYPE === 2 ? JSON.stringify(BODY) : String(BODY)})
+      headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'application/x-www-form-urlencoded' : 'application/json'},
+      redirect: single ? 'follow' : 'follow', body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
     .then(res => {
       switch (RESPONSE_TYPE) {
         case 1:
