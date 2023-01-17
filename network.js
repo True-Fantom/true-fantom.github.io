@@ -44,14 +44,13 @@
     } catch(err) {return false}
   };
   
-  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}, METHOD) => {
+  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}, METHOD, SINGLE) => {
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSE_TYPE = Number(RESPONSE_TYPE);
     return fetch(URL, {
       method: METHOD,
-      headers: METHOD === 'GET' || METHOD === 'DELETE' ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE: 2},
-      redirect: 'follow',
-      body: CONTENT_TYPE === 2 ? JSON.stringify(BODY) : String(BODY)})
+      headers: SINGLE ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE: 2},
+      redirect: SINGLE ? 'follow' : 'follow', body: CONTENT_TYPE === 2 ? JSON.stringify(BODY) : String(BODY)})
     .then(res => {
       switch (RESPONSE_TYPE) {
         case 1:
@@ -71,7 +70,7 @@
         case 8:
           return res.url;
         case 9: default:
-          return METHOD === 'GET' || METHOD === 'DELETE' ? res.url : res.bodyUsed;
+          return SINGLE ? res.url : res.bodyUsed;
       }
     })
     .catch(err => 't');
@@ -450,19 +449,19 @@
       return cached_ping_web_socket(String(SERVER));
     }
     get_block(args) {
-      return fetch_url(args, 'GET');
+      return fetch_url(args, 'GET', true);
     }
     delete_block(args) {
-      return fetch_url(args, 'DELETE');
+      return fetch_url(args, 'DELETE', true);
     }
     post_block(args) {
-      return fetch_url(args, 'POST');
+      return fetch_url(args, 'POST', false);
     }
     put_block(args) {
-      return fetch_url(args, 'PUT');
+      return fetch_url(args, 'PUT', false);
     }
     patch_block(args) {
-      return fetch_url(args, 'PATCH');
+      return fetch_url(args, 'PATCH', false);
     }
     open_link_block({URL}) {
       try {window.open(URL, '_blank')} catch(err) {}
