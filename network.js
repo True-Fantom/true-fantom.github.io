@@ -6,7 +6,7 @@
   const computing = new Map();
   const computed = new Map();
 
-  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}, METHOD) => {
+  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE, SPLIT}, METHOD) => {
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSE_TYPE = Number(RESPONSE_TYPE);
     let single = METHOD === 'GET' || METHOD === 'DELETE';
@@ -103,7 +103,7 @@
           {
             opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [URL] respond [RESPONSE_TYPE]',
+            text: 'get [URL] respond [RESPONSE_TYPE] split by [SPLIT]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -112,13 +112,17 @@
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'only_url_response_type'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'delete_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete [URL] respond [RESPONSE_TYPE]',
+            text: 'delete [URL] respond [RESPONSE_TYPE] split by [SPLIT]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -127,13 +131,17 @@
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'only_url_response_type'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE]',
+            text: 'post [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE] split by [SPLIT]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -150,13 +158,17 @@
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE]',
+            text: 'put [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE] split by [SPLIT]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -173,13 +185,17 @@
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'patch_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'patch [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE]',
+            text: 'patch [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSE_TYPE] split by [SPLIT]',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -196,6 +212,10 @@
               RESPONSE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           },
