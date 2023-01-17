@@ -7,8 +7,7 @@
   const computed = new Map();
 
   const ping_web_socket = async (SERVER) => {
-    let ws;
-    ws = new WebSocket(SERVER)
+    let ws = new WebSocket(SERVER);
     let timeout_id;
     const isUp = await new Promise(resolve => {
       ws.onopen = () => setTimeout(() => resolve(true), 2000);
@@ -44,13 +43,14 @@
     } catch(err) {return false}
   };
   
-  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}, METHOD, SINGLE) => {
+  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}, METHOD) => {
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSE_TYPE = Number(RESPONSE_TYPE);
+    let single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(URL, {
       method: METHOD,
-      headers: SINGLE ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE: 2},
-      redirect: SINGLE ? 'follow' : 'follow', body: CONTENT_TYPE === 2 ? JSON.stringify(BODY) : String(BODY)})
+      headers: single ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE: 2},
+      redirect: single ? 'follow' : 'follow', body: CONTENT_TYPE === 2 ? JSON.stringify(BODY) : String(BODY)})
     .then(res => {
       switch (RESPONSE_TYPE) {
         case 1:
@@ -70,7 +70,7 @@
         case 8:
           return res.url;
         case 9: default:
-          return SINGLE ? res.url : res.bodyUsed;
+          return single ? res.url : res.bodyUsed;
       }
     })
     .catch(err => 't');
@@ -449,19 +449,19 @@
       return cached_ping_web_socket(String(SERVER));
     }
     get_block(args) {
-      return fetch_url(args, 'GET', true);
+      return fetch_url(args, 'GET');
     }
     delete_block(args) {
-      return fetch_url(args, 'DELETE', true);
+      return fetch_url(args, 'DELETE');
     }
     post_block(args) {
-      return fetch_url(args, 'POST', false);
+      return fetch_url(args, 'POST');
     }
     put_block(args) {
-      return fetch_url(args, 'PUT', false);
+      return fetch_url(args, 'PUT');
     }
     patch_block(args) {
-      return fetch_url(args, 'PATCH', false);
+      return fetch_url(args, 'PATCH');
     }
     open_link_block({URL}) {
       try {window.open(URL, '_blank')} catch(err) {}
