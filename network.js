@@ -95,9 +95,9 @@
             text: 'downlink max speed in mb/s'
           },
           {
-            opcode: 'network_rtt_block',
+            opcode: 'rtt_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'network rtt in ms'
+            text: 'rtt in ms'
           },
           '---',
           {
@@ -394,7 +394,7 @@
     downlink_max_speed_block() {
       try {return navigator.connection.downlinkMax || ''} catch(err) {return ''}
     }
-    network_rtt_block() {
+    rtt_block() {
       try {return navigator.connection.rtt || ''} catch(err) {return ''}
     }
     get_block(args) {
