@@ -45,7 +45,8 @@
   };
   
   const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSE_TYPE}, METHOD) => {
-    RESPONSE_TYPE = Number(RESPONSE_TYPE); CONTENT_TYPE = Number(CONTENT_TYPE);
+    CONTENT_TYPE = Number(CONTENT_TYPE);
+    RESPONSE_TYPE = Number(RESPONSE_TYPE);
     return fetch(URL, {
       method: METHOD,
       headers: METHOD === 'GET' || METHOD === 'DELETE' ? {} : {'Content-Type': CONTENT_TYPE == 1 ? CONTENT_TYPE: 2},
