@@ -12,7 +12,7 @@
     let single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(URL, {
       method: METHOD,
-      headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'application/x-www-form-urlencoded' : 'application/json'},
+      headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow', body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
     .then(res => {
       switch (RESPONSE_TYPE) {
