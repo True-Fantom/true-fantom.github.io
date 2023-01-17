@@ -453,7 +453,7 @@
       try {return navigator.connection.rtt || ''} catch(err) {return ''}
     }
     ping_block({SERVER}) {
-      return cached_ping_web_socket(String(SERVER));
+      return ping_web_socket(String(SERVER));
     }
     get_block(args) {
       return fetch_url(args, 'GET');
