@@ -21,23 +21,23 @@
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
         switch (Number(RESPONSES_TYPES[i])) {
           case 1:
-            responses += SPLIT + res.text();
+            responses += SPLIT + res.text(); break;
           case 2:
-            responses += SPLIT + res.json();
+            responses += SPLIT + res.json(); break;
           case 3:
-            responses += SPLIT + String(res.ok);
+            responses += SPLIT + String(res.ok); break;
           case 4:
-            responses += SPLIT + res.status;
+            responses += SPLIT + res.status; break;
           case 5:
-            responses += SPLIT + res.statusText;
+            responses += SPLIT + res.statusText; break;
           case 6:
-            responses += SPLIT + res.type;
+            responses += SPLIT + res.type; break;
           case 7:
-            responses += SPLIT + String(res.redirected);
+            responses += SPLIT + String(res.redirected); break;
           case 8:
-            responses += SPLIT + res.url;
+            responses += SPLIT + res.url; break;
           case 9: default:
-            responses += SPLIT + single ? res.url : String(res.bodyUsed);
+            responses += SPLIT + single ? res.url : String(res.bodyUsed); break;
         }
       }
       return SPLIT === '' ? responses : responses.slice(1);
