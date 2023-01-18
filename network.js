@@ -6,12 +6,12 @@
   const computing = new Map();
   const computed = new Map();
 
-  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
+  const fetch_url = async({URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSES_TYPES = RESPONSES_TYPES.split(' ').filter(word => word !== '');
     let single = METHOD === 'GET' || METHOD === 'DELETE';
-    return fetch(URL, {
+    let output = await fetch(URL, {
       method: METHOD,
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
@@ -43,6 +43,7 @@
       return SPLIT === '' ? responses : responses.slice(1);
     })
     .catch(err => '');
+    return output;
   };
 
   class Network {
