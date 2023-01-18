@@ -17,8 +17,8 @@
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
       body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
-    .then(res => res.json()).then(json => {res_json = json})
-    .then(res => res.text()).then(text => {res_text = text})
+    .then(rest => rest.text()).then(text => {res_json = text})
+    .then(resj => resj.json()).then(json => {res_text = json})
     .then(res => {
       let responses = '';
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
