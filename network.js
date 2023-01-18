@@ -19,7 +19,7 @@
     .then(res => {
       let responses = '';
       const response_check = (RESPONSE) => {
-        switch (Number(RESPONSES_TYPES[i])) {
+        switch (RESPONSE) {
           case 1:
             return SPLIT + res.text();
           case 2:
