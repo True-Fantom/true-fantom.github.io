@@ -16,8 +16,7 @@
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
       body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)});
-    
-    fetch_promise.then(res => {
+    return fetch_promise.then(res => {
       let responses = '';
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
         switch (Number(RESPONSES_TYPES[i])) {
