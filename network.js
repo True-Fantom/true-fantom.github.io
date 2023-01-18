@@ -11,21 +11,19 @@
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSES_TYPES = RESPONSES_TYPES.split(' ').filter(word => word !== '');
     let single = METHOD === 'GET' || METHOD === 'DELETE';
-    let fetch_promise = fetch(URL, {
+    return fetch(URL, {
       method: METHOD,
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
-      body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)});
-    let text = fetch_promise.then(res => {return res.text()});
-    let json = fetch_promise.then(res => {return res.json()});
-    return fetch_promise.then(res => {
+      body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
+    .then(res => {
       let responses = '';
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
         switch (Number(RESPONSES_TYPES[i])) {
           case 1:
-            responses += SPLIT + text; break;
+            responses += SPLIT + res.text(); break;
           case 2:
-            responses += SPLIT + json; break;
+            responses += SPLIT + res.json(); break;
           case 3:
             responses += SPLIT + String(res.ok); break;
           case 4:
