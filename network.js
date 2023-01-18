@@ -9,7 +9,7 @@
   const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
-    RESPONSES_TYPES = RESPONSES_TYPES.split(' ');
+    RESPONSES_TYPES = RESPONSES_TYPES.split(' ').filter(word => word !== '');
     let single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(URL, {
       method: METHOD,
@@ -18,27 +18,30 @@
       body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
     .then(res => {
       let responses = '';
-      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
+      const response_check = (RESPONSE) => {
         switch (Number(RESPONSES_TYPES[i])) {
           case 1:
-            responses += SPLIT + res.text();
+            return SPLIT + res.text();
           case 2:
-            responses += SPLIT + res.json();
+            return SPLIT + res.json();
           case 3:
-            responses += SPLIT + String(res.ok);
+            return SPLIT + String(res.ok);
           case 4:
-            responses += SPLIT + res.status;
+            return SPLIT + res.status;
           case 5:
-            responses += SPLIT + res.statusText;
+            return SPLIT + res.statusText;
           case 6:
-            responses += SPLIT + res.type;
+            return SPLIT + res.type;
           case 7:
-            responses += SPLIT + String(res.redirected);
+            return SPLIT + String(res.redirected);
           case 8:
-            responses += SPLIT + res.url;
+            return SPLIT + res.url;
           case 9: default:
-            responses += SPLIT + single ? res.url : String(res.bodyUsed);
+            return SPLIT + single ? res.url : String(res.bodyUsed);
         }
+      };
+      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
+        responses += response_check(Number(RESPONSES_TYPES[i]));
       }
       return SPLIT === '' ? responses : responses.slice(1);
     })
