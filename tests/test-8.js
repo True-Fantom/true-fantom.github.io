@@ -52,7 +52,7 @@
       }
       return SPLIT === '' ? responses : responses.slice(1);
     } catch (err) {
-      return ''
+      return '';
     }
   };
 
