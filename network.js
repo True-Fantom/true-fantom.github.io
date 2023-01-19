@@ -21,33 +21,23 @@
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
         switch (Number(RESPONSES_TYPES[i])) {
           case 1:
-            responses.push(res.text());
-            break;
+            responses.push(res.text()); break;
           case 2:
-            responses.push(res.json());
-            break;
+            responses.push(res.json()); break;
           case 3:
-            responses.push(String(res.ok));
-            break;
+            responses.push(String(res.ok)); break;
           case 4:
-            responses.push(res.status);
-            break;
+            responses.push(res.status); break;
           case 5:
-            responses.push(res.statusText);
-            break;
+            responses.push(res.statusText); break;
           case 6:
-            responses.push(res.type);
-            break;
+            responses.push(res.type); break;
           case 7:
-            responses.push(String(res.redirected));
-            break;
+            responses.push(String(res.redirected)); break;
           case 8:
-            responses.push(res.url);
-            break;
-          case 9:
-          default:
-            responses.push(single ? res.url : String(res.bodyUsed));
-            break;
+            responses.push(res.url); break;
+          case 9: default:
+            responses.push(single ? res.url : String(res.bodyUsed)); break;
         }
       }
       return Promise.all(responses);
