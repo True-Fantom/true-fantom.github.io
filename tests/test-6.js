@@ -15,7 +15,7 @@
           
           {
             opcode: 'a1_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.REPORTER,
             text: 'language',
             arguments: {}
           },
