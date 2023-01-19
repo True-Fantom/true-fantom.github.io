@@ -10,8 +10,6 @@
 
         id: 'test1',
         name: 'Test 1',
-        
-        color1: '#997804',
 
         blocks: [
           
