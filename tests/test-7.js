@@ -235,7 +235,7 @@
           {
             opcode: 'open_window_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open [URL] in new window with width: [WIDTH] height: [HEIGHT] left: [LEFT] top: [TOP]',
+            text: 'step simulation',
             arguments: {
               URL: {
                 type: Scratch.ArgumentType.STRING,
