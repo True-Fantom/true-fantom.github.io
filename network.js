@@ -6,44 +6,61 @@
   const computing = new Map();
   const computed = new Map();
 
-  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
-    SPLIT = String(SPLIT);
-    CONTENT_TYPE = Number(CONTENT_TYPE);
-    RESPONSES_TYPES = RESPONSES_TYPES.split(' ').filter(word => word !== '');
-    let single = METHOD === 'GET' || METHOD === 'DELETE';
-    return fetch(URL, {
+const fetch_url = ({URL,BODY,CONTENT_TYPE,RESPONSES_TYPES,SPLIT}, METHOD) => {
+  SPLIT = String(SPLIT);
+  CONTENT_TYPE = Number(CONTENT_TYPE);
+  RESPONSES_TYPES = RESPONSES_TYPES.split(' ').filter(word => word !== '');
+  let single = METHOD === 'GET' || METHOD === 'DELETE';
+  return fetch(URL, {
       method: METHOD,
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
       body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
     .then(res => {
-      let responses = '';
+      const responses = [];
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
         switch (Number(RESPONSES_TYPES[i])) {
           case 1:
-            responses += SPLIT + res.text(); break;
+            responses.push(res.text());
+            break;
           case 2:
-            responses += SPLIT + res.json(); break;
+            responses.push(res.json());
+            break;
           case 3:
-            responses += SPLIT + String(res.ok); break;
+            responses.push(String(res.ok));
+            break;
           case 4:
-            responses += SPLIT + res.status; break;
+            responses.push(res.status);
+            break;
           case 5:
-            responses += SPLIT + res.statusText; break;
+            responses.push(res.statusText);
+            break;
           case 6:
-            responses += SPLIT + res.type; break;
+            responses.push(res.type);
+            break;
           case 7:
-            responses += SPLIT + String(res.redirected); break;
+            responses.push(String(res.redirected));
+            break;
           case 8:
-            responses += SPLIT + res.url; break;
-          case 9: default:
-            responses += SPLIT + single ? res.url : String(res.bodyUsed); break;
+            responses.push(res.url);
+            break;
+          case 9:
+          default:
+            responses.push(single ? res.url : String(res.bodyUsed));
+            break;
         }
+      }
+      return Promise.all(responses);
+    })
+    .then(arr => {
+      let responses = '';
+      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
+        responses += SPLIT + arr[i];
       }
       return SPLIT === '' ? responses : responses.slice(1);
     })
     .catch(err => '');
-  };
+};
 
   class Network {
 
