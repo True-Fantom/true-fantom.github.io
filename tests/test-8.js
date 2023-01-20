@@ -47,7 +47,7 @@
       }
       return SPLIT === '' ? responses : responses.slice(1);
     })
-    .catch(err => '');
+    .catch(err => '678987');
   };
 
   class Network {
