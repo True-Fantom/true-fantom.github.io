@@ -23,7 +23,7 @@
           case 1:
             responses.push(res.text()); break;
           case 2:
-            responses.push(res.json()); break;
+            responses.push(JSON.stringify(res.json())); break;
           case 3:
             responses.push(String(res.ok)); break;
           case 4:
