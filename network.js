@@ -9,7 +9,7 @@
   const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
-    RESPONSES_TYPES = RESPONSES_TYPES.split(' ').filter(word => word !== '');
+    RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '');
     let single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(URL, {
       method: METHOD,
