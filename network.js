@@ -9,7 +9,7 @@
   const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
-    let str_responses = RESPONSES_TYPES.split(' ').filter(word => word !== '');
+    RESPONSES_TYPES = RESPONSES_TYPES.split(' ').filter(word => word !== '');
     let single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(URL, {
       method: METHOD,
@@ -18,8 +18,8 @@
       body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
     .then(res => {
       const responses = [];
-      for (let i = 0; i <= str_responses.length - 1; i++) {
-        switch (Number(str_responses[i])) {
+      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
+        switch (Number(RESPONSES_TYPES[i])) {
           case 1:
             responses.push(res.text()); break;
           case 2:
@@ -44,7 +44,7 @@
     })
     .then(arr => {
       let responses = '';
-      for (let i = 0; i <= str_responses.length - 1; i++) {
+      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
         responses += SPLIT + arr[i];
       }
       return SPLIT === '' ? responses : responses.slice(1);
