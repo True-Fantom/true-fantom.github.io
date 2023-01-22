@@ -6,8 +6,7 @@
   const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
-    RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '');
-    if (RESPONSES_TYPES.length < 1) {RESPONSES_TYPES[0] = '9'}
+    RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '').length >= 1 ? String(RESPONSES_TYPES).split(' ').filter(word => word !== '') : ['9'];
     let single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(URL, {
       method: METHOD,
