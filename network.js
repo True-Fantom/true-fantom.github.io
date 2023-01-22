@@ -448,30 +448,32 @@
       try {return navigator.connection.rtt || ''} catch(err) {return ''}
     }
     get_block(args) {
-      return fetch_url(args, 'GET');
+      try {return fetch_url(args, 'GET')} catch(err) {return ''}
     }
     delete_block(args) {
-      return fetch_url(args, 'DELETE');
+      try {return fetch_url(args, 'DELETE')} catch(err) {return ''}
     }
     post_block(args) {
-      return fetch_url(args, 'POST');
+      try {return fetch_url(args, 'POST')} catch(err) {return ''}
     }
     put_block(args) {
-      return fetch_url(args, 'PUT');
+      try {return fetch_url(args, 'PUT')} catch(err) {return ''}
     }
     patch_block(args) {
-      return fetch_url(args, 'PATCH');
+      try {return fetch_url(args, 'PATCH')} catch(err) {return ''}
     }
     open_link_block({URL}) {
       try {window.open(URL, '_blank')} catch(err) {}
     }
     open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
-      let params = 'popup=1';
-      params += isNaN(WIDTH) ? '' : `,width=${Number(WIDTH) < 100 ? 100 : Number(WIDTH) > window.screen.width ? window.screen.width : Number(WIDTH)}`;
-      params += isNaN(HEIGHT) ? '' : `,height=${Number(HEIGHT) < 100 ? 100 : Number(HEIGHT) > window.screen.height ? window.screen.height : Number(HEIGHT)}`;
-      params += isNaN(LEFT) ? '' : `,left=${Number(LEFT) < 0 ? 0 : Number(LEFT) > window.screen.width ? window.screen.width : Number(LEFT)}`;
-      params += isNaN(TOP) ? '' : `,top=${Number(TOP) < 0 ? 0 : Number(TOP) > window.screen.height ? window.screen.height : Number(TOP)}`;
-      try {window.open(URL, '_blank', params)} catch(err) {}
+      try {
+        let params = 'popup=1';
+        params += isNaN(WIDTH) ? '' : `,width=${Number(WIDTH) < 100 ? 100 : Number(WIDTH) > window.screen.width ? window.screen.width : Number(WIDTH)}`;
+        params += isNaN(HEIGHT) ? '' : `,height=${Number(HEIGHT) < 100 ? 100 : Number(HEIGHT) > window.screen.height ? window.screen.height : Number(HEIGHT)}`;
+        params += isNaN(LEFT) ? '' : `,left=${Number(LEFT) < 0 ? 0 : Number(LEFT) > window.screen.width ? window.screen.width : Number(LEFT)}`;
+        params += isNaN(TOP) ? '' : `,top=${Number(TOP) < 0 ? 0 : Number(TOP) > window.screen.height ? window.screen.height : Number(TOP)}`;
+        window.open(URL, '_blank', params)
+      } catch(err) {}
     }
     redirect_link_block({URL}) {
       try {window.open(URL, '_self')} catch(err) {}
