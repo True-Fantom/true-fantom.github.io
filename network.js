@@ -109,9 +109,9 @@
           {
             opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'get [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
             arguments: {
-              URL: {
+              USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/get'
               },
@@ -128,9 +128,9 @@
           {
             opcode: 'delete_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete [URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'delete [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
             arguments: {
-              URL: {
+              USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/delete'
               },
@@ -147,9 +147,9 @@
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'post [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
             arguments: {
-              URL: {
+              USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/post'
               },
@@ -174,9 +174,9 @@
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'put [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
             arguments: {
-              URL: {
+              USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/put'
               },
@@ -201,9 +201,9 @@
           {
             opcode: 'patch_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'patch [CONTENT_TYPE] [BODY] to [URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'patch [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
             arguments: {
-              URL: {
+              USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/patch'
               },
@@ -229,9 +229,9 @@
           {
             opcode: 'open_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open [URL] in new tab',
+            text: 'open [USER_URL] in new tab',
             arguments: {
-              URL: {
+              USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://extensions.turbowarp.org'
               }
@@ -240,9 +240,9 @@
           {
             opcode: 'open_window_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'open [URL] in new window with width: [WIDTH] height: [HEIGHT] left: [LEFT] top: [TOP]',
+            text: 'open [USER_URL] in new window with width: [WIDTH] height: [HEIGHT] left: [LEFT] top: [TOP]',
             arguments: {
-              URL: {
+              USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://extensions.turbowarp.org'
               },
@@ -267,9 +267,9 @@
           {
             opcode: 'redirect_link_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'redirect this tab to [URL]',
+            text: 'redirect this tab to [USER_URL]',
             arguments: {
-              URL: {
+              USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://extensions.turbowarp.org'
               }
