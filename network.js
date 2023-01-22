@@ -382,18 +382,18 @@
     browser_block() {
       try {
         let has = input => navigator.userAgent.includes(input);
-        if (has('Firefox')) return 'Firefox';
-        if (has('SamsungBrowser')) return 'Samsung Internet';
-        if ((has('Opera') || has('OPR')) && has('GX')) return 'Opera GX';
-        if (has('Opera') || has('OPR')) return 'Opera';
-        if (has('Trident')) return 'Internet Explorer';
-        if (has('Edge')) return 'Edge Legacy';
-        if (has('Edg')) return 'Edge Chromium';
-        if (has('YaBrowser') || has('YaSearchBrowser')) return 'Yandex';
-        if (has('Miui')) return 'Mi Browser';
-        if (has('UBrowser')) return 'UC Browser';
-        if (has('Chrome')) return 'Chromium';
-        if (has('Safari')) return 'Safari';
+        if (has('Firefox')) return 'firefox';
+        if (has('SamsungBrowser')) return 'samsung internet';
+        if ((has('Opera') || has('OPR')) && has('GX')) return 'opera gx';
+        if (has('Opera') || has('OPR')) return 'opera';
+        if (has('Trident')) return 'internet explorer';
+        if (has('Edge')) return 'legacy';
+        if (has('Edg')) return 'edge';
+        if (has('YaBrowser') || has('YaSearchBrowser')) return 'yandex';
+        if (has('Miui')) return 'mi browser';
+        if (has('UBrowser')) return 'uc browser';
+        if (has('Chrome')) return 'chromium';
+        if (has('Safari')) return 'safari';
         return '';
       } catch(err) {return ''}
     }
