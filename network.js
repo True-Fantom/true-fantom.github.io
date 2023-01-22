@@ -301,16 +301,16 @@
                 value: '3'
               },
               {
-                text: '(3 1) status ok? and text',
-                value: '3 1'
-              },
-              {
                 text: '(4) status',
                 value: '4'
               },
               {
                 text: '(5) status text',
                 value: '5'
+              },
+              {
+                text: '(5 1) status text and text',
+                value: '5 1'
               },
               {
                 text: '(6) type',
@@ -346,16 +346,16 @@
                 value: '3'
               },
               {
-                text: '(3 1) status ok? and text',
-                value: '3 1'
-              },
-              {
                 text: '(4) status',
                 value: '4'
               },
               {
                 text: '(5) status text',
                 value: '5'
+              },
+              {
+                text: '(5 1) status text and text',
+                value: '5 1'
               },
               {
                 text: '(6) type',
