@@ -44,10 +44,10 @@
 
     getInfo() {
       return {
-        
+
         id: 'network',
         name: 'Network',
-        
+
         color1: '#146600',
         color2: '#125C00',
         color3: '#105200',
@@ -270,7 +270,7 @@
             }
           }
         ],
-        
+
         menus: {
           content_type: { 
             acceptReporters: true,
@@ -375,7 +375,7 @@
         }
       }
     }
-    
+
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
     }
@@ -447,6 +447,6 @@
       try {window.open(URL, '_self')} catch(err) {}
     }
   }
-  
+
   Scratch.extensions.register(new Network());
 })(Scratch);
