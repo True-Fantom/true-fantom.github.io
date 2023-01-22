@@ -8,7 +8,7 @@
     getInfo() {
       return {
 
-        id: 'network',
+        id: 'networkm',
         name: 'Network',
 
         color1: '#83cc70',
