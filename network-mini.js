@@ -54,9 +54,9 @@
         id: 'network',
         name: 'Network',
 
-        color1: '#146600',
-        color2: '#125C00',
-        color3: '#105200',
+        color1: '#83cc70',
+        color2: '#76b865',
+        color3: '#69a35a',
 
         menuIconURI: icon,
 
