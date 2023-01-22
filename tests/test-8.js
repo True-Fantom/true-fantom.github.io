@@ -54,11 +54,13 @@
 
     getInfo() {
       return {
-        
+
         id: 'network',
         name: 'Network',
-        
+
         color1: '#83cc70',
+        color2: '#76b865',
+        color3: '#69a35a',
 
         menuIconURI: icon,
 
