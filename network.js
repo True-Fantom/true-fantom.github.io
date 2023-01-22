@@ -14,7 +14,7 @@
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '').length >= 1 ? String(RESPONSES_TYPES).split(' ').filter(word => word !== '') : ['9'];
     let single = METHOD === 'GET' || METHOD === 'DELETE';
-    return fetch(USER_URL, {
+    return fetch(String(USER_URL), {
       method: METHOD,
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
@@ -470,30 +470,30 @@
     }
     open_link_block({USER_URL}) {
       try {
-        const url = new URL(USER_URL);
+        const url = new URL(String(USER_URL));
         if (protocols.includes(url.protocol)) {
-          window.open(url, '_blank');
+          window.open(String(USER_URL), '_blank');
         }
       } catch(err) {}
     }
     open_window_block({USER_URL,WIDTH,HEIGHT,LEFT,TOP}) {
       try {
-        const url = new URL(USER_URL);
+        const url = new URL(String(USER_URL));
         if (protocols.includes(url.protocol)) {
           let params = 'popup=1';
           params += isNaN(WIDTH) ? '' : `,width=${Number(WIDTH) < 100 ? 100 : Number(WIDTH) > window.screen.width ? window.screen.width : Number(WIDTH)}`;
           params += isNaN(HEIGHT) ? '' : `,height=${Number(HEIGHT) < 100 ? 100 : Number(HEIGHT) > window.screen.height ? window.screen.height : Number(HEIGHT)}`;
           params += isNaN(LEFT) ? '' : `,left=${Number(LEFT) < 0 ? 0 : Number(LEFT) > window.screen.width ? window.screen.width : Number(LEFT)}`;
           params += isNaN(TOP) ? '' : `,top=${Number(TOP) < 0 ? 0 : Number(TOP) > window.screen.height ? window.screen.height : Number(TOP)}`;
-          window.open(url, '_blank', params);
+          window.open(String(USER_URL), '_blank', params);
         }
       } catch(err) {}
     }
     redirect_link_block({USER_URL}) {
       try {
-        const url = new URL(USER_URL);
+        const url = new URL(String(USER_URL));
         if (protocols.includes(url.protocol)) {
-          window.open(url, '_self');
+          window.open(String(USER_URL), '_self');
         }
       } catch(err) {}
     }
