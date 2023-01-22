@@ -401,12 +401,26 @@
       try {return document.URL || ''} catch(err) {return ''}
     }
     network_type_block() {
-      let type = undefined;
-      try {type = navigator.connection.type} catch(err) {}
-      return type === undefined || type === 'none' || type === 'unknown' ? '' : type;
+      try {
+        switch (navigator.connection.type) {
+          case 'bluetooth': return 'bluetooth';
+          case 'cellular': return 'cellular';
+          case 'ethernet': return 'ethernet';
+          case 'wifi': return 'wi-fi';
+          case 'wimax': return 'wimax';
+          default: return '';
+        }
+      } catch(err) {return ''}
     }
     network_generation_block() {
-      try {return navigator.connection.effectiveType || ''} catch(err) {return ''}
+      try {
+        switch (navigator.connection.effectiveType) {
+          case 'slow-2g': case '2g': return '2g';
+          case '3g': return '3g';
+          case '4g': return '4g';
+          default: return '';
+        }
+      } catch(err) {return ''}
     }
     downlink_speed_block() {
       try {return navigator.connection.downlink || ''} catch(err) {return ''}
