@@ -9,12 +9,12 @@
   const ms_protocols = ['ms-help:', 'ms-settings', 'ms-settings-airplanemode:', 'ms-settings-bluetooth:', 'ms-settings-camera:', 'ms-settings-cellular:', 'ms-settings-cloudstorage:', 'ms-settings-emailandaccounts:', 'ms-settings-language:', 'ms-settings-location:', 'ms-settings-lock:', 'ms-settings-nfctransactions:', 'ms-settings-notifications:', 'ms-settings-power:', 'ms-settings-privacy:', 'ms-settings-proximity:', 'ms-settings-screenrotation:', 'ms-settings-wifi:', 'ms-settings-workplace:', 'ms-access:', 'ms-excel:', 'ms-infopath:', 'ms-powerpoint:', 'ms-project:', 'ms-publisher:', 'ms-spd:', 'ms-visio:', 'ms-word:', 'ms-clock:', 'ms-calculator:', 'ms-windows-store:'];
   const protocols = [...main_protocols, ...browser_protocols, ...special_protocols, ...ms_protocols];
 
-  const fetch_url = ({URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
+  const fetch_url = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '').length >= 1 ? String(RESPONSES_TYPES).split(' ').filter(word => word !== '') : ['9'];
     let single = METHOD === 'GET' || METHOD === 'DELETE';
-    return fetch(URL, {
+    return fetch(USER_URL, {
       method: METHOD,
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
@@ -468,32 +468,32 @@
     patch_block(args) {
       try {return fetch_url(args, 'PATCH')} catch(err) {return ''}
     }
-    open_link_block({URL}) {
+    open_link_block({USER_URL}) {
       try {
-        const url = new URL(URL);
+        const url = new URL(USER_URL);
         if (protocols.includes(url.protocol)) {
-          window.open(URL, '_blank');
+          window.open(url, '_blank');
         }
       } catch(err) {}
     }
-    open_window_block({URL,WIDTH,HEIGHT,LEFT,TOP}) {
+    open_window_block({USER_URL,WIDTH,HEIGHT,LEFT,TOP}) {
       try {
-        const url = new URL(URL);
+        const url = new URL(USER_URL);
         if (protocols.includes(url.protocol)) {
           let params = 'popup=1';
           params += isNaN(WIDTH) ? '' : `,width=${Number(WIDTH) < 100 ? 100 : Number(WIDTH) > window.screen.width ? window.screen.width : Number(WIDTH)}`;
           params += isNaN(HEIGHT) ? '' : `,height=${Number(HEIGHT) < 100 ? 100 : Number(HEIGHT) > window.screen.height ? window.screen.height : Number(HEIGHT)}`;
           params += isNaN(LEFT) ? '' : `,left=${Number(LEFT) < 0 ? 0 : Number(LEFT) > window.screen.width ? window.screen.width : Number(LEFT)}`;
           params += isNaN(TOP) ? '' : `,top=${Number(TOP) < 0 ? 0 : Number(TOP) > window.screen.height ? window.screen.height : Number(TOP)}`;
-          window.open(URL, '_blank', params);
+          window.open(url, '_blank', params);
         }
       } catch(err) {}
     }
-    redirect_link_block({URL}) {
+    redirect_link_block({USER_URL}) {
       try {
-        const url = new URL(URL);
+        const url = new URL(USER_URL);
         if (protocols.includes(url.protocol)) {
-          window.open(URL, '_self');
+          window.open(url, '_self');
         }
       } catch(err) {}
     }
