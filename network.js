@@ -301,6 +301,10 @@
                 value: '3'
               },
               {
+                text: '(3 1) status ok? and text',
+                value: '3 1'
+              },
+              {
                 text: '(4) status',
                 value: '4'
               },
@@ -311,6 +315,10 @@
               {
                 text: '(6) type',
                 value: '6'
+              },
+              {
+                text: '(6 4) type and status',
+                value: '6 4'
               },
               {
                 text: '(7) redirected?',
@@ -338,6 +346,10 @@
                 value: '3'
               },
               {
+                text: '(3 1) status ok? and text',
+                value: '3 1'
+              },
+              {
                 text: '(4) status',
                 value: '4'
               },
@@ -348,6 +360,10 @@
               {
                 text: '(6) type',
                 value: '6'
+              },
+              {
+                text: '(6 4) type and status',
+                value: '6 4'
               },
               {
                 text: '(7) redirected?',
