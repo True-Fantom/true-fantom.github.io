@@ -118,8 +118,8 @@
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
         var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
-        if (json === null) {return 'null'}
-        else if (json === undefined) {return ''}
+        if (json === null) {return null}
+        else if (json === undefined) {return undefined}
         else if (typeof json === 'object') {return JSON.stringify(json)}
         else {return String(json)}
       } catch(err) {return ''}
