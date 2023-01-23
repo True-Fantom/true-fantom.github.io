@@ -75,7 +75,7 @@
           {
             opcode: 'contains_json_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
+            text: '[JSON_STRING] contains [PATH] split by [SPLIT] ?',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
