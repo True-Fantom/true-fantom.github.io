@@ -1,314 +1,153 @@
 (Scratch => {
   'use strict';
 
-  var g = function (b) {
-      var a = y(b);
-      return null !== b && ('object' === a || 'function' === a);
-    },
-    I = ['__proto__', 'prototype', 'constructor'],
-    H = function (b) {
-      return !b.some(function (a) {
-        return I.includes(a);
-      });
-    },
-    r = {
-      get: function (b, a, c) {
-        if (!g(b) || 'string' !== typeof a) return void 0 === c ? b : c;
-        a = p(a);
-        if (0 !== a.length) {
-          for (var d = 0; d < a.length; d++) {
-            if (!Object.prototype.propertyIsEnumerable.call(b, a[d])) return c;
-            b = b[a[d]];
-            if (void 0 === b || null === b) {
-              if (d !== a.length - 1) return c;
-              break;
-            }
-          }
-          return b;
-        }
-      },
-      set: function (b, a, c) {
-        if (!g(b) || 'string' !== typeof a) return b;
-        var d = b;
-        a = p(a);
-        for (var f = 0; f < a.length; f++) {
-          var e = a[f];
-          g(b[e]) || (b[e] = {});
-          f === a.length - 1 && (b[e] = c);
-          b = b[e];
-        }
-        return d;
-      },
-      delete: function (b, a) {
-        if (g(b) && 'string' === typeof a) {
-          a = p(a);
-          for (var c = 0; c < a.length; c++) {
-            var d = a[c];
-            if (c === a.length - 1) {
-              delete b[d];
-              break;
-            }
-            b = b[d];
-            if (!g(b)) break;
-          }
-        }
-      },
-      has: function (b, a) {
-        if (!g(b) || 'string' !== typeof a) return !1;
-        a = p(a);
-        if (0 === a.length) return !1;
-        for (var c = 0; c < a.length; c++)
-          if (g(b)) {
-            if (!(a[c] in b)) return !1;
-            b = b[a[c]];
-          } else return !1;
-        return !0;
-      },
-    },
-    J = function (b) {
-      b = b.charCodeAt(0).toString(16).toUpperCase();
-      return '0x' + (b.length % 2 ? '0' : '') + b;
-    },
-    D = (function (b) {
-      function a(b, f, e, h) {
-        if (!(this instanceof a))
-          throw new TypeError('Cannot call a class as a function');
-        var d = e || 20;
-        if (f) {
-          var k = b.message.match(/^Unexpected token (.) .*position\s+(\d+)/i);
-          e = k
-            ? +k[2]
-            : b.message.match(/^Unexpected end of JSON.*/i)
-            ? f.length - 1
-            : null;
-          k = k
-            ? b.message.replace(
-                /^Unexpected token ./,
-                'Unexpected token '
-                  .concat(JSON.stringify(k[1]), ' (')
-                  .concat(J(k[1]), ')')
-              )
-            : b.message;
-          if (null !== e && void 0 !== e) {
-            var g = e <= d ? 0 : e - d;
-            d = e + d >= f.length ? f.length : e + d;
-            d =
-              (0 === g ? '' : '...') +
-              f.slice(g, d) +
-              (d === f.length ? '' : '...');
-            e = {
-              message:
-                k +
-                ' while parsing '
-                  .concat(f === d ? '' : 'near ')
-                  .concat(JSON.stringify(d)),
-              position: e,
-            };
-          } else
-            e = {
-              message: k + " while parsing '".concat(f.slice(0, 2 * d), "'"),
-              position: 0,
-            };
-        } else
-          e = {
-            message: b.message + ' while parsing empty string',
-            position: 0,
-          };
-        f = c.call(this, e.message);
-        Object.assign(w(f), e);
-        f.code = 'EJSONPARSE';
-        f.systemError = b;
-        Error.captureStackTrace(w(f), h || f.constructor);
-        return f;
-      }
-      F(a, b);
-      var c = G(a);
-      E(a, [
-        {
-          key: 'name',
-          get: function () {
-            return this.constructor.name;
-          },
-          set: function (a) {},
-        },
-        {
-          key: Symbol.toStringTag,
-          get: function () {
-            return this.constructor.name;
-          },
-        },
-      ]);
-      return a;
-    })(v(SyntaxError)),
-    K = Symbol.for('indent'),
-    L = Symbol.for('newline'),
-    M = /^\s*[{\[]((?:\r?\n)+)([\s\t]*)/,
-    l = function f(a, c, d) {
-      var e = String(a).replace(/^\uFEFF/, '');
-      d = d || 20;
-      try {
-        var h = e.match(M) || [, '', ''];
-        var g = Array.isArray(h) ? h : void 0;
-        var k;
-        if (!(k = g))
-          if ('undefined' !== typeof Symbol && Symbol.iterator in Object(h)) {
-            g = [];
-            var l = !0,
-              m = !1,
-              n = void 0;
-            try {
-              for (
-                var p = h[Symbol.iterator](), r;
-                !(l = (r = p.next()).done) && (g.push(r.value), 3 !== g.length);
-                l = !0
-              );
-            } catch (z) {
-              (m = !0), (n = z);
-            } finally {
-              try {
-                if (!l && null != p['return']) p['return']();
-              } finally {
-                if (m) throw n;
-              }
-            }
-            k = g;
-          } else k = void 0;
-        var t;
-        if (!(t = k))
-          a: {
-            if (h) {
-              if ('string' === typeof h) {
-                t = C(h, 3);
-                break a;
-              }
-              var u = Object.prototype.toString.call(h).slice(8, -1);
-              'Object' === u && h.constructor && (u = h.constructor.name);
-              if ('Map' === u || 'Set' === u) {
-                t = Array.from(h);
-                break a;
-              }
-              if (
-                'Arguments' === u ||
-                /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(u)
-              ) {
-                t = C(h, 3);
-                break a;
-              }
-            }
-            t = void 0;
-          }
-        var q;
-        if (!(q = t))
-          throw new TypeError(
-            'Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.'
-          );
-        var v = q[1],
-          w = q[2],
-          x = JSON.parse(e, c);
-        x && 'object' === y(x) && ((x[L] = v), (x[K] = w));
-        return x;
-      } catch (z) {
-        if ('string' !== typeof a && !Buffer.isBuffer(a))
-          throw (
-            ((c = Array.isArray(a) && 0 === a.length),
-            Object.assign(
-              new TypeError(
-                'Cannot parse '.concat(c ? 'an empty array' : String(a))
-              ),
-              { code: 'EJSONPARSE', systemError: z }
-            ))
-          );
-        throw new D(z, e, d, f);
-      }
-    };
-  l.JSONParseError = D;
-  l.noExceptions = function (a, c) {
-    try {
-      return JSON.parse(String(a).replace(/^\uFEFF/, ''), c);
-    } catch (d) {}
-  };
+  const icon = 'data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwLDAsMjI1LjM1NDgsMjI1LjM1NDgiIGhlaWdodD0iMjI1LjM1NDgiIHdpZHRoPSIyMjUuMzU0OCIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgdmVyc2lvbj0iMS4xIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTI3LjMyMjc0LC02Ny4zMjI2KSI+PGcgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZT0ibm9uZSIgZmlsbC1ydWxlPSJub256ZXJvIiBkYXRhLXBhcGVyLWRhdGE9InsmcXVvdDtpc1BhaW50aW5nTGF5ZXImcXVvdDs6dHJ1ZX0iPjxwYXRoIHN0cm9rZS13aWR0aD0iMCIgZmlsbD0iIzE0NjYwMCIgZD0iTTEyNy4zMjI3NSwxODBjMCwtNjIuMjMwMDEgNTAuNDQ3MzksLTExMi42Nzc0IDExMi42Nzc0LC0xMTIuNjc3NGM2Mi4yMzAwMSwwIDExMi42Nzc0LDUwLjQ0NzM5IDExMi42Nzc0LDExMi42Nzc0YzAsNjIuMjMwMDEgLTUwLjQ0NzM5LDExMi42Nzc0IC0xMTIuNjc3NCwxMTIuNjc3NGMtNjIuMjMwMDEsMCAtMTEyLjY3NzQsLTUwLjQ0NzM5IC0xMTIuNjc3NCwtMTEyLjY3NzR6Ij48L3BhdGg+PGcgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSIjZmZmZmZmIj48cGF0aCBkYXRhLXBhcGVyLWRhdGE9InsmcXVvdDtpbmRleCZxdW90OzpudWxsfSIgZD0iTTI2MS4zNjIzNSwxNDYuNjIzNTlsLTUuMTUwOTcsNS4yNzQ2MmwtMTMuMTg1NTEsLTEyLjIzOTg5bDE5LjIzNjg5LC0xOS40OTU4OWMxMC41OTE0NywtMTAuNTkxNDcgMjcuNzU4NCwtMTAuNTkxNDcgMzguMzQxMTIsMGwxMi43ODAzOCwxMi43ODAzOGMxMC41OTE0NywxMC41ODI3MSAxMC41OTE0NywyNy43NDk2NSAwLDM4LjM0MTEybC0zOC4zNDExMiwzOC4zNDExMmMtMTAuNTkxNDcsMTAuNTg2OTUgLTI3Ljc0OTY1LDEwLjU4Njk1IC0zOC4zNDExMiwwbC0xMi43ODAzNywtMTIuNzgwMzdsLTEyLjY3Mzc4LC0xMy4yMjYxMmwxMi4yNjMwNCwtMTIuNDMzbDI1Ljk3MTQ5LDI1LjY1OTEyYzMuNTIxNzQsMy41MjE3NCA5LjI1ODY0LDMuNTIxNzQgMTIuNzgwMzgsMGwzOC4zNDExMiwtMzguMzQxMTJjMy41MzA0OSwtMy41MzA0OSAzLjUzMDQ5LC05LjI1ODY0IDAsLTEyLjc4MDM4bC0xMi43ODAzNywtMTIuNzgwMzdjLTMuNTIxNzQsLTMuNTIxNzMgLTkuMjQ5ODgsLTMuNTMwNDkgLTEyLjc4MDM4LDBsLTEzLjY4MDc5LDEzLjY4MDc5eiI+PC9wYXRoPjxwYXRoIGRhdGEtcGFwZXItZGF0YT0ieyZxdW90O2luZGV4JnF1b3Q7Om51bGx9IiBkPSJNMjE4LjYzNzczLDIxMy4zNzY0bDUuMTUwOTcsLTUuMjc0NjJsMTMuMTg1NTEsMTIuMjM5ODlsLTE5LjIzNjg5LDE5LjQ5NTg5Yy0xMC41OTE0NywxMC41OTE0NyAtMjcuNzU4NCwxMC41OTE0NyAtMzguMzQxMTIsMGwtMTIuNzgwMzgsLTEyLjc4MDM4Yy0xMC41OTE0NywtMTAuNTgyNzEgLTEwLjU5MTQ3LC0yNy43NDk2NSAwLC0zOC4zNDExMWwzOC4zNDExMiwtMzguMzQxMTJjMTAuNTkxNDcsLTEwLjU4Njk1IDI3Ljc0OTY1LC0xMC41ODY5NSAzOC4zNDExMiwwbDEyLjc4MDM3LDEyLjc4MDM3bDEyLjY3Mzc4LDEzLjIyNjEybC0xMi4yNjMwNSwxMi40MzNsLTI1Ljk3MTQ4LC0yNS42NTkxMmMtMy41MjE3NCwtMy41MjE3NCAtOS4yNTg2NCwtMy41MjE3NCAtMTIuNzgwMzgsMGwtMzguMzQxMTIsMzguMzQxMTJjLTMuNTMwNDksMy41MzA0OSAtMy41MzA0OSw5LjI1ODY0IDAsMTIuNzgwMzhsMTIuNzgwMzcsMTIuNzgwMzdjMy41MjE3NCwzLjUyMTczIDkuMjQ5ODgsMy41MzA0OSAxMi43ODAzOCwwbDEzLjY4MDc5LC0xMy42ODA3OXoiPjwvcGF0aD48L2c+PC9nPjwvZz48L3N2Zz48IS0tcm90YXRpb25DZW50ZXI6MTEyLjY3NzI1NToxMTIuNjc3NDA1LS0+';
 
-  class N {
+  class Network {
+
     getInfo() {
       return {
-        id: 'DotProp',
-        name: 'Dot Prop',
+
+        id: 'json',
+        name: 'Json',
+
+        menuIconURI: icon,
+
         blocks: [
           {
-            opcode: 'get',
+            opcode: 'parse_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'Get [path] from [object] and use [defaultValue] if not found',
+            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
             arguments: {
-              path: { type: Scratch.ArgumentType.STRING, defaultValue: 'a.b' },
-              object: {
+              PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"a":{"b":"Hello World"}}',
+                defaultValue: 'fruit/apples'
               },
-              defaultValue: {
+              JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'Value not found',
+                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
               },
-            },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/'
+              }
+            }
           },
+          '---',
           {
-            opcode: 'set',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'Set [path] in [object] to [value]',
-            arguments: {
-              path: { type: Scratch.ArgumentType.STRING, defaultValue: 'a.c' },
-              object: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"a":{"b":"Hello World"}}',
-              },
-              value: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'Lorem ipsum',
-              },
-            },
-          },
-          {
-            opcode: 'has',
+            opcode: 'parse_json_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'Does [object] contain [path]',
+            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
             arguments: {
-              object: {
+              PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"a":{"b":"Hello World"}}',
+                defaultValue: 'fruit/apples'
               },
-              path: { type: Scratch.ArgumentType.STRING, defaultValue: 'a.b' },
-            },
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'parse_json_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
+            arguments: {
+              PATH: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'fruit/apples'
+              },
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/'
+              }
+            }
           },
           {
-            opcode: 'delete',
+            opcode: 'parse_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'Delete [path] from [object]',
+            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
             arguments: {
-              path: { type: Scratch.ArgumentType.STRING, defaultValue: 'a.b' },
-              object: {
+              PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"a":{"b":"Hello World"}}',
+                defaultValue: 'fruit/apples'
               },
-            },
-          },
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/'
+              }
+            }
+          }
         ],
-      };
+
+        menus: {
+          value_type: { 
+            acceptReporters: true,
+            items: [
+              {
+                text: '(1) string',
+                value: '1'
+              },
+              {
+                text: '(2) number',
+                value: '2'
+              },
+              {
+                text: '(3) boolean',
+                value: '3'
+              },
+              {
+                text: '(4) null',
+                value: '4'
+              },
+              {
+                text: '(5) undefined',
+                value: '5'
+              },
+              {
+                text: '(6) nothing',
+                value: '6'
+              }
+            ]
+          }
+        }
+      }
     }
-    get({ path: a, object: c, defaultValue: d }) {
-      a = r.get(l(c), a, d);
-      return 'object' === typeof a ? JSON.stringify(a) : a;
+
+    parse_json_block({PATH, JSON_STRING, SPLIT}) {
+      try {
+        var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
+        if (path[0] === '') path.splice(0, 1);
+        if (path[path.length - 1] === '') path.splice(-1, 1);
+        var json;
+        try {
+          json = JSON.parse(' ' + String(JSON_STRING));
+        } catch (err) {
+          return '';
+        }
+        path.forEach(prop => json = json[prop]);
+        if (json === null) return 'null';
+        else if (json === undefined) return '';
+        else if (typeof json === 'object') return JSON.stringify(json);
+        else return String(json);
+      } catch (err) {
+        return '';
+      }
     }
-    set({ path: a, object: c, value: d }) {
-      return JSON.stringify(r.set(l(c), a, d));
-    }
-    has({ object: a, path: c }) {
-      return r.has(l(a), c);
-    }
-    delete({ object: a, path: c }) {
-      a = l(a);
-      r.delete(a, c);
-      return JSON.stringify(a);
-    }
-  }
-  
-  Scratch.extensions.register(new N());
-})();
+
+  Scratch.extensions.register(new Network());
+})(Scratch);
