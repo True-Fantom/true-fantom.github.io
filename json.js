@@ -56,7 +56,6 @@
               }
             }
           },
-          '---',
           {
             opcode: 'contains_json_block',
             blockType: Scratch.BlockType.BOOLEAN,
