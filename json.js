@@ -44,7 +44,7 @@
           {
             opcode: 'set_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
+            text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -67,7 +67,7 @@
           {
             opcode: 'contains_json_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
+            text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
