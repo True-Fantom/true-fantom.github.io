@@ -19,6 +19,17 @@
 
         blocks: [
           {
+            opcode: 'is_json_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is json [JSON_STRING] ?',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"apples":2}'
+              }
+            }
+          },
+          {
             opcode: 'get_json_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING] split by [RESPONSES_SPLIT]',
@@ -29,7 +40,7 @@
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
+                defaultValue: '{"fruit":{"apples":2,"bananas":3},"total_fruit":5}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
@@ -56,7 +67,7 @@
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
+                defaultValue: '{"fruit":{"apples":2,"bananas":3},"total_fruit":5}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
@@ -83,7 +94,7 @@
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"apples": 2}'
+                defaultValue: '{"apples":2}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
@@ -123,6 +134,12 @@
       }
     }
 
+    is_json_block({JSON_STRING}) {
+      try {
+        var json = JSON.parse(String(JSON_STRING));
+        return true;
+      } catch(err) {return false}
+    }
     get_json_block({PATH, JSON_STRING, SPLIT, JOIN, RESPONSES_SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
