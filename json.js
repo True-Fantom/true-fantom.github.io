@@ -114,12 +114,8 @@
                 value: '4'
               },
               {
-                text: '(5) undefined',
+                text: '(5) nothing',
                 value: '5'
-              },
-              {
-                text: '(6) nothing',
-                value: '6'
               }
             ]
           }
