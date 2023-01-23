@@ -79,11 +79,11 @@
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'fruit/apples'
+                defaultValue: 'apples'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit": {"apples": 2, "bananas": 3}, "total_fruit": 5}'
+                defaultValue: '{"apples": 2}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
