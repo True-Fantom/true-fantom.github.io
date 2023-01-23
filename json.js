@@ -143,6 +143,7 @@
         var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
+        else if (json === undefined) {return ''}
         else {return json}
       } catch(err) {return ''}
     }
@@ -154,6 +155,7 @@
         var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
+        else if (json === undefined) {return ''}
         else {return json}
       } catch(err) {return ''}
     }
@@ -165,6 +167,7 @@
         var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
+        else if (json === undefined) {return ''}
         else {return json}
       } catch(err) {return ''}
     }
