@@ -172,6 +172,7 @@
         return '';
       }
     }
+  }
 
   Scratch.extensions.register(new Network());
 })(Scratch);
