@@ -82,9 +82,7 @@
         id: 'network',
         name: 'Network',
         
-        color1: '#146600',
-        color2: '#125C00',
-        color3: '#105200',
+        color1: '#808080',
 
         menuIconURI: icon,
 
