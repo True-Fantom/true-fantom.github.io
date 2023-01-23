@@ -150,6 +150,7 @@
         else {return String(json)}
       } catch(err) {return ''}
     }
+  }
 
   Scratch.extensions.register(new Network());
 })(Scratch);
