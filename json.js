@@ -12,6 +12,8 @@
         name: 'Json',
 
         color1: '#808080',
+        color2: '#737373',
+        color3: '#666666',
 
         menuIconURI: icon,
 
