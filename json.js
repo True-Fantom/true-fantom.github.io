@@ -133,7 +133,7 @@
         path.forEach(prop => json = json[prop]);
         if (json === null) {return 'null'}
         else if (json === undefined) {return ''}
-        else if (typeof json === 'object') {return JSON.stringify(json)}
+        else if (typeof json === 'object') {return false}
         else {return String(json)}
       } catch(err) {return ''}
     }
