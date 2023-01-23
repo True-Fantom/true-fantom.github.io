@@ -11,6 +11,10 @@
         id: 'json',
         name: 'Json',
 
+        color1: '#aa5667',
+        color2: '#aa5668',
+        color3: '#aa5669',
+
         menuIconURI: icon,
 
         blocks: [
