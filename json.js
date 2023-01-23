@@ -118,7 +118,7 @@
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
         var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
-        if (typeof json === 'object') {return JSON.stringify(json)}
+        if (typeof json === 'object' && json !== undefined && json !== null) {return JSON.stringify(json)}
         else {return json}
       } catch(err) {return ''}
     }
@@ -142,7 +142,7 @@
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
         var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
-        return typeof json;
+        return undefined;
         if (json === null) {return 'null'}
         else if (json === undefined) {return ''}
         else if (typeof json === 'object') {return JSON.stringify(json)}
