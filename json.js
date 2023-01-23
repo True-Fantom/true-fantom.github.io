@@ -21,7 +21,7 @@
           {
             opcode: 'get_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING]',
+            text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING] split by [RESPONSES_SPLIT]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -38,13 +38,17 @@
               JOIN: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '&'
+              },
+              RESPONSES_SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'set_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING]',
+            text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING] split by [RESPONSES_SPLIT]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -61,13 +65,17 @@
               JOIN: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '&'
+              },
+              RESPONSES_SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'contains_json_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING]',
+            text: '[PATH] split by [SPLIT] join by [JOIN] of [JSON_STRING] split by [RESPONSES_SPLIT]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -84,6 +92,10 @@
               JOIN: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '&'
+              },
+              RESPONSES_SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           }
@@ -123,7 +135,7 @@
       }
     }
 
-    get_json_block({PATH, JSON_STRING, SPLIT, JOIN}) {
+    get_json_block({PATH, JSON_STRING, SPLIT, JOIN, RESPONSES_SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
@@ -134,7 +146,7 @@
         else {return json}
       } catch(err) {return '6789'}
     }
-    set_json_block({PATH, JSON_STRING, SPLIT, JOIN}) {
+    set_json_block({PATH, JSON_STRING, SPLIT, JOIN, RESPONSES_SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
@@ -145,7 +157,7 @@
         else {return json}
       } catch(err) {return '6789'}
     }
-    contains_json_block({PATH, JSON_STRING, SPLIT, JOIN}) {
+    contains_json_block({PATH, JSON_STRING, SPLIT, JOIN, RESPONSES_SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
