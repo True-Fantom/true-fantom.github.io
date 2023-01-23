@@ -114,52 +114,42 @@
     get_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
-        if (path[0] === '') path.splice(0, 1);
-        if (path[path.length - 1] === '') path.splice(-1, 1);
-        var json;
-        try {
-          json = JSON.parse(' ' + String(JSON_STRING));
-        } catch(err) {return ''}
+        if (path[0] === '') {path.splice(0, 1)}
+        if (path[path.length - 1] === '') {path.splice(-1, 1)}
+        var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
-        if (json === null) return 'null';
-        else if (json === undefined) return '';
-        else if (typeof json === 'object') return JSON.stringify(json);
-        else return String(json);
+        if (json === null) {return 'null'}
+        else if (json === undefined) {return ''}
+        else if (typeof json === 'object') {return JSON.stringify(json)}
+        else {return String(json)}
       } catch(err) {return ''}
     }
     set_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
-        if (path[0] === '') path.splice(0, 1);
-        if (path[path.length - 1] === '') path.splice(-1, 1);
-        var json;
-        try {
-          json = JSON.parse(' ' + String(JSON_STRING));
-        } catch(err) {return ''}
+        if (path[0] === '') {path.splice(0, 1)}
+        if (path[path.length - 1] === '') {path.splice(-1, 1)}
+        var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
-        if (json === null) return 'null';
-        else if (json === undefined) return '';
-        else if (typeof json === 'object') return JSON.stringify(json);
-        else return String(json);
+        if (json === null) {return 'null'}
+        else if (json === undefined) {return ''}
+        else if (typeof json === 'object') {return JSON.stringify(json)}
+        else {return String(json)}
       } catch(err) {return ''}
     }
     contains_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
-        if (path[0] === '') path.splice(0, 1);
-        if (path[path.length - 1] === '') path.splice(-1, 1);
-        var json;
-        try {
-          json = JSON.parse(' ' + String(JSON_STRING));
-        } catch(err) {return ''}
+        if (path[0] === '') {path.splice(0, 1)}
+        if (path[path.length - 1] === '') {path.splice(-1, 1)}
+        var json = JSON.parse(' ' + String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
-        if (json === null) return 'null';
-        else if (json === undefined) return '';
-        else if (typeof json === 'object') return JSON.stringify(json);
-        else return String(json);
+        if (json === null) {return 'null'}
+        else if (json === undefined) {return ''}
+        else if (typeof json === 'object') {return JSON.stringify(json)}
+        else {return String(json)}
       } catch(err) {return ''}
     }
-  }
 
   Scratch.extensions.register(new Network());
 })(Scratch);
