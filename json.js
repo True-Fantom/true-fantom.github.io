@@ -29,6 +29,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'get_json_block',
             blockType: Scratch.BlockType.REPORTER,
