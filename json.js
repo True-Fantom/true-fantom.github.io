@@ -120,7 +120,7 @@
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else {return json}
-      } catch(err) {return ''}
+      } catch(err) {return '6789'}
     }
     set_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
