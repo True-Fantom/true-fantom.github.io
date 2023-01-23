@@ -128,7 +128,7 @@
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        var json = JSON.parse(' ' + String(JSON_STRING));
+        var json = JSON.parse(String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
@@ -140,7 +140,7 @@
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        var json = JSON.parse(' ' + String(JSON_STRING));
+        var json = JSON.parse(String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
@@ -152,7 +152,7 @@
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        var json = JSON.parse(' ' + String(JSON_STRING));
+        var json = JSON.parse(String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
