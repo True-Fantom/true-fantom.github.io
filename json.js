@@ -25,7 +25,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"apples":2}'
+                defaultValue: '{"apples":1}'
               }
             }
           },
@@ -41,7 +41,7 @@
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":{"apples":2,"bananas":3},"total_fruit":5}'
+                defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
@@ -60,7 +60,7 @@
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":{"apples":2,"bananas":3},"total_fruit":5}'
+                defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
@@ -87,7 +87,7 @@
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"apples":2}'
+                defaultValue: '{"apples":1}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
