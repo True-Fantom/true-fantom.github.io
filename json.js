@@ -101,13 +101,13 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'get [NUMBER] of [JSON_STRING]',
             arguments: {
-              NUMBER: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
-              },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
+              },
+              NUMBER: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
               }
             }
           },
@@ -119,6 +119,22 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'json_split_by_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[JSON_STRING] split by [SPLIT]',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
               }
             }
           }
@@ -218,6 +234,12 @@
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
         else {return json}
+      } catch(err) {return ''}
+    }
+    json_split_by_block({JSON_STRING, SPLIT}) {
+      try {
+        var json = JSON.parse(String(JSON_STRING));
+        return '2212';
       } catch(err) {return ''}
     }
   }
