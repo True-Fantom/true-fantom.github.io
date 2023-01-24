@@ -97,6 +97,21 @@
           },
           '---',
           {
+            opcode: 'get_number_of_json_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'get [NUMBER] of [JSON_STRING]',
+            arguments: {
+              NUMBER: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
+              }
+            }
+          },
+          {
             opcode: 'length_of_json_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'length of [JSON_STRING]',
@@ -170,6 +185,18 @@
       } catch(err) {return ''}
     }
     contains_json_block({PATH, JSON_STRING, SPLIT}) {
+      try {
+        var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
+        if (path[0] === '') {path.splice(0, 1)}
+        if (path[path.length - 1] === '') {path.splice(-1, 1)}
+        var json = JSON.parse(String(JSON_STRING));
+        path.forEach(prop => json = json[prop]);
+        if (typeof json === 'object') {return JSON.stringify(json)}
+        else if (json === undefined) {return ''}
+        else {return json}
+      } catch(err) {return ''}
+    }
+    get_number_of_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
         var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
