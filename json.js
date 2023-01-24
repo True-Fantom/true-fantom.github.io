@@ -52,7 +52,7 @@
           {
             opcode: 'set_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[PATH] split by [SPLIT] of [JSON_STRING]',
+            text: 'set [PATH] split by [SPLIT] to [VALUE_TYPE] [VALUE] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -65,6 +65,14 @@
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '/'
+              },
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '1'
+              },
+              VALUE_TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'value_type'
               }
             }
           },
