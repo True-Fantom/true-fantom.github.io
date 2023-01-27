@@ -11,9 +11,9 @@
 
         blocks: [
           {
-            opcode: 'connected_to_internet_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'connected to internet?'
+            opcode: 'user_agent_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'user agent'
           }
         ]
       }
