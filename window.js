@@ -55,6 +55,8 @@
         name: 'Window',
 
         color1: '#6600ff',
+        color2: '#5c00e6',
+        color3: '#5200cc',
 
         menuIconURI: icon,
 
