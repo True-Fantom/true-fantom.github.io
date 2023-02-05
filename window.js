@@ -362,7 +362,7 @@
     }
 
     connected_to_internet_block() {
-      try {return String(window.fullScreen)} catch(err) {return ''}
+      try {return document.fullscreenElement === null ? false : true} catch(err) {return ''}
     }
     browser_block() {
       try {
