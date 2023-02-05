@@ -9,43 +9,6 @@
   const ms_protocols = ['ms-help:', 'ms-settings', 'ms-settings-airplanemode:', 'ms-settings-bluetooth:', 'ms-settings-camera:', 'ms-settings-cellular:', 'ms-settings-cloudstorage:', 'ms-settings-emailandaccounts:', 'ms-settings-language:', 'ms-settings-location:', 'ms-settings-lock:', 'ms-settings-nfctransactions:', 'ms-settings-notifications:', 'ms-settings-power:', 'ms-settings-privacy:', 'ms-settings-proximity:', 'ms-settings-screenrotation:', 'ms-settings-wifi:', 'ms-settings-workplace:', 'ms-access:', 'ms-excel:', 'ms-infopath:', 'ms-powerpoint:', 'ms-project:', 'ms-publisher:', 'ms-spd:', 'ms-visio:', 'ms-word:', 'ms-clock:', 'ms-calculator:', 'ms-windows-store:'];
   const protocols = [...main_protocols, ...browser_protocols, ...special_protocols, ...ms_protocols];
 
-  const fetch_url = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
-    SPLIT = String(SPLIT);
-    CONTENT_TYPE = Number(CONTENT_TYPE);
-    RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '').length >= 1 ? String(RESPONSES_TYPES).split(' ').filter(word => word !== '') : ['9'];
-    let single = METHOD === 'GET' || METHOD === 'DELETE';
-    return fetch(String(USER_URL), {
-      method: METHOD,
-      headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
-      redirect: single ? 'follow' : 'follow',
-      body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
-    .then(res => {
-      const responses = [];
-      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
-        switch (Number(RESPONSES_TYPES[i])) {
-          case 1: responses.push(res.text()); break;
-          case 2: responses.push(JSON.stringify(res.json())); break;
-          case 3: responses.push(String(res.ok)); break;
-          case 4: responses.push(res.status); break;
-          case 5: responses.push(res.statusText); break;
-          case 6: responses.push(res.type); break;
-          case 7: responses.push(String(res.redirected)); break;
-          case 8: responses.push(res.url); break;
-          case 9: default: responses.push(single ? res.url : String(res.bodyUsed)); break;
-        }
-      }
-      return Promise.all(responses);
-    })
-    .then(arr => {
-      let responses = '';
-      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
-        responses += SPLIT + arr[i];
-      }
-      return SPLIT === '' ? responses : responses.slice(1);
-    })
-    .catch(err => '');
-  };
-
   class Window {
 
     getInfo() {
@@ -63,8 +26,8 @@
         blocks: [
           {
             opcode: 'connected_to_internet_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'connected to internet?'
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'fullScreen?'
           },
           '---',
           {
@@ -399,7 +362,7 @@
     }
 
     connected_to_internet_block() {
-      try {return navigator.onLine} catch(err) {return false}
+      try {return String(window.fullScreen)} catch(err) {return ''}
     }
     browser_block() {
       try {
