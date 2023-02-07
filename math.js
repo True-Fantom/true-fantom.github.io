@@ -169,6 +169,22 @@
           },
           '---',
           {
+            opcode: 'trigonometry_functions_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] of [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'trigonometry_functions'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'pi_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'pi'
@@ -286,6 +302,16 @@
     }
     round_block({A,B}) {
       try {return Number(A).toFixed(Number(B))} catch(err) {return ''}
+    }
+    trigonometry_functions_block({A,B}) {
+      switch (A) {
+        case 1: return Math.sinh(B);
+        case 2: return Math.cosh(B);
+        case 3: return Math.tanh(B);
+        case 4: return Math.asinh(B);
+        case 5: return Math.acosh(B);
+        case 6: return Math.atanh(B);
+      }
     }
     pi_block() {
       return Math.PI;
