@@ -605,7 +605,7 @@
       return Number(A) % 1 > 0;
     }
     round_block({A,B}) {
-      return A.toFixed(B);
+      try {return A.toFixed(B)} catch(err) {return ''}
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
