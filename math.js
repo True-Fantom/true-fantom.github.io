@@ -169,6 +169,29 @@
           },
           '---',
           {
+            opcode: 'is_int_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is int [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          {
+            opcode: 'is_float_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is float [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'connected_to_internet_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'connected to internet?'
@@ -544,6 +567,12 @@
     }
     infinity_block() {
       return Number.POSITIVE_INFINITY;
+    }
+    is_int_block({A}) {
+      return Number(A) % 1 === 0;
+    }
+    is_float_block({A}) {
+      return Number(A) % 1 !== 0;
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
