@@ -153,6 +153,22 @@
           },
           '---',
           {
+            opcode: 'pi_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'pi'
+          },
+          {
+            opcode: 'e_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'e'
+          },
+          {
+            opcode: 'infinity_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'infinity'
+          },
+          '---',
+          {
             opcode: 'connected_to_internet_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'connected to internet?'
@@ -519,6 +535,15 @@
     }
     exactly_cont_block({A,B}) {
       return String(A).includes(String(B));
+    }
+    pi_block() {
+      return Math.PI;
+    }
+    e_block() {
+      return Math.E;
+    }
+    infinity_block() {
+      return Number.NEGATIVE_INFINITY;
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
