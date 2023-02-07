@@ -8,13 +8,13 @@
     else {return Boolean(A)}
   };
 
-  class Maths {
+  class Math {
 
     getInfo() {
       return {
 
-        id: 'maths',
-        name: 'Maths',
+        id: 'math',
+        name: 'Math',
 
         color1: '#59c059',
 
@@ -646,5 +646,5 @@
     }
   }
 
-  Scratch.extensions.register(new Maths());
+  Scratch.extensions.register(new Math());
 })(Scratch);
