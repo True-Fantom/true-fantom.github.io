@@ -169,6 +169,17 @@
           },
           '---',
           {
+            opcode: 'is_number_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is number [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          {
             opcode: 'is_int_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is int [A] ?',
@@ -567,6 +578,9 @@
     }
     infinity_block() {
       return Number.POSITIVE_INFINITY;
+    }
+    is_number_block({A}) {
+      return Number(A) !== NaN;
     }
     is_int_block({A}) {
       return Number(A) % 1 === 0;
