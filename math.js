@@ -572,7 +572,7 @@
       return Number(A) % 1 === 0;
     }
     is_float_block({A}) {
-      return Number(A) % 1 !== 0;
+      return Number(A) % 1 > 0;
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
