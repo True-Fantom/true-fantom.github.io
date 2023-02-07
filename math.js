@@ -8,7 +8,7 @@
     else {return Boolean(A)}
   };
 
-  class Math {
+  class ScratchMath {
 
     getInfo() {
       return {
@@ -646,5 +646,5 @@
     }
   }
 
-  Scratch.extensions.register(new Math());
+  Scratch.extensions.register(new ScratchMath());
 })(Scratch);
