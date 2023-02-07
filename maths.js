@@ -543,7 +543,7 @@
       return Math.E;
     }
     infinity_block() {
-      return Number.NEGATIVE_INFINITY;
+      return Number.POSITIVE_INFINITY;
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
