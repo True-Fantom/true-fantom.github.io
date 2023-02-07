@@ -153,6 +153,22 @@
           },
           '---',
           {
+            opcode: 'round_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'round [A] to [B] digits after dot',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'pi_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'pi'
@@ -196,22 +212,6 @@
             text: 'is float [A] ?',
             arguments: {
               A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              }
-            }
-          },
-          '---',
-          {
-            opcode: 'round_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'round [A] to [B] digits after dot',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              },
-              B: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: ''
               }
@@ -586,6 +586,9 @@
     exactly_cont_block({A,B}) {
       return String(A).includes(String(B));
     }
+    round_block({A,B}) {
+      try {return Number(A).toFixed(Number(B))} catch(err) {return ''}
+    }
     pi_block() {
       return Math.PI;
     }
@@ -603,9 +606,6 @@
     }
     is_float_block({A}) {
       return Number(A) % 1 > 0;
-    }
-    round_block({A,B}) {
-      try {return Number(A).toFixed(Number(B))} catch(err) {return ''}
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
