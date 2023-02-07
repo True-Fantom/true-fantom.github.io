@@ -304,7 +304,7 @@
       try {return Number(A).toFixed(Number(B))} catch(err) {return ''}
     }
     trigonometry_functions_block({A,B}) {
-      switch (A) {
+      switch (Number(A)) {
         case 1: return Math.sinh(B);
         case 2: return Math.cosh(B);
         case 3: return Math.tanh(B);
