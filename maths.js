@@ -59,6 +59,52 @@
           },
           '---',
           {
+            opcode: 'more_or_equal_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≥ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '50'
+              }
+            }
+          },
+          {
+            opcode: 'less_or_equal_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≤ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '50'
+              }
+            }
+          },
+          { 
+            opcode: 'exactly_equal_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≡ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '50'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'connected_to_internet_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'connected to internet?'
@@ -403,6 +449,15 @@
     }
     negative_block({A}) {
       return 0 - Number(A);
+    }
+    more_or_equal_block({A,B}) {
+      return A >= B;
+    }
+    less_or_equal_block({A,B}) {
+      return A <= B;
+    }
+    exactly_equal_block({A,B}) {
+      return A == B;
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
