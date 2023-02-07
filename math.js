@@ -153,6 +153,21 @@
           },
           '---',
           {
+            opcode: 'atan2_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'atan2 of x: [A] y: [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          {
             opcode: 'round_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'round [A] to [B] digits after dot',
@@ -299,6 +314,9 @@
     }
     exactly_cont_block({A,B}) {
       return String(A).includes(String(B));
+    }
+    atan2_block({A,B}) {
+      return Math.atan2(Number(A), Number(B));
     }
     round_block({A,B}) {
       try {return Number(A).toFixed(Number(B))} catch(err) {return ''}
