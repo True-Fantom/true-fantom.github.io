@@ -580,7 +580,7 @@
       return Number.POSITIVE_INFINITY;
     }
     is_number_block({A}) {
-      return Number(A) !== NaN;
+      return !isNaN(Number(A));
     }
     is_int_block({A}) {
       return Number(A) % 1 === 0;
