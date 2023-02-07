@@ -17,6 +17,48 @@
 
         blocks: [
           {
+            opcode: 'exponent_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] ^ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          {
+            opcode: 'root_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] √ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          {
+            opcode: 'negative_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '- [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'connected_to_internet_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'connected to internet?'
@@ -353,6 +395,15 @@
       }
     }
 
+    exponent_block({A,B}) {
+      return Math.pow(Number(A), Number(B));
+    }
+    root_block({A,B}) {
+      return Number(B) ** (1/Number(A));
+    }
+    negative_block({A}) {
+      return 0 - Number(A);
+    }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
     }
