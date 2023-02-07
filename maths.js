@@ -105,6 +105,33 @@
           },
           '---',
           {
+            opcode: 'equ_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] equ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              },
+              B: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },
+          {
+            opcode: 'xor_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] xor [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              },
+              B: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'connected_to_internet_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'connected to internet?'
@@ -458,6 +485,37 @@
     }
     exactly_equal_block({A,B}) {
       return A == B;
+    }
+    equ_block({A,B}) {
+      if (typeof A === 'string') {
+        if (A.toLowerCase() === 'false') {
+          A = false;
+        }
+      }
+      if (typeof B === 'string') {
+        if (B.toLowerCase() === 'false') {
+          B = false;
+        }
+      }
+      return Boolean(A) == Boolean(B);
+    }
+    xor_block({A,B}) {
+      if (typeof A === 'string') {
+        if (A.toLowerCase() === 'false') {
+          A = false;
+        }
+      }
+      if (typeof B === 'string') {
+        if (B.toLowerCase() === 'false') {
+          B = false;
+        }
+      }
+      if (Boolean(A) ^ Boolean(B) > 0) {
+        return true;
+      }
+      else {
+        return false;
+      }
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
