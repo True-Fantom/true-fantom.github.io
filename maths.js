@@ -137,6 +137,22 @@
           },
           '---',
           {
+            opcode: 'exactly_cont_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] exactly contains [B] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'a'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'connected_to_internet_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'connected to internet?'
@@ -500,6 +516,9 @@
       A = Bool(A);
       B = Bool(B);
       return A !== B;
+    }
+    exactly_cont_block({A,B}) {
+      return String(A).includes(String(B));
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
