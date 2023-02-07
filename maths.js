@@ -494,12 +494,12 @@
     equ_block({A,B}) {
       A = Bool(A);
       B = Bool(B);
-      return A == B;
+      return A === B;
     }
     xor_block({A,B}) {
       A = Bool(A);
       B = Bool(B);
-      return Boolean(A ^ B);
+      return A !== B;
     }
     connected_to_internet_block() {
       try {return navigator.onLine} catch(err) {return false}
