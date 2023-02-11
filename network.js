@@ -9,6 +9,16 @@
   const ms_protocols = ['ms-help:', 'ms-settings', 'ms-settings-airplanemode:', 'ms-settings-bluetooth:', 'ms-settings-camera:', 'ms-settings-cellular:', 'ms-settings-cloudstorage:', 'ms-settings-emailandaccounts:', 'ms-settings-language:', 'ms-settings-location:', 'ms-settings-lock:', 'ms-settings-nfctransactions:', 'ms-settings-notifications:', 'ms-settings-power:', 'ms-settings-privacy:', 'ms-settings-proximity:', 'ms-settings-screenrotation:', 'ms-settings-wifi:', 'ms-settings-workplace:', 'ms-access:', 'ms-excel:', 'ms-infopath:', 'ms-powerpoint:', 'ms-project:', 'ms-publisher:', 'ms-spd:', 'ms-visio:', 'ms-word:', 'ms-clock:', 'ms-calculator:', 'ms-windows-store:'];
   const protocols = [...main_protocols, ...browser_protocols, ...special_protocols, ...ms_protocols];
 
+  const Bool = (A) => {
+    if (typeof A === 'string' && A.toLowerCase() === 'false') {return false}
+    else {return Boolean(A)}
+  };
+
+  const Num = (A) => {
+    if (typeof A === 'string' && isNaN(Number(A))) {return 0}
+    else {return Number(A)}
+  };
+
   const fetch_url = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
@@ -46,7 +56,7 @@
     .catch(err => '');
   };
 
-  class Network {
+  class Network01 {
 
     getInfo() {
       return {
@@ -476,7 +486,7 @@
         }
       } catch(err) {}
     }
-    open_window_block({USER_URL,WIDTH,HEIGHT,LEFT,TOP}) {
+    open_window_block({USER_URL, WIDTH, HEIGHT, LEFT, TOP}) {
       try {
         const url = new URL(String(USER_URL));
         if (protocols.includes(url.protocol)) {
@@ -499,5 +509,5 @@
     }
   }
 
-  Scratch.extensions.register(new Network());
+  Scratch.extensions.register(new Network01());
 })(Scratch);
