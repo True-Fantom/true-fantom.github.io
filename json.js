@@ -172,16 +172,16 @@
 
     is_json_block({JSON_STRING}) {
       try {
-        var json = JSON.parse(String(JSON_STRING));
+        const json = JSON.parse(String(JSON_STRING));
         return true;
       } catch(err) {return false}
     }
     get_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
-        var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
+        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        var json = JSON.parse(String(JSON_STRING));
+        let json = JSON.parse(String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
@@ -190,10 +190,10 @@
     }
     set_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
-        var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
+        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        var json = JSON.parse(String(JSON_STRING));
+        let json = JSON.parse(String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
@@ -202,10 +202,10 @@
     }
     contains_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
-        var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
+        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        var json = JSON.parse(String(JSON_STRING));
+        let json = JSON.parse(String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
@@ -214,10 +214,10 @@
     }
     get_number_of_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
-        var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
+        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        var json = JSON.parse(String(JSON_STRING));
+        let json = JSON.parse(String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
@@ -226,10 +226,10 @@
     }
     length_of_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
-        var path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
+        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
         if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        var json = JSON.parse(String(JSON_STRING));
+        let json = JSON.parse(String(JSON_STRING));
         path.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
@@ -238,7 +238,7 @@
     }
     json_split_by_block({JSON_STRING, SPLIT}) {
       try {
-        var json = JSON.parse(String(JSON_STRING));
+        const json = JSON.parse(String(JSON_STRING));
         return '2212';
       } catch(err) {return ''}
     }
