@@ -13,7 +13,7 @@
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '').length >= 1 ? String(RESPONSES_TYPES).split(' ').filter(word => word !== '') : ['9'];
-    let single = METHOD === 'GET' || METHOD === 'DELETE';
+    const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
       method: METHOD,
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
@@ -403,7 +403,7 @@
     }
     browser_block() {
       try {
-        let has = input => navigator.userAgent.includes(input);
+        const has = input => navigator.userAgent.includes(input);
         if (has('Firefox')) return 'firefox';
         if (has('SamsungBrowser')) return 'samsung internet';
         if ((has('Opera') || has('OPR')) && has('GX')) return 'opera gx';
