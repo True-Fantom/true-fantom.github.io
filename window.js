@@ -366,7 +366,7 @@
     }
     browser_block() {
       try {
-        let has = input => navigator.userAgent.includes(input);
+        const has = input => navigator.userAgent.includes(input);
         if (has('Firefox')) return 'firefox';
         if (has('SamsungBrowser')) return 'samsung internet';
         if ((has('Opera') || has('OPR')) && has('GX')) return 'opera gx';
