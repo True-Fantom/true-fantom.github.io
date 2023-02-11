@@ -293,7 +293,7 @@
       return Num(A) ** Num(B));
     }
     root_block({A, B}) {
-      return Num(B) ** (1/Num(A));
+      return Num(B) ** (1 / Num(A));
     }
     negative_block({A}) {
       return 0 - Num(A);
