@@ -8,12 +8,12 @@
     else {return Boolean(A)}
   };
 
-  class ScratchMath {
+  class Math01 {
 
     getInfo() {
       return {
 
-        id: 'math',
+        id: 'math01',
         name: 'Math',
 
         color1: '#59c059',
@@ -284,44 +284,40 @@
       }
     }
 
-    exponent_block({A,B}) {
-      return Math.pow(Number(A), Number(B));
+    exponent_block({A, B}) {
+      return Number(A) ** Number(B));
     }
-    root_block({A,B}) {
+    root_block({A, B}) {
       return Number(B) ** (1/Number(A));
     }
     negative_block({A}) {
       return 0 - Number(A);
     }
-    more_or_equal_block({A,B}) {
+    more_or_equal_block({A, B}) {
       return A >= B;
     }
-    less_or_equal_block({A,B}) {
+    less_or_equal_block({A, B}) {
       return A <= B;
     }
-    exactly_equal_block({A,B}) {
+    exactly_equal_block({A, B}) {
       return A == B;
     }
-    equ_block({A,B}) {
-      A = Bool(A);
-      B = Bool(B);
-      return A === B;
+    equ_block({A, B}) {
+      return Bool(A) === Bool(B);
     }
-    xor_block({A,B}) {
-      A = Bool(A);
-      B = Bool(B);
-      return A !== B;
+    xor_block({A, B}) {
+      return Bool(A) !== Bool(B);
     }
-    exactly_cont_block({A,B}) {
+    exactly_cont_block({A, B}) {
       return String(A).includes(String(B));
     }
-    atan2_block({A,B}) {
+    atan2_block({A, B}) {
       return Math.atan2(Number(A), Number(B));
     }
-    round_block({A,B}) {
+    round_block({A, B}) {
       try {return Number(A).toFixed(Number(B))} catch(err) {return ''}
     }
-    trigonometry_functions_block({A,B}) {
+    trigonometry_functions_block({A, B}) {
       switch (Number(A)) {
         case 1: return Math.sinh(B);
         case 2: return Math.cosh(B);
@@ -351,5 +347,5 @@
     }
   }
 
-  Scratch.extensions.register(new ScratchMath());
+  Scratch.extensions.register(new Math01());
 })(Scratch);
