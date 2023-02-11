@@ -8,6 +8,11 @@
     else {return Boolean(A)}
   };
 
+  const Num = (A) => {
+    if (typeof A === 'string' && isNaN(Number(A))) {return 0}
+    else {return Number(A)}
+  };
+
   class Math01 {
 
     getInfo() {
@@ -285,13 +290,13 @@
     }
 
     exponent_block({A, B}) {
-      return Number(A) ** Number(B));
+      return Num(A) ** Num(B));
     }
     root_block({A, B}) {
-      return Number(B) ** (1/Number(A));
+      return Num(B) ** (1/Num(A));
     }
     negative_block({A}) {
-      return 0 - Number(A);
+      return 0 - Num(A);
     }
     more_or_equal_block({A, B}) {
       return A >= B;
@@ -312,10 +317,10 @@
       return String(A).includes(String(B));
     }
     atan2_block({A, B}) {
-      return Math.atan2(Number(A), Number(B));
+      return Math.atan2(Num(A), Num(B));
     }
     round_block({A, B}) {
-      try {return Number(A).toFixed(Number(B))} catch(err) {return ''}
+      try {return Num(A).toFixed(Num(B))} catch(err) {return ''}
     }
     trigonometry_functions_block({A, B}) {
       switch (Number(A)) {
