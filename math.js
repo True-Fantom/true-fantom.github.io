@@ -16,7 +16,7 @@
   };
 
   const JsonObj = (A) => {
-    try {return JSON.parse(A, null)} catch(err) {return ''}
+    return JSON.parse(A, null);
   };
 
   class Math01 {
