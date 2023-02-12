@@ -62,9 +62,28 @@
             }
           },
           {
-            opcode: 'set_value_json_block',
+            opcode: 'set_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'set [PATH] to [VALUE_TYPE] [VALUE] of [JSON_STRING]',
+            text: 'set [PATH] to [VALUE] of [JSON_STRING]',
+            arguments: {
+              PATH: { //если строка не содержит "ключи в основании пути" возвращается пустая строка
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '["vegetables"]'
+              },
+              JSON_STRING: { //если крайний ключ уже существует он перезапишется
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              VALUE: { //значение только для крайнего ключа //если значение не массив или объект возвращается пустая строка
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '["potato","tomato"]'
+              }
+            }
+          },
+          {
+            opcode: 'change_json_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'change [PATH] to [VALUE_TYPE] [VALUE] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -81,25 +100,6 @@
               VALUE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'value_type'
-              }
-            }
-          },
-          {
-            opcode: 'set_json_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'set [PATH] to [VALUE] of [JSON_STRING]',
-            arguments: {
-              PATH: { //если строка не содержит "ключи в основании пути" возвращается пустая строка
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '["vegetables"]'
-              },
-              JSON_STRING: { //если крайний ключ уже существует он перезапишется
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
-              },
-              VALUE: { //значение только для крайнего ключа
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '["apple","banana"]'
               }
             }
           },
@@ -245,7 +245,7 @@
         else {return JSON_STRING}
       } catch(err) {return ''}
     }
-    set_value_json_block({PATH, JSON_STRING, VALUE, VALUE_TYPE}) {
+    set_json_block({PATH, JSON_STRING, VALUE}) {
       try {
         let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
@@ -257,7 +257,7 @@
         else {return json}
       } catch(err) {return ''}
     }
-    set_json_block({PATH, JSON_STRING, VALUE}) {
+    change_json_block({PATH, JSON_STRING, VALUE, VALUE_TYPE}) {
       try {
         let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
