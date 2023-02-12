@@ -16,7 +16,7 @@
   };
 
   const JsonObj = (A) => {
-    try {return JSON.parse(A, null)} catch(err) {return ''}
+    return JSON.parse(A, null);
   };
 
   class Network {
@@ -228,11 +228,9 @@
     }
     get_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
-        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
-        if (path[0] === '') {path.splice(0, 1)}
-        if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        let json = JSON.parse(String(JSON_STRING));
-        path.forEach(prop => json = json[prop]);
+        JSON_STRING = JSON.parse(JSON_STRING);
+        PATH = Array.isArray(JsonObj(PATH)) ? JsonObj(PATH) : Array.from({length: 1}, (v) => PATH);
+        PATH.forEach(prop => json = json[prop]);
         if (typeof json === 'object') {return JSON.stringify(json)}
         else if (json === undefined) {return ''}
         else {return json}
