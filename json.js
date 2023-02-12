@@ -86,7 +86,7 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'change [PATH] to [VALUE_TYPE] [VALUE] of [JSON_STRING]',
             arguments: {
-              PATH: {
+              PATH: { //не может заменть массив или объект, при такой попытке возвращается пустая строка
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["fruit",1]'
               },
