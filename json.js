@@ -15,8 +15,9 @@
     return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
 
-  const JsonObj = (A) => {
-    return JSON.parse(A, null);
+  const JsonObj = (A, B) => {
+    if (Boolean(B)) {return JSON.parse(A, null)}
+    else {try {return JSON.parse(A, null)} catch(err) {return ''}}
   };
 
   class Network {
@@ -206,25 +207,25 @@
 
     is_json_block({JSON_STRING}) {
       try {
-        const json = JsonObj(JSON_STRING);
+        const json = JsonObj(JSON_STRING, true);
         return true;
       } catch(err) {return false}
     }
     is_array_block({JSON_STRING}) {
       try {
-        const json = JsonObj(JSON_STRING);
+        const json = JsonObj(JSON_STRING, true);
         return Array.isArray(json);
       } catch(err) {return false}
     }
     is_object_block({JSON_STRING}) {
       try {
-        const json = JsonObj(JSON_STRING);
+        const json = JsonObj(JSON_STRING, true);
         return !Array.isArray(json) && typeof json === 'object' && json !== null;
       } catch(err) {return false}
     }
     get_json_block({PATH, JSON_STRING}) {
       try {
-        JSON_STRING = JsonObj(JSON_STRING);
+        JSON_STRING = JsonObj(JSON_STRING, true);
         PATH = Array.isArray(JsonObj(PATH)) ? JsonObj(PATH) : Array.from({length: 1}, (v) => PATH);
         PATH.forEach(prop => JSON_STRING = JSON_STRING[String(prop)]);
         if (typeof JSON_STRING === 'object') {return JsonStr(JSON_STRING)}
