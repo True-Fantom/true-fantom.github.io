@@ -210,28 +210,28 @@
 
     is_json_block({JSON_STRING}) {
       try {
-        const json = JSON.parse(JSON_STRING);
+        const json = JsonObj(JSON_STRING);
         return true;
       } catch(err) {return false}
     }
     is_array_block({JSON_STRING}) {
       try {
-        const json = JSON.parse(JSON_STRING);
+        const json = JsonObj(JSON_STRING);
         return Array.isArray(json);
       } catch(err) {return false}
     }
     is_object_block({JSON_STRING}) {
       try {
-        const json = JSON.parse(JSON_STRING);
+        const json = JsonObj(JSON_STRING);
         return !Array.isArray(json) && typeof json === 'object' && json !== null;
       } catch(err) {return false}
     }
     get_json_block({PATH, JSON_STRING, SPLIT}) {
       try {
-        JSON_STRING = JSON.parse(JSON_STRING);
+        JSON_STRING = JsonObj(JSON_STRING);
         PATH = Array.isArray(JsonObj(PATH)) ? JsonObj(PATH) : Array.from({length: 1}, (v) => PATH);
         PATH.forEach(prop => JSON_STRING = JSON_STRING[prop]);
-        if (typeof JSON_STRING === 'object') {return JSON.stringify(JSON_STRING)}
+        if (typeof JSON_STRING === 'object') {return JsonStr(JSON_STRING)}
         else if (JSON_STRING === undefined) {return ''}
         else {return JSON_STRING}
       } catch(err) {return ''}
