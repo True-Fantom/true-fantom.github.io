@@ -15,6 +15,10 @@
     return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
 
+  const JsonObj = (A) => {
+    try {return JSON.parse(A, null)} catch(err) {return ''}
+  };
+
   class Math01 {
 
     getInfo() {
