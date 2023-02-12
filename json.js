@@ -283,8 +283,8 @@
     }
     json_split_by_block({JSON_STRING, SPLIT}) {
       try {
-        const json = JSON.parse(String(JSON_STRING));
-        return '2212';
+        JSON_STRING = JsonObj(JSON_STRING, true);
+        return JsonStr(JSON_STRING, String(SPLIT));
       } catch(err) {return ''}
     }
   }
