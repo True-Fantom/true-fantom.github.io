@@ -71,19 +71,15 @@
           {
             opcode: 'get_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [PATH] split by [SPLIT] of [JSON_STRING]',
+            text: 'get [PATH] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'fruit/apples'
+                defaultValue: '["fruit","apples"]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '/'
               }
             }
           },
@@ -226,7 +222,7 @@
         return !Array.isArray(json) && typeof json === 'object' && json !== null;
       } catch(err) {return false}
     }
-    get_json_block({PATH, JSON_STRING, SPLIT}) {
+    get_json_block({PATH, JSON_STRING}) {
       try {
         JSON_STRING = JsonObj(JSON_STRING);
         PATH = Array.isArray(JsonObj(PATH)) ? JsonObj(PATH) : Array.from({length: 1}, (v) => PATH);
