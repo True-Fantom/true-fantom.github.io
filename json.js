@@ -271,8 +271,7 @@
     }
     length_of_array_block({JSON_STRING}) {
       try {
-        JSON_STRING = JsonObj(JSON_STRING, true);
-        return Array.isArray(JsonObj(JSON_STRING)) ? JsonObj(JSON_STRING).length : '';
+        return Array.isArray(JsonObj(JSON_STRING, true)) ? JsonObj(JSON_STRING, true).length : '';
       } catch(err) {return ''}
     }
     json_split_by_block({JSON_STRING, SPLIT}) {
