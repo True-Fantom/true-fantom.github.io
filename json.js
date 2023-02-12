@@ -45,6 +45,28 @@
               }
             }
           },
+          {
+            opcode: 'is_array_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is array [JSON_STRING] ?',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '["apple","banana"]'
+              }
+            }
+          },
+          {
+            opcode: 'is_object_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is object [JSON_STRING] ?',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"apples":1}'
+              }
+            }
+          },
           '---',
           {
             opcode: 'get_json_block',
@@ -190,6 +212,18 @@
       try {
         const json = JSON.parse(JSON_STRING);
         return true;
+      } catch(err) {return false}
+    }
+    is_array_block({JSON_STRING}) {
+      try {
+        const json = JSON.parse(JSON_STRING);
+        return Array.isArray(json);
+      } catch(err) {return false}
+    }
+    is_object_block({JSON_STRING}) {
+      try {
+        const json = JSON.parse(JSON_STRING);
+        return !Array.isArray(json) && typeof json === 'object' && json !== null;
       } catch(err) {return false}
     }
     get_json_block({PATH, JSON_STRING, SPLIT}) {
