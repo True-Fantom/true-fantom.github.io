@@ -62,25 +62,44 @@
             }
           },
           {
-            opcode: 'set_json_block',
+            opcode: 'set_value_json_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'set [PATH] to [VALUE_TYPE] [VALUE] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruit",3]'
+                defaultValue: '["fruit",1]'
               },
-              JSON_STRING: {
+              JSON_STRING: { //если крайний ключ не существует возвращается пустая строка
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
               },
               VALUE: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '1'
+                defaultValue: 'kiwi'
               },
               VALUE_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'value_type'
+              }
+            }
+          },
+          {
+            opcode: 'set_json_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'set [PATH] to [VALUE] of [JSON_STRING]',
+            arguments: {
+              PATH: { //если строка не содержит "ключи в основании пути" возвращается пустая строка
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '["vegetables"]'
+              },
+              JSON_STRING: { //если крайний ключ уже существует он перезапишется
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              VALUE: { //значение только для крайнего ключа
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '["apple","banana"]'
               }
             }
           },
@@ -226,7 +245,19 @@
         else {return JSON_STRING}
       } catch(err) {return ''}
     }
-    set_json_block({PATH, JSON_STRING}) {
+    set_value_json_block({PATH, JSON_STRING, VALUE, VALUE_TYPE}) {
+      try {
+        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
+        if (path[0] === '') {path.splice(0, 1)}
+        if (path[path.length - 1] === '') {path.splice(-1, 1)}
+        let json = JSON.parse(String(JSON_STRING));
+        path.forEach(prop => json = json[prop]);
+        if (typeof json === 'object') {return JSON.stringify(json)}
+        else if (json === undefined) {return ''}
+        else {return json}
+      } catch(err) {return ''}
+    }
+    set_json_block({PATH, JSON_STRING, VALUE}) {
       try {
         let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
