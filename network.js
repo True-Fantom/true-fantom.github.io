@@ -52,7 +52,13 @@
       }
       return Promise.all(responses);
     })
-    .then(arr => {return JsonStr(arr)})
+    .then(arr => {
+      let responses = '';
+      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
+        responses += SPLIT + arr[i];
+      }
+      return SPLIT === '' ? responses : responses.slice(1);
+    })
     .catch(err => '');
   };
 
