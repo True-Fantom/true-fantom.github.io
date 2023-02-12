@@ -27,38 +27,32 @@
 
   const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
-    CONTENT_TYPE = Number(CONTENT_TYPE);
+    CONTENT_TYPE = Num(CONTENT_TYPE);
     RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '').length >= 1 ? String(RESPONSES_TYPES).split(' ').filter(word => word !== '') : ['9'];
     const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
       method: METHOD,
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
-      body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
+      body: CONTENT_TYPE === 1 ? String(BODY) : JsonStr(BODY)})
     .then(res => {
       const responses = [];
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
-        switch (Number(RESPONSES_TYPES[i])) {
+        switch (Num(RESPONSES_TYPES[i])) {
           case 1: responses.push(res.text()); break;
           case 2: responses.push(JSON.stringify(res.json())); break;
-          case 3: responses.push(String(res.ok)); break;
+          case 3: responses.push(res.ok); break;
           case 4: responses.push(res.status); break;
           case 5: responses.push(res.statusText); break;
           case 6: responses.push(res.type); break;
-          case 7: responses.push(String(res.redirected)); break;
+          case 7: responses.push(res.redirected); break;
           case 8: responses.push(res.url); break;
-          case 9: default: responses.push(single ? res.url : String(res.bodyUsed)); break;
+          case 9: default: responses.push(single ? res.url : res.bodyUsed); break;
         }
       }
       return Promise.all(responses);
     })
-    .then(arr => {
-      let responses = '';
-      for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
-        responses += SPLIT + arr[i];
-      }
-      return SPLIT === '' ? responses : responses.slice(1);
-    })
+    .then(arr => {return JsonStr(arr)})
     .catch(err => '');
   };
 
