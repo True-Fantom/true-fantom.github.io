@@ -46,7 +46,6 @@
               }
             }
           },
-          '---',
           {
             opcode: 'get_json_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -65,7 +64,7 @@
           {
             opcode: 'set_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'set [PATH] split by [SPLIT] to [VALUE_TYPE] [VALUE] of [JSON_STRING]',
+            text: 'set [PATH] to [VALUE_TYPE] [VALUE] of [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -74,10 +73,6 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '/'
               },
               VALUE: {
                 type: Scratch.ArgumentType.STRING,
@@ -92,7 +87,7 @@
           {
             opcode: 'contains_json_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[JSON_STRING] contains [PATH] split by [SPLIT] ?',
+            text: '[JSON_STRING] contains [PATH] ?',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -101,10 +96,6 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '/'
               }
             }
           },
@@ -235,7 +226,7 @@
         else {return JSON_STRING}
       } catch(err) {return ''}
     }
-    set_json_block({PATH, JSON_STRING, SPLIT}) {
+    set_json_block({PATH, JSON_STRING}) {
       try {
         let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
@@ -247,7 +238,7 @@
         else {return json}
       } catch(err) {return ''}
     }
-    contains_json_block({PATH, JSON_STRING, SPLIT}) {
+    contains_json_block({PATH, JSON_STRING}) {
       try {
         let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
         if (path[0] === '') {path.splice(0, 1)}
