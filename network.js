@@ -22,7 +22,7 @@
   };
 
   const JsonObj = (A) => {
-    try {return JSON.parse(A, null)} catch(err) {return ''}
+    return JSON.parse(A, null);
   };
 
   const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
