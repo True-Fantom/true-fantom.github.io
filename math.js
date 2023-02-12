@@ -292,7 +292,7 @@
     }
 
     exponent_block({A, B}) {
-      return Num(A) ** Num(B));
+      return Num(A) ** Num(B);
     }
     root_block({A, B}) {
       return Num(B) ** (1 / Num(A));
