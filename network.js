@@ -21,8 +21,9 @@
     return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
 
-  const JsonObj = (A) => {
-    return JSON.parse(A, null);
+  const JsonObj = (A, B) => {
+    if (B === undefined) {try {return JSON.parse(A, null)} catch(err) {return ''}}
+    else {return JSON.parse(A, null)}
   };
 
   const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
