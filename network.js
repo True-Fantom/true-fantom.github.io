@@ -33,7 +33,7 @@
       method: METHOD,
       headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
-      body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
+      body: CONTENT_TYPE === 1 ? String(BODY) : JsonStr(BODY)})
     .then(res => {
       const responses = [];
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
