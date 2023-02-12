@@ -26,14 +26,13 @@
   };
 
   const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
-    CONTENT_TYPE = Num(CONTENT_TYPE);
     RESPONSES_TYPES = Array.isArray(JsonObj(RESPONSES_TYPES)) ? JsonObj(RESPONSES_TYPES).length === 0 ? [9] : JsonObj(RESPONSES_TYPES) : Array.from({length: 1}, (v) => RESPONSES_TYPES);
     const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
       method: METHOD,
-      headers: single ? {} : {'Content-Type': CONTENT_TYPE === 1 ? 'text/plain' : 'application/json'},
+      headers: single ? {} : {'Content-Type': Num(CONTENT_TYPE) === 1 ? 'text/plain' : 'application/json'},
       redirect: single ? 'follow' : 'follow',
-      body: CONTENT_TYPE === 1 ? String(BODY) : JSON.stringify(BODY)})
+      body: String(BODY)})
     .then(res => {
       const responses = [];
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
