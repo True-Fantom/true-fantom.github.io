@@ -204,10 +204,6 @@
               {
                 text: '(4) null',
                 value: '4'
-              },
-              {
-                text: '(5) nothing',
-                value: '5'
               }
             ]
           }
