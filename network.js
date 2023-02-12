@@ -21,6 +21,10 @@
     return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
 
+  const JsonObj = (A) => {
+    try {return JSON.parse(A, null)} catch(err) {return ''}
+  };
+
   const fetch_url = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
