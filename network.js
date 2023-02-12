@@ -25,7 +25,7 @@
     try {return JSON.parse(A, null)} catch(err) {return ''}
   };
 
-  const fetch_url = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
+  const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
     SPLIT = String(SPLIT);
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '').length >= 1 ? String(RESPONSES_TYPES).split(' ').filter(word => word !== '') : ['9'];
@@ -470,19 +470,19 @@
       try {return navigator.connection.rtt || ''} catch(err) {return ''}
     }
     get_block(args) {
-      try {return fetch_url(args, 'GET')} catch(err) {return ''}
+      try {return FetchUrl(args, 'GET')} catch(err) {return ''}
     }
     delete_block(args) {
-      try {return fetch_url(args, 'DELETE')} catch(err) {return ''}
+      try {return FetchUrl(args, 'DELETE')} catch(err) {return ''}
     }
     post_block(args) {
-      try {return fetch_url(args, 'POST')} catch(err) {return ''}
+      try {return FetchUrl(args, 'POST')} catch(err) {return ''}
     }
     put_block(args) {
-      try {return fetch_url(args, 'PUT')} catch(err) {return ''}
+      try {return FetchUrl(args, 'PUT')} catch(err) {return ''}
     }
     patch_block(args) {
-      try {return fetch_url(args, 'PATCH')} catch(err) {return ''}
+      try {return FetchUrl(args, 'PATCH')} catch(err) {return ''}
     }
     open_link_block({USER_URL}) {
       try {
