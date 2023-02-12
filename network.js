@@ -37,7 +37,7 @@
     .then(res => {
       const responses = [];
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
-        switch (Number(RESPONSES_TYPES[i])) {
+        switch (Num(RESPONSES_TYPES[i])) {
           case 1: responses.push(res.text()); break;
           case 2: responses.push(JSON.stringify(res.json())); break;
           case 3: responses.push(res.ok); break;
