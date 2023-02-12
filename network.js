@@ -22,8 +22,8 @@
   };
 
   const JsonObj = (A, B) => {
-    if (B === undefined) {try {return JSON.parse(A, null)} catch(err) {return ''}}
-    else {return JSON.parse(A, null)}
+    if (Boolean(B)) {return JSON.parse(A, null)}
+    else {try {return JSON.parse(A, null)} catch(err) {return ''}}
   };
 
   const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
