@@ -226,7 +226,7 @@
       try {
         JSON_STRING = JsonObj(JSON_STRING);
         PATH = Array.isArray(JsonObj(PATH)) ? JsonObj(PATH) : Array.from({length: 1}, (v) => PATH);
-        PATH.forEach(prop => JSON_STRING = JSON_STRING[prop]);
+        PATH.forEach(prop => JSON_STRING = JSON_STRING[String(prop)]);
         if (typeof JSON_STRING === 'object') {return JsonStr(JSON_STRING)}
         else if (JSON_STRING === undefined) {return ''}
         else {return JSON_STRING}
