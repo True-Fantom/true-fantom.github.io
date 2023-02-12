@@ -15,8 +15,9 @@
     return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
 
-  const JsonObj = (A) => {
-    return JSON.parse(A, null);
+  const JsonObj = (A, B) => {
+    if (Boolean(B)) {return JSON.parse(A, null)}
+    else {try {return JSON.parse(A, null)} catch(err) {return ''}}
   };
 
   class Math01 {
