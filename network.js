@@ -10,13 +10,15 @@
   const protocols = [...main_protocols, ...browser_protocols, ...special_protocols, ...ms_protocols];
 
   const Bool = (A) => {
-    if (typeof A === 'string' && A.toLowerCase() === 'false') {return false}
-    else {return Boolean(A)}
+    return typeof A === 'string' && A.toLowerCase() === 'false' ? false : Boolean(A);
   };
 
   const Num = (A) => {
-    if (typeof A === 'string' && isNaN(Number(A))) {return 0}
-    else {return Number(A)}
+    return typeof A === 'string' && isNaN(Number(A)) ? 0 : Number(A);
+  };
+
+  const JsonStr = (A) => {
+    return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
 
   const fetch_url = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
