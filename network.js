@@ -496,11 +496,7 @@
       try {
         const url = new URL(String(USER_URL));
         if (protocols.includes(url.protocol)) {
-          let params = 'popup=1';
-          params += isNaN(WIDTH) ? '' : `,width=${Number(WIDTH) < 100 ? 100 : Number(WIDTH) > window.screen.width ? window.screen.width : Number(WIDTH)}`;
-          params += isNaN(HEIGHT) ? '' : `,height=${Number(HEIGHT) < 100 ? 100 : Number(HEIGHT) > window.screen.height ? window.screen.height : Number(HEIGHT)}`;
-          params += isNaN(LEFT) ? '' : `,left=${Number(LEFT) < 0 ? 0 : Number(LEFT) > window.screen.width ? window.screen.width : Number(LEFT)}`;
-          params += isNaN(TOP) ? '' : `,top=${Number(TOP) < 0 ? 0 : Number(TOP) > window.screen.height ? window.screen.height : Number(TOP)}`;
+          let params = `popup=1, width=${Num(WIDTH) < 100 ? 100 : Num(WIDTH) > window.screen.width ? window.screen.width : Num(WIDTH)}, height=${Num(HEIGHT) < 100 ? 100 : Num(HEIGHT) > window.screen.height ? window.screen.height : Num(HEIGHT)}, left=${Num(LEFT) < 0 ? 0 : Num(LEFT) > window.screen.width ? window.screen.width : Num(LEFT)}, top=${Num(TOP) < 0 ? 0 : Num(TOP) > window.screen.height ? window.screen.height : Num(TOP)}`;
           window.open(String(USER_URL), '_blank', params);
         }
       } catch(err) {}
