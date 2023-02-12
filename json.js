@@ -230,10 +230,10 @@
       try {
         JSON_STRING = JSON.parse(JSON_STRING);
         PATH = Array.isArray(JsonObj(PATH)) ? JsonObj(PATH) : Array.from({length: 1}, (v) => PATH);
-        PATH.forEach(prop => json = json[prop]);
-        if (typeof json === 'object') {return JSON.stringify(json)}
-        else if (json === undefined) {return ''}
-        else {return json}
+        PATH.forEach(prop => JSON_STRING = JSON_STRING[prop]);
+        if (typeof JSON_STRING === 'object') {return JSON.stringify(JSON_STRING)}
+        else if (JSON_STRING === undefined) {return ''}
+        else {return JSON_STRING}
       } catch(err) {return ''}
     }
     set_json_block({PATH, JSON_STRING, SPLIT}) {
