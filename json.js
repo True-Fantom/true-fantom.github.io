@@ -42,7 +42,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"apples":["green","red"]}'
+                defaultValue: '{"fruit":["apple","banana"]}'
               }
             }
           },
@@ -54,11 +54,11 @@
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruit","apples"]'
+                defaultValue: '["fruit",1]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
+                defaultValue: '{"fruit":["apple","banana"]}'
               }
             }
           },
@@ -69,11 +69,11 @@
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'fruit/apples'
+                defaultValue: '["fruit",3]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
+                defaultValue: '{"fruit":["apple","banana"]}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
@@ -96,11 +96,11 @@
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apples'
+                defaultValue: '["fruit",2]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"apples":1}'
+                defaultValue: '{"fruit":["apple","banana"]}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
@@ -116,7 +116,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"apples":1,"bananas":1}'
+                defaultValue: '{"fruit":2}'
               }
             }
           },
@@ -127,7 +127,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"apples":1,"bananas":1}'
+                defaultValue: '"fruit":2'
               }
             }
           },
@@ -162,7 +162,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
+                defaultValue: '{"fruit":["apple","banana"]}'
               },
               SPLIT: {
                 type: Scratch.ArgumentType.STRING,
