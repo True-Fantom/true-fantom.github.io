@@ -496,8 +496,7 @@
       try {
         const url = new URL(String(USER_URL));
         if (protocols.includes(url.protocol)) {
-          let params = `popup=1, width=${Num(WIDTH) < 100 ? 100 : Num(WIDTH) > window.screen.width ? window.screen.width : Num(WIDTH)}, height=${Num(HEIGHT) < 100 ? 100 : Num(HEIGHT) > window.screen.height ? window.screen.height : Num(HEIGHT)}, left=${Num(LEFT) < 0 ? 0 : Num(LEFT) > window.screen.width ? window.screen.width : Num(LEFT)}, top=${Num(TOP) < 0 ? 0 : Num(TOP) > window.screen.height ? window.screen.height : Num(TOP)}`;
-          window.open(String(USER_URL), '_blank', params);
+          window.open(String(USER_URL), '_blank', `popup=1, width=${Num(WIDTH) < 100 ? 100 : Num(WIDTH) > window.screen.width ? window.screen.width : Num(WIDTH)}, height=${Num(HEIGHT) < 100 ? 100 : Num(HEIGHT) > window.screen.height ? window.screen.height : Num(HEIGHT)}, left=${Num(LEFT) < 0 ? 0 : Num(LEFT) > window.screen.width ? window.screen.width : Num(LEFT)}, top=${Num(TOP) < 0 ? 0 : Num(TOP) > window.screen.height ? window.screen.height : Num(TOP)}`);
         }
       } catch(err) {}
     }
