@@ -11,8 +11,8 @@
     return typeof A === 'string' && isNaN(Number(A)) ? 0 : Number(A);
   };
 
-  const JsonStr = (A) => {
-    return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
+  const JsonStr = (A, B) => {
+    return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, B === undefined ? 0 : B);
   };
 
   const JsonObj = (A, B) => {
