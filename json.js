@@ -188,7 +188,7 @@
 
     is_json_block({JSON_STRING}) {
       try {
-        const json = JSON.parse(String(JSON_STRING));
+        const json = JSON.parse(JSON_STRING);
         return true;
       } catch(err) {return false}
     }
