@@ -26,7 +26,7 @@
   };
 
   const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
-    CONTENT_TYPE = Number(CONTENT_TYPE);
+    CONTENT_TYPE = Num(CONTENT_TYPE);
     RESPONSES_TYPES = Array.isArray(JsonObj(RESPONSES_TYPES)) ? JsonObj(RESPONSES_TYPES).length === 0 ? [9] : JsonObj(RESPONSES_TYPES) : Array.from({length: 1}, (v) => RESPONSES_TYPES);
     const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
