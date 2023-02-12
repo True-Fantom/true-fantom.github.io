@@ -127,7 +127,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '"fruit":2'
+                defaultValue: '{fruit":2}'
               }
             }
           },
