@@ -31,7 +31,7 @@
     return fetch(String(USER_URL), {
       method: METHOD,
       headers: single ? {} : {'Content-Type': Num(CONTENT_TYPE) === 1 ? 'text/plain' : 'application/json'},
-      redirect: single ? 'follow' : 'follow',
+      redirect: 'follow',
       body: single ? null : Num(CONTENT_TYPE) === 1 ? String(BODY) : JSON.stringify(BODY)})
     .then(res => {
       const responses = [];
