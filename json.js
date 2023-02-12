@@ -25,7 +25,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"apples":1}'
+                defaultValue: '{"apples":["green","red"]}'
               }
             }
           },
