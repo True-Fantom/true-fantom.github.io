@@ -25,8 +25,7 @@
     try {return JSON.parse(A, null)} catch(err) {return ''}
   };
 
-  const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES, SPLIT}, METHOD) => {
-    SPLIT = String(SPLIT);
+  const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
     CONTENT_TYPE = Number(CONTENT_TYPE);
     RESPONSES_TYPES = String(RESPONSES_TYPES).split(' ').filter(word => word !== '').length >= 1 ? String(RESPONSES_TYPES).split(' ').filter(word => word !== '') : ['9'];
     const single = METHOD === 'GET' || METHOD === 'DELETE';
@@ -119,7 +118,7 @@
           {
             opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'get [USER_URL] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -128,17 +127,13 @@
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'only_url_response_type'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'delete_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'delete [USER_URL] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -147,17 +142,13 @@
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'only_url_response_type'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'post [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -174,17 +165,13 @@
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'put [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -201,17 +188,13 @@
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
               }
             }
           },
           {
             opcode: 'patch_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'patch [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES] split by [SPLIT]',
+            text: 'patch [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -228,10 +211,6 @@
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
               }
             }
           },
