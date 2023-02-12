@@ -147,13 +147,13 @@
             }
           },
           {
-            opcode: 'length_of_json_block',
+            opcode: 'length_of_array_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'length of [JSON_STRING]',
+            text: 'length of array [JSON_STRING]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":{"apples":1,"bananas":1}}'
+                defaultValue: '["apple","banana"]'
               }
             }
           },
@@ -269,16 +269,10 @@
         else {return json}
       } catch(err) {return ''}
     }
-    length_of_json_block({PATH, JSON_STRING, SPLIT}) {
+    length_of_array_block({JSON_STRING}) {
       try {
-        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
-        if (path[0] === '') {path.splice(0, 1)}
-        if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        let json = JSON.parse(String(JSON_STRING));
-        path.forEach(prop => json = json[prop]);
-        if (typeof json === 'object') {return JSON.stringify(json)}
-        else if (json === undefined) {return ''}
-        else {return json}
+        JSON_STRING = JsonObj(JSON_STRING, true);
+        return Array.isArray(JsonObj(JSON_STRING)) ? JSON_STRING.length : '';
       } catch(err) {return ''}
     }
     json_split_by_block({JSON_STRING, SPLIT}) {
