@@ -304,16 +304,16 @@
                 value: '5'
               },
               {
-                text: '(5 1) status text and text',
-                value: '5 1'
+                text: '([5,1]) status text and text',
+                value: '[5,1]'
               },
               {
                 text: '(6) type',
                 value: '6'
               },
               {
-                text: '(6 4) type and status',
-                value: '6 4'
+                text: '([6,4]) type and status',
+                value: '[6,4]'
               },
               {
                 text: '(7) redirected?',
@@ -349,16 +349,16 @@
                 value: '5'
               },
               {
-                text: '(5 1) status text and text',
-                value: '5 1'
+                text: '([5,1]) status text and text',
+                value: '[5,1]'
               },
               {
                 text: '(6) type',
                 value: '6'
               },
               {
-                text: '(6 4) type and status',
-                value: '6 4'
+                text: '([6,4]) type and status',
+                value: '[6,4]'
               },
               {
                 text: '(7) redirected?',
