@@ -47,17 +47,6 @@
             }
           },
           {
-            opcode: 'is_array_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is array [JSON_STRING] ?',
-            arguments: {
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '["apple","banana"]'
-              }
-            }
-          },
-          {
             opcode: 'is_object_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is object [JSON_STRING] ?',
@@ -131,6 +120,17 @@
             }
           },
           '---',
+          {
+            opcode: 'is_array_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is array [JSON_STRING] ?',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '["apple","banana"]'
+              }
+            }
+          },
           {
             opcode: 'get_number_of_json_block',
             blockType: Scratch.BlockType.REPORTER,
