@@ -220,6 +220,11 @@
         return !Array.isArray(json) && typeof json === 'object' && json !== null;
       } catch(err) {return false}
     }
+    length_of_object_block({JSON_STRING}) {
+      try {
+        return !Array.isArray(JsonObj(JSON_STRING, true)) && typeof JsonObj(JSON_STRING, true) === 'object' && JsonObj(JSON_STRING, true) !== null ? Object.key(JsonObj(JSON_STRING, true)).length : '';
+      } catch(err) {return ''}
+    }
     get_json_block({PATH, JSON_STRING}) {
       try {
         JSON_STRING = JsonObj(JSON_STRING, true);
