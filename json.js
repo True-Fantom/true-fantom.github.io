@@ -46,6 +46,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'get_json_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -130,6 +131,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'length_of_object_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -153,6 +155,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'length_of_array_block',
             blockType: Scratch.BlockType.REPORTER,
