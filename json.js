@@ -159,33 +159,9 @@
           },
           '---',
           {
-            opcode: 'length_of_object_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'length of object [JSON_STRING]',
-            arguments: {
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":2}'
-              }
-            }
-          },
-          '---',
-          {
             opcode: 'is_array_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is array [JSON_STRING] ?',
-            arguments: {
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '["apple","banana"]'
-              }
-            }
-          },
-          '---',
-          {
-            opcode: 'length_of_array_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'length of array [JSON_STRING]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -260,18 +236,6 @@
         JSON_STRING = JsonData(JSON_STRING);
         return isArr(JSON_STRING) ? JSON_STRING.length : isObj(JSON_STRING) ? Object.keys(JSON_STRING).length : 1;
       } catch(err) {return 0}
-    }
-    length_of_object_block({JSON_STRING}) {
-      try {
-        JSON_STRING = JsonData(JSON_STRING);
-        return isObj(JSON_STRING) ? Object.keys(JSON_STRING).length : '';
-      } catch(err) {return ''}
-    }
-    length_of_array_block({JSON_STRING}) {
-      try {
-        JSON_STRING = JsonData(JSON_STRING);
-        return isArr(JSON_STRING) ? JSON_STRING.length : '';
-      } catch(err) {return ''}
     }
     json_split_by_split_block({JSON_STRING, SPLIT}) {
       try {
