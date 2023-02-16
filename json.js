@@ -120,7 +120,7 @@
             }
           },
           {
-            opcode: 'contains_json_block',
+            opcode: 'json_contains_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[JSON_STRING] contains [PATH] ?',
             arguments: {
@@ -276,7 +276,7 @@
     change_json_block({PATH, JSON_STRING, VALUE, VALUE_TYPE}) {
       return '';
     }
-    contains_json_block({PATH, JSON_STRING}) {
+    json_contains_block({PATH, JSON_STRING}) {
       try {
         JSON_STRING = JsonData(JSON_STRING);
         PATH = Arr(PATH);
