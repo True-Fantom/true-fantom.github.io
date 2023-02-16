@@ -166,22 +166,7 @@
           {
             opcode: 'json_split_by_split_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'json [JSON_STRING] split by [SPLIT]',
-            arguments: {
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
-              }
-            }
-          },
-          {
-            opcode: 'object_split_by_split_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'object [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
+            text: 'json [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -194,21 +179,6 @@
               SPLIT2: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ':'
-              }
-            }
-          },
-          {
-            opcode: 'array_split_by_split_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'array [JSON_STRING] split by [SPLIT]',
-            arguments: {
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
-              },
-              SPLIT: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
               }
             }
           }
