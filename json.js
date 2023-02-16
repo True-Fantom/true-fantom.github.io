@@ -63,9 +63,9 @@
           },
           '---',
           {
-            opcode: 'get_json_block',
+            opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [PATH] of [JSON_STRING]',
+            text: 'item by path [PATH] of json [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -122,7 +122,7 @@
           {
             opcode: 'json_contains_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[JSON_STRING] contains [PATH] ?',
+            text: 'json [JSON_STRING] contains item by path [PATH] ?',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -173,7 +173,7 @@
           {
             opcode: 'json_split_by_split_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[JSON_STRING] split by [SPLIT]',
+            text: 'json [JSON_STRING] split by [SPLIT]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -243,7 +243,7 @@
         return JSON.stringify(JSON_STRING, (key, value) => {return value === undefined ? '' : value}, String(SPLIT));
       } catch(err) {return ''}
     }
-    get_json_block({PATH, JSON_STRING}) {
+    get_json_item_block({PATH, JSON_STRING}) {
       try {
         JSON_STRING = JsonData(JSON_STRING);
         PATH = Arr(PATH);
