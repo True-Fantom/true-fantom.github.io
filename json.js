@@ -239,15 +239,15 @@
         JSON_STRING = JsonData(JSON_STRING);
         let str = '';
         if (isArr(JSON_STRING)) {
-          str = isArr(JSON_STRING[0]) || isObj(JSON_STRING[0]) ? JsonStr(JSON_STRING[0]) : String(JSON_STRING[0]));
+          str = isArr(JSON_STRING[0]) || isObj(JSON_STRING[0]) ? JsonStr(JSON_STRING[0]) : String(JSON_STRING[0]);
           for (var i = 1; i <= JSON_STRING.length - 1; i++) {
-            str += String(SPLIT1) + isArr(JSON_STRING[i]) || isObj(JSON_STRING[i]) ? JsonStr(JSON_STRING[i]) : String(JSON_STRING[i]));
+            str += String(SPLIT1) + isArr(JSON_STRING[i]) || isObj(JSON_STRING[i]) ? JsonStr(JSON_STRING[i]) : String(JSON_STRING[i]);
           }
         }
         else if (isObj(JSON_STRING)) {
-          str = String(Object.keys(JSON_STRING)[0]) + String(SPLIT2) + isArr(Object.values(JSON_STRING)[0]) || isObj(Object.values(JSON_STRING)[0]) ? JsonStr(JObject.values(JSON_STRING)[0]) : String(Object.values(JSON_STRING)[0]));
+          str = String(Object.keys(JSON_STRING)[0]) + String(SPLIT2) + isArr(Object.values(JSON_STRING)[0]) || isObj(Object.values(JSON_STRING)[0]) ? JsonStr(JObject.values(JSON_STRING)[0]) : String(Object.values(JSON_STRING)[0]);
           for (var i = 1; i <= Object.keys(JSON_STRING).length - 1; i++) {
-            str += String(SPLIT1) + String(Object.keys(JSON_STRING)[i]) + String(SPLIT2) + isArr(Object.values(JSON_STRING)[i]) || isObj(Object.values(JSON_STRING)[i]) ? JsonStr(JObject.values(JSON_STRING)[i]) : String(Object.values(JSON_STRING)[i]));
+            str += String(SPLIT1) + String(Object.keys(JSON_STRING)[i]) + String(SPLIT2) + isArr(Object.values(JSON_STRING)[i]) || isObj(Object.values(JSON_STRING)[i]) ? JsonStr(JObject.values(JSON_STRING)[i]) : String(Object.values(JSON_STRING)[i]);
           }
         }
         else {str = JSON_STRING}
