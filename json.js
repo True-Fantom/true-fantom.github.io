@@ -78,9 +78,9 @@
             }
           },
           {
-            opcode: 'set_json_block',
+            opcode: 'set_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'set [PATH] to [VALUE] of [JSON_STRING]',
+            text: 'set item by path [PATH] of json [JSON_STRING] to json [VALUE]',
             arguments: {
               PATH: { //если строка не содержит "ключи в основании пути" возвращается пустая строка
                 type: Scratch.ArgumentType.STRING,
@@ -97,9 +97,9 @@
             }
           },
           {
-            opcode: 'change_json_block',
+            opcode: 'delete_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'change [PATH] to [VALUE_TYPE] [VALUE] of [JSON_STRING]',
+            text: 'delete item by path [PATH] of json [JSON_STRING]',
             arguments: {
               PATH: { //не может заменть массив или объект, при такой попытке возвращается пустая строка
                 type: Scratch.ArgumentType.STRING,
@@ -108,14 +108,6 @@
               JSON_STRING: { //если крайний ключ не существует возвращается пустая строка
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
-              },
-              VALUE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'kiwi'
-              },
-              VALUE_TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'value_type'
               }
             }
           },
@@ -188,7 +180,7 @@
         ],
 
         menus: {
-          value_type: { 
+          value_type_menu: { 
             acceptReporters: true,
             items: [
               {
@@ -251,10 +243,10 @@
         return JsonScr(JSON_STRING);
       } catch(err) {return ''}
     }
-    set_json_block({PATH, JSON_STRING, VALUE}) {
+    set_json_item_block({PATH, JSON_STRING, VALUE}) {
       return '';
     }
-    change_json_block({PATH, JSON_STRING, VALUE, VALUE_TYPE}) {
+    delete_json_item_block({PATH, JSON_STRING}) {
       return '';
     }
     json_contains_block({PATH, JSON_STRING}) {
