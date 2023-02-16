@@ -264,10 +264,24 @@
         return isArr(JSON_STRING) ? JSON_STRING.length : isObj(JSON_STRING) ? Object.keys(JSON_STRING).length : 1;
       } catch(err) {return 0}
     }
-    json_split_by_split_block({JSON_STRING, SPLIT}) {
+    json_split_by_split_block({JSON_STRING, SPLIT1, SPLIT2}) {
       try {
         JSON_STRING = JsonData(JSON_STRING);
-        return JSON.stringify(JSON_STRING, (key, value) => {return value === undefined ? '' : value}, '\n').replace(new RegExp('\n\n', 'g'), String(SPLIT));
+        let str = '';
+        if (isArr(JSON_STRING)) {
+          str = JSON_STRING[0];
+          for (var i = 1; i <= JSON_STRING.length - 1; i++) {
+            str += String(SPLIT1) + String(JSON_STRING[i]);
+          }
+        }
+        else if (isObj(JSON_STRING)) {
+          str = Object.keys(JSON_STRING)[0];
+          for (var i = 1; i <= Object.keys(JSON_STRING).length - 1; i++) {
+            str += String(SPLIT1) + String(Object.keys(JSON_STRING)[i]) + String(SPLIT2) + String(Object.values(JSON_STRING)[i]);
+          }
+        }
+        else {str = JSON_STRING}
+        return str;
       } catch(err) {return ''}
     }
     get_json_item_block({PATH, JSON_STRING}) {
