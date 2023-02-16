@@ -111,6 +111,18 @@
               }
             }
           },
+          '---',
+          {
+            opcode: 'length_of_json_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'length of json [JSON_STRING]',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit":["apple","banana"]}'
+              }
+            }
+          },
           {
             opcode: 'json_contains_block',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -120,17 +132,6 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["fruit",2]'
               },
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
-              }
-            }
-          },
-          {
-            opcode: 'length_of_json_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'length of json [JSON_STRING]',
-            arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
