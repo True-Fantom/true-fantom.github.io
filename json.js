@@ -239,13 +239,13 @@
         JSON_STRING = JsonData(JSON_STRING);
         let str = '';
         if (isArr(JSON_STRING)) {
-          str = JSON_STRING[0];
+          str = String(JSON_STRING[0]);
           for (var i = 1; i <= JSON_STRING.length - 1; i++) {
             str += String(SPLIT1) + String(JSON_STRING[i]);
           }
         }
         else if (isObj(JSON_STRING)) {
-          str = Object.keys(JSON_STRING)[0];
+          str = String(Object.keys(JSON_STRING)[0]) + String(SPLIT2) + String(Object.values(JSON_STRING)[0]);
           for (var i = 1; i <= Object.keys(JSON_STRING).length - 1; i++) {
             str += String(SPLIT1) + String(Object.keys(JSON_STRING)[i]) + String(SPLIT2) + String(Object.values(JSON_STRING)[i]);
           }
