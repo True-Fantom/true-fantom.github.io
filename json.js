@@ -11,13 +11,28 @@
     return typeof A === 'string' && isNaN(Number(A)) ? 0 : Number(A);
   };
 
-  const JsonStr = (A, B) => {
-    return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, B === undefined ? 0 : B);
+  const JsonData = (A) => {
+    return JSON.parse(A, null);
   };
 
-  const JsonObj = (A, B) => {
-    if (Boolean(B)) {return JSON.parse(A, null)}
-    else {try {return JSON.parse(A, null)} catch(err) {return ''}}
+  const JsonStr = (A) => {
+    return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
+  };
+
+  const JsonScr = (A) => {
+    return A === undefined ? '' : typeof A === 'object' && A !== null ? JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0) : A;
+  };
+
+  const Arr = (A) => {
+    return Array.isArray(JSON.parse(A, null)) ? JSON.parse(A, null) : Array.from({length: 1}, (v) => JSON.parse(A, null));
+  };
+
+  const isArr = (A) => {
+    return Array.isArray(A);
+  };
+
+  const isObj = (A) => {
+    return !Array.isArray(A) && typeof A === 'object' && A !== null;
   };
 
   class Network {
@@ -213,83 +228,61 @@
 
     is_json_block({JSON_STRING}) {
       try {
-        const json = JsonObj(JSON_STRING, true);
+        JSON_STRING = JsonData(JSON_STRING);
         return true;
       } catch(err) {return false}
     }
     is_array_block({JSON_STRING}) {
       try {
-        const json = JsonObj(JSON_STRING, true);
-        return Array.isArray(json);
+        JSON_STRING = JsonData(JSON_STRING);
+        return isArr(JSON_STRING);
       } catch(err) {return false}
     }
     is_object_block({JSON_STRING}) {
       try {
-        const json = JsonObj(JSON_STRING, true);
-        return !Array.isArray(json) && typeof json === 'object' && json !== null;
+        JSON_STRING = JsonData(JSON_STRING);
+        return isObj(JSON_STRING);
       } catch(err) {return false}
     }
     length_of_object_block({JSON_STRING}) {
       try {
-        return !Array.isArray(JsonObj(JSON_STRING, true)) && typeof JsonObj(JSON_STRING, true) === 'object' && JsonObj(JSON_STRING, true) !== null ? Object.keys(JsonObj(JSON_STRING, true)).length : '';
-      } catch(err) {return ''}
-    }
-    get_json_block({PATH, JSON_STRING}) {
-      try {
-        JSON_STRING = JsonObj(JSON_STRING, true);
-        PATH = Array.isArray(JsonObj(PATH)) ? JsonObj(PATH) : Array.from({length: 1}, (v) => PATH);
-        PATH.forEach(prop => JSON_STRING = Array.isArray(JSON_STRING) ? JSON_STRING[Num(prop) - 1] : JSON_STRING[String(prop)]);
-        if (typeof JSON_STRING === 'object') {return JsonStr(JSON_STRING)}
-        else if (JSON_STRING === undefined) {return ''}
-        else {return JSON_STRING}
-      } catch(err) {return ''}
-    }
-    set_json_block({PATH, JSON_STRING, VALUE}) {
-      try {
-        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
-        if (path[0] === '') {path.splice(0, 1)}
-        if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        let json = JSON.parse(String(JSON_STRING));
-        path.forEach(prop => json = json[prop]);
-        if (typeof json === 'object') {return JSON.stringify(json)}
-        else if (json === undefined) {return ''}
-        else {return json}
-      } catch(err) {return ''}
-    }
-    change_json_block({PATH, JSON_STRING, VALUE, VALUE_TYPE}) {
-      try {
-        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
-        if (path[0] === '') {path.splice(0, 1)}
-        if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        let json = JSON.parse(String(JSON_STRING));
-        path.forEach(prop => json = json[prop]);
-        if (typeof json === 'object') {return JSON.stringify(json)}
-        else if (json === undefined) {return ''}
-        else {return json}
-      } catch(err) {return ''}
-    }
-    contains_json_block({PATH, JSON_STRING}) {
-      try {
-        let path = String(PATH).split(String(SPLIT)).map(prop => decodeURIComponent(prop));
-        if (path[0] === '') {path.splice(0, 1)}
-        if (path[path.length - 1] === '') {path.splice(-1, 1)}
-        let json = JSON.parse(String(JSON_STRING));
-        path.forEach(prop => json = json[prop]);
-        if (typeof json === 'object') {return JSON.stringify(json)}
-        else if (json === undefined) {return ''}
-        else {return json}
+        JSON_STRING = JsonData(JSON_STRING);
+        return isObj(JSON_STRING) ? Object.keys(JSON_STRING).length : '';
       } catch(err) {return ''}
     }
     length_of_array_block({JSON_STRING}) {
       try {
-        return Array.isArray(JsonObj(JSON_STRING, true)) ? JsonObj(JSON_STRING, true).length : '';
+        JSON_STRING = JsonData(JSON_STRING);
+        return isArr(JSON_STRING) ? JSON_STRING.length : '';
       } catch(err) {return ''}
     }
     json_split_by_split_block({JSON_STRING, SPLIT}) {
       try {
-        JSON_STRING = JsonObj(JSON_STRING, true);
-        return JsonStr(JSON_STRING, String(SPLIT));
+        JSON_STRING = JsonData(JSON_STRING);
+        return JSON.stringify(JSON_STRING, (key, value) => {return value === undefined ? '' : value}, String(SPLIT));
       } catch(err) {return ''}
+    }
+    get_json_block({PATH, JSON_STRING}) {
+      try {
+        JSON_STRING = JsonData(JSON_STRING);
+        PATH = Arr(PATH);
+        PATH.forEach(prop => JSON_STRING = isArr(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
+        return JsonScr(JSON_STRING);
+      } catch(err) {return ''}
+    }
+    set_json_block({PATH, JSON_STRING, VALUE}) {
+      return '';
+    }
+    change_json_block({PATH, JSON_STRING, VALUE, VALUE_TYPE}) {
+      return '';
+    }
+    contains_json_block({PATH, JSON_STRING}) {
+      try {
+        JSON_STRING = JsonData(JSON_STRING);
+        PATH = Arr(PATH);
+        PATH.forEach(prop => JSON_STRING = isArr(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
+        return JSON_STRING !== undefined;
+      } catch(err) {return false}
     }
   }
 
