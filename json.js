@@ -82,15 +82,15 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'set item by path [PATH] of json [JSON_STRING] to json [VALUE]',
             arguments: {
-              PATH: { //если строка не содержит "ключи в основании пути" возвращается пустая строка
+              PATH: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["vegetables"]'
               },
-              JSON_STRING: { //если крайний ключ уже существует он перезапишется
+              JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
               },
-              VALUE: { //значение только для крайнего ключа //если значение не массив или объект возвращается пустая строка
+              VALUE: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["potato","tomato"]'
               }
@@ -101,11 +101,11 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'delete item by path [PATH] of json [JSON_STRING]',
             arguments: {
-              PATH: { //не может заменть массив или объект, при такой попытке возвращается пустая строка
+              PATH: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["fruit",1]'
               },
-              JSON_STRING: { //если крайний ключ не существует возвращается пустая строка
+              JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
               }
