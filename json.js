@@ -177,6 +177,40 @@
                 defaultValue: ' '
               }
             }
+          },
+          {
+            opcode: 'object_split_by_split_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'object [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              SPLIT1: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              },
+              SPLIT2: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ':'
+              }
+            }
+          },
+          {
+            opcode: 'array_split_by_split_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'array [JSON_STRING] split by [SPLIT]',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              SPLIT: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              }
+            }
           }
         ],
 
@@ -233,7 +267,7 @@
     json_split_by_split_block({JSON_STRING, SPLIT}) {
       try {
         JSON_STRING = JsonData(JSON_STRING);
-        return JSON.stringify(JSON_STRING, (key, value) => {return value === undefined ? '' : value}, String(SPLIT));
+        return JSON.stringify(JSON_STRING, (key, value) => {return value === undefined ? '' : value}, '\n').replace(new RegExp('\n\n', 'g'), String(SPLIT));
       } catch(err) {return ''}
     }
     get_json_item_block({PATH, JSON_STRING}) {
