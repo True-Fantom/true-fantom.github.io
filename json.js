@@ -24,7 +24,7 @@
   };
 
   const Arr = (A) => {
-    return Array.isArray(JSON.parse(A, null)) ? JSON.parse(A, null) : Array.from({length: 1}, (v) => JSON.parse(A, null));
+    return Array.isArray(A) ? A : Array.from({length: 1}, (v) => A);
   };
 
   const isRegExp = (A) => {
@@ -246,7 +246,7 @@
     get_json_item_block({PATH, JSON_STRING}) {
       try {
         JSON_STRING = JsonData(JSON_STRING);
-        PATH = Arr(PATH);
+        PATH = Arr(JsonData(PATH));
         PATH.forEach(prop => JSON_STRING = isArr(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
         return JsonStr(JSON_STRING);
       } catch(err) {return ''}
@@ -264,7 +264,7 @@
     json_contains_block({PATH, JSON_STRING}) {
       try {
         JSON_STRING = JsonData(JSON_STRING);
-        PATH = Arr(PATH);
+        PATH = Arr(JsonData(PATH));
         PATH.forEach(prop => JSON_STRING = isArr(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
         return JSON_STRING !== undefined;
       } catch(err) {return false}
