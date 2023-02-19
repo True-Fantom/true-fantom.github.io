@@ -92,7 +92,7 @@
           {
             opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'item by json path [PATH] of json [JSON_STRING]',
+            text: 'json item by json path [PATH] of json [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
