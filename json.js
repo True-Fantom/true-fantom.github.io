@@ -19,12 +19,16 @@
     return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
 
-  const JsonScr = (A) => {
-    return A === undefined ? '' : typeof A === 'object' && A !== null ? JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0) : A;
+  const Scr = (A) => {
+    return A === undefined || typeof A === 'object' ? '' : A;
   };
 
   const Arr = (A) => {
     return Array.isArray(JSON.parse(A, null)) ? JSON.parse(A, null) : Array.from({length: 1}, (v) => JSON.parse(A, null));
+  };
+
+  const isRegExp = (A) => {
+    return A instanceof RegExp;
   };
 
   const isArr = (A) => {
@@ -32,7 +36,7 @@
   };
 
   const isObj = (A) => {
-    return !Array.isArray(A) && typeof A === 'object' && A !== null;
+    return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp);
   };
 
   class Network {
@@ -65,7 +69,7 @@
           {
             opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'item by path [PATH] of json [JSON_STRING]',
+            text: 'item by json path [PATH] of json [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -80,7 +84,7 @@
           {
             opcode: 'set_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'set item by path [PATH] of json [JSON_STRING] to json [VALUE]',
+            text: 'set item by json path [PATH] of json [JSON_STRING] to json [VALUE]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -99,7 +103,7 @@
           {
             opcode: 'delete_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete item by path [PATH] of json [JSON_STRING]',
+            text: 'delete item by json path [PATH] of json [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -126,7 +130,7 @@
           {
             opcode: 'json_contains_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'json [JSON_STRING] contains item by path [PATH] ?',
+            text: 'json [JSON_STRING] contains item by json path [PATH] ?',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -142,7 +146,7 @@
           {
             opcode: 'is_object_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is object [JSON_STRING] ?',
+            text: 'is json object [JSON_STRING] ?',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -154,7 +158,7 @@
           {
             opcode: 'is_array_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is array [JSON_STRING] ?',
+            text: 'is json array [JSON_STRING] ?',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -236,22 +240,7 @@
     }
     json_split_by_split_block({JSON_STRING, SPLIT1, SPLIT2}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
-        let str = '';
-        if (isArr(JSON_STRING)) {
-          str = isArr(JSON_STRING[0]) || isObj(JSON_STRING[0]) ? JsonStr(JSON_STRING[0]) : String(JSON_STRING[0]);
-          for (var i = 1; i <= JSON_STRING.length - 1; i++) {
-            str += String(SPLIT1) + isArr(JSON_STRING[i]) || isObj(JSON_STRING[i]) ? JsonStr(JSON_STRING[i]) : String(JSON_STRING[i]);
-          }
-        }
-        else if (isObj(JSON_STRING)) {
-          str = String(Object.keys(JSON_STRING)[0]) + String(SPLIT2) + isArr(Object.values(JSON_STRING)[0]) || isObj(Object.values(JSON_STRING)[0]) ? JsonStr(JObject.values(JSON_STRING)[0]) : String(Object.values(JSON_STRING)[0]);
-          for (var i = 1; i <= Object.keys(JSON_STRING).length - 1; i++) {
-            str += String(SPLIT1) + String(Object.keys(JSON_STRING)[i]) + String(SPLIT2) + isArr(Object.values(JSON_STRING)[i]) || isObj(Object.values(JSON_STRING)[i]) ? JsonStr(JObject.values(JSON_STRING)[i]) : String(Object.values(JSON_STRING)[i]);
-          }
-        }
-        else {str = JSON_STRING}
-        return str;
+        return '';
       } catch(err) {return ''}
     }
     get_json_item_block({PATH, JSON_STRING}) {
@@ -259,14 +248,18 @@
         JSON_STRING = JsonData(JSON_STRING);
         PATH = Arr(PATH);
         PATH.forEach(prop => JSON_STRING = isArr(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
-        return JsonScr(JSON_STRING);
+        return JsonStr(JSON_STRING);
       } catch(err) {return ''}
     }
     set_json_item_block({PATH, JSON_STRING, VALUE}) {
-      return '';
+      try {
+        return '';
+      } catch(err) {return ''}
     }
     delete_json_item_block({PATH, JSON_STRING}) {
-      return '';
+      try {
+        return '';
+      } catch(err) {return ''}
     }
     json_contains_block({PATH, JSON_STRING}) {
       try {
