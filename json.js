@@ -212,7 +212,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":2}'
+                defaultValue: '["apple","banana"]'
               },
               SPLIT1: {
                 type: Scratch.ArgumentType.STRING,
