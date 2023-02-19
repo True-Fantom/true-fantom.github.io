@@ -193,7 +193,7 @@
           {
             opcode: 'json_split_by_split_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'json [JSON_STRING] split by [SPLIT1]',
+            text: 'json values of [JSON_STRING] split by [SPLIT1]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -208,7 +208,7 @@
           {
             opcode: 'json_split_by_splits_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'json [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
+            text: 'json values and keys of [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
