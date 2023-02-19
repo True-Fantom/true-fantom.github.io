@@ -80,7 +80,7 @@
           {
             opcode: 'from_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'from json [JSON_STRING]',
+            text: 'json [JSON_STRING]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
