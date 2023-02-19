@@ -68,7 +68,7 @@
           '---',
           {
             opcode: 'to_json_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.REPORTER,
             text: '[VALUE] to json',
             arguments: {
               VALUE: {
@@ -79,7 +79,7 @@
           },
           {
             opcode: 'from_json_block',
-            blockType: Scratch.BlockType.BOOLEAN,
+            blockType: Scratch.BlockType.REPORTER,
             text: 'from json [JSON_STRING]',
             arguments: {
               JSON_STRING: {
