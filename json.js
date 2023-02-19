@@ -193,11 +193,26 @@
           {
             opcode: 'json_split_by_split_block',
             blockType: Scratch.BlockType.REPORTER,
+            text: 'json [JSON_STRING] split by [SPLIT1]',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '["apple","banana"]'
+              },
+              SPLIT1: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ' '
+              }
+            }
+          },
+          {
+            opcode: 'json_split_by_splits_block',
+            blockType: Scratch.BlockType.REPORTER,
             text: 'json [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
+                defaultValue: '{"fruit":2}'
               },
               SPLIT1: {
                 type: Scratch.ArgumentType.STRING,
@@ -271,13 +286,24 @@
         return isArr(JSON_STRING) ? JSON_STRING.length : isObj(JSON_STRING) ? Object.keys(JSON_STRING).length : 1;
       } catch(err) {return 0}
     }
-    json_split_by_split_block({JSON_STRING, SPLIT1, SPLIT2}) {
+    json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) {
       try {
         JSON_STRING = JsonData(JSON_STRING);
         if (!isArr(JSON_STRING) && !isObj(JSON_STRING)) {JSON_STRING = Arr(JSON_STRING)}
         let str = '';
         for (let [k,v] of Object.entries(JSON_STRING)) {
           str += typeof v === 'object' ? `${k}${SPLIT2}${JsonStr(v)}${SPLIT1}` : `${k}${SPLIT2}${v}${SPLIT1}`
+        }
+        return str;
+      } catch(err) {return ''}
+    }
+    json_split_by_split_block({JSON_STRING, SPLIT1}) {
+      try {
+        JSON_STRING = JsonData(JSON_STRING);
+        if (!isArr(JSON_STRING) && !isObj(JSON_STRING)) {JSON_STRING = Arr(JSON_STRING)}
+        let str = '';
+        for (let [k,v] of Object.entries(JSON_STRING)) {
+          str += typeof v === 'object' ? `${JsonStr(v)}${SPLIT1}` : `${v}${SPLIT1}`
         }
         return str;
       } catch(err) {return ''}
