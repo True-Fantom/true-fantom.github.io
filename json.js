@@ -273,7 +273,13 @@
     }
     json_split_by_split_block({JSON_STRING, SPLIT1, SPLIT2}) {
       try {
-        return '';
+        JSON_STRING = JsonData(JSON_STRING);
+        if (!isArr(JSON_STRING) && !isObj(JSON_STRING)) {JSON_STRING = Arr(JSON_STRING)}
+        let str = '';
+        for (let [k,v] of Object.entries(JSON_STRING)) {
+          str += typeof v === 'object' ? `${k}${SPLIT2}${JsonStr(v)}${SPLIT1}` : `${k}${SPLIT2}${v}${SPLIT1}`
+        }
+        return str;
       } catch(err) {return ''}
     }
     get_json_item_block({PATH, JSON_STRING}) {
