@@ -72,7 +72,7 @@
     null_block() {
       return null;
     }
-    type_of_block() {
+    undefined_block() {
       return undefined;
     }
     bigint_block() {
