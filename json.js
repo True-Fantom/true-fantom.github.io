@@ -67,6 +67,29 @@
           },
           '---',
           {
+            opcode: 'to_json_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[VALUE] to json',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
+            opcode: 'from_json_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'from json [JSON_STRING]',
+            arguments: {
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '"apple"'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'item by json path [PATH] of json [JSON_STRING]',
@@ -219,6 +242,16 @@
         JSON_STRING = JsonData(JSON_STRING);
         return true;
       } catch(err) {return false}
+    }
+    to_json_block({VALUE}) {
+      try {
+        return JsonStr(VALUE);
+      } catch(err) {return ''}
+    }
+    from_json_block({JSON_STRING}) {
+      try {
+        return Scr(JsonData(JSON_STRING));
+      } catch(err) {return ''}
     }
     is_array_block({JSON_STRING}) {
       try {
