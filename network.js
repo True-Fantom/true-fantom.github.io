@@ -44,12 +44,12 @@
     try {return JsonData(A)} catch(err) {return ''}
   };
 
-  const FetchUrl = ({USER_URL, BODY, HEADERS, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
+  const FetchUrl = ({USER_URL, BODY, HEADERS, RESPONSES_TYPES}, METHOD) => {
     RESPONSES_TYPES = Arr(StJsonData(RESPONSES_TYPES)).length === 0 ? [9] : Arr(StJsonData(RESPONSES_TYPES));
     const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
       method: METHOD,
-      headers: single ? {} : {'Content-Type': Num(CONTENT_TYPE) === 1 ? 'text/plain' : 'application/json'},
+      headers: Obj(StJsonData(HEADERS)),
       redirect: 'follow',
       body: single ? null : String(BODY)})
     .then(res => {
@@ -174,7 +174,7 @@
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [CONTENT_TYPE] [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
+            text: 'post [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -188,10 +188,6 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"Content-Type":"text/plain"}'
               },
-              CONTENT_TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'content_type'
-              },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type'
@@ -201,7 +197,7 @@
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [CONTENT_TYPE] [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
+            text: 'put [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -215,10 +211,6 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"Content-Type":"text/plain"}'
               },
-              CONTENT_TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'content_type'
-              },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'response_type'
@@ -228,7 +220,7 @@
           {
             opcode: 'patch_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'patch [CONTENT_TYPE] [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
+            text: 'patch [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -241,10 +233,6 @@
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"Content-Type":"text/plain"}'
-              },
-              CONTENT_TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'content_type'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
