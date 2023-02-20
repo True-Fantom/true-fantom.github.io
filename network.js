@@ -12,22 +12,37 @@
   const Bool = (A) => {
     return typeof A === 'string' && A.toLowerCase() === 'false' ? false : Boolean(A);
   };
-
   const Num = (A) => {
     return typeof A === 'string' && isNaN(Number(A)) ? 0 : Number(A);
   };
-
-  const JsonStr = (A, B) => {
-    return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, B === undefined ? 0 : B);
+  const JsonStr = (A) => {
+    return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
+  };
+  const JsonData = (A) => {
+    return JSON.parse(A, null);
+  };
+  const Scr = (A) => {
+    return A === undefined || typeof A === 'object' ? '' : A;
+  };
+  const Arr = (A) => {
+    return Array.isArray(A) ? A : Array.from({length: 1}, (v) => A);
+  };
+  const isRegExp = (A) => {
+    return A instanceof RegExp;
+  };
+  const isArr = (A) => {
+    return Array.isArray(A);
+  };
+  const isObj = (A) => {
+    return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp);
   };
 
-  const JsonObj = (A, B) => {
-    if (Boolean(B)) {return JSON.parse(A, null)}
-    else {try {return JSON.parse(A, null)} catch(err) {return ''}}
+  const StJsonData = (A) => {
+    try {return JsonData(A)} catch(err) {return ''}
   };
 
   const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
-    RESPONSES_TYPES = Array.isArray(JsonObj(RESPONSES_TYPES)) ? JsonObj(RESPONSES_TYPES).length === 0 ? [9] : JsonObj(RESPONSES_TYPES) : Array.from({length: 1}, (v) => RESPONSES_TYPES);
+    RESPONSES_TYPES = Array.isArray(StJsonData(RESPONSES_TYPES)) ? StJsonData(RESPONSES_TYPES).length === 0 ? [9] : StJsonData(RESPONSES_TYPES) : Array.from({length: 1}, (v) => RESPONSES_TYPES);
     const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
       method: METHOD,
@@ -39,7 +54,7 @@
       for (let i = 0; i <= RESPONSES_TYPES.length - 1; i++) {
         switch (Num(RESPONSES_TYPES[i])) {
           case 1: responses.push(res.text()); break;
-          case 2: responses.push(JSON.stringify(res.json())); break;
+          case 2: responses.push(res.json()); break;
           case 3: responses.push(res.ok); break;
           case 4: responses.push(res.status); break;
           case 5: responses.push(res.statusText); break;
