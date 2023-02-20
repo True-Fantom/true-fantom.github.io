@@ -45,7 +45,7 @@
   };
 
   const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
-    RESPONSES_TYPES = Array.isArray(StJsonData(RESPONSES_TYPES)) ? StJsonData(RESPONSES_TYPES).length === 0 ? [9] : StJsonData(RESPONSES_TYPES) : Array.from({length: 1}, (v) => RESPONSES_TYPES);
+    RESPONSES_TYPES = Arr(StJsonData(RESPONSES_TYPES)).length === 0 ? [9] : Arr(StJsonData(RESPONSES_TYPES));
     const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
       method: METHOD,
