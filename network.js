@@ -134,7 +134,7 @@
           },
           '---',
           {
-            opcode: 'get_block', //HEADERS
+            opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'get [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
@@ -155,7 +155,7 @@
           {
             opcode: 'delete_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete [USER_URL] respond [RESPONSES_TYPES]',
+            text: 'delete [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -174,7 +174,7 @@
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES]',
+            text: 'post [CONTENT_TYPE] [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -186,7 +186,7 @@
               },
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{}'
+                defaultValue: '{"Content-Type":"text/plain"}'
               },
               CONTENT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
@@ -201,7 +201,7 @@
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES]',
+            text: 'put [CONTENT_TYPE] [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -213,7 +213,7 @@
               },
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{}'
+                defaultValue: '{"Content-Type":"text/plain"}'
               },
               CONTENT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
@@ -228,7 +228,7 @@
           {
             opcode: 'patch_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'patch [CONTENT_TYPE] [BODY] to [USER_URL] respond [RESPONSES_TYPES]',
+            text: 'patch [CONTENT_TYPE] [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -240,7 +240,7 @@
               },
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{}'
+                defaultValue: '{"Content-Type":"text/plain"}'
               },
               CONTENT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
