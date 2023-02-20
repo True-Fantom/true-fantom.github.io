@@ -27,6 +27,9 @@
   const Arr = (A) => {
     return Array.isArray(A) ? A : Array.from({length: 1}, (v) => A);
   };
+  const Obj = (A) => {
+    return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp) ? A : {};
+  };
   const isRegExp = (A) => {
     return A instanceof RegExp;
   };
