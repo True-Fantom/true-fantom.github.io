@@ -6,35 +6,30 @@
   const Bool = (A) => {
     return typeof A === 'string' && A.toLowerCase() === 'false' ? false : Boolean(A);
   };
-
   const Num = (A) => {
     return typeof A === 'string' && isNaN(Number(A)) ? 0 : Number(A);
   };
-
   const JsonData = (A) => {
     return JSON.parse(A, null);
   };
-
   const JsonStr = (A) => {
     return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
-
   const Scr = (A) => {
     return A === undefined || typeof A === 'object' ? '' : A;
   };
-
   const Arr = (A) => {
     return Array.isArray(A) ? A : Array.from({length: 1}, (v) => A);
   };
-
+  const Obj = (A) => {
+    return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp) ? A : {};
+  };
   const isRegExp = (A) => {
     return A instanceof RegExp;
   };
-
   const isArr = (A) => {
     return Array.isArray(A);
   };
-
   const isObj = (A) => {
     return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp);
   };
