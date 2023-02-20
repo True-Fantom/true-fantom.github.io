@@ -44,7 +44,7 @@
     try {return JsonData(A)} catch(err) {return ''}
   };
 
-  const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, RESPONSES_TYPES}, METHOD) => {
+  const FetchUrl = ({USER_URL, BODY, CONTENT_TYPE, HEADERS, RESPONSES_TYPES}, METHOD) => {
     RESPONSES_TYPES = Arr(StJsonData(RESPONSES_TYPES)).length === 0 ? [9] : Arr(StJsonData(RESPONSES_TYPES));
     const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
@@ -134,13 +134,17 @@
           },
           '---',
           {
-            opcode: 'get_block',
+            opcode: 'get_block', //HEADERS
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [USER_URL] respond [RESPONSES_TYPES]',
+            text: 'get [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/get'
+              },
+              HEADERS: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{}'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
@@ -156,6 +160,10 @@
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'https://httpbin.org/delete'
+              },
+              HEADERS: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{}'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
@@ -175,6 +183,10 @@
               BODY: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
+              },
+              HEADERS: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{}'
               },
               CONTENT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
@@ -199,6 +211,10 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
               },
+              HEADERS: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{}'
+              },
               CONTENT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'content_type'
@@ -221,6 +237,10 @@
               BODY: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
+              },
+              HEADERS: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{}'
               },
               CONTENT_TYPE: {
                 type: Scratch.ArgumentType.STRING,
