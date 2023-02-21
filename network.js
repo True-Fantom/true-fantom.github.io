@@ -155,7 +155,7 @@
           {
             opcode: 'delete_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
+            text: 'delete [USER_URL] with headers [HEADERS] and options [OPTIONS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -174,7 +174,7 @@
           {
             opcode: 'post_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'post [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
+            text: 'post [BODY] to [USER_URL] with headers [HEADERS] and options [OPTIONS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -197,7 +197,7 @@
           {
             opcode: 'put_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'put [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
+            text: 'put [BODY] to [USER_URL] with headers [HEADERS] and options [OPTIONS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -220,7 +220,7 @@
           {
             opcode: 'patch_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'patch [BODY] to [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
+            text: 'patch [BODY] to [USER_URL] with headers [HEADERS] and options [OPTIONS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
