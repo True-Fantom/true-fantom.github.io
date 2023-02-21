@@ -144,11 +144,11 @@
               },
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{}'
+                menu: 'single_headers_menu'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'only_url_response_type'
+                menu: 'single_responses_types_menu'
               }
             }
           },
@@ -163,11 +163,11 @@
               },
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{}'
+                menu: 'single_headers_menu'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'only_url_response_type'
+                menu: 'single_responses_types_menu'
               }
             }
           },
@@ -186,11 +186,11 @@
               },
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"Content-Type":"text/plain"}'
+                menu: 'multi_headers_menu'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'response_type'
+                menu: 'multi_responses_types_menu'
               }
             }
           },
@@ -209,11 +209,11 @@
               },
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"Content-Type":"text/plain"}'
+                menu: 'multi_headers_menu'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'response_type'
+                menu: 'multi_responses_types_menu'
               }
             }
           },
@@ -232,11 +232,11 @@
               },
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"Content-Type":"text/plain"}'
+                menu: 'multi_headers_menu'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'response_type'
+                menu: 'multi_responses_types_menu'
               }
             }
           },
@@ -263,19 +263,19 @@
               },
               WIDTH: {
                 type: Scratch.ArgumentType.NUMBER,
-                menu: 'default'
+                defaultValue: '500'
               },
               HEIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                menu: 'default'
+                defaultValue: '500'
               },
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                menu: 'default'
+                defaultValue: '0'
               },
               TOP: {
                 type: Scratch.ArgumentType.NUMBER,
-                menu: 'default'
+                defaultValue: '0'
               }
             }
           },
@@ -293,20 +293,33 @@
         ],
 
         menus: {
-          content_type: { 
+          single_headers_menu: { 
             acceptReporters: true,
             items: [
               {
-                text: '(1) text',
-                value: '1'
-              },
-              {
-                text: '(2) json',
-                value: '2'
+                text: '{}',
+                value: '{}'
               }
             ]
           },
-          only_url_response_type: {  
+          multi_headers_menu: { 
+            acceptReporters: true,
+            items: [
+              {
+                text: '{"Content-Type":"text/plain"}',
+                value: '{"Content-Type":"text/plain"}'
+              },
+              {
+                text: '{"Content-Type":"application/json"}',
+                value: '{"Content-Type":"application/json"}'
+              },
+              {
+                text: '{}',
+                value: '{}'
+              }
+            ]
+          },
+          single_responses_types_menu: {  
             acceptReporters: true,
             items: [
               {
@@ -351,7 +364,7 @@
               }
             ]
           },
-          response_type: {  
+          multi_responses_types_menu: {  
             acceptReporters: true,
             items: [
               {
@@ -397,15 +410,6 @@
               {
                 text: '(9) body used?',
                 value: '9'
-              }
-            ]
-          },
-          default: { 
-            acceptReporters: true,
-            items: [
-              {
-                text: 'default',
-                value: 'default'
               }
             ]
           }
