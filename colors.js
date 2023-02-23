@@ -13,7 +13,7 @@
           {
             opcode: 'color_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[COLOR]',
+            text: '[COLOR] as hex',
             arguments: {
               COLOR: {
                 type: Scratch.ArgumentType.COLOR
