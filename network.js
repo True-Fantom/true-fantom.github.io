@@ -44,6 +44,23 @@
     try {return JsonData(A)} catch(err) {return ''}
   };
 
+  const OptionsCheck = (OPTIONS, OPTION_TYPE) => {
+    switch (OPTION_TYPE) {
+      case 'redirect':
+        switch (OPTION_TYPE.redirect) {
+          case 'follow': return 'follow';
+          case 'error': return 'error';
+          default: return 'follow';
+        }
+      case 'test':
+        switch (OPTION_TYPE.redirect) {
+          case 'follow': return 'follow';
+          case 'error': return 'error';
+          default: return 'follow';
+        }
+    }
+  };
+
   const FetchUrl = ({USER_URL, BODY, HEADERS, OPTIONS, RESPONSES_TYPES}, METHOD) => {
     RESPONSES_TYPES = Arr(StJsonData(RESPONSES_TYPES)).length === 0 ? [9] : Arr(StJsonData(RESPONSES_TYPES));
     OPTIONS = Obj(StJsonData(OPTIONS));
@@ -51,7 +68,7 @@
     return fetch(String(USER_URL), {
       method: METHOD,
       headers: Obj(StJsonData(HEADERS)),
-      redirect: OPTIONS.redirect,
+      redirect: OptionsCheck(OPTIONS, 'redirect'),
       body: single ? null : String(BODY)})
     .then(res => {
       const responses = [];
