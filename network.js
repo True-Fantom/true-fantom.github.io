@@ -343,6 +343,14 @@
             acceptReporters: true,
             items: [
               {
+                text: '{"redirect":"follow"}',
+                value: '{"redirect":"follow"}'
+              },
+              {
+                text: '{"redirect":"error"}',
+                value: '{"redirect":"error"}'
+              },
+              {
                 text: '{"mode":"cors"}',
                 value: '{"mode":"cors"}'
               },
@@ -389,14 +397,6 @@
               {
                 text: '{"cache":"only-if-cached"}',
                 value: '{"cache":"only-if-cached"}'
-              },
-              {
-                text: '{"redirect":"follow"}',
-                value: '{"redirect":"follow"}'
-              },
-              {
-                text: '{"redirect":"error"}',
-                value: '{"redirect":"error"}'
               },
               {
                 text: '{"referrer":"about:client"}',
