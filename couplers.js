@@ -30,6 +30,16 @@
             }
           },
           {
+            opcode: 'true_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'true'
+          },
+          {
+            opcode: 'false_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'false'
+          },
+          {
             opcode: 'value_in_string_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[VALUE]',
@@ -39,16 +49,6 @@
                 defaultValue: 'apple'
               }
             }
-          },
-          {
-            opcode: 'true_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'true'
-          },
-          {
-            opcode: 'false_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'false'
           }
         ]
       }
@@ -57,14 +57,14 @@
     value_in_boolean_block({VALUE}) {
       return VALUE;
     }
-    value_in_string_block({VALUE}) {
-      return VALUE;
-    }
     true_block() {
       return true;
     }
     false_block() {
       return false;
+    }
+    value_in_string_block({VALUE}) {
+      return VALUE;
     }
   }
 
