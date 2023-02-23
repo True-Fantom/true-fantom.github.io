@@ -136,7 +136,7 @@
           {
             opcode: 'get_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'get [USER_URL] with headers [HEADERS] respond [RESPONSES_TYPES]',
+            text: 'get [USER_URL] with headers [HEADERS] and options [OPTIONS] respond [RESPONSES_TYPES]',
             arguments: {
               USER_URL: {
                 type: Scratch.ArgumentType.STRING,
@@ -145,6 +145,10 @@
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'single_headers_menu'
+              },
+              OPTIONS: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'options_menu'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
@@ -164,6 +168,10 @@
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'single_headers_menu'
+              },
+              OPTIONS: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'options_menu'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
@@ -188,6 +196,10 @@
                 type: Scratch.ArgumentType.STRING,
                 menu: 'multi_headers_menu'
               },
+              OPTIONS: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'options_menu'
+              },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'multi_responses_types_menu'
@@ -211,6 +223,10 @@
                 type: Scratch.ArgumentType.STRING,
                 menu: 'multi_headers_menu'
               },
+              OPTIONS: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'options_menu'
+              },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'multi_responses_types_menu'
@@ -233,6 +249,10 @@
               HEADERS: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'multi_headers_menu'
+              },
+              OPTIONS: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'options_menu'
               },
               RESPONSES_TYPES: {
                 type: Scratch.ArgumentType.STRING,
@@ -312,6 +332,123 @@
               {
                 text: '{"Content-Type":"application/json"}',
                 value: '{"Content-Type":"application/json"}'
+              },
+              {
+                text: '{}',
+                value: '{}'
+              }
+            ]
+          },
+          options_menu: { 
+            acceptReporters: true,
+            items: [
+              {
+                text: '{"mode":"cors"}',
+                value: '{"mode":"cors"}'
+              },
+              {
+                text: '{"mode":"no-cors"}',
+                value: '{"mode":"no-cors"}'
+              },
+              {
+                text: '{"mode":"same-origin"}',
+                value: '{"mode":"same-origin"}'
+              },
+              {
+                text: '{"credentials":"omit"}',
+                value: '{"credentials":"omit"}'
+              },
+              {
+                text: '{"credentials":"same-origin"}',
+                value: '{"credentials":"same-origin"}'
+              },
+              {
+                text: '{"credentials":"include"}',
+                value: '{"credentials":"include"}'
+              },
+              {
+                text: '{"cache":"default"}',
+                value: '{"cache":"default"}'
+              },
+              {
+                text: '{"cache":"no-store"}',
+                value: '{"cache":"no-store"}'
+              },
+              {
+                text: '{"cache":"reload"}',
+                value: '{"cache":"reload"}'
+              },
+              {
+                text: '{"cache":"no-cache"}',
+                value: '{"cache":"no-cache"}'
+              },
+              {
+                text: '{"cache":"force-cache"}',
+                value: '{"cache":"force-cache"}'
+              },
+              {
+                text: '{"cache":"only-if-cached"}',
+                value: '{"cache":"only-if-cached"}'
+              },
+              {
+                text: '{"redirect":"follow"}',
+                value: '{"redirect":"follow"}'
+              },
+              {
+                text: '{"redirect":"error"}',
+                value: '{"redirect":"error"}'
+              },
+              {
+                text: '{"referrer":"about:client"}',
+                value: '{"referrer":"about:client"}'
+              },
+              {
+                text: '{"referrer":""}',
+                value: '{"referrer":""}'
+              },
+              {
+                text: '{"referrerPolicy":"no-referrer"}',
+                value: '{"referrerPolicy":"no-referrer"}'
+              },
+              {
+                text: '{"referrerPolicy":"no-referrer-when-downgrade"}',
+                value: '{"referrerPolicy":"no-referrer-when-downgrade"}'
+              },
+              {
+                text: '{"referrerPolicy":"same-origin"}',
+                value: '{"referrerPolicy":"same-origin"}'
+              },
+              {
+                text: '{"referrerPolicy":"origin"}',
+                value: '{"referrerPolicy":"origin"}'
+              },
+              {
+                text: '{"referrerPolicy":"strict-origin"}',
+                value: '{"referrerPolicy":"strict-origin"}'
+              },
+              {
+                text: '{"referrerPolicy":"origin-when-cross-origin"}',
+                value: '{"referrerPolicy":"origin-when-cross-origin"}'
+              },
+              {
+                text: '{"referrerPolicy":"strict-origin-when-cross-origin"}',
+                value: '{"referrerPolicy":"strict-origin-when-cross-origin"}'
+              },
+              {
+                text: '{"referrerPolicy":"unsafe-url"}',
+                value: '{"referrerPolicy":"unsafe-url"}'
+              },
+              {
+                text: '{"priority":"high"}',
+                value: '{"priority":"high"}'
+              },
+              {
+                text: '{"priority":"low"}',
+                value: '{"priority":"low"}'
+              },
+              {
+                text: '{"priority":"auto"}',
+                value: '{"priority":"auto"}'
               },
               {
                 text: '{}',
