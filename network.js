@@ -44,13 +44,14 @@
     try {return JsonData(A)} catch(err) {return ''}
   };
 
-  const FetchUrl = ({USER_URL, BODY, HEADERS, RESPONSES_TYPES}, METHOD) => {
+  const FetchUrl = ({USER_URL, BODY, HEADERS, OPTIONS, RESPONSES_TYPES}, METHOD) => {
     RESPONSES_TYPES = Arr(StJsonData(RESPONSES_TYPES)).length === 0 ? [9] : Arr(StJsonData(RESPONSES_TYPES));
+    OPTIONS = Obj(StJsonData(OPTIONS));
     const single = METHOD === 'GET' || METHOD === 'DELETE';
     return fetch(String(USER_URL), {
       method: METHOD,
       headers: Obj(StJsonData(HEADERS)),
-      redirect: 'follow',
+      redirect: OPTIONS.redirect,
       body: single ? null : String(BODY)})
     .then(res => {
       const responses = [];
