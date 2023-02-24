@@ -109,7 +109,8 @@
           {
             opcode: 'connected_to_internet_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'connected to internet?'
+            text: 'connected to internet?',
+            disableMonitor: false
           },
           '---',
           {
