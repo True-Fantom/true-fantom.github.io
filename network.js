@@ -52,8 +52,8 @@
           case 'error': return 'error';
           default: return 'follow';
         }
-      case 'test':
-        switch (OPTION_TYPE.redirect) {
+      case 'mode':
+        switch (OPTION_TYPE.mode) {
           case 'follow': return 'follow';
           case 'error': return 'error';
           default: return 'follow';
