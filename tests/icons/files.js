@@ -12,6 +12,8 @@
         name: 'Files',
 
         color1: '#edb124',
+        color2: '#d59f20',
+        color3: '#be8e1d',
 
         menuIconURI: icon,
 
