@@ -13,9 +13,78 @@
 
         color1: '#edb124',
 
-        menuIconURI: icon
+        menuIconURI: icon,
+
+        blocks: [
+          {
+            opcode: 'bool_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[BOOL]',
+            arguments: {
+              BOOL: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },
+          {
+            opcode: 'string_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[STRING]',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+              }
+            }
+          },
+          {
+            opcode: 'accept_reporters_true_menu_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[ACCEPT_REPORTERS_TRUE_MENU_VALUE]',
+            arguments: {
+              ACCEPT_REPORTERS_TRUE_MENU_VALUE: {
+                type: Scratch.ArgumentType.STRING,  
+                menu: 'accept_reporters_true_menu'
+              }
+            }
+          },
+          {
+            opcode: 'accept_reporters_false_menu_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[ACCEPT_REPORTERS_FALSE_MENU_VALUE]',
+            arguments: {
+              ACCEPT_REPORTERS_FALSE_MENU_VALUE: {
+                type: Scratch.ArgumentType.STRING,  
+                menu: 'accept_reporters_false_menu'
+              }
+            }
+          }
+        ],
+
+        menus: {
+          accept_reporters_true_menu: {
+            acceptReporters: true,
+            items: ['']
+          },
+          accept_reporters_false_menu: {
+            acceptReporters: false,
+            items: ['']
+          }
+        }
       }
     } 
+
+    bool_block({BOOL}) {
+      return '';
+    }
+    string_block({STRING}) {
+      return '';
+    }
+    accept_reporters_true_menu_block({ACCEPT_REPORTERS_TRUE_MENU_VALUE}) {
+      return '';
+    }
+    accept_reporters_false_menu_block({ACCEPT_REPORTERS_FALSE_MENU_VALUE}) {
+      return '';
+    }
   }
 
   Scratch.extensions.register(new Files());
