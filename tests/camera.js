@@ -1,10 +1,6 @@
 (Scratch => {
   'use strict';
 
-  if (!Scratch.extensions.unsandboxed) {
-	throw new Error('AR extension must be run unsandboxed');
-  }
-
   const vm = Scratch.vm;
 
   let cameraX = 0;
@@ -60,7 +56,7 @@
         color2: '#b93778',
         color3: '#b93778',
 
-        id: 'DTcameracontrols',
+        id: 'DTcamera',
 
         name: 'Camera',
 
@@ -185,41 +181,41 @@
       cameraY = +ARGS.y;
       doFix();
     }
-    getX() {
-      return cameraX;
+    changeZoom(ARGS) {
+      cameraZoom += +ARGS.val;
+      doFix();
     }
-    setX(ARGS) {
-      cameraX = +ARGS.val;
+    setZoom(ARGS) {
+      cameraZoom = +ARGS.val;
       doFix();
     }
     changeX(ARGS) {
       cameraX += +ARGS.val;
       doFix();
     }
-    getY() {
-      return cameraY;
-    }
-    setY(ARGS) {
-      cameraY = +ARGS.val;
+    setX(ARGS) {
+      cameraX = +ARGS.val;
       doFix();
     }
     changeY(ARGS) {
       cameraY += +ARGS.val;
       doFix();
     }
+    setY(ARGS) {
+      cameraY = +ARGS.val;
+      doFix();
+    }
+    getX() {
+      return cameraX;
+    }
+    getY() {
+      return cameraY;
+    }
     getZoom() {
       return cameraZoom;
     }
-    setZoom(ARGS) {
-      cameraZoom = +ARGS.val;
-      doFix();
-    }
     setCol(ARGS) {
       cameraBG = ARGS.val;
-      doFix();
-    }
-    changeZoom(ARGS) {
-      cameraZoom += +ARGS.val;
       doFix();
     }
   }
