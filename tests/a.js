@@ -13,13 +13,14 @@
     getInfo() {
       return {
 
+        id: 'DTcamera',
+        name: 'Camera',
+
         color1: '#ff4da7',
         color2: '#b93778',
         color3: '#b93778',
 
-        id: 'DTcamera',
-
-        name: 'Camera',
+        menuIconURI: icon,
 
         blocks: [
           {
