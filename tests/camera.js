@@ -2,7 +2,7 @@
   'use strict';
 
   if (!Scratch.extensions.unsandboxed) {
-	  throw new Error('AR extension must be run unsandboxed');
+    throw new Error('AR extension must be run unsandboxed');
   }
 
   const vm = Scratch.vm;
