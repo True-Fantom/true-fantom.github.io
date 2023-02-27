@@ -7,7 +7,7 @@
   let cameraY = 0;
   let cameraZoom = 100;
   let cameraBG = '#ffffff';
-  
+
   class Camera {
 
     getInfo() {
