@@ -22,12 +22,12 @@
 
   const Cast = Scratch.Cast;
 
-  class Math01 {
+  class Math {
 
     getInfo() {
       return {
 
-        id: 'math01',
+        id: 'truefantommath',
         name: 'Math',
 
         color1: '#59c059',
@@ -361,5 +361,5 @@
     }
   }
 
-  Scratch.extensions.register(new Math01());
+  Scratch.extensions.register(new Math());
 })(Scratch);
