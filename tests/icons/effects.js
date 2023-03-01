@@ -9,7 +9,7 @@
       return {
 
         id: 'xeltalliveffects',
-        name: 'Effects',
+        name: 'Render',
 
         color1: '#9966FF',
         color2: '#855CD6',
