@@ -9,7 +9,7 @@
 
   const vm = Scratch.vm;
 
-  const Cast = require('../../util/cast.js');
+  const Cast = require('../../util/cast');
 
   let cameraX = 0;
   let cameraY = 0;
