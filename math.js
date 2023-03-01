@@ -306,5 +306,5 @@
     }
   }
 
-  Scratch.extensions.register(new Math01());
+  Scratch.extensions.register(new Math());
 })(Scratch);
