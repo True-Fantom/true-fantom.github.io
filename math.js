@@ -20,6 +20,8 @@
     else {try {return JSON.parse(A, null)} catch(err) {return ''}}
   };
 
+  const Cast = Scratch.Cast;
+
   class Math01 {
 
     getInfo() {
