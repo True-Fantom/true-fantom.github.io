@@ -1,4 +1,4 @@
-const Cast = require('../../util/cast');
+const Cast = require('../util/cast');
 
 (Scratch => {
   'use strict';
