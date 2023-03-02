@@ -155,7 +155,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '50'
+                defaultValue: 50
               }
             }
           },
@@ -170,7 +170,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '50'
+                defaultValue: 50
               }
             }
           },
@@ -185,7 +185,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '50'
+                defaultValue: 50
               }
             }
           },
@@ -200,7 +200,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '50'
+                defaultValue: 50
               }
             }
           },
@@ -215,7 +215,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '50'
+                defaultValue: 50
               }
             }
           },
@@ -300,7 +300,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: 10
               }
             }
           },
