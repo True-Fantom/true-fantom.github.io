@@ -5,7 +5,7 @@
 
   const cast = Scratch.Cast;
 
-  const exactlyCompare = (v1, v2) => { //cast.compare() but case sensitive
+  const exactlyCompare = (v1, v2) => {
     let n1 = Number(v1);
     let n2 = Number(v2);
     if (n1 === 0 && cast.isNotActuallyZero(v1)) {
@@ -16,8 +16,8 @@
     if (isNaN(n1) || isNaN(n2)) {
       // At least one argument can't be converted to a number.
       // Scratch compares strings as case insensitive, but it shouldn't be here
-      const s1 = String(v1); //removed .toLowerCase()
-      const s2 = String(v2); //removed .toLowerCase()
+      const s1 = String(v1);
+      const s2 = String(v2);
       if (s1 < s2) {
         return -1;
       } else if (s1 > s2) {
@@ -48,7 +48,30 @@
       // Scratch treats NaN as 0, when needed as a number, but it shouldn't be here
       // E.g., 0 + NaN -> 0.
     return n;
-  }
+  };
+
+  const isTrueInt = (val) => {
+    // Values that are already numbers.
+    if (typeof val === 'number') {
+      if (isNaN(val)) { // NaN is considered an integer.
+        return true;
+      }
+      // True if it's "round" (e.g., 2.0 and 2).
+      return val === Math.floor(val);
+    } else if (typeof val === 'boolean') {
+      // `True` and `false` always represent integer after Scratch cast.
+      return true;
+    } else if (typeof val === 'string') {
+      // If it contains a decimal point, don't consider it an int, but it shouldn't be here
+      const n = Number(val);
+      if (isNaN(n)) { // NaN is considered an integer.
+        return true;
+      }
+      // True if it's "round" (e.g., 2.0 and 2).
+      return n === Math.floor(n);
+    }
+    return false;
+  };
 
   class ScratchMath {
 
@@ -448,10 +471,10 @@
       return !Number.isNaN(toNaNNumber(A));
     }
     is_int_block({A}) {
-      return cast.isInt(A) && !Number.isNaN(toNaNNumber(A));
+      return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
     }
     is_float_block({A}) {
-      return !cast.isInt(A) && !Number.isNaN(toNaNNumber(A));
+      return !isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
     }
   }
 
