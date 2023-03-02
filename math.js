@@ -5,6 +5,37 @@
 
   const cast = Scratch.Cast;
 
+  const exactlyCompare = (v1, v2) => { //cast.compare() but case sensitive
+    let n1 = Number(v1);
+    let n2 = Number(v2);
+    if (n1 === 0 && cast.isNotActuallyZero(v1)) {
+      n1 = NaN;
+    } else if (n2 === 0 && cast.isNotActuallyZero(v2)) {
+      n2 = NaN;
+    }
+    if (isNaN(n1) || isNaN(n2)) {
+      // At least one argument can't be converted to a number.
+      // Scratch compares strings as case insensitive, but it shouldn't be here
+      const s1 = String(v1); //removed .toLowerCase()
+      const s2 = String(v2); //removed .toLowerCase()
+      if (s1 < s2) {
+        return -1;
+      } else if (s1 > s2) {
+        return 1;
+      }
+      return 0;
+    }
+    // Handle the special case of Infinity
+    if (
+      (n1 === Infinity && n2 === Infinity) ||
+      (n1 === -Infinity && n2 === -Infinity)
+    ) {
+      return 0;
+    }
+    // Compare as numbers.
+    return n1 - n2;
+  };
+
   class ScratchMath {
 
     getInfo() {
@@ -313,13 +344,13 @@
       return cast.compare(A, B) <= 0;
     }
     not_equal_block({A, B}) {
-      return A == B; //-------------------------------------------------------------------------<<<
+      return cast.compare(A, B) !== 0;
     }
     exactly_equal_block({A, B}) {
-      return A == B; //-------------------------------------------------------------------------<<<
+      return exactlyCompare(A, B) === 0;
     }
     not_exactly_equal_block({A, B}) {
-      return A !== B; //-------------------------------------------------------------------------<<<
+      return exactlyCompare(A, B) !== 0;
     }
     nand_block({A, B}) {
       return !(cast.toBoolean(A) && cast.toBoolean(B));
