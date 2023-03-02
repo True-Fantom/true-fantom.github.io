@@ -208,7 +208,7 @@
           {
             opcode: 'atan2_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'atan2 of x: [A] y: [B]',
+            text: 'atan2 of [A] and [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
