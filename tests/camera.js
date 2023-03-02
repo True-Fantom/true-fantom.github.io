@@ -131,6 +131,17 @@
           },
           '---',
           {
+            opcode: 'setCol',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'set background color to [val]',
+            arguments: {
+              val: {
+                type: 'color'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'changeX',
             blockType: Scratch.BlockType.COMMAND,
             text: 'change camera x by [val]',
@@ -176,17 +187,6 @@
           },
           '---',
           {
-            opcode: 'setCol',
-            blockType: Scratch.BlockType.COMMAND,
-            text: 'set background color to [val]',
-            arguments: {
-              val: {
-                type: 'color'
-              }
-            }
-          },
-		  "---",
-          {
             opcode: 'getX',
             blockType: Scratch.BlockType.REPORTER,
             text: 'camera x',
@@ -200,6 +200,11 @@
             opcode: 'getZoom',
             blockType: Scratch.BlockType.REPORTER,
             text: 'camera zoom',
+          },
+          {
+            opcode: 'getCol',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'background color',
           },
         ]
       }
@@ -217,6 +222,14 @@
     setZoom(ARGS) {
       cameraZoom = +ARGS.val;
       doFix();
+    }
+    setCol(ARGS) {
+      cameraBG = ARGS.val
+      Scratch.vm.renderer.setBackgroundColor(
+        parseInt(cameraBG.substring(1,3),16)/255,
+        parseInt(cameraBG.substring(3,5),16)/255,
+        parseInt(cameraBG.substring(5,7),16)/255
+      )
     }
     changeX(ARGS) {
       cameraX += +ARGS.val;
@@ -243,13 +256,8 @@
     getZoom() {
       return cameraZoom;
     }
-    setCol(ARGS) {
-      cameraBG = ARGS.val
-      Scratch.vm.renderer.setBackgroundColor(
-        parseInt(cameraBG.substring(1,3),16)/255,
-        parseInt(cameraBG.substring(3,5),16)/255,
-        parseInt(cameraBG.substring(5,7),16)/255
-      )
+    getCol() {
+      return cameraBG;
     }
   }
 
