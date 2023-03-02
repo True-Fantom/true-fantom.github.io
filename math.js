@@ -322,10 +322,10 @@
       return A !== B; //-------------------------------------------------------------------------<<<
     }
     nand_block({A, B}) {
-      return cast.toBoolean(A) !== cast.toBoolean(B);
+      return !(cast.toBoolean(A) && cast.toBoolean(B));
     }
     nor_block({A, B}) {
-      return cast.toBoolean(A) !== cast.toBoolean(B);
+      return !(cast.toBoolean(A) || cast.toBoolean(B));
     }
     xor_block({A, B}) {
       return cast.toBoolean(A) !== cast.toBoolean(B);
