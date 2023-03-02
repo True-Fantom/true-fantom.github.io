@@ -137,9 +137,22 @@
           },
           '---',
           {
-            opcode: 'equ_block',
+            opcode: 'nand_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] equ [B]',
+            text: '[A] nand [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              },
+              B: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },
+          {
+            opcode: 'nor_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] nor [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.BOOLEAN,
@@ -153,6 +166,19 @@
             opcode: 'xor_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] xor [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              },
+              B: {
+                type: Scratch.ArgumentType.BOOLEAN,
+              }
+            }
+          },
+          {
+            opcode: 'xnor_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] xnor [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.BOOLEAN,
@@ -295,11 +321,17 @@
     not_exactly_equal_block({A, B}) {
       return A !== B; //-------------------------------------------------------------------------<<<
     }
-    equ_block({A, B}) {
-      return cast.toBoolean(A) === cast.toBoolean(B);
+    nand_block({A, B}) {
+      return cast.toBoolean(A) !== cast.toBoolean(B);
+    }
+    nor_block({A, B}) {
+      return cast.toBoolean(A) !== cast.toBoolean(B);
     }
     xor_block({A, B}) {
       return cast.toBoolean(A) !== cast.toBoolean(B);
+    }
+    xnor_block({A, B}) {
+      return cast.toBoolean(A) === cast.toBoolean(B);
     }
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
