@@ -253,13 +253,28 @@
           },
           '---',
           {
-            opcode: 'trigonometry_functions_block',
+            opcode: 'trigonometric_functions_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] of [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'trigonometry_functions'
+                menu: 'trigonometric_functions_menu'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          {
+            opcode: 'reciprocal_trigonometric_functions_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] of [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'reciprocal_trigonometric_functions_menu'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -320,7 +335,11 @@
         ],
 
         menus: {
-          trigonometry_functions: { 
+          trigonometric_functions_menu: {
+            acceptReporters: false,
+            items: ['sinh', 'cosh', 'tanh', 'asinh', 'acosh', 'atanh']
+          },
+          reciprocal_trigonometric_functions_menu: {
             acceptReporters: false,
             items: ['sinh', 'cosh', 'tanh', 'asinh', 'acosh', 'atanh']
           }
@@ -370,7 +389,20 @@
     atan2_block({A, B}) {
       return Math.atan2(cast.toNumber(A), cast.toNumber(B));
     }
-    trigonometry_functions_block({A, B}) {
+    trigonometric_functions_block({A, B}) {
+      const operator = cast.toString(A).toLowerCase();
+      const n = cast.toNumber(B);
+      switch (operator) {
+      case 'sinh': return Math.sinh(n);
+      case 'cosh': return Math.cosh(n);
+      case 'tanh': return Math.tanh(n);
+      case 'asinh': return Math.asinh(n);
+      case 'acosh': return Math.acosh(n);
+      case 'atanh': return Math.atanh(n);
+      }
+      return 0;
+    }
+    reciprocal_trigonometric_functions_block({A, B}) {
       const operator = cast.toString(A).toLowerCase();
       const n = cast.toNumber(B);
       switch (operator) {
