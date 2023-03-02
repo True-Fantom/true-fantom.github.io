@@ -105,6 +105,21 @@
               }
             }
           },
+          { 
+            opcode: 'not_exactly_equal_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≢ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '50'
+              }
+            }
+          },
           '---',
           {
             opcode: 'equ_block',
@@ -259,6 +274,9 @@
     exactly_equal_block({A, B}) {
       return A == B; //-------------------------------------------------------------------------<<<
     }
+    not_exactly_equal_block({A, B}) {
+      return A !== B; //-------------------------------------------------------------------------<<<
+    }
     equ_block({A, B}) {
       return cast.toBoolean(A) === cast.toBoolean(B);
     }
@@ -294,13 +312,13 @@
       return Number.POSITIVE_INFINITY;
     }
     is_number_block({A}) {
-      return true //!isNaN(cast.toNumber(A));
+      return true //!isNaN(cast.toNumber(A)); //-------------------------------------------------------------------------<<<
     }
     is_int_block({A}) {
-      return true //Cast.isInt(A);
+      return true //Cast.isInt(A); //-------------------------------------------------------------------------<<<
     }
     is_float_block({A}) {
-      return true //!isNaN(cast.toNumber(A)) && !cast.isInt(A);
+      return true //!isNaN(cast.toNumber(A)) && !cast.isInt(A);  //-------------------------------------------------------------------------<<<
     }
   }
 
