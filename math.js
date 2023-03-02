@@ -98,8 +98,8 @@
         name: 'Math',
 
         color1: '#59c059',
-        color2: '#479a47',
         color3: '#50ad50',
+        color2: '#479a47',
 
         menuIconURI: icon,
 
