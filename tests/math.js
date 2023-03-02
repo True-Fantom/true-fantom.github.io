@@ -22,7 +22,7 @@
 
   const Cast = Scratch.Cast;
 
-  class ScratchMath {
+  class Extension {
 
     getInfo() {
       return {
@@ -361,5 +361,5 @@
     }
   }
 
-  Scratch.extensions.register(new ScratchMath());
+  Scratch.extensions.register(new Extension());
 })(Scratch);
