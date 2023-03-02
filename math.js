@@ -251,7 +251,6 @@
               }
             }
           },
-          '---',
           {
             opcode: 'trigonometric_functions_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -341,7 +340,7 @@
           },
           reciprocal_trigonometric_functions_menu: {
             acceptReporters: false,
-            items: ['sinh', 'cosh', 'tanh', 'asinh', 'acosh', 'atanh']
+            items: ['csc', 'sec', 'cot', 'acsc', 'asec', 'acot', 'csch', 'sech', 'coth', 'acsch', 'asech', 'acoth']
           }
         }
       }
@@ -406,12 +405,18 @@
       const operator = cast.toString(A).toLowerCase();
       const n = cast.toNumber(B);
       switch (operator) {
-      case 'sinh': return Math.sinh(n);
-      case 'cosh': return Math.cosh(n);
-      case 'tanh': return Math.tanh(n);
-      case 'asinh': return Math.asinh(n);
-      case 'acosh': return Math.acosh(n);
-      case 'atanh': return Math.atanh(n);
+      case 'csc': return 1 / Math.sin(n);
+      case 'sec': return 1 / Math.cos(n);
+      case 'cot': return 1 / Math.tan(n);
+      case 'acsc': return Math.asin(1 / n);
+      case 'asec': return Math.acos(1 / n);
+      case 'acot': return Math.atan(1 / n);
+      case 'csch': return 1 / Math.sinh(n);
+      case 'sech': return 1 / Math.cosh(n);
+      case 'coth': return 1 / Math.tanh(n);
+      case 'acsch': return Math.asinh(1 / n);
+      case 'asech': return Math.acosh(1 / n);
+      case 'acoth': return Math.atanh(1 / n);
       }
       return 0;
     }
