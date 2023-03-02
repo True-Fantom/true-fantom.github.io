@@ -290,6 +290,22 @@
           },
           '---',
           {
+            opcode: 'is_multiple_of_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] is multiple of [B] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'log_with_base_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'log of [A] with base [B]',
@@ -453,6 +469,9 @@
     }
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
+    }
+    is_multiple_of_block({A, B}) {
+      return cast.toNumber(A) % cast.toNumber(B) === 0;
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
