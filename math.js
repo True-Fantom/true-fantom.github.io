@@ -91,6 +91,21 @@
             }
           },
           { 
+            opcode: 'not_equal_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≠ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '50'
+              }
+            }
+          },
+          { 
             opcode: 'exactly_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≡ [B]',
@@ -270,6 +285,9 @@
     }
     less_or_equal_block({A, B}) {
       return cast.compare(A, B) <= 0;
+    }
+    not_equal_block({A, B}) {
+      return A == B; //-------------------------------------------------------------------------<<<
     }
     exactly_equal_block({A, B}) {
       return A == B; //-------------------------------------------------------------------------<<<
