@@ -290,6 +290,21 @@
           },
           '---',
           {
+            opcode: 'log_with_base_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'log of [A] with base [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          {
             opcode: 'atan2_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'atan2 of [A] and [B]',
@@ -438,6 +453,9 @@
     }
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
+    }
+    log_with_base_block({A, B}) {
+      return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
     atan2_block({A, B}) {
       return Math.atan2(cast.toNumber(A), cast.toNumber(B));
