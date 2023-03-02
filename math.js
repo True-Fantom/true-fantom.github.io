@@ -184,17 +184,17 @@
           {
             opcode: 'pi_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'pi'
+            text: '𝜋'
           },
           {
             opcode: 'e_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'e'
+            text: '𝘦'
           },
           {
             opcode: 'infinity_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'infinity'
+            text: '∞'
           },
           '---',
           {
