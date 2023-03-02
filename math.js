@@ -36,6 +36,20 @@
     return n1 - n2;
   };
 
+  const toNaNNumber = (value) => {
+    // If value is already a number we don't need to coerce it with
+    // Number().
+    if (typeof value === 'number') {
+      // Scratch treats NaN as 0, when needed as a number, but it shouldn't be here
+      // E.g., 0 + NaN -> 0.
+      return value;
+    }
+    const n = Number(value);
+      // Scratch treats NaN as 0, when needed as a number, but it shouldn't be here
+      // E.g., 0 + NaN -> 0.
+    return n;
+  }
+
   class ScratchMath {
 
     getInfo() {
@@ -251,6 +265,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'trigonometric_functions_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -430,13 +445,13 @@
       return Infinity;
     }
     is_number_block({A}) {
-      return true //!isNaN(cast.toNumber(A)); //-------------------------------------------------------------------------<<<
+      return !Number.isNaN(toNaNNumber(A));
     }
     is_int_block({A}) {
-      return true //Cast.isInt(A); //-------------------------------------------------------------------------<<<
+      return cast.isInt(A) && !Number.isNaN(toNaNNumber(A));
     }
     is_float_block({A}) {
-      return true //!isNaN(cast.toNumber(A)) && !cast.isInt(A);  //-------------------------------------------------------------------------<<<
+      return !cast.isInt(A) && !Number.isNaN(toNaNNumber(A));
     }
   }
 
