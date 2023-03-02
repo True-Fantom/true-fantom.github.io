@@ -27,17 +27,17 @@
   }
 
   function createProgram(gl, vertexShader, fragmentShader) {
-	var program = gl.createProgram();
-	gl.attachShader(program, vertexShader);
-	gl.attachShader(program, fragmentShader);
-	gl.linkProgram(program);
-	var success = gl.getProgramParameter(program, gl.LINK_STATUS);
-	if (success) {
-	  return program;
-	}
-   
-	console.log(gl.getProgramInfoLog(program));
-	gl.deleteProgram(program);
+    var program = gl.createProgram();
+    gl.attachShader(program, vertexShader);
+    gl.attachShader(program, fragmentShader);
+    gl.linkProgram(program);
+    var success = gl.getProgramParameter(program, gl.LINK_STATUS);
+    if (success) {
+      return program;
+    }
+
+    console.log(gl.getProgramInfoLog(program));
+    gl.deleteProgram(program);
   }
 
   let cameraX = 0;
@@ -244,12 +244,12 @@
       return cameraZoom;
     }
     setCol(ARGS) {
-	  cameraBG = ARGS.val
+      cameraBG = ARGS.val
       Scratch.vm.renderer.setBackgroundColor(
-		parseInt(cameraBG.substring(1,3),16)/255,
-		parseInt(cameraBG.substring(3,5),16)/255,
-		parseInt(cameraBG.substring(5,7),16)/255
-	  )
+        parseInt(cameraBG.substring(1,3),16)/255,
+        parseInt(cameraBG.substring(3,5),16)/255,
+        parseInt(cameraBG.substring(5,7),16)/255
+      )
     }
   }
 
