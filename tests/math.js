@@ -266,7 +266,7 @@
 
         menus: {
           trigonometry_functions: { 
-            acceptReporters: false,
+            acceptReporters: true,
             items: [
               {
                 text: 'sinh',
