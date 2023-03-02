@@ -390,7 +390,7 @@
       return Math.E;
     }
     infinity_block() {
-      return Number.POSITIVE_INFINITY;
+      return Infinity;
     }
     is_number_block({A}) {
       return true //!isNaN(cast.toNumber(A)); //-------------------------------------------------------------------------<<<
