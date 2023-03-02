@@ -13,7 +13,7 @@
     getInfo() {
       return {
 
-        id: 'DTcamera',
+        id: 'DTcameracontrols',
         name: 'Camera',
 
         color1: '#ff4da7',
@@ -58,6 +58,17 @@
               val: {
                 type: 'number',
                 defaultValue: 100
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'setCol',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'set background color to [val]',
+            arguments: {
+              val: {
+                type: 'color'
               }
             }
           },
@@ -122,18 +133,11 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'camera zoom',
           },
-          /*  REMOVED - touching color still returns white
           {
-            opcode: 'setCol',
-            blockType: Scratch.BlockType.COMMAND,
-            text: 'set background color to [val]',
-            arguments: {
-              val: {
-                type: 'color'
-              }
-            }
+            opcode: 'getCol',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'background color',
           },
-          */
         ]
       }
     }
@@ -147,6 +151,9 @@
     }
     setZoom(ARGS) {
       cameraZoom = +ARGS.val;
+    }
+    setCol(ARGS) {
+      cameraBG = ARGS.val
     }
     changeX(ARGS) {
       cameraX += +ARGS.val;
@@ -169,8 +176,8 @@
     getZoom() {
       return cameraZoom;
     }
-    setCol(ARGS) {
-      cameraBG = ARGS.val;
+    getCol() {
+      return cameraBG;
     }
   }
 
