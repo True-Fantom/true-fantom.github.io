@@ -79,7 +79,7 @@
     ) {
       return 0;
     }
-    // Compare as numbers.
+    // Compare as numbers, but it almost here
     return Math.round(n1) - Math.round(n2);
   };
 
