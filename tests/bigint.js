@@ -404,22 +404,6 @@
           },
           '---',
           {
-            opcode: 'pi_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '𝜋'
-          },
-          {
-            opcode: 'e_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '𝘦'
-          },
-          {
-            opcode: 'infinity_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '∞'
-          },
-          '---',
-          {
             opcode: 'is_safe_number_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is safe number [A] ?',
@@ -564,15 +548,6 @@
       case 'acoth': return Math.atanh(1 / n);
       }
       return 0;
-    }
-    pi_block() {
-      return Math.PI;
-    }
-    e_block() {
-      return Math.E;
-    }
-    infinity_block() {
-      return Infinity;
     }
     is_safe_number_block({A}) {
       return Number.isSafeInteger(cast.toNumber(A));
