@@ -90,6 +90,7 @@
   };
 
   const trunc2 = (val, count) => {
+    //No sense to work with integers
     if (!isTrueInt(val)) {
       const arr = cast.toString(val).split('.');
       return cast.toNumber(arr[0] + '.' + arr[1].substr(0, count));
