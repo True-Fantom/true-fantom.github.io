@@ -260,6 +260,7 @@
               },
             }
           },
+          '---',
           {
             opcode: 'dl9',
             blockType: Scratch.BlockType.BOOLEAN,
