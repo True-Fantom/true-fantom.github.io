@@ -149,11 +149,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -164,11 +164,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -179,7 +179,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -191,7 +191,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -206,7 +206,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -221,7 +221,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -236,7 +236,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -251,7 +251,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -266,7 +266,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -281,7 +281,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -366,11 +366,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '1'
               }
             }
           },
@@ -381,7 +381,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -393,11 +393,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -409,7 +409,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -424,11 +424,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -444,7 +444,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -459,7 +459,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -487,7 +487,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -499,7 +499,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -510,7 +510,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -521,7 +521,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           }
