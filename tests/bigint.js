@@ -98,13 +98,13 @@
     return val;
   };
 
-  class ScratchMath {
+  class ScratchBigInt {
 
     getInfo() {
       return {
 
-        id: 'truefantommath',
-        name: 'Math',
+        id: 'truefantombigint',
+        name: 'BigInt',
 
         color1: '#59c059',
 
@@ -588,5 +588,5 @@
     }
   }
 
-  Scratch.extensions.register(new ScratchMath());
+  Scratch.extensions.register(new ScratchBigInt());
 })(Scratch);
