@@ -451,6 +451,18 @@
                 defaultValue: ''
               }
             }
+          },
+          '---',
+          {
+            opcode: 'is_safe_number_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is safe number [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
           }
         ],
 
@@ -570,6 +582,9 @@
     }
     is_float_block({A}) {
       return !isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
+    }
+    is_safe_number_block({A}) {
+      return Number.isSafeInteger(cast.toNumber(A));
     }
   }
 
