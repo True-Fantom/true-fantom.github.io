@@ -95,9 +95,9 @@
         const arr = cast.toString(cast.toNumber(val)).split('.');
         return cast.toNumber(arr[0] + '.' + arr[1].substr(0, cast.toNumber(count)));
       }
-      return cast.toNumber(val);
+      return val;
     }
-    return val;
+    return cast.toNumber(val);
   };
 
   class ScratchMath {
