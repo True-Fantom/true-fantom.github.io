@@ -3,13 +3,13 @@
 
   const cast = Scratch.Cast;
 
-  class Comparisons {
+  class Compares {
 
     getInfo() {
       return {
 
-        id: 'nonamecomparisons',
-        name: 'Comparisons',
+        id: 'nonamecompares',
+        name: 'Compares',
 
         color1: '#00a889',
         color2: '#1e8c76',
@@ -330,5 +330,5 @@
     }
   }
 
-  Scratch.extensions.register(new Comparisons());
+  Scratch.extensions.register(new Compares());
 })(Scratch);
