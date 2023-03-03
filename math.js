@@ -290,6 +290,21 @@
           },
           '---',
           {
+            opcode: 'round_to_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'round [A] to [B] digits after dot',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          {
             opcode: 'is_multiple_of_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] is multiple of [B] ?',
@@ -469,6 +484,13 @@
     }
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
+    }
+    round_to_block({A, B}) {
+      if (isTrueInt(A)) {
+        const arr = cast.toString(cast.toNumber(A)).split('.');
+        return cast.toNumber(arr[0] + '.' + arr[1].substr(0, cast.toNumber(B)));
+      }
+      return cast.toNumber(A);
     }
     is_multiple_of_block({A, B}) {
       return cast.toNumber(A) % cast.toNumber(B) === 0;
