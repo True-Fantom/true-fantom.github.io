@@ -420,6 +420,18 @@
           },
           '---',
           {
+            opcode: 'is_safe_number_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is safe number [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'is_number_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is number [A] ?',
@@ -445,18 +457,6 @@
             opcode: 'is_float_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is float [A] ?',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              }
-            }
-          },
-          '---',
-          {
-            opcode: 'is_safe_number_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is safe number [A] ?',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -574,6 +574,9 @@
     infinity_block() {
       return Infinity;
     }
+    is_safe_number_block({A}) {
+      return Number.isSafeInteger(cast.toNumber(A));
+    }
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
     }
@@ -582,9 +585,6 @@
     }
     is_float_block({A}) {
       return !isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
-    }
-    is_safe_number_block({A}) {
-      return Number.isSafeInteger(cast.toNumber(A));
     }
   }
 
