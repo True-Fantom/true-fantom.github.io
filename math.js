@@ -290,9 +290,9 @@
           },
           '---',
           {
-            opcode: 'round_to_block',
+            opcode: 'trunc_to_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'round [A] to [B] digits after dot',
+            text: 'trunc [A] to [B] digits after dot',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -485,7 +485,7 @@
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
     }
-    round_to_block({A, B}) {
+    trunc_to_block({A, B}) {
       if (!isTrueInt(A)) {
         const arr = cast.toString(cast.toNumber(A)).split('.');
         return cast.toNumber(arr[0] + '.' + arr[1].substr(0, cast.toNumber(B)));
