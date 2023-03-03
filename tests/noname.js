@@ -11,12 +11,12 @@
         id: 'nonamecomparisons',
         name: 'Comparisons',
 
-	color1: '#00a889',
+        color1: '#00a889',
         color2: '#1e8c76',
         color3: '#1e8c76',
 
-	blocks: [
-	  {
+        blocks: [
+          {
             opcode: 'equal_negative',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] =- [b]',
@@ -31,7 +31,7 @@
               },
             }
           },
-	  {
+          {
             opcode: 'equal_PON',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] =± [b]',
@@ -46,7 +46,7 @@
               },
             }
           },
-	  {
+          {
             opcode: 'equal_almost',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] ≈ [b] ／ [c]',
@@ -65,8 +65,8 @@
               },
             }
           },
-	  '---',
-	  {
+          '---',
+          {
             opcode: 'DL',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] < [b] < [c]',
@@ -85,7 +85,7 @@
               },
             }
           },
-	  {
+          {
             opcode: 'DLE',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] ≤ [b] ≤ [c]',
