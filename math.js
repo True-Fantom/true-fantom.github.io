@@ -303,7 +303,7 @@
           {
             opcode: 'trunc2_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'trunc [A] to [B] digits after dot',
+            text: 'trunc of [A] with [B] digits after dot',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -315,6 +315,18 @@
               }
             }
           },
+          {
+            opcode: 'trunc_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'trunc of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: ''
+              }
+            }
+          },
+          '---',
           {
             opcode: 'is_multiple_of_block',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -498,6 +510,9 @@
     }
     trunc2_block({A, B}) {
       return trunc2(A, B);
+    }
+    trunc_block({A}) {
+      return Math.trunc(cast.toNumber(A));
     }
     is_multiple_of_block({A, B}) {
       return cast.toNumber(A) % cast.toNumber(B) === 0;
