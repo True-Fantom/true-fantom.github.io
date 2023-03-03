@@ -486,7 +486,7 @@
       return cast.toString(A).includes(cast.toString(B));
     }
     round_to_block({A, B}) {
-      if (isTrueInt(A)) {
+      if (!isTrueInt(A)) {
         const arr = cast.toString(cast.toNumber(A)).split('.');
         return cast.toNumber(arr[0] + '.' + arr[1].substr(0, cast.toNumber(B)));
       }
