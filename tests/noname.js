@@ -78,37 +78,6 @@
           },
           '---',
           {
-            opcode: 'equal_almost',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ≈ [b]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              b: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-            }
-          },
-          {
-            opcode: 'not_equal_almost',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ≉ [b]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              b: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-            }
-          },
-          '---',
-          {
             opcode: 'dl1',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] > [b] > [c]',
@@ -319,14 +288,8 @@
         return (args.a == (0 - args.b))||(args.a == args.b);
       }
     }
-    equal_almost(args) {
-      return (Math.abs(args.a - args.b) <= args.c);
-    }
     dl(args) {
       return (args.a < args.b) && (args.b < args.c);
-    }
-    dle(args) {
-      return (args.a <= args.b) && (args.b <= args.c);
     }
   }
 
