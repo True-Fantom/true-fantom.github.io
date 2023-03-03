@@ -19,55 +19,135 @@
           {
             opcode: 'equal_negative',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] =- [b]',
+            text: '[a] = - [b]',
             arguments: {
               a: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '5'
+                defaultValue: '\n'
               },
               b: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '-5'
+                defaultValue: '\n'
               },
             }
           },
           {
-            opcode: 'equal_PON',
+            opcode: 'not_equal_negative',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] =± [b]',
+            text: '[a] ≠ - [b]',
             arguments: {
               a: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '5'
+                defaultValue: '\n'
               },
               b: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '-5'
+                defaultValue: '\n'
               },
             }
           },
           {
-            opcode: 'equal_almost',
+            opcode: 'equal_pon',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ≈ [b] ／ [c]',
+            text: '[a] = ± [b]',
             arguments: {
               a: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '5'
+                defaultValue: '\n'
               },
               b: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '6'
+                defaultValue: '\n'
               },
-              c: {
+            }
+          },
+          {
+            opcode: 'not_equal_pon',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≠ ± [b]',
+            arguments: {
+              a: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
               },
             }
           },
           '---',
           {
-            opcode: 'DL',
+            opcode: 'equal_almost',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≈ [b]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'not_equal_almost',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≉ [b]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          '---',
+          {
+            opcode: 'dl1',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] > [b] > [c]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              c: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'dl2',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≥ [b] ≥ [c]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              c: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'dl3',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] < [b] < [c]',
             arguments: {
@@ -86,9 +166,123 @@
             }
           },
           {
-            opcode: 'DLE',
+            opcode: 'dl4',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] ≤ [b] ≤ [c]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              c: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'dl5',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] = [b] = [c]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              c: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'dl6',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≠ [b] ≠ [c]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              c: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'dl7',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≡ [b] ≡ [c]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              c: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'dl8',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≢ [b] ≢ [c]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              c: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'dl9',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≈ [b] ≈ [c]',
+            arguments: {
+              a: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              b: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              c: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+            }
+          },
+          {
+            opcode: 'dl0',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[a] ≉ [b] ≉ [c]',
             arguments: {
               a: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -116,7 +310,7 @@
         return (args.a == (0 - args.b));
       }
     }
-    equal_PON(args) {
+    equal_pon(args) {
       if(isNaN(args.a)||isNaN(args.b)){
         return "NaN";
       }
@@ -127,10 +321,10 @@
     equal_almost(args) {
       return (Math.abs(args.a - args.b) <= args.c);
     }
-    DL(args) {
+    dl(args) {
       return (args.a < args.b) && (args.b < args.c);
     }
-    DLE(args) {
+    dle(args) {
       return (args.a <= args.b) && (args.b <= args.c);
     }
   }
