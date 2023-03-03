@@ -509,7 +509,7 @@
       return trunc2(cast.toNumber(A), cast.toNumber(B));
     }
     trunc_block({A}) {
-      return Math.trunc(cast.toNumber(A));
+      return trunc2(cast.toNumber(A), 0);
     }
     is_multiple_of_block({A, B}) {
       return cast.toNumber(A) % cast.toNumber(B) === 0;
