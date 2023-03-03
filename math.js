@@ -90,14 +90,11 @@
   };
 
   const trunc2 = (val, count) => {
-    if (typeof val === 'number') {
-      if (!isTrueInt(val)) {
-        const arr = cast.toString(cast.toNumber(val)).split('.');
-        return cast.toNumber(arr[0] + '.' + arr[1].substr(0, cast.toNumber(count)));
-      }
-      return val;
+    if (!isTrueInt(val)) {
+      const arr = cast.toString(val).split('.');
+      return cast.toNumber(arr[0] + '.' + arr[1].substr(0, count));
     }
-    return cast.toNumber(val);
+    return val;
   };
 
   class ScratchMath {
@@ -509,7 +506,7 @@
       return cast.toString(A).includes(cast.toString(B));
     }
     trunc2_block({A, B}) {
-      return trunc2(A, B);
+      return trunc2(cast.toNumber(A), cast.toNumber(B));
     }
     trunc_block({A}) {
       return Math.trunc(cast.toNumber(A));
