@@ -52,7 +52,7 @@
     return n1 - n2;
   };
 
-  const toNaNNumber = (value) => {
+  const toNaNNumber = value => {
     // If value is already a number we don't need to coerce it with
     // Number().
     if (typeof value === 'number') {
@@ -66,7 +66,7 @@
     return n;
   };
 
-  const isTrueInt = (val) => {
+  const isTrueInt = val => {
     // Values that are already numbers.
     if (typeof val === 'number') {
       if (isNaN(val)) { // NaN is considered an integer.
@@ -87,6 +87,17 @@
       return n === Math.floor(n);
     }
     return false;
+  };
+
+  const trunc2 = (val, count) => {
+    if (typeof val === 'number') {
+      if (!isTrueInt(val)) {
+        const arr = cast.toString(cast.toNumber(val)).split('.');
+        return cast.toNumber(arr[0] + '.' + arr[1].substr(0, cast.toNumber(count)));
+      }
+      return cast.toNumber(val);
+    }
+    return val;
   };
 
   class ScratchMath {
@@ -290,7 +301,7 @@
           },
           '---',
           {
-            opcode: 'trunc_to_block',
+            opcode: 'trunc2_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'trunc [A] to [B] digits after dot',
             arguments: {
@@ -485,12 +496,8 @@
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
     }
-    trunc_to_block({A, B}) {
-      if (!isTrueInt(A)) {
-        const arr = cast.toString(cast.toNumber(A)).split('.');
-        return cast.toNumber(arr[0] + '.' + arr[1].substr(0, cast.toNumber(B)));
-      }
-      return cast.toNumber(A);
+    trunc2_block({A, B}) {
+      return trunc2(A, B);
     }
     is_multiple_of_block({A, B}) {
       return cast.toNumber(A) % cast.toNumber(B) === 0;
