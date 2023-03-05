@@ -55,14 +55,18 @@
       const x = Math.sin(degToRad(alpha));
       const y = Math.cos(degToRad(alpha));
       const sum = Math.abs(x) + Math.abs(y);
-      return x / sum;
+      const xCoefficent = x / sum;
+      const yCoefficent = y / sum;
+      return xCoefficent;
     }
     ay_block({A}) {
       const alpha = cast.toNumber(A);
       const x = Math.sin(degToRad(alpha));
       const y = Math.cos(degToRad(alpha));
       const sum = Math.abs(x) + Math.abs(y);
-      return y / sum;
+      const xCoefficent = x / sum;
+      const yCoefficent = y / sum;
+      return yCoefficent;
     }
   }
 
