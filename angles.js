@@ -44,7 +44,7 @@
     }
 
     ax_block({A}) {
-      return cast.toNumber(A);
+      return Scratch.MathUtil.degToRad(cast.toNumber(A));
     }
     ay_block({A}) {
       return cast.toNumber(A);
