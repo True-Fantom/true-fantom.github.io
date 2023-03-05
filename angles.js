@@ -34,7 +34,7 @@
             text: '[A] to y',
             arguments: {
               A: {
-                type: Scratch.ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.ANGLE,
                 defaultValue: 90
               }
             }
@@ -44,10 +44,10 @@
     }
 
     ax_block({A}) {
-      return util.degToRad(cast.toNumber(A));
+      return cast.toNumber(A);
     }
     ay_block({A}) {
-      return util.degToRad(cast.toNumber(A));
+      return cast.toNumber(A);
     }
   }
 
