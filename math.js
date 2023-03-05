@@ -425,37 +425,6 @@
           },
           '---',
           {
-            opcode: 'trigonometric_functions_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A] of [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'trigonometric_functions_menu'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'reciprocal_trigonometric_functions_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A] of [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'reciprocal_trigonometric_functions_menu'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          '---',
-          {
             opcode: 'pi_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '𝜋'
@@ -516,26 +485,15 @@
               }
             }
           }
-        ],
-
-        menus: {
-          trigonometric_functions_menu: {
-            acceptReporters: false,
-            items: ['sinh', 'cosh', 'tanh', 'asinh', 'acosh', 'atanh']
-          },
-          reciprocal_trigonometric_functions_menu: {
-            acceptReporters: false,
-            items: ['csc', 'sec', 'cot', 'acsc', 'asec', 'acot', 'csch', 'sech', 'coth', 'acsch', 'asech', 'acoth']
-          }
-        }
+        ]
       }
     }
 
     exponent_block({A, B}) {
-      return cast.toNumber(A) ** cast.toNumber(B);
+      return Math.pow(cast.toNumber(A), cast.toNumber(B));
     }
     root_block({A, B}) {
-      return cast.toNumber(B) ** (1 / cast.toNumber(A));
+      return Math.pow(cast.toNumber(B), (1 / cast.toNumber(A)));
     }
     negative_block({A}) {
       return 0 - cast.toNumber(A);
@@ -591,38 +549,6 @@
     }
     atan2_block({A, B}) {
       return Math.atan2(cast.toNumber(A), cast.toNumber(B));
-    }
-    trigonometric_functions_block({A, B}) {
-      const operator = cast.toString(A).toLowerCase();
-      const n = cast.toNumber(B);
-      switch (operator) {
-      case 'sinh': return Math.sinh(n);
-      case 'cosh': return Math.cosh(n);
-      case 'tanh': return Math.tanh(n);
-      case 'asinh': return Math.asinh(n);
-      case 'acosh': return Math.acosh(n);
-      case 'atanh': return Math.atanh(n);
-      }
-      return 0;
-    }
-    reciprocal_trigonometric_functions_block({A, B}) {
-      const operator = cast.toString(A).toLowerCase();
-      const n = cast.toNumber(B);
-      switch (operator) {
-      case 'csc': return 1 / Math.sin(n);
-      case 'sec': return 1 / Math.cos(n);
-      case 'cot': return 1 / Math.tan(n);
-      case 'acsc': return Math.asin(1 / n);
-      case 'asec': return Math.acos(1 / n);
-      case 'acot': return Math.atan(1 / n);
-      case 'csch': return 1 / Math.sinh(n);
-      case 'sech': return 1 / Math.cosh(n);
-      case 'coth': return 1 / Math.tanh(n);
-      case 'acsch': return Math.asinh(1 / n);
-      case 'asech': return Math.acosh(1 / n);
-      case 'acoth': return Math.atanh(1 / n);
-      }
-      return 0;
     }
     pi_block() {
       return Math.PI;
