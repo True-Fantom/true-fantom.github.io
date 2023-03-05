@@ -491,7 +491,7 @@
       return cast.toString(A).includes(cast.toString(B));
     }
     trunc2_block({A, B}) {
-      const n = Math.floor(cast.toNumber(B));
+      let n = Math.floor(cast.toNumber(B));
       if (n >= 1) {
         n = 10 ** n;
         if (n !== Infinity) {
