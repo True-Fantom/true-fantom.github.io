@@ -584,7 +584,7 @@
       else () {
         n = 1;
       }
-      return Math.trunc(cast.toNumber(A) / n) * n;
+      return Math.trunc(cast.toNumber(A) * n) / n;
     }
     trunc_block({A}) {
       return Math.trunc(cast.toNumber(A));
