@@ -13,6 +13,10 @@
     return rad * (180 / Math.PI);
   }
 
+  const radsToDeg = (rad1, rad2) => {
+    return Math.atan2(rad1, rad2) * (180 / Math.PI);
+  }
+
   class ScratchAngles {
 
     getInfo() {
@@ -45,6 +49,21 @@
                 defaultValue: 90
               }
             }
+          },
+          {
+            opcode: 'angle_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'angle of x: [A] y: [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.ANGLE,
+                defaultValue: 1
+              },
+              B: {
+                type: Scratch.ArgumentType.ANGLE,
+                defaultValue: 0
+              }
+            }
           }
         ]
       }
@@ -55,18 +74,17 @@
       const x = Math.sin(degToRad(alpha));
       const y = Math.cos(degToRad(alpha));
       const sum = Math.abs(x) + Math.abs(y);
-      const xCoefficent = x / sum;
-      const yCoefficent = y / sum;
-      return xCoefficent;
+      return x / sum;
     }
     ay_block({A}) {
       const alpha = cast.toNumber(A);
       const x = Math.sin(degToRad(alpha));
       const y = Math.cos(degToRad(alpha));
       const sum = Math.abs(x) + Math.abs(y);
-      const xCoefficent = x / sum;
-      const yCoefficent = y / sum;
-      return yCoefficent;
+      return y / sum;
+    }
+    angle_block({A, B}) {
+      return radsToDeg(cast.toNumber(A), cast.toNumber(B));
     }
   }
 
