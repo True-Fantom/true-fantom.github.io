@@ -408,21 +408,6 @@
               }
             }
           },
-          {
-            opcode: 'atan2_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'atan2 of [A] and [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
           '---',
           {
             opcode: 'pi_block',
@@ -546,9 +531,6 @@
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
-    }
-    atan2_block({A, B}) {
-      return Math.atan2(cast.toNumber(A), cast.toNumber(B));
     }
     pi_block() {
       return Math.PI;
