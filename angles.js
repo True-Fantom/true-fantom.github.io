@@ -14,7 +14,7 @@
   }
 
   const radsToDeg = (rad1, rad2) => {
-    return Math.atan2(rad1, rad2) * (180 / Math.PI);
+    return Math.atan(rad1 / rad2) * (180 / Math.PI);
   }
 
   class ScratchAngles {
