@@ -577,13 +577,7 @@
       return cast.toString(A).includes(cast.toString(B));
     }
     trunc2_block({A, B}) {
-      const n = cast.toNumber(B);
-      if (n >= 1) {
-        n = n * 10;
-      }
-      else () {
-        n = 1;
-      }
+      const n = cast.toNumber(B) >= 1 ? cast.toNumber(B) * 10 : 1;
       return Math.trunc(cast.toNumber(A) * n) / n;
     }
     trunc_block({A}) {
