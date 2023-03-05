@@ -6,11 +6,11 @@
   const cast = Scratch.Cast;
 
   const degToRad = deg => {
-    return deg * Math.PI / 180;
+    return deg * (Math.PI / 180);
   }
 
   const radToDeg = rad => {
-    return rad * 180 / Math.PI;
+    return rad * (180 / Math.PI);
   }
 
   class ScratchAngles {
