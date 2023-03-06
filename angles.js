@@ -31,22 +31,30 @@
           {
             opcode: 'ax_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] to x',
+            text: '[A] to [B] x',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.ANGLE,
                 defaultValue: 90
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 0
               }
             }
           },
           {
             opcode: 'ay_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] to y',
+            text: '[A] to [B] y',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.ANGLE,
                 defaultValue: 90
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 0
               }
             }
           },
@@ -56,11 +64,11 @@
             text: 'angle of x: [A] y: [B]',
             arguments: {
               A: {
-                type: Scratch.ArgumentType.ANGLE,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 1
               },
               B: {
-                type: Scratch.ArgumentType.ANGLE,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0
               }
             }
@@ -69,19 +77,19 @@
       }
     }
 
-    ax_block({A}) {
+    ax_block({A, B}) {
       const alpha = cast.toNumber(A);
-      const x = Math.sin(degToRad(alpha));
-      const y = Math.cos(degToRad(alpha));
+      const x = Math.sin(degToRad(alpha)); //Math.round(Math.sin((Math.PI * n) / 180) * 1e10) / 1e10;
+      const y = Math.cos(degToRad(alpha)); //Math.round(Math.cos((Math.PI * n) / 180) * 1e10) / 1e10;
       const sum = Math.abs(x) + Math.abs(y);
-      return x / sum;
+      return (x / sum) * cast.toNumber(B);
     }
-    ay_block({A}) {
+    ay_block({A, B}) {
       const alpha = cast.toNumber(A);
       const x = Math.sin(degToRad(alpha));
       const y = Math.cos(degToRad(alpha));
       const sum = Math.abs(x) + Math.abs(y);
-      return y / sum;
+      return (y / sum) * cast.toNumber(B);
     }
     angle_block({A, B}) {
       return radsToDeg(cast.toNumber(A), cast.toNumber(B));
