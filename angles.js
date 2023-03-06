@@ -46,6 +46,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'angle_block',
             blockType: Scratch.BlockType.REPORTER,
