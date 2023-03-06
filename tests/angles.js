@@ -70,11 +70,7 @@
     }
 
     ax_block({A}) {
-      const alpha = cast.toNumber(A);
-      const x = Math.sin(degToRad(alpha));
-      const y = Math.cos(degToRad(alpha));
-      const sum = Math.abs(x) + Math.abs(y);
-      return x / sum;
+      return cast.toNumber(A);
     }
     ay_block({A}) {
       const alpha = cast.toNumber(A);
