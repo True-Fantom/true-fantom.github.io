@@ -78,18 +78,10 @@
     }
 
     ax_block({A, B}) {
-      const alpha = cast.toNumber(A);
-      const x = Math.sin(degToRad(alpha)); //Math.round(Math.sin((Math.PI * n) / 180) * 1e10) / 1e10;
-      const y = Math.cos(degToRad(alpha)); //Math.round(Math.cos((Math.PI * n) / 180) * 1e10) / 1e10;
-      const sum = Math.abs(x) + Math.abs(y);
-      return (x / sum) * cast.toNumber(B);
+      return (Math.round(Math.sin((Math.PI * cast.toNumber(A)) / 180) * 1e10) / 1e10) * cast.toNumber(B);
     }
     ay_block({A, B}) {
-      const alpha = cast.toNumber(A);
-      const x = Math.sin(degToRad(alpha));
-      const y = Math.cos(degToRad(alpha));
-      const sum = Math.abs(x) + Math.abs(y);
-      return (y / sum) * cast.toNumber(B);
+      return (Math.round(Math.cos((Math.PI * cast.toNumber(A)) / 180) * 1e10) / 1e10) * cast.toNumber(B);
     }
     angle_block({A, B}) {
       return radsToDeg(cast.toNumber(A), cast.toNumber(B));
