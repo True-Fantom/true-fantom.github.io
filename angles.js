@@ -5,18 +5,6 @@
 
   const cast = Scratch.Cast;
 
-  const degToRad = deg => {
-    return deg * (Math.PI / 180);
-  }
-
-  const radToDeg = rad => {
-    return rad * (180 / Math.PI);
-  }
-
-  const radsToDeg = (rad1, rad2) => {
-    return Math.atan(rad1 / rad2) * (180 / Math.PI);
-  }
-
   class ScratchAngles {
 
     getInfo() {
@@ -31,7 +19,7 @@
           {
             opcode: 'ax_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] to [B] x',
+            text: '[A] to [B] steps x',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.ANGLE,
@@ -39,14 +27,14 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 0
+                defaultValue: 10
               }
             }
           },
           {
             opcode: 'ay_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] to [B] y',
+            text: '[A] to [B] steps y',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.ANGLE,
@@ -54,7 +42,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 0
+                defaultValue: 10
               }
             }
           },
@@ -65,14 +53,29 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 1
+                defaultValue: 10
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0
               }
             }
-          }
+          },
+          {
+            opcode: 'steps_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'steps of x: [A] y: [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 10
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 0
+              }
+            }
+          },
         ]
       }
     }
@@ -84,7 +87,10 @@
       return (Math.round(Math.cos((Math.PI * cast.toNumber(A)) / 180) * 1e10) / 1e10) * cast.toNumber(B);
     }
     angle_block({A, B}) {
-      return radsToDeg(cast.toNumber(A), cast.toNumber(B));
+      return (Math.atan(cast.toNumber(A) / cast.toNumber(B)) * 180) / Math.PI;
+    }
+    steps_block({A, B}) {
+      return Math.abs(cast.toNumber(A)) + Math.abs(cast.toNumber(B));
     }
   }
 
