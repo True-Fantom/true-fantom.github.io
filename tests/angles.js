@@ -23,7 +23,7 @@
       return {
 
         id: 'truefantomangles',
-        name: 'Clipping \u0026 Blending',
+        name: 'Clipping & Blending',
 
         color1: '#4c97ff',
 
