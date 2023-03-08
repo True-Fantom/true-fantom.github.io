@@ -135,7 +135,7 @@
       return {
 
         id: 'xeltalliveffects',
-        name: 'Effects',
+        name: 'Clipping & Blending',
 
         color1: '#9966FF',
         color2: '#855CD6',
