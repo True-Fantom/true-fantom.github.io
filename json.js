@@ -276,7 +276,7 @@
     }
     to_json_block({VALUE}) {
       try {
-        return toJsonData(VALUE);
+        return toJsonString(VALUE);
       } catch(err) {return ''}
     }
     from_json_block({JSON_STRING}) {
