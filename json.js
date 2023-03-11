@@ -102,7 +102,7 @@
           {
             opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE] get item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING]',
+            text: '[IMAGE] item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
