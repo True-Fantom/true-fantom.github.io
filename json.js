@@ -96,9 +96,9 @@
           {
             opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE] item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING]',
+            text: '[IMAGE] item by [IMAGE] path [JSON_PATH] of [IMAGE] [JSON_STRING]',
             arguments: {
-              PATH: {
+              JSON_PATH: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["fruits",1]'
               },
@@ -115,9 +115,9 @@
           {
             opcode: 'set_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE] set item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING] to [IMAGE] [VALUE]',
+            text: '[IMAGE] set item by [IMAGE] path [JSON_PATH] of [IMAGE] [JSON_STRING] to [IMAGE] [JSON_VALUE]',
             arguments: {
-              PATH: {
+              JSON_PATH: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["fruits",1]'
               },
@@ -125,7 +125,7 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruits":["apple","banana"]}'
               },
-              VALUE: {
+              JSON_VALUE: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '"mango"'
               },
@@ -138,9 +138,9 @@
           {
             opcode: 'delete_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE] delete item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING]',
+            text: '[IMAGE] delete item by [IMAGE] path [JSON_PATH] of [IMAGE] [JSON_STRING]',
             arguments: {
-              PATH: {
+              JSON_PATH: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["fruits",1]'
               },
@@ -173,9 +173,9 @@
           {
             opcode: 'json_contains_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[IMAGE] [JSON_STRING] contains item by [IMAGE] path [PATH] ?',
+            text: '[IMAGE] [JSON_STRING] contains item by [IMAGE] path [JSON_PATH] ?',
             arguments: {
-              PATH: {
+              JSON_PATH: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["fruits",1]'
               },
@@ -324,29 +324,29 @@
         return str;
       } catch(err) {return ''}
     }
-    get_json_item_block({PATH, JSON_STRING}) {
+    get_json_item_block({JSON_PATH, JSON_STRING}) {
       try {
         JSON_STRING = toJsonData(JSON_STRING);
-        PATH = toArray(toJsonData(PATH));
-        PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
+        JSON_PATH = toArray(toJsonData(JSON_PATH));
+        JSON_PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
         return toJsonString(JSON_STRING);
       } catch(err) {return ''}
     }
-    set_json_item_block({PATH, JSON_STRING, VALUE}) {
+    set_json_item_block({JSON_PATH, JSON_STRING, JSON_VALUE}) {
       try {
         return '';
       } catch(err) {return ''}
     }
-    delete_json_item_block({PATH, JSON_STRING}) {
+    delete_json_item_block({JSON_PATH, JSON_STRING}) {
       try {
         return '';
       } catch(err) {return ''}
     }
-    json_contains_block({PATH, JSON_STRING}) {
+    json_contains_block({JSON_PATH, JSON_STRING}) {
       try {
         JSON_STRING = toJsonData(JSON_STRING);
-        PATH = toArray(toJsonData(PATH));
-        PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
+        JSON_PATH = toArray(toJsonData(JSON_PATH));
+        JSON_PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
         return JSON_STRING !== undefined;
       } catch(err) {return false}
     }
