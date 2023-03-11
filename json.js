@@ -15,10 +15,10 @@
   const toJsonString = val => {
     return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
   };
-  const toArray = val => {
+  const toArray = val => { //добавить вариант, где если val это объект, то от него берётся массив значений
     return Array.isArray(val) ? val : Array.from({length: 1}, (v) => val);
   };
-  const toObject = val => {
+  const toObject = val => { //добавить вариант, где если val это массив, то от него берутся все значения и стандартные числовые ключи
     return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp) ? val : {};
   };
   const isRegExp = val => {
