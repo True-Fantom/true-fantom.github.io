@@ -310,7 +310,7 @@
         for (let [k,v] of Object.entries(JSON_STRING)) {
           str += typeof v === 'object' ? `${k}${SPLIT2}${toJsonString(v)}${SPLIT1}` : `${k}${SPLIT2}${v}${SPLIT1}`
         }
-        return str.substring(0, str.lenght - String(SPLIT1).lenght);
+        return str.substring(0, str.length - String(SPLIT1).length);
       } catch(err) {return ''}
     }
     json_split_by_split_block({JSON_STRING, SPLIT1}) {
@@ -321,7 +321,7 @@
         for (let [k,v] of Object.entries(JSON_STRING)) {
           str += typeof v === 'object' ? `${toJsonString(v)}${SPLIT1}` : `${v}${SPLIT1}`
         }
-        return str.substring(0, str.lenght - String(SPLIT1).lenght);
+        return str.substring(0, str.length - String(SPLIT1).length);
       } catch(err) {return ''}
     }
     get_json_item_block({JSON_PATH, JSON_STRING}) {
