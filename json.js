@@ -270,7 +270,7 @@
 
     is_json_block({JSON_STRING}) {
       try {
-        JSON_STRING = toJsonData(JSON_STRING);
+        JSON_STRING = toJsonData(String(JSON_STRING));
         return true;
       } catch(err) {return false}
     }
@@ -281,53 +281,56 @@
     }
     from_json_block({JSON_STRING}) {
       try {
-        return toScratchData(toJsonData(JSON_STRING));
+        return toScratchData(toJsonData(String(JSON_STRING)));
       } catch(err) {return ''}
     }
     is_array_block({JSON_STRING}) {
       try {
-        JSON_STRING = toJsonData(JSON_STRING);
+        JSON_STRING = toJsonData(String(JSON_STRING));
         return isArray(JSON_STRING);
       } catch(err) {return false}
     }
     is_object_block({JSON_STRING}) {
       try {
-        JSON_STRING = toJsonData(JSON_STRING);
+        JSON_STRING = toJsonData(String(JSON_STRING));
         return isObject(JSON_STRING);
       } catch(err) {return false}
     }
     length_of_json_block({JSON_STRING}) {
       try {
-        JSON_STRING = toJsonData(JSON_STRING);
+        JSON_STRING = toJsonData(String(JSON_STRING));
         return isArray(JSON_STRING) ? JSON_STRING.length : isObject(JSON_STRING) ? Object.keys(JSON_STRING).length : 1;
       } catch(err) {return 0}
     }
     json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) {
       try {
         JSON_STRING = toJsonData(JSON_STRING);
+        SPLIT1 = String(SPLIT1);
+        SPLIT2 = String(SPLIT2);
         if (!isArray(JSON_STRING) && !isObject(JSON_STRING)) {JSON_STRING = toArray(JSON_STRING)}
         let str = '';
         for (let [k,v] of Object.entries(JSON_STRING)) {
           str += typeof v === 'object' ? `${k}${SPLIT2}${toJsonString(v)}${SPLIT1}` : `${k}${SPLIT2}${v}${SPLIT1}`
         }
-        return str.substring(0, str.length - String(SPLIT1).length);
+        return str.substring(0, str.length - SPLIT1.length);
       } catch(err) {return ''}
     }
     json_split_by_split_block({JSON_STRING, SPLIT1}) {
       try {
         JSON_STRING = toJsonData(JSON_STRING);
+        SPLIT1 = String(SPLIT1);
         if (!isArray(JSON_STRING) && !isObject(JSON_STRING)) {JSON_STRING = toArray(JSON_STRING)}
         let str = '';
         for (let [k,v] of Object.entries(JSON_STRING)) {
           str += typeof v === 'object' ? `${toJsonString(v)}${SPLIT1}` : `${v}${SPLIT1}`
         }
-        return str.substring(0, str.length - String(SPLIT1).length);
+        return str.substring(0, str.length - SPLIT1.length);
       } catch(err) {return ''}
     }
     get_json_item_block({JSON_PATH, JSON_STRING}) {
       try {
-        JSON_STRING = toJsonData(JSON_STRING);
-        JSON_PATH = toArray(toJsonData(JSON_PATH));
+        JSON_STRING = toJsonData(String(JSON_STRING));
+        JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
         JSON_PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
         return toJsonString(JSON_STRING);
       } catch(err) {return ''}
@@ -344,8 +347,8 @@
     }
     json_contains_block({JSON_PATH, JSON_STRING}) {
       try {
-        JSON_STRING = toJsonData(JSON_STRING);
-        JSON_PATH = toArray(toJsonData(JSON_PATH));
+        JSON_STRING = toJsonData(String(JSON_STRING));
+        JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
         JSON_PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
         return JSON_STRING !== undefined;
       } catch(err) {return false}
