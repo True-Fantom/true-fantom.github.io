@@ -53,7 +53,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
+                defaultValue: '{"fruits":["apple","banana"]}'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -100,11 +100,11 @@
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruit",1]'
+                defaultValue: '["fruits",1]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
+                defaultValue: '{"fruits":["apple","banana"]}'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -119,15 +119,15 @@
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["vegetables"]'
+                defaultValue: '["fruits",1]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
+                defaultValue: '{"fruits":["apple","banana"]}'
               },
               VALUE: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["potato","tomato"]'
+                defaultValue: '"mango"'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -142,11 +142,11 @@
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruit",1]'
+                defaultValue: '["fruits",1]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
+                defaultValue: '{"fruits":["apple","banana"]}'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -162,7 +162,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
+                defaultValue: '{"fruits":["apple","banana"]}'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -177,11 +177,11 @@
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruit",2]'
+                defaultValue: '["fruits",1]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":["apple","banana"]}'
+                defaultValue: '{"fruits":["apple","banana"]}'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -197,7 +197,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruit":2}'
+                defaultValue: '{"fruits":2}'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -229,7 +229,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["apple","banana"]'
+                defaultValue: '{"fruits":["apple","banana"]}'
               },
               SPLIT1: {
                 type: Scratch.ArgumentType.STRING,
@@ -248,7 +248,7 @@
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["apple","banana"]'
+                defaultValue: '{"fruits":["apple","banana"]}'
               },
               SPLIT1: {
                 type: Scratch.ArgumentType.STRING,
@@ -264,31 +264,7 @@
               }
             }
           }
-        ],
-
-        menus: {
-          value_type_menu: { 
-            acceptReporters: true,
-            items: [
-              {
-                text: '(1) string',
-                value: '1'
-              },
-              {
-                text: '(2) number',
-                value: '2'
-              },
-              {
-                text: '(3) boolean',
-                value: '3'
-              },
-              {
-                text: '(4) null',
-                value: '4'
-              }
-            ]
-          }
-        }
+        ]
       }
     }
 
