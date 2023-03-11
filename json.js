@@ -31,7 +31,7 @@
     return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp);
   };
 
-  class Network {
+  class ScratchJson {
 
     getInfo() {
       return {
@@ -352,5 +352,5 @@
     }
   }
 
-  Scratch.extensions.register(new Network());
+  Scratch.extensions.register(new ScratchJson());
 })(Scratch);
