@@ -6,28 +6,28 @@
 
   const cast = Scratch.Cast;
 
-  const Scr = (A) => {
+  const toScratchData = (A) => {
     return A === undefined || typeof A === 'object' ? '' : A;
   };
-  const JsonData = (A) => {
+  const toJsonData = (A) => {
     return JSON.parse(A, null);
   };
-  const JsonStr = (A) => {
+  const toJsonString = (A) => {
     return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
   };
-  const Arr = (A) => {
+  const toArray = (A) => {
     return Array.isArray(A) ? A : Array.from({length: 1}, (v) => A);
   };
-  const Obj = (A) => {
+  const toObject = (A) => {
     return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp) ? A : {};
   };
   const isRegExp = (A) => {
     return A instanceof RegExp;
   };
-  const isArr = (A) => {
+  const isArray = (A) => {
     return Array.isArray(A);
   };
-  const isObj = (A) => {
+  const isObject = (A) => {
     return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp);
   };
 
@@ -270,66 +270,66 @@
 
     is_json_block({JSON_STRING}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
+        JSON_STRING = toJsonData(JSON_STRING);
         return true;
       } catch(err) {return false}
     }
     to_json_block({VALUE}) {
       try {
-        return JsonStr(VALUE);
+        return toJsonData(VALUE);
       } catch(err) {return ''}
     }
     from_json_block({JSON_STRING}) {
       try {
-        return Scr(JsonData(JSON_STRING));
+        return toScratchData(toJsonData(JSON_STRING));
       } catch(err) {return ''}
     }
     is_array_block({JSON_STRING}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
-        return isArr(JSON_STRING);
+        JSON_STRING = toJsonData(JSON_STRING);
+        return isArray(JSON_STRING);
       } catch(err) {return false}
     }
     is_object_block({JSON_STRING}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
-        return isObj(JSON_STRING);
+        JSON_STRING = toJsonData(JSON_STRING);
+        return isObject(JSON_STRING);
       } catch(err) {return false}
     }
     length_of_json_block({JSON_STRING}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
-        return isArr(JSON_STRING) ? JSON_STRING.length : isObj(JSON_STRING) ? Object.keys(JSON_STRING).length : 1;
+        JSON_STRING = toJsonData(JSON_STRING);
+        return isArray(JSON_STRING) ? JSON_STRING.length : isObject(JSON_STRING) ? Object.keys(JSON_STRING).length : 1;
       } catch(err) {return 0}
     }
     json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
-        if (!isArr(JSON_STRING) && !isObj(JSON_STRING)) {JSON_STRING = Arr(JSON_STRING)}
+        JSON_STRING = toJsonData(JSON_STRING);
+        if (!isArray(JSON_STRING) && !isObject(JSON_STRING)) {JSON_STRING = toArray(JSON_STRING)}
         let str = '';
         for (let [k,v] of Object.entries(JSON_STRING)) {
-          str += typeof v === 'object' ? `${k}${SPLIT2}${JsonStr(v)}${SPLIT1}` : `${k}${SPLIT2}${v}${SPLIT1}`
+          str += typeof v === 'object' ? `${k}${SPLIT2}${toJsonString(v)}${SPLIT1}` : `${k}${SPLIT2}${v}${SPLIT1}`
         }
         return str;
       } catch(err) {return ''}
     }
     json_split_by_split_block({JSON_STRING, SPLIT1}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
-        if (!isArr(JSON_STRING) && !isObj(JSON_STRING)) {JSON_STRING = Arr(JSON_STRING)}
+        JSON_STRING = toJsonData(JSON_STRING);
+        if (!isArray(JSON_STRING) && !isObject(JSON_STRING)) {JSON_STRING = toArray(JSON_STRING)}
         let str = '';
         for (let [k,v] of Object.entries(JSON_STRING)) {
-          str += typeof v === 'object' ? `${JsonStr(v)}${SPLIT1}` : `${v}${SPLIT1}`
+          str += typeof v === 'object' ? `${toJsonString(v)}${SPLIT1}` : `${v}${SPLIT1}`
         }
         return str;
       } catch(err) {return ''}
     }
     get_json_item_block({PATH, JSON_STRING}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
-        PATH = Arr(JsonData(PATH));
-        PATH.forEach(prop => JSON_STRING = isArr(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
-        return JsonStr(JSON_STRING);
+        JSON_STRING = toJsonData(JSON_STRING);
+        PATH = toArray(toJsonData(PATH));
+        PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
+        return toJsonString(JSON_STRING);
       } catch(err) {return ''}
     }
     set_json_item_block({PATH, JSON_STRING, VALUE}) {
@@ -344,9 +344,9 @@
     }
     json_contains_block({PATH, JSON_STRING}) {
       try {
-        JSON_STRING = JsonData(JSON_STRING);
-        PATH = Arr(JsonData(PATH));
-        PATH.forEach(prop => JSON_STRING = isArr(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
+        JSON_STRING = toJsonData(JSON_STRING);
+        PATH = toArray(toJsonData(PATH));
+        PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
         return JSON_STRING !== undefined;
       } catch(err) {return false}
     }
