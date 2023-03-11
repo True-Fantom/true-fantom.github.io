@@ -2,6 +2,7 @@
   'use strict';
 
   const icon = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMjUuMzU0OCIgaGVpZ2h0PSIyMjUuMzU0OCIgdmlld0JveD0iMCwwLDIyNS4zNTQ4LDIyNS4zNTQ4Ij48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTI3LjMyMjc5LC02Ny4zMjI2KSI+PGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0xMjcuMzIyOCwxODBjMCwtNjIuMjMwMDEgNTAuNDQ3MzksLTExMi42Nzc0IDExMi42Nzc0LC0xMTIuNjc3NGM2Mi4yMzAwMSwwIDExMi42Nzc0LDUwLjQ0NzM5IDExMi42Nzc0LDExMi42Nzc0YzAsNjIuMjMwMDEgLTUwLjQ0NzM5LDExMi42Nzc0IC0xMTIuNjc3NCwxMTIuNjc3NGMtNjIuMjMwMDEsMCAtMTEyLjY3NzQsLTUwLjQ0NzM5IC0xMTIuNjc3NCwtMTEyLjY3NzR6IiBmaWxsPSIjODA4MDgwIiBzdHJva2Utd2lkdGg9IjAiLz48cGF0aCBkPSJNMjM1Ljc3Nyw5Mi4yNTc0MWMtNDIuNzQ2NTUsMS4xNTE2NCAtNzAuOTYyNDEsMzEuMjAxMjMgLTgwLjAxMTU2LDYxLjU0MjM3Yy0xMS40MjI2NywzOC4yOTk0IDMuODU1MDcsODMuMzY1NzggNDAuNjE4MDIsMTAxLjUyOTIyYy0yMy40OTU4MSwtMTguMjIwODEgLTQxLjEzNTM1LC0xMTYuMjMzMjcgMjkuMzg3MzIsLTEyNy4yNDMyNmMzNy40OTAwNSwtNS44NTI5NCA2Ny4zMTE3NCw2Mi40NTczNyAyMy44ODE5NSw5NS40NjI3NGM3My42ODkxNiwtNi4xNzc0IDUzLjU4ODY0LC0xMzcuNDQ0NzUgLTEzLjg3NTcyLC0xMzEuMjkxMDd6TTI2MC43MjYyNywyMjkuNTExNTNjNTMuMTE3MTgsLTEzLjU0MjExIDUyLjgxNzMxLC04OS44NDM5NSAyMC40ODQ2NCwtMTI3LjUwNjcxYzg3Ljc2NzU5LDU1LjQxMzIgMzYuMTg5NDEsMTU0LjYwNTQ3IC0yNi4yNjIzNiwxNjQuOTE1N2MtNDAuNjQ3NDUsNi43MTA1MyAtNjYuNjgwODQsLTE5Ljk2MzQ3IC03MS4zMDgwNywtNjEuMDQ1ODZjLTMuMTcxNDEsLTI4LjE1NzA2IDUuMTUwNDcsLTY3LjEyNzUyIDQzLjczMjU5LC02OS4wOTUyOWMtMzguMTM0MDcsMjguMjM2NzQgLTE1Ljc2OTk1LDEwNy41NDA0OSAzMy4zNTMyLDkyLjczMjE2eiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9nPjwvZz48L3N2Zz48IS0tcm90YXRpb25DZW50ZXI6MTEyLjY3NzIwNToxMTIuNjc3NDA1LS0+';
+  const json = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMjUuMzU0OCIgaGVpZ2h0PSIyMjUuMzU0OCIgdmlld0JveD0iMCwwLDIyNS4zNTQ4LDIyNS4zNTQ4Ij48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTI3LjMyMjc5LC02Ny4zMjI2KSI+PGcgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aXNQYWludGluZ0xheWVyJnF1b3Q7OnRydWV9IiBmaWxsLXJ1bGU9Im5vbnplcm8iIHN0cm9rZT0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0xMjcuMzIyOCwxODBjMCwtNjIuMjMwMDEgNTAuNDQ3MzksLTExMi42Nzc0IDExMi42Nzc0LC0xMTIuNjc3NGM2Mi4yMzAwMSwwIDExMi42Nzc0LDUwLjQ0NzM5IDExMi42Nzc0LDExMi42Nzc0YzAsNjIuMjMwMDEgLTUwLjQ0NzM5LDExMi42Nzc0IC0xMTIuNjc3NCwxMTIuNjc3NGMtNjIuMjMwMDEsMCAtMTEyLjY3NzQsLTUwLjQ0NzM5IC0xMTIuNjc3NCwtMTEyLjY3NzR6IiBmaWxsPSIjODA4MDgwIiBzdHJva2Utd2lkdGg9IjAiLz48cGF0aCBkPSJNMjM1Ljc3Nyw5Mi4yNTc0MWMtNDIuNzQ2NTUsMS4xNTE2NCAtNzAuOTYyNDEsMzEuMjAxMjMgLTgwLjAxMTU2LDYxLjU0MjM3Yy0xMS40MjI2NywzOC4yOTk0IDMuODU1MDcsODMuMzY1NzggNDAuNjE4MDIsMTAxLjUyOTIyYy0yMy40OTU4MSwtMTguMjIwODEgLTQxLjEzNTM1LC0xMTYuMjMzMjcgMjkuMzg3MzIsLTEyNy4yNDMyNmMzNy40OTAwNSwtNS44NTI5NCA2Ny4zMTE3NCw2Mi40NTczNyAyMy44ODE5NSw5NS40NjI3NGM3My42ODkxNiwtNi4xNzc0IDUzLjU4ODY0LC0xMzcuNDQ0NzUgLTEzLjg3NTcyLC0xMzEuMjkxMDd6TTI2MC43MjYyNywyMjkuNTExNTNjNTMuMTE3MTgsLTEzLjU0MjExIDUyLjgxNzMxLC04OS44NDM5NSAyMC40ODQ2NCwtMTI3LjUwNjcxYzg3Ljc2NzU5LDU1LjQxMzIgMzYuMTg5NDEsMTU0LjYwNTQ3IC0yNi4yNjIzNiwxNjQuOTE1N2MtNDAuNjQ3NDUsNi43MTA1MyAtNjYuNjgwODQsLTE5Ljk2MzQ3IC03MS4zMDgwNywtNjEuMDQ1ODZjLTMuMTcxNDEsLTI4LjE1NzA2IDUuMTUwNDcsLTY3LjEyNzUyIDQzLjczMjU5LC02OS4wOTUyOWMtMzguMTM0MDcsMjguMjM2NzQgLTE1Ljc2OTk1LDEwNy41NDA0OSAzMy4zNTMyLDkyLjczMjE2eiIgZmlsbD0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxIi8+PC9nPjwvZz48L3N2Zz48IS0tcm90YXRpb25DZW50ZXI6MTEyLjY3NzIwNToxMTIuNjc3NDA1LS0+';
 
   const Scr = (A) => {
     return A === undefined || typeof A === 'object' ? '' : A;
@@ -57,6 +58,10 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -69,6 +74,10 @@
               VALUE: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -80,6 +89,10 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '"apple"'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -87,7 +100,7 @@
           {
             opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'json item by json path [PATH] of json [JSON_STRING]',
+            text: '[IMAGE] item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -96,13 +109,17 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
           {
             opcode: 'set_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'set item by json path [PATH] of json [JSON_STRING] to json [VALUE]',
+            text: 'set item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING] to json [VALUE]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -115,6 +132,10 @@
               VALUE: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["potato","tomato"]'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -130,6 +151,10 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -142,6 +167,10 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -157,6 +186,10 @@
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":["apple","banana"]}'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -164,11 +197,15 @@
           {
             opcode: 'is_object_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is json object [JSON_STRING] ?',
+            text: 'is [IMAGE] object [JSON_STRING] ?',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '{"fruit":2}'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -176,11 +213,15 @@
           {
             opcode: 'is_array_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is json array [JSON_STRING] ?',
+            text: 'is [IMAGE] array [JSON_STRING] ?',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '["apple","banana"]'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
@@ -188,7 +229,7 @@
           {
             opcode: 'json_split_by_split_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'values of json [JSON_STRING] split by [SPLIT1]',
+            text: '[IMAGE] values of [IMAGE] [JSON_STRING] split by [SPLIT1]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -197,13 +238,17 @@
               SPLIT1: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ' '
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           },
           {
             opcode: 'json_split_by_splits_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'values and keys of json [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
+            text: '[IMAGE] values and keys of [IMAGE] [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -216,6 +261,10 @@
               SPLIT2: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: ':'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
               }
             }
           }
