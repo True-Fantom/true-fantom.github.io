@@ -6,29 +6,29 @@
 
   const cast = Scratch.Cast;
 
-  const toScratchData = (A) => {
-    return A === undefined || typeof A === 'object' ? '' : A;
+  const toScratchData = val => {
+    return val === undefined || typeof val === 'object' ? '' : val;
   };
-  const toJsonData = (A) => {
-    return JSON.parse(A, null);
+  const toJsonData = val => {
+    return JSON.parse(val, null);
   };
-  const toJsonString = (A) => {
-    return JSON.stringify(A, (key, value) => {return value === undefined ? '' : value}, 0);
+  const toJsonString = val => {
+    return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
   };
-  const toArray = (A) => {
-    return Array.isArray(A) ? A : Array.from({length: 1}, (v) => A);
+  const toArray = val => {
+    return Array.isArray(val) ? val : Array.from({length: 1}, (v) => val);
   };
-  const toObject = (A) => {
-    return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp) ? A : {};
+  const toObject = val => {
+    return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp) ? val : {};
   };
-  const isRegExp = (A) => {
-    return A instanceof RegExp;
+  const isRegExp = val => {
+    return val instanceof RegExp;
   };
-  const isArray = (A) => {
-    return Array.isArray(A);
+  const isArray = val => {
+    return Array.isArray(val);
   };
-  const isObject = (A) => {
-    return !Array.isArray(A) && typeof A === 'object' && A !== null && !(A instanceof RegExp);
+  const isObject = val => {
+    return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp);
   };
 
   class ScratchJson {
