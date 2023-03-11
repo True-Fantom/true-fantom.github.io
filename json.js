@@ -9,12 +9,6 @@
   const Scr = (A) => {
     return A === undefined || typeof A === 'object' ? '' : A;
   };
-  const Bool = (A) => {
-    return typeof A === 'string' && A.toLowerCase() === 'false' ? false : Boolean(A);
-  };
-  const Num = (A) => {
-    return typeof A === 'string' && isNaN(Number(A)) ? 0 : Number(A);
-  };
   const JsonData = (A) => {
     return JSON.parse(A, null);
   };
