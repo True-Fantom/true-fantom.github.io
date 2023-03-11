@@ -53,7 +53,7 @@
           {
             opcode: 'is_json_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is json [JSON_STRING] ?',
+            text: 'is [IMAGE] [JSON_STRING] ?',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -69,7 +69,7 @@
           {
             opcode: 'to_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[VALUE] to json',
+            text: '[VALUE] to [IMAGE]',
             arguments: {
               VALUE: {
                 type: Scratch.ArgumentType.STRING,
@@ -84,7 +84,7 @@
           {
             opcode: 'from_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'json [JSON_STRING]',
+            text: '[JSON_STRING] of [IMAGE]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -100,7 +100,7 @@
           {
             opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE] item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING]',
+            text: '[IMAGE] get item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -119,7 +119,7 @@
           {
             opcode: 'set_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'set item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING] to json [VALUE]',
+            text: '[IMAGE] set item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING] to [IMAGE] [VALUE]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -142,7 +142,7 @@
           {
             opcode: 'delete_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete item by json path [PATH] of json [JSON_STRING]',
+            text: '[IMAGE] delete item by [IMAGE] path [PATH] of [IMAGE] [JSON_STRING]',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
@@ -162,7 +162,7 @@
           {
             opcode: 'length_of_json_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'length of json [JSON_STRING]',
+            text: 'length of [IMAGE] [JSON_STRING]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -177,7 +177,7 @@
           {
             opcode: 'json_contains_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'json [JSON_STRING] contains item by json path [PATH] ?',
+            text: '[IMAGE] [JSON_STRING] contains item by [IMAGE] path [PATH] ?',
             arguments: {
               PATH: {
                 type: Scratch.ArgumentType.STRING,
