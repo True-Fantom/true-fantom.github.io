@@ -296,7 +296,10 @@
           }
         ],
         menus: {
-          components_menu: ['values', 'keys', 'pairs (array)', 'pairs (object)']
+          components_menu: {
+            acceptReporters: true,
+            items: ['values', 'keys', 'pairs (array)', 'pairs (object)']
+          }
         }
       }
     }
