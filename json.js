@@ -417,13 +417,16 @@
     json_components_block({COMPONENTS, JSON_STRING}) {
       try {
         const data = toJsonData(String(JSON_STRING));
-        const components = String(COMPONENTS).toLowerCase();
-        switch (components) {
-          case 'values': return toJsonString(Object.values(data));
-          case 'keys': return toJsonString(Object.keys(data));
-          case 'pairs (array)': return toJsonString(Object.entries(data));
-          case 'pairs (object)': default: return toJsonString(Object.assign(data, {}));
+        if (isArray(data) || isObject(data)) {
+          const components = String(COMPONENTS).toLowerCase();
+          switch (components) {
+            case 'values': return toJsonString(Object.values(data));
+            case 'keys': return toJsonString(Object.keys(data));
+            case 'pairs (array)': return toJsonString(Object.entries(data));
+            case 'pairs (object)': default: return toJsonString(Object.assign(data, {}));
+          }
         }
+        return '';
       } catch(err) {return ''}
     }
   }
