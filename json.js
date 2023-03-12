@@ -343,14 +343,21 @@
         let currentProp = json;
         JSON_PATH.forEach((prop, index) => {
           if (index === JSON_PATH.length - 1) {isArray(currentProp) ? currentProp[prop - 1] = JSON_VALUE : currentProp[prop] = JSON_VALUE}
-          else {isArray(currentProp) ? currentProp = currentProp[prop - 1] : currentProp = currentProp[prop]}
+          else {currentProp = isArray(currentProp) ? currentProp[prop - 1] : currentProp[prop]}
         });
         return toJsonString(json);
       } catch(err) {return ''}
     }
     delete_json_item_block({JSON_PATH, JSON_STRING}) {
       try {
-        return '';
+        let json = toJsonData(String(JSON_STRING));
+        JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
+        let currentProp = json;
+        JSON_PATH.forEach((prop, index) => {
+          if (index === JSON_PATH.length - 1) {delete isArray(currentProp) ? currentProp[prop - 1] : currentProp[prop]}
+          else {currentProp = isArray(currentProp) ? currentProp[prop - 1] : currentProp[prop]}
+        });
+        return toJsonString(json);
       } catch(err) {return ''}
     }
     json_contains_block({JSON_PATH, JSON_STRING}) {
