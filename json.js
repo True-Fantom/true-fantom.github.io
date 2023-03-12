@@ -106,7 +106,7 @@
           {
             opcode: 'json_components_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[COMPONENTS] from [IMAGE] [JSON_STRING]',
+            text: '[COMPONENTS] of [IMAGE] [JSON_STRING]',
             arguments: {
               COMPONENTS: {
                 type: Scratch.ArgumentType.STRING,
