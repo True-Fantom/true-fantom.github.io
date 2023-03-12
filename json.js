@@ -296,11 +296,9 @@
           }
         ],
         menus: {
-          components_menu: {
-            items: ['values', 'keys', 'pairs (array)', 'pairs (object)']
-          }
+          components_menu: ['values', 'keys', 'pairs (array)', 'pairs (object)']
         }
-      };
+      }
     }
 
     is_json_block({JSON_STRING}) {
