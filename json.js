@@ -106,7 +106,7 @@
           {
             opcode: 'json_components_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'all [COMPONENTS] from [IMAGE] [JSON_STRING]',
+            text: '[COMPONENTS] from [IMAGE] [JSON_STRING]',
             arguments: {
               COMPONENTS: {
                 type: Scratch.ArgumentType.STRING,
@@ -300,7 +300,7 @@
             items: ['values', 'keys', 'pairs (array)', 'pairs (object)']
           }
         }
-      }
+      };
     }
 
     is_json_block({JSON_STRING}) {
