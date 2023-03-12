@@ -339,12 +339,13 @@
     }
     get_json_item_block({JSON_PATH, JSON_STRING}) {
       try {
-        JSON_STRING = toJsonData(String(JSON_STRING));
+        let json = toJsonData(String(JSON_STRING));
+        let currentProp = json;
         JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
         JSON_PATH.forEach((prop, index) => {
-          JSON_STRING[toScratchIndex(prop, JSON_STRING)] = JSON_STRING;
+          currentProp[toScratchIndex(prop, currentProp)] = currentProp;
         });
-        return toJsonString(JSON_STRING);
+        return toJsonString(currentProp);
       } catch(err) {return ''}
     }
     set_json_item_block({JSON_PATH, JSON_STRING, JSON_VALUE}) {
@@ -374,12 +375,13 @@
     }
     json_contains_block({JSON_PATH, JSON_STRING}) {
       try {
-        JSON_STRING = toJsonData(String(JSON_STRING));
+        let json = toJsonData(String(JSON_STRING));
+        let currentProp = json;
         JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
         JSON_PATH.forEach((prop, index) => {
-          JSON_STRING = JSON_STRING[toScratchIndex(prop, JSON_STRING)];
+          currentProp[toScratchIndex(prop, currentProp)] = currentProp;
         });
-        return JSON_STRING !== undefined;
+        return currentProp !== undefined;
       } catch(err) {return false}
     }
   }
