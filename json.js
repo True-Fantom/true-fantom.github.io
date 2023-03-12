@@ -343,7 +343,7 @@
         let currentProp = data;
         let path = toArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
-          currentProp[toScratchIndex(prop, currentProp)] = currentProp;
+          currentProp = currentProp[toScratchIndex(prop, currentProp)];
         });
         return toJsonString(currentProp);
       } catch(err) {return ''}
@@ -379,7 +379,7 @@
         let currentProp = data;
         let path = toArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
-          currentProp[toScratchIndex(prop, currentProp)] = currentProp;
+          currentProp = currentProp[toScratchIndex(prop, currentProp)];
         });
         return currentProp !== undefined;
       } catch(err) {return false}
