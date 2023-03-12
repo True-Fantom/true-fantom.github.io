@@ -17,57 +17,6 @@
 
         blocks: [
           {
-            opcode: 'true',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'true',
-            hideFromPalette: true,
-          },
-          {
-            opcode: 'false',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'false',
-            hideFromPalette: true,
-          },
-          {
-            opcode: 'boolean',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
-              },
-            },
-            hideFromPalette: true,
-          },
-          {
-            opcode: 'booleanToInt',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[a]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              },
-            },
-            hideFromPalette: true,
-          },
-          {
-            opcode: 'equal',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ⩵ [b]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'A'
-              },
-              b: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'a'
-              },
-            },
-            hideFromPalette: true,
-          },
-          {
             opcode: 'equalNegative',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[a] =- [b]',
@@ -89,113 +38,15 @@
             arguments: {
               a: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '5'
+                defaultValue: '\n'
               },
               b: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '-5'
+                defaultValue: '\n'
               },
             }
           },
-          {
-            opcode: 'notEqual',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ≠ [b]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '\n'
-              },
-              b: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '\n'
-              },
-            },
-            hideFromPalette: true,
-          },
-          {
-            opcode: 'almostEqual2n',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ≈ [b]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '5.5'
-              },
-              b: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '6'
-              },
-            },
-            hideFromPalette: true,
-          },
-          {
-            opcode: 'almostEqual3n',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ≈ [b] ± [c]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '5'
-              },
-              b: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '6'
-              },
-              c: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
-              },
-            },
-            hideFromPalette: true,
-          },
-          {
-            opcode: 'xor',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ^ [b]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              },
-              b: {
-                type: Scratch.ArgumentType.BOOLEAN,
-              },
-            },
-            hideFromPalette: true,
-          },
           '---',
-          {
-            opcode: 'equalOrGreater',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ≥ [b]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              b: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '50'
-              },
-            },
-            hideFromPalette: true,
-          },
-          {
-            opcode: 'equalOrLess',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[a] ≤ [b]',
-            arguments: {
-              a: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              b: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '50'
-              },
-            },
-            hideFromPalette: true,
-          },
           {
             opcode: 'between',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -242,11 +93,11 @@
             arguments: {
               a: {
                 type: Scratch.ArgumentType.ANGLE,
-                defaultValue: '0'
+                defaultValue: 0
               },
               b: {
                 type: Scratch.ArgumentType.ANGLE,
-                defaultValue: '90'
+                defaultValue: 90
               },
             }
           },
@@ -258,24 +109,24 @@
             arguments: {
               x1: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '-100'
+                defaultValue: -100
               },
               y1: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               x2: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               y2: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
-
+              //--
               n: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '100'
+                defaultValue: 100
               },
             }
           },
@@ -286,36 +137,36 @@
             arguments: {
               x11: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '-100'
+                defaultValue: -100
               },
               y11: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               x12: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               y12: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '-100'
+                defaultValue: -100
               },
-
+              //--
               x21: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '100'
+                defaultValue: 100
               },
               y21: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               x22: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               y22: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '100'
+                defaultValue: 100
               },
             }
           },
@@ -326,19 +177,19 @@
             arguments: {
               x1: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '-100'
+                defaultValue: -100
               },
               y1: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               x2: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               y2: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
             }
           },
@@ -350,46 +201,45 @@
             arguments: {
               x1: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               y1: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               x2: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               y2: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               x3: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               y3: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               x4: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               y4: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
-
+              //--
               n: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '100'
+                defaultValue: 100
               },
-
+              //--
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: quadrilateral,
-                flipRTL: true
+                dataURI: quadrilateral
               }
             },
           },
@@ -400,65 +250,47 @@
             arguments: {
               x1: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               y1: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               x2: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               y2: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               x3: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               y3: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               x4: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
               y4: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: 0
               },
-
+              //--
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: quadrilateral,
-                flipRTL: true
+                dataURI: quadrilateral
               }
-            },
+            }
           }
         ]
       };
     }
-    true(){
-      return true;
-    }
-    false(){
-      return false;
-    }
-    boolean(args){
-      return Scratch.Cast.toBoolean(args.a);
-    }
-    booleanToInt(args){
-      if (Scratch.Cast.toBoolean(args.a)) {
-        return 1;
-      }
-      return 0;
-    }
-    equal(args) {
-      return (args.a == args.b);
-    }
+
     equalNegative(args) {
       if (isNaN(args.a) || isNaN(args.b)){
         return false;
@@ -473,29 +305,11 @@
         return (args.a == (0 - args.b)) || (args.a == args.b);
       }
     }
-    almostEqual2n(args) {
-      return (Math.round(args.a) == Math.round(args.b));
-    }
-    almostEqual3n(args) {
-      return (Math.abs(args.a - args.b) <= args.c);
-    }
     between(args) {
       return (args.a < args.b) && (args.b < args.c);
     }
     betweenEqual(args) {
       return (args.a <= args.b) && (args.b <= args.c);
-    }
-    notEqual(args){
-      return (args.a != args.b);
-    }
-    xor(args){
-      return Scratch.Cast.toBoolean(args.a) !== Scratch.Cast.toBoolean(args.b);
-    }
-    equalOrGreater(args) {
-      return (args.a >= args.b);
-    }
-    equalOrLess(args) {
-      return (args.a <= args.b);
     }
     vertical(args) {
       if (isNaN(args.a) || isNaN(args.b)){
