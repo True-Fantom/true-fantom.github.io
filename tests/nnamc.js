@@ -51,7 +51,6 @@
             },
             hideFromPalette: true,
           },
-          '---',
           {
             opcode: 'equal',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -147,7 +146,8 @@
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '1'
               },
-            }
+            },
+            hideFromPalette: true,
           },
           {
             opcode: 'xor',
