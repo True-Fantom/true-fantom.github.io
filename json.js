@@ -418,8 +418,8 @@
         switch (components) {
           case 'values': return Object.values(data);
           case 'keys': return Object.keys(data);
-          case 'pairs (array)': return Object.entries(data).map((key, value) => [key, value]));
-          case 'pairs (object)': default: return Object.entries(data).map((key, value) => {key: value}));
+          case 'pairs (array)': return Object.entries(data).map((key, value) => [key, value]);
+          case 'pairs (object)': default: return Object.entries(data).map((key, value) => {key: value});
         }
       } catch(err) {return ''}
     }
