@@ -243,7 +243,7 @@
               },
               SPLIT1: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
+                defaultValue: ','
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -262,7 +262,7 @@
               },
               SPLIT1: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ' '
+                defaultValue: ','
               },
               SPLIT2: {
                 type: Scratch.ArgumentType.STRING,
