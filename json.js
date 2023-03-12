@@ -104,6 +104,26 @@
           },
           '---',
           {
+            opcode: 'json_components_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'all [COMPONENTS] from [IMAGE] [JSON_STRING]',
+            arguments: {
+              COMPONENTS: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'components_menu'
+              },
+              JSON_STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '{"fruits":2,"vegetables":2}'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: json
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'get_json_item_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[IMAGE] item by [IMAGE] path [JSON_PATH] of [IMAGE] [JSON_STRING]',
@@ -274,7 +294,12 @@
               }
             }
           }
-        ]
+        ],
+        menus: {
+          components_menu: {
+            items: ['values', 'keys', 'pairs (array)', 'pairs (object)']
+          }
+        }
       }
     }
 
@@ -387,6 +412,18 @@
         });
         return currentProp !== undefined;
       } catch(err) {return false}
+    }
+    json_components_block({COMPONENTS, JSON_STRING}) {
+      try {
+        const data = toJsonData(String(JSON_STRING));
+        const components = String(components).toLowerCase();
+        switch (components) {
+          case 'values': return Object.values(data);
+          case 'keys': return Object.keys(data);
+          case 'pairs (array)': return Object.entries(data).map((key, value) => [key, value]));
+          case 'pairs (object)': default: return Object.entries(data).map((key, value) => {key: value}));
+        }
+      } catch(err) {return ''}
     }
   }
 
