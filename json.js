@@ -423,7 +423,7 @@
             case 'values': return toJsonString(Object.values(data));
             case 'keys': return toJsonString(Object.keys(data));
             case 'pairs (array)': return toJsonString(Object.entries(data));
-            case 'pairs (object)': default: return toJsonString(Object.assign(data, {}));
+            case 'pairs (object)': default: return toJsonString(Object.assign({}, data));
           }
         }
         return '';
