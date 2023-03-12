@@ -414,7 +414,7 @@
     json_components_block({COMPONENTS, JSON_STRING}) {
       try {
         const data = toJsonData(String(JSON_STRING));
-        const components = String(components).toLowerCase();
+        const components = String(COMPONENTS).toLowerCase();
         switch (components) {
           case 'values': return Object.values(data);
           case 'keys': return Object.keys(data);
