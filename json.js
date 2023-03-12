@@ -336,9 +336,19 @@
       } catch(err) {return ''}
     }
     set_json_item_block({JSON_PATH, JSON_STRING, JSON_VALUE}) {
-      try {
-        return '';
-      } catch(err) {return ''}
+      JSON_VALUE = toJsonData(String(JSON_VALUE));
+      let json = toJsonData(String(JSON_STRING));
+      JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
+      let currentProp = json;
+      JSON_PATH.forEach((prop, index) => {
+        if (index === JSON_PATH.length - 1) {
+          currentProp[prop] = JSON_VALUE;
+        }
+        else {
+          currentProp = currentProp[prop];
+        }
+      }
+      return toJsonString(json);
     }
     delete_json_item_block({JSON_PATH, JSON_STRING}) {
       try {
