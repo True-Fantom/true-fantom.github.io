@@ -331,7 +331,7 @@
       try {
         JSON_STRING = toJsonData(String(JSON_STRING));
         JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
-        JSON_PATH.forEach(prop => isArray(JSON_STRING) ? JSON_STRING[prop - 1] = JSON_STRING : JSON_STRING[prop] = JSON_STRING);
+        JSON_PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
         return toJsonString(JSON_STRING);
       } catch(err) {return ''}
     }
