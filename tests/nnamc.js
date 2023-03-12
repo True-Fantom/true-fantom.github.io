@@ -250,6 +250,7 @@
               },
             }
           },
+          '---',
           {
             opcode: 'segment_one',
             blockType: Scratch.BlockType.BOOLEAN,
