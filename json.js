@@ -38,7 +38,7 @@
     if (isObject(DATA) && typeof INDEX === 'string') {
       return INDEX;
     }
-    throw new Error('something went wrong');
+    throw new TypeError('index is incorrect');
   };
 
   class ScratchJson {
@@ -355,8 +355,10 @@
         let value = toJsonData(String(JSON_VALUE));
         let path = toArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
-          if (index === path.length - 1) {currentProp[toScratchIndex(prop, currentProp)] = value}
-          else {currentProp = currentProp[toScratchIndex(prop, currentProp)]}
+          try {
+            if (index === path.length - 1) {currentProp[toScratchIndex(prop, currentProp)] = value}
+            else {currentProp = currentProp[toScratchIndex(prop, currentProp)]}
+          } catch(err) {return toJsonString(data)}
         });
         return toJsonString(data);
       } catch(err) {return ''}
@@ -367,8 +369,10 @@
         let currentProp = data;
         let path = toArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
-          if (index === path.length - 1) {delete currentProp[toScratchIndex(prop, currentProp)]}
-          else {currentProp = currentProp[toScratchIndex(prop, currentProp)]}
+          try {
+            if (index === path.length - 1) {delete currentProp[toScratchIndex(prop, currentProp)]}
+            else {currentProp = currentProp[toScratchIndex(prop, currentProp)]}
+          } catch(err) {return toJsonString(data)}
         });
         return toJsonString(data);
       } catch(err) {return ''}
