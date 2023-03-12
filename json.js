@@ -416,10 +416,10 @@
         const data = toJsonData(String(JSON_STRING));
         const components = String(COMPONENTS).toLowerCase();
         switch (components) {
-          case 'values': return Object.values(data);
-          case 'keys': return Object.keys(data);
-          case 'pairs (array)': return Object.entries(data).map((key, value) => [key, value]);
-          case 'pairs (object)': default: return Object.entries(data).map((key, value) => {key: value});
+          case 'values': return toJsonString(Object.values(data));
+          case 'keys': return toJsonString(Object.keys(data));
+          case 'pairs (array)': return toJsonString(Object.entries(data).map((key, value) => [key, value]));
+          case 'pairs (object)': default: toJsonString(return Object.entries(data).map((key, value) => {key: value}));
         }
       } catch(err) {return ''}
     }
