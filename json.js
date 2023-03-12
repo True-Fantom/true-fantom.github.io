@@ -31,6 +31,16 @@
     return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp);
   };
 
+  const toScratchIndex = (INDEX, DATA) => {
+    if (isArray(DATA) && typeof INDEX === 'number') {
+      return INDEX - 1;
+    }
+    if (isObject(DATA) && typeof INDEX === 'string') {
+      return INDEX;
+    }
+    return undefined;
+  };
+
   class ScratchJson {
 
     getInfo() {
