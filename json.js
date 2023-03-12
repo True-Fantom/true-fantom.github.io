@@ -314,9 +314,9 @@
     }
     json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) {
       try {
-        const data = toJsonData(String(JSON_STRING));
-        const split1 = String(SPLIT1);
-        const split2 = String(SPLIT2);
+        let data = toJsonData(String(JSON_STRING));
+        let split1 = String(SPLIT1);
+        let split2 = String(SPLIT2);
         if (!isArray(data) && !isObject(data)) {data = toArray(data)}
         let str = '';
         for (let [k,v] of Object.entries(data)) {
@@ -327,8 +327,8 @@
     }
     json_split_by_split_block({JSON_STRING, SPLIT1}) {
       try {
-        const data = toJsonData(String(JSON_STRING));
-        const split1 = String(SPLIT1);
+        let data = toJsonData(String(JSON_STRING));
+        let split1 = String(SPLIT1);
         if (!isArray(data) && !isObject(data)) {data = toArray(data)}
         let str = '';
         for (let [k,v] of Object.entries(data)) {
