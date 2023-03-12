@@ -342,7 +342,7 @@
         JSON_STRING = toJsonData(String(JSON_STRING));
         JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
         JSON_PATH.forEach((prop, index) => {
-          isArray(JSON_STRING) ? JSON_STRING[prop - 1] = JSON_STRING : JSON_STRING[prop] = JSON_STRING
+          JSON_STRING[toScratchIndex(prop, JSON_STRING)] = JSON_STRING;
         });
         return toJsonString(JSON_STRING);
       } catch(err) {return ''}
@@ -354,8 +354,8 @@
         JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
         let currentProp = json;
         JSON_PATH.forEach((prop, index) => {
-          if (index === JSON_PATH.length - 1) {isArray(currentProp) ? currentProp[prop - 1] = JSON_VALUE : currentProp[prop] = JSON_VALUE}
-          else {currentProp = isArray(currentProp) ? currentProp[prop - 1] : currentProp[prop]}
+          if (index === JSON_PATH.length - 1) {currentProp[toScratchIndex(prop, currentProp)] = JSON_VALUE}
+          else {currentProp = currentProp[toScratchIndex(prop, currentProp)]}
         });
         return toJsonString(json);
       } catch(err) {return ''}
@@ -366,8 +366,8 @@
         JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
         let currentProp = json;
         JSON_PATH.forEach((prop, index) => {
-          if (index === JSON_PATH.length - 1) {isArray(currentProp) ? delete currentProp[prop - 1] : delete currentProp[prop]}
-          else {currentProp = isArray(currentProp) ? currentProp[prop - 1] : currentProp[prop]}
+          if (index === JSON_PATH.length - 1) {delete currentProp[toScratchIndex(prop, currentProp)]}
+          else {currentProp = currentProp[toScratchIndex(prop, currentProp)]}
         });
         return toJsonString(json);
       } catch(err) {return ''}
@@ -376,7 +376,9 @@
       try {
         JSON_STRING = toJsonData(String(JSON_STRING));
         JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
-        JSON_PATH.forEach(prop => JSON_STRING = isArray(JSON_STRING) ? JSON_STRING[prop - 1] : JSON_STRING[prop]);
+        JSON_PATH.forEach((prop, index) => {
+          JSON_STRING = JSON_STRING[toScratchIndex(prop, JSON_STRING)];
+        });
         return JSON_STRING !== undefined;
       } catch(err) {return false}
     }
