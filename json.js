@@ -342,8 +342,8 @@
         JSON_PATH = toArray(toJsonData(String(JSON_PATH)));
         let currentProp = json;
         JSON_PATH.forEach((prop, index) => {
-          if (index === JSON_PATH.length - 1) {currentProp[prop] = JSON_VALUE}
-          else {currentProp = currentProp[prop]}
+          if (index === JSON_PATH.length - 1) {isArray(currentProp) ? currentProp[prop - 1] = JSON_VALUE : currentProp[prop] = JSON_VALUE}
+          else {isArray(currentProp) ? currentProp = currentProp[prop - 1] : currentProp = currentProp[prop]}
         });
         return toJsonString(json);
       } catch(err) {return ''}
