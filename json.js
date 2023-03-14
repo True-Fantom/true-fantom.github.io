@@ -39,6 +39,13 @@
   const toRawObject = VALUE => {
     return isObject(VALUE) ? VALUE : {'1':VALUE};
   };
+  
+  const toArray = val => {
+    return isArray(val) ? val : isObject(val) ? arrayToObject(val) : toRawArray(val);
+  }
+  const toObject = val => {
+    return isObject(val) ? val : isArray(val) ? objectToArray(val) : toRawObject(val);
+  }
 
   const toScratchIndex = (INDEX, DATA) => {
     if (isArray(DATA) && typeof INDEX === 'number') {
