@@ -15,12 +15,7 @@
   const toJsonString = val => {
     return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
   };
-  const toArray = val => {
-    return Array.isArray(val) ? val : [val];
-  };
-  const toObject = val => {
-    return !Array.isArray(val) && typeof val === 'object' && val !== null ? val : {'1':val};
-  };
+
 
 
 
@@ -29,6 +24,13 @@
   };
   const isObject = val => {
     return !Array.isArray(val) && typeof val === 'object' && val !== null;
+  };
+
+  const toArray = val => {
+    return isArray(val) ? val : [val];
+  };
+  const toObject = val => {
+    return isObject(val) ? val : {'1':val};
   };
 
   const toScratchIndex = (INDEX, DATA) => {
