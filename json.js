@@ -19,7 +19,7 @@
     return Array.isArray(val) ? val : [val];
   };
   const toObject = val => {
-    return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp) ? val : {};
+    return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp) ? val : {'1':val};
   };
   const isRegExp = val => {
     return val instanceof RegExp;
