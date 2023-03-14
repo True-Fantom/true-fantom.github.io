@@ -26,11 +26,11 @@
     return !Array.isArray(val) && typeof val === 'object' && val !== null;
   };
 
-  const toArray = val => {
-    return isArray(val) ? val : [val];
+  const toRawArray = VALUE => {
+    return isArray(VALUE) ? VALUE : [VALUE];
   };
-  const toObject = val => {
-    return isObject(val) ? val : {'1':val};
+  const toRawObject = VALUE => {
+    return isObject(VALUE) ? VALUE : {'1':VALUE};
   };
 
   const toScratchIndex = (INDEX, DATA) => {
@@ -345,7 +345,7 @@
         let data = toJsonData(String(JSON_STRING));
         let split1 = String(SPLIT1);
         let split2 = String(SPLIT2);
-        if (!isArray(data) && !isObject(data)) {data = toArray(data)}
+        if (!isArray(data) && !isObject(data)) {data = toRawArray(data)}
         let str = '';
         for (let [k,v] of Object.entries(data)) {
           str += typeof v === 'object' ? `${k}${split2}${toJsonString(v)}${split1}` : `${k}${split2}${v}${split1}`
@@ -357,7 +357,7 @@
       try {
         let data = toJsonData(String(JSON_STRING));
         let split1 = String(SPLIT1);
-        if (!isArray(data) && !isObject(data)) {data = toArray(data)}
+        if (!isArray(data) && !isObject(data)) {data = toRawArray(data)}
         let str = '';
         for (let [k,v] of Object.entries(data)) {
           str += typeof v === 'object' ? `${toJsonString(v)}${split1}` : `${v}${split1}`
@@ -369,7 +369,7 @@
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
-        let path = toArray(toJsonData(String(JSON_PATH)));
+        let path = toRawArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
           currentProp = currentProp[toScratchIndex(prop, currentProp)];
         });
@@ -381,7 +381,7 @@
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
         let value = toJsonData(String(JSON_VALUE));
-        let path = toArray(toJsonData(String(JSON_PATH)));
+        let path = toRawArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
           try {
             if (index === path.length - 1) {currentProp[toScratchIndex(prop, currentProp)] = value}
@@ -395,7 +395,7 @@
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
-        let path = toArray(toJsonData(String(JSON_PATH)));
+        let path = toRawArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
           try {
             if (index === path.length - 1) {delete currentProp[toScratchIndex(prop, currentProp)]}
@@ -409,7 +409,7 @@
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
-        let path = toArray(toJsonData(String(JSON_PATH)));
+        let path = toRawArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
           currentProp = currentProp[toScratchIndex(prop, currentProp)];
         });
