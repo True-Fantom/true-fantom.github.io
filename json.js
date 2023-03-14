@@ -19,16 +19,16 @@
     return Array.isArray(val) ? val : [val];
   };
   const toObject = val => {
-    return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp) ? val : {'1':val};
+    return !Array.isArray(val) && typeof val === 'object' && val !== null ? val : {'1':val};
   };
-  const isRegExp = val => {
-    return val instanceof RegExp;
-  };
+
+
+
   const isArray = val => {
     return Array.isArray(val);
   };
   const isObject = val => {
-    return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp);
+    return !Array.isArray(val) && typeof val === 'object' && val !== null;
   };
 
   const toScratchIndex = (INDEX, DATA) => {
