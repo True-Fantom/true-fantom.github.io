@@ -26,6 +26,13 @@
     return !Array.isArray(val) && typeof val === 'object' && val !== null;
   };
 
+  const arrayToObject = VALUE => {
+    return '';
+  }
+  const objectToArray = VALUE => {
+    return '';
+  }
+
   const toRawArray = VALUE => {
     return isArray(VALUE) ? VALUE : [VALUE];
   };
