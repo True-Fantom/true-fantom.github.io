@@ -16,7 +16,7 @@
     return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
   };
   const toArray = val => {
-    return Array.isArray(val) ? val : Array.from({length: 1}, (v) => val);
+    return Array.isArray(val) ? val : [val];
   };
   const toObject = val => {
     return !Array.isArray(val) && typeof val === 'object' && val !== null && !(val instanceof RegExp) ? val : {};
