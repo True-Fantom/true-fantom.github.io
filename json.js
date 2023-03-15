@@ -32,7 +32,7 @@
 
   }
   const objectToArray = VALUE => {
-    return '';
+    return Object.values(VALUE);
   }
 
   const toRawArray = VALUE => {
