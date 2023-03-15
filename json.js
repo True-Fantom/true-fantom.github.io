@@ -27,7 +27,9 @@
   };
 
   const arrayToObject = VALUE => {
-    return '';
+    return VALUE.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {});
+
+
   }
   const objectToArray = VALUE => {
     return '';
