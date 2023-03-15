@@ -17,7 +17,10 @@
   };
 
 
-
+  const isNotPrimitiveData = val => {
+    return typeof val === 'object' && val !== null;
+    
+  }
 
   const isArray = val => {
     return Array.isArray(val);
