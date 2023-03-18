@@ -344,7 +344,7 @@
       }
     }
 
-    is_json_block({JSON_STRING}) { // 10/10
+    is_json_block({JSON_STRING}) { // 9/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return true;
@@ -360,7 +360,7 @@
         return toScratchData(toJsonData(String(JSON_STRING)));
       } catch(err) {return ''}
     }
-    json_components_block({COMPONENTS, JSON_STRING}) { // 10/10
+    json_components_block({COMPONENTS, JSON_STRING}) { // 8/10
       try {
         const data = toJsonData(String(JSON_STRING));
         const components = String(COMPONENTS).toLowerCase();
@@ -372,7 +372,7 @@
         }
       } catch(err) {return ''}
     }
-    get_json_item_block({JSON_PATH, JSON_STRING}) { // 10/10
+    get_json_item_block({JSON_PATH, JSON_STRING}) { // 7/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
@@ -383,7 +383,7 @@
         return toJsonString(currentProp);
       } catch(err) {return ''}
     }
-    set_json_item_block({JSON_PATH, JSON_STRING, JSON_VALUE}) { // 10/10
+    set_json_item_block({JSON_PATH, JSON_STRING, JSON_VALUE}) { // 7/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
@@ -398,7 +398,7 @@
         return toJsonString(data);
       } catch(err) {return ''}
     }
-    delete_json_item_block({JSON_PATH, JSON_STRING}) { // 10/10
+    delete_json_item_block({JSON_PATH, JSON_STRING}) { // 7/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
@@ -412,13 +412,13 @@
         return toJsonString(data);
       } catch(err) {return ''}
     }
-    length_of_json_block({JSON_STRING}) { // 10/10
+    length_of_json_block({JSON_STRING}) { // 9/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return toArray(data).length;
       } catch(err) {return 0}
     }
-    json_contains_block({JSON_PATH, JSON_STRING}) { // 10/10
+    json_contains_block({JSON_PATH, JSON_STRING}) { // 7/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
