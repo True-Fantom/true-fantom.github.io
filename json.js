@@ -14,7 +14,7 @@
     return JSON.parse(val);
   };
   const toJsonString = val => {
-    return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
+    return JSON.stringify(val);
   };
 
   const isNotPrimitiveData = val => {
