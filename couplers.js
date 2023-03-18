@@ -99,7 +99,7 @@
       switch (menu) {
         case 'true': return true;
         case 'false': return false;
-        case 'random': default: return Math.random() < 0.5);
+        case 'random': default: return Math.random() < 0.5;
       }
     }
     value_in_boolean_block({VALUE}) {
