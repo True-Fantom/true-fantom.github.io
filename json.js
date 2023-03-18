@@ -9,55 +9,49 @@
   const toScratchData = val => {
     return val === undefined || typeof val === 'object' ? '' : val;
   };
+
   const toJsonData = val => {
-    return JSON.parse(val, null);
+    return JSON.parse(val);
   };
   const toJsonString = val => {
     return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
   };
 
-
   const isNotPrimitiveData = val => {
-    return typeof val === 'object' && val !== null;
-    
-  }
-
+    return val instanceof Object;
+  };
   const isArray = val => {
-    return Array.isArray(val);
+    return val instanceof Array;
   };
   const isObject = val => {
-    return !Array.isArray(val) && typeof val === 'object' && val !== null;
+    return val instanceof Object && !(val instanceof Array);
   };
 
-  const arrayToObject = VALUE => {
-    return VALUE.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {});
-
-
-  }
-  const objectToArray = VALUE => {
-    return Object.values(VALUE);
-  }
-
-  const toRawArray = VALUE => {
-    return isArray(VALUE) ? VALUE : [VALUE];
+  const toRawArray = val => {
+    return isArray(val) ? val : [val];
   };
-  const toRawObject = VALUE => {
-    return isObject(VALUE) ? VALUE : {'1':VALUE};
+  const toRawObject = val => {
+    return isObject(val) ? val : {'1':val};
   };
-  
+  const arrayToObject = val => {
+    return isArray(val) ? val.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}) : val;
+  };
+  const objectToArray = val => {
+    return isObject(val) ? Object.values(val) : val;
+  };
   const toArray = val => {
     return isArray(val) ? val : isObject(val) ? arrayToObject(val) : toRawArray(val);
-  }
+  };
   const toObject = val => {
     return isObject(val) ? val : isArray(val) ? objectToArray(val) : toRawObject(val);
-  }
+  };
 
-  const toScratchIndex = (INDEX, DATA) => {
-    if (isArray(DATA) && typeof INDEX === 'number') {
-      return INDEX - 1;
+  const toScratchIndex = (index, data) => {
+    if (isArray(data) && typeof index === 'number') {
+      return index - 1;
     }
-    if (isObject(DATA) && typeof INDEX === 'string') {
-      return INDEX;
+    if (isObject(data) && typeof index === 'string') {
+      return index;
     }
     throw new TypeError('index is incorrect');
   };
@@ -109,7 +103,7 @@
             }
           },
           {
-            opcode: 'from_json_block',
+            opcode: 'of_json_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[JSON_STRING] of [IMAGE]',
             arguments: {
@@ -336,52 +330,24 @@
         return toJsonString(VALUE);
       } catch(err) {return ''}
     }
-    from_json_block({JSON_STRING}) {
+    of_json_block({JSON_STRING}) {
       try {
         return toScratchData(toJsonData(String(JSON_STRING)));
       } catch(err) {return ''}
     }
-    is_array_block({JSON_STRING}) {
+    json_components_block({COMPONENTS, JSON_STRING}) {
       try {
         const data = toJsonData(String(JSON_STRING));
-        return isArray(data);
-      } catch(err) {return false}
-    }
-    is_object_block({JSON_STRING}) {
-      try {
-        const data = toJsonData(String(JSON_STRING));
-        return isObject(data);
-      } catch(err) {return false}
-    }
-    length_of_json_block({JSON_STRING}) {
-      try {
-        const data = toJsonData(String(JSON_STRING));
-        return isArray(data) ? data.length : isObject(data) ? Object.keys(data).length : 1;
-      } catch(err) {return 0}
-    }
-    json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) {
-      try {
-        let data = toJsonData(String(JSON_STRING));
-        let split1 = String(SPLIT1);
-        let split2 = String(SPLIT2);
-        if (!isArray(data) && !isObject(data)) {data = toRawArray(data)}
-        let str = '';
-        for (let [k,v] of Object.entries(data)) {
-          str += typeof v === 'object' ? `${k}${split2}${toJsonString(v)}${split1}` : `${k}${split2}${v}${split1}`
+        if (isArray(data) || isObject(data)) {
+          const components = String(COMPONENTS).toLowerCase();
+          switch (components) {
+            case 'values': return toJsonString(Object.values(data));
+            case 'keys': return toJsonString(Object.keys(data));
+            case 'pairs (array)': return toJsonString(Object.entries(data));
+            case 'pairs (object)': default: return toJsonString(toObject(data));
+          }
         }
-        return str.substring(0, str.length - SPLIT1.length);
-      } catch(err) {return ''}
-    }
-    json_split_by_split_block({JSON_STRING, SPLIT1}) {
-      try {
-        let data = toJsonData(String(JSON_STRING));
-        let split1 = String(SPLIT1);
-        if (!isArray(data) && !isObject(data)) {data = toRawArray(data)}
-        let str = '';
-        for (let [k,v] of Object.entries(data)) {
-          str += typeof v === 'object' ? `${toJsonString(v)}${split1}` : `${v}${split1}`
-        }
-        return str.substring(0, str.length - SPLIT1.length);
+        return '';
       } catch(err) {return ''}
     }
     get_json_item_block({JSON_PATH, JSON_STRING}) {
@@ -424,6 +390,12 @@
         return toJsonString(data);
       } catch(err) {return ''}
     }
+    length_of_json_block({JSON_STRING}) {
+      try {
+        const data = toJsonData(String(JSON_STRING));
+        return isArray(data) ? data.length : isObject(data) ? Object.keys(data).length : 1;
+      } catch(err) {return 0}
+    }
     json_contains_block({JSON_PATH, JSON_STRING}) {
       try {
         let data = toJsonData(String(JSON_STRING));
@@ -435,19 +407,41 @@
         return currentProp !== undefined;
       } catch(err) {return false}
     }
-    json_components_block({COMPONENTS, JSON_STRING}) {
+    is_object_block({JSON_STRING}) {
       try {
         const data = toJsonData(String(JSON_STRING));
-        if (isArray(data) || isObject(data)) {
-          const components = String(COMPONENTS).toLowerCase();
-          switch (components) {
-            case 'values': return toJsonString(Object.values(data));
-            case 'keys': return toJsonString(Object.keys(data));
-            case 'pairs (array)': return toJsonString(Object.entries(data));
-            case 'pairs (object)': default: return toJsonString(Object.assign({}, data));
-          }
+        return isObject(data);
+      } catch(err) {return false}
+    }
+    is_array_block({JSON_STRING}) {
+      try {
+        const data = toJsonData(String(JSON_STRING));
+        return isArray(data);
+      } catch(err) {return false}
+    }
+    json_split_by_split_block({JSON_STRING, SPLIT1}) {
+      try {
+        let data = toJsonData(String(JSON_STRING));
+        let split1 = String(SPLIT1);
+        if (!isArray(data) && !isObject(data)) {data = toRawArray(data)}
+        let str = '';
+        for (let [k,v] of Object.entries(data)) {
+          str += typeof v === 'object' ? `${toJsonString(v)}${split1}` : `${v}${split1}`
         }
-        return '';
+        return str.substring(0, str.length - SPLIT1.length);
+      } catch(err) {return ''}
+    }
+    json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) {
+      try {
+        let data = toJsonData(String(JSON_STRING));
+        let split1 = String(SPLIT1);
+        let split2 = String(SPLIT2);
+        if (!isArray(data) && !isObject(data)) {data = toRawArray(data)}
+        let str = '';
+        for (let [k,v] of Object.entries(data)) {
+          str += typeof v === 'object' ? `${k}${split2}${toJsonString(v)}${split1}` : `${k}${split2}${v}${split1}`
+        }
+        return str.substring(0, str.length - SPLIT1.length);
       } catch(err) {return ''}
     }
   }
