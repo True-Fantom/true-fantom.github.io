@@ -33,17 +33,32 @@
   const toRawObject = val => {
     return isObject(val) ? val : {'1':val};
   };
+
   const arrayToObject = val => {
     return isArray(val) ? val.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}) : val;
   };
   const objectToArray = val => {
     return isObject(val) ? Object.keys(val).map(key => val[key]) : val;
   };
+
   const toArray = val => {
     return isArray(val) ? val : isObject(val) ? arrayToObject(val) : toRawArray(val);
   };
   const toObject = val => {
     return isObject(val) ? val : isArray(val) ? objectToArray(val) : toRawObject(val);
+  };
+
+  const dataValues = val => {
+    return Object.keys(toObject(val).map(key => val[key]));
+  };
+  const dataKeys = val => {
+    return Object.keys(toObject(val));
+  };
+  const dataPairsArray = val => {
+    return Object.keys(toObject(val).map(key => [key,val[key]]);
+  };
+  const dataPairsObject = val => {
+    return toObject(val);
   };
 
   const toScratchIndex = (index, data) => {
@@ -335,15 +350,15 @@
         return toScratchData(toJsonData(String(JSON_STRING)));
       } catch(err) {return ''}
     }
-    json_components_block({COMPONENTS, JSON_STRING}) { //----------------------------------------------------------------------
+    json_components_block({COMPONENTS, JSON_STRING}) {
       try {
-        const data = toRawArray(toJsonData(String(JSON_STRING)));
+        const data = toJsonData(String(JSON_STRING)));
         const components = String(COMPONENTS).toLowerCase();
         switch (components) {
-          case 'values': return toJsonString(Object.keys(data).map(key => data[key]));
-          case 'keys': return toJsonString(Object.keys(data));
-          case 'pairs (array)': return toJsonString(Object.keys(data).map(key => [key,data[key]]));
-          case 'pairs (object)': default: return toJsonString(toObject(data));
+          case 'values': return toJsonString(dataValues(data));
+          case 'keys': return toJsonString(dataKeys(data));
+          case 'pairs (array)': return toJsonString(dataPairsArray(data));
+          case 'pairs (object)': default: return toJsonString(dataPairsObject(data));
         }
       } catch(err) {return ''}
     }
