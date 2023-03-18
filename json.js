@@ -42,10 +42,10 @@
   };
 
   const toArray = val => {
-    return isArray(val) ? val : isObject(val) ? arrayToObject(val) : toRawArray(val);
+    return isArray(val) ? val : isObject(val) ? objectToArray(val) : toRawArray(val);
   };
   const toObject = val => {
-    return isObject(val) ? val : isArray(val) ? objectToArray(val) : toRawObject(val);
+    return isObject(val) ? val : isArray(val) ? arrayToObject(val) : toRawObject(val);
   };
 
   const dataValues = val => {
