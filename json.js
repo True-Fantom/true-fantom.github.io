@@ -402,10 +402,10 @@
         return toJsonString(data);
       } catch(err) {return ''}
     }
-    length_of_json_block({JSON_STRING}) { //----------------------------------------------------------------------
+    length_of_json_block({JSON_STRING}) {
       try {
         const data = toJsonData(String(JSON_STRING));
-        return isArray(data) ? data.length : isObject(data) ? Object.keys(data).length : 1;
+        return toArray(data).length;
       } catch(err) {return 0}
     }
     json_contains_block({JSON_PATH, JSON_STRING}) {
