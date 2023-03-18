@@ -71,6 +71,16 @@
     throw new TypeError('index is incorrect');
   };
 
+  const dataToString = (data, split1, split2, keys) => {
+    let str = '';
+    for (let [k,v] of dataPairsArray(data)) {
+      if (typeof v === 'object') {v = toJsonString(v)}
+      if (keys) {str += `${k}${split2}${v}${split1}`}
+      else {str += `${v}${split1}`}
+    }
+    return str.substring(0, str.length - split1.length);
+  };
+
   class ScratchJson {
 
     getInfo() {
@@ -431,29 +441,19 @@
         return isArray(data);
       } catch(err) {return false}
     }
-    json_split_by_split_block({JSON_STRING, SPLIT1}) { //----------------------------------------------------------------------
+    json_split_by_split_block({JSON_STRING, SPLIT1}) {
       try {
         let data = toJsonData(String(JSON_STRING));
         let split1 = String(SPLIT1);
-        if (!isArray(data) && !isObject(data)) {data = toRawArray(data)}
-        let str = '';
-        for (let [k,v] of Object.entries(data)) {
-          str += typeof v === 'object' ? `${toJsonString(v)}${split1}` : `${v}${split1}`
-        }
-        return str.substring(0, str.length - SPLIT1.length);
+        return dataToString(data, split1, '', false);
       } catch(err) {return ''}
     }
-    json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) { //----------------------------------------------------------------------
+    json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) {
       try {
         let data = toJsonData(String(JSON_STRING));
         let split1 = String(SPLIT1);
         let split2 = String(SPLIT2);
-        if (!isArray(data) && !isObject(data)) {data = toRawArray(data)}
-        let str = '';
-        for (let [k,v] of Object.entries(data)) {
-          str += typeof v === 'object' ? `${k}${split2}${toJsonString(v)}${split1}` : `${k}${split2}${v}${split1}`
-        }
-        return str.substring(0, str.length - SPLIT1.length);
+        return dataToString(data, split1, split2, true);
       } catch(err) {return ''}
     }
   }
