@@ -62,11 +62,9 @@
   };
 
   const toScratchIndex = (index, data) => {
-    if (isArray(data) && typeof index === 'number') {
-      return index - 1;
-    }
-    if (isObject(data) && typeof index === 'string') {
-      return index;
+    if (typeof index === 'string') {
+      if (isArray(data) && /^[1-9][0-9]*$/.test(index)) {return String(Number(index) - 1)}
+      if (isObject(data)) {return index}
     }
     throw new TypeError('index is incorrect');
   };
@@ -170,7 +168,7 @@
             arguments: {
               JSON_PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruits",1]'
+                defaultValue: '["fruits","1"]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -189,7 +187,7 @@
             arguments: {
               JSON_PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruits",1]'
+                defaultValue: '["fruits","1"]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -212,7 +210,7 @@
             arguments: {
               JSON_PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruits",1]'
+                defaultValue: '["fruits","1"]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -247,7 +245,7 @@
             arguments: {
               JSON_PATH: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '["fruits",1]'
+                defaultValue: '["fruits","1"]'
               },
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
