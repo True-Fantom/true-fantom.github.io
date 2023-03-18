@@ -69,12 +69,12 @@
     throw new TypeError('index is incorrect');
   };
 
-  const dataToString = (data, split1, split2, keys) => {
+  const dataToString = (data, split1, split2) => {
     let str = '';
     for (let [k,v] of dataPairsArray(data)) {
       if (typeof v === 'object') {v = toJsonString(v)}
-      if (keys) {str += `${k}${split2}${v}${split1}`}
-      else {str += `${v}${split1}`}
+      if (split2 !== null) {str += `${k}${split2}${v}${split1}`}
+      if (split2 === null) {str += `${v}${split1}`}
     }
     return str.substring(0, str.length - split1.length);
   };
@@ -443,7 +443,7 @@
       try {
         let data = toJsonData(String(JSON_STRING));
         let split1 = String(SPLIT1);
-        return dataToString(data, split1, '', false);
+        return dataToString(data, split1);
       } catch(err) {return ''}
     }
     json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) { // 6/10
@@ -451,7 +451,7 @@
         let data = toJsonData(String(JSON_STRING));
         let split1 = String(SPLIT1);
         let split2 = String(SPLIT2);
-        return dataToString(data, split1, split2, true);
+        return dataToString(data, split1, split2);
       } catch(err) {return ''}
     }
   }
