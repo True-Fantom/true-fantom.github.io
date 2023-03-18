@@ -63,10 +63,15 @@
 
   const toScratchIndex = (index, data) => {
     if (typeof index === 'string') {
-      if (isArray(data) && new RegExp('^[1-9][0-9]*$').test(index)) {return String(Number(index) - 1)}
-      if (isArray(data)) {return index}
-
-      if (isObject(data)) {return index}
+      if (isArray(data)) {
+        if (new RegExp('^[1-9][0-9]*$').test(index)) {
+          return String(Number(index) - 1);
+        }
+        return index;
+      }
+      if (isObject(data)) {
+        return index;
+      }
     }
     throw new TypeError('index is incorrect');
   };
