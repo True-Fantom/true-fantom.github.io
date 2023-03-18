@@ -55,7 +55,7 @@
     return Object.keys(toObject(val));
   };
   const dataPairsArray = val => {
-    return Object.keys(toObject(val).map(key => [key,val[key]]);
+    return Object.keys(toObject(val).map(key => [key,val[key]]));
   };
   const dataPairsObject = val => {
     return toObject(val);
@@ -352,7 +352,7 @@
     }
     json_components_block({COMPONENTS, JSON_STRING}) {
       try {
-        const data = toJsonData(String(JSON_STRING)));
+        const data = toJsonData(String(JSON_STRING));
         const components = String(COMPONENTS).toLowerCase();
         switch (components) {
           case 'values': return toJsonString(dataValues(data));
