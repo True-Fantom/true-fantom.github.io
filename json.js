@@ -73,8 +73,8 @@
     let str = '';
     for (let [k,v] of dataPairsArray(data)) {
       if (typeof v === 'object') {v = toJsonString(v)}
-      if (split2 !== undefined) {str += `${k}${split2}${v}${split1}`}
       if (split2 === undefined) {str += `${v}${split1}`}
+      if (split2 !== undefined) {str += `${k}${split2}${v}${split1}`}
     }
     return str.substring(0, str.length - split1.length);
   };
