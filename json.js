@@ -38,7 +38,7 @@
     return isArray(val) ? val.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}) : val;
   };
   const objectToArray = val => {
-    return isObject(val) ? Object.keys(val).map(key => val[key]) : val;
+    return isObject(val) ? Object.values(val) : val;
   };
 
   const toArray = val => {
@@ -49,13 +49,13 @@
   };
 
   const dataValues = val => {
-    return Object.keys(toObject(val)).map(key => val[key]);
+    return Object.values(toObject(val));
   };
   const dataKeys = val => {
     return Object.keys(toObject(val));
   };
   const dataPairsArray = val => {
-    return Object.keys(toObject(val)).map(key => [key,val[key]]);
+    return Object.entries(toObject(val));
   };
   const dataPairsObject = val => {
     return toObject(val);
