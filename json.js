@@ -49,13 +49,13 @@
   };
 
   const dataValues = val => {
-    return Object.keys(toObject(val).map(key => val[key]));
+    return Object.keys(toObject(val)).map(key => val[key]);
   };
   const dataKeys = val => {
     return Object.keys(toObject(val));
   };
   const dataPairsArray = val => {
-    return Object.keys(toObject(val).map(key => [key,val[key]]));
+    return Object.keys(toObject(val)).map(key => [key,val[key]]);
   };
   const dataPairsObject = val => {
     return toObject(val);
