@@ -37,7 +37,7 @@
     return isArray(val) ? val.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}) : val;
   };
   const objectToArray = val => {
-    return isObject(val) ? Object.values(val) : val;
+    return isObject(val) ? Object.keys(val).map(key => val[key]) : val;
   };
   const toArray = val => {
     return isArray(val) ? val : isObject(val) ? arrayToObject(val) : toRawArray(val);
@@ -341,9 +341,9 @@
         if (isArray(data) || isObject(data)) {
           const components = String(COMPONENTS).toLowerCase();
           switch (components) {
-            case 'values': return toJsonString(Object.values(data));
+            case 'values': return toJsonString(Object.keys(data).map(key => data[key]));
             case 'keys': return toJsonString(Object.keys(data));
-            case 'pairs (array)': return toJsonString(Object.entries(data));
+            case 'pairs (array)': return toJsonString(Object.keys(data).map(key => [key,data[key]]));
             case 'pairs (object)': default: return toJsonString(toObject(data));
           }
         }
