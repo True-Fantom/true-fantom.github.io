@@ -344,23 +344,23 @@
       }
     }
 
-    is_json_block({JSON_STRING}) {
+    is_json_block({JSON_STRING}) { // 10/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return true;
       } catch(err) {return false}
     }
-    to_json_block({VALUE}) {
+    to_json_block({VALUE}) { // 10/10
       try {
         return toJsonString(VALUE);
       } catch(err) {return ''}
     }
-    of_json_block({JSON_STRING}) {
+    of_json_block({JSON_STRING}) { // 10/10
       try {
         return toScratchData(toJsonData(String(JSON_STRING)));
       } catch(err) {return ''}
     }
-    json_components_block({COMPONENTS, JSON_STRING}) {
+    json_components_block({COMPONENTS, JSON_STRING}) { // 10/10
       try {
         const data = toJsonData(String(JSON_STRING));
         const components = String(COMPONENTS).toLowerCase();
@@ -372,7 +372,7 @@
         }
       } catch(err) {return ''}
     }
-    get_json_item_block({JSON_PATH, JSON_STRING}) {
+    get_json_item_block({JSON_PATH, JSON_STRING}) { // 10/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
@@ -383,7 +383,7 @@
         return toJsonString(currentProp);
       } catch(err) {return ''}
     }
-    set_json_item_block({JSON_PATH, JSON_STRING, JSON_VALUE}) {
+    set_json_item_block({JSON_PATH, JSON_STRING, JSON_VALUE}) { // 10/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
@@ -398,7 +398,7 @@
         return toJsonString(data);
       } catch(err) {return ''}
     }
-    delete_json_item_block({JSON_PATH, JSON_STRING}) {
+    delete_json_item_block({JSON_PATH, JSON_STRING}) { // 10/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
@@ -412,13 +412,13 @@
         return toJsonString(data);
       } catch(err) {return ''}
     }
-    length_of_json_block({JSON_STRING}) {
+    length_of_json_block({JSON_STRING}) { // 10/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return toArray(data).length;
       } catch(err) {return 0}
     }
-    json_contains_block({JSON_PATH, JSON_STRING}) {
+    json_contains_block({JSON_PATH, JSON_STRING}) { // 10/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
@@ -429,26 +429,26 @@
         return currentProp !== undefined;
       } catch(err) {return false}
     }
-    is_object_block({JSON_STRING}) {
+    is_object_block({JSON_STRING}) { // 10/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return isObject(data);
       } catch(err) {return false}
     }
-    is_array_block({JSON_STRING}) {
+    is_array_block({JSON_STRING}) { // 10/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return isArray(data);
       } catch(err) {return false}
     }
-    json_split_by_split_block({JSON_STRING, SPLIT1}) {
+    json_split_by_split_block({JSON_STRING, SPLIT1}) { // 6/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let split1 = String(SPLIT1);
         return dataToString(data, split1, '', false);
       } catch(err) {return ''}
     }
-    json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) {
+    json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) { // 6/10
       try {
         let data = toJsonData(String(JSON_STRING));
         let split1 = String(SPLIT1);
