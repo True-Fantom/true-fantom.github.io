@@ -184,9 +184,7 @@
         id: 'nonameawacompares',
         name: 'Compares',
 
-        color1: '#00a889',
-        color2: '#1e8c76',
-        color3: '#1e8c76',
+        color1: '#59c059',
 
         menuIconURI: icon,
 
@@ -491,46 +489,7 @@
                 defaultValue: 50
               }
             }
-          },
-          '---',
-          {
-            opcode: 'between',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] < [B] < [C]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '\n'
-              },
-              B: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 50
-              },
-              C: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'betweenEqual',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] ≤ [B] ≤ [C]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '\n'
-              },
-              B: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 50
-              },
-              C: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '\n'
-              }
-            }
-          },
+          }
         ]
       };
     }
@@ -600,41 +559,6 @@
       const c = compareAbs(A, B);
       return !(c <= 0.5 && c >= -0.5);
     }
-    //'---'
-    between(args) {
-      return (args.a < args.b) && (args.b < args.c);
-    }
-    betweenEqual(args) {
-      return (args.a <= args.b) && (args.b <= args.c);
-    }
-    /**
-    equalAbs({A, B}) {
-      return cast.compare(A, B) === 0;
-    }
-    moreOrEqualAbs({A, B}) {
-      return cast.compare(A, B) >= 0;
-    }
-    lessOrEqualAbs({A, B}) {
-      return cast.compare(A, B) <= 0;
-    }
-    notEqualAbs({A, B}) {
-      return cast.compare(A, B) !== 0;
-    }
-    exactlyEqualAbs({A, B}) {
-      return exactlyCompare(A, B) === 0;
-    }
-    notExactlyEqualAbs({A, B}) {
-      return exactlyCompare(A, B) !== 0;
-    }
-    almostEqualAbs({A, B}) {
-      const c = cast.compare(A, B);
-      return c <= 0.5 && c >= -0.5;
-    }
-    notAlmostEqualAbs({A, B}) {
-      const c = cast.compare(A, B);
-      return !(c <= 0.5 && c >= -0.5);
-    }
-    **/
   }
 
   Scratch.extensions.register(new Compares());
