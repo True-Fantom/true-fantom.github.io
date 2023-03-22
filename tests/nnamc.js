@@ -192,9 +192,9 @@
 
         blocks: [
           {
-            opcode: 'equalNegative',
+            opcode: 'moreNegative',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] =- [B]',
+            text: '[A] >- [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -206,10 +206,25 @@
               }
             }
           },
-          { 
-            opcode: 'notEqualNegative',
+          {
+            opcode: 'lessOrEqualNegative',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] ≠- [B]',
+            text: '[A] ≤- [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 50
+              }
+            }
+          },
+          {
+            opcode: 'lessNegative',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] <- [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -237,9 +252,24 @@
             }
           },
           {
-            opcode: 'lessOrEqualNegative',
+            opcode: 'equalNegative',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] ≤- [B]',
+            text: '[A] =- [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 50
+              }
+            }
+          },
+          { 
+            opcode: 'notEqualNegative',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≠- [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -313,9 +343,9 @@
           },
           //'---',
           {
-            opcode: 'equalAbs',
+            opcode: 'moreAbs',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] =± [B]',
+            text: '[A] >± [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -327,10 +357,25 @@
               }
             }
           },
-          { 
-            opcode: 'notEqualAbs',
+          {
+            opcode: 'lessOrEqualAbs',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] ≠± [B]',
+            text: '[A] ≤± [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 50
+              }
+            }
+          },
+          {
+            opcode: 'lessAbs',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] <± [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -358,9 +403,24 @@
             }
           },
           {
-            opcode: 'lessOrEqualAbs',
+            opcode: 'equalAbs',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] ≤± [B]',
+            text: '[A] =± [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 50
+              }
+            }
+          },
+          { 
+            opcode: 'notEqualAbs',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≠± [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -475,17 +535,23 @@
       };
     }
 
+    moreNegative({A, B}) {
+      return compareNegative(A, B) > 0;
+    }
+    lessOrEqualNegative({A, B}) {
+      return compareNegative(A, B) <= 0;
+    }
+    lessNegative({A, B}) {
+      return compareNegative(A, B) < 0;
+    }
+    moreOrEqualNegative({A, B}) {
+      return compareNegative(A, B) >= 0;
+    }
     equalNegative({A, B}) {
       return compareNegative(A, B) === 0;
     }
     notEqualNegative({A, B}) {
       return compareNegative(A, B) !== 0;
-    }
-    moreOrEqualNegative({A, B}) {
-      return compareNegative(A, B) >= 0;
-    }
-    lessOrEqualNegative({A, B}) {
-      return compareNegative(A, B) <= 0;
     }
     exactlyEqualNegative({A, B}) {
       return exactlyCompareNegative(A, B) === 0;
@@ -502,17 +568,23 @@
       return !(c <= 0.5 && c >= -0.5);
     }
     //'---'
+    moreAbs({A, B}) {
+      return compareNegative(A, B) > 0;
+    }
+    lessOrEqualAbs({A, B}) {
+      return compareAbs(A, B) <= 0;
+    }
+    lessAbs({A, B}) {
+      return compareNegative(A, B) < 0;
+    }
+    moreOrEqualAbs({A, B}) {
+      return compareAbs(A, B) >= 0;
+    }
     equalAbs({A, B}) {
       return compareAbs(A, B) === 0;
     }
     notEqualAbs({A, B}) {
       return compareAbs(A, B) !== 0;
-    }
-    moreOrEqualAbs({A, B}) {
-      return compareAbs(A, B) >= 0;
-    }
-    lessOrEqualAbs({A, B}) {
-      return compareAbs(A, B) <= 0;
     }
     exactlyEqualAbs({A, B}) {
       return exactlyCompareAbs(A, B) === 0;
