@@ -7,7 +7,10 @@
 
   const toBigInt = value => {
     try {
-      return BigInt(value);
+      if (typeof value === 'boolean') {
+        return BigInt(value);
+      }
+      return BigInt(cast.toString(value));
     } catch(err) {return 0n}
   }
 
