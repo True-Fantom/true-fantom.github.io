@@ -154,12 +154,14 @@
       return toBigInt(A) * toBigInt(B);
     }
     divide_block({A, B}) {
+      if (cast.toNumber(B) === 0) {return Infinity}
       return toBigInt(A) / toBigInt(B);
     }
     exponent_block({A, B}) {
       return powBigInt(toBigInt(A), toBigInt(B));
     }
     root_block({A, B}) {
+      if (cast.toNumber(A) === 0) {return Infinity}
       return powBigInt(toBigInt(B), (1n / toBigInt(A)));
     }
     negative_block({A}) {
