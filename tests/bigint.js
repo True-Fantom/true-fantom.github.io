@@ -89,22 +89,13 @@
     return false;
   };
 
-  const trunc2 = (val, count) => {
-    //No sense to work with integers
-    if (!isTrueInt(val)) {
-      const arr = cast.toString(val).split('.');
-      return cast.toNumber(arr[0] + '.' + arr[1].substr(0, count));
-    }
-    return val;
-  };
-
-  class ScratchBigInt {
+  class ScratchMath {
 
     getInfo() {
       return {
 
-        id: 'truefantombigint',
-        name: 'BigInt',
+        id: 'truefantommath',
+        name: 'Math',
 
         color1: '#59c059',
 
@@ -118,11 +109,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -133,11 +124,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -148,7 +139,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -160,7 +151,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -175,7 +166,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -183,14 +174,14 @@
               }
             }
           },
-          { 
+          {
             opcode: 'not_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≠ [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -198,14 +189,14 @@
               }
             }
           },
-          { 
+          {
             opcode: 'exactly_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≡ [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -213,14 +204,44 @@
               }
             }
           },
-          { 
+          {
             opcode: 'not_exactly_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≢ [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: ''
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 50
+              }
+            }
+          },
+          {
+            opcode: 'almost_equal_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≈ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 50
+              }
+            }
+          },
+          {
+            opcode: 'not_almost_equal_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] ≉ [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -305,11 +326,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '1'
               }
             }
           },
@@ -320,7 +341,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -332,11 +353,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -348,7 +369,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -356,51 +377,21 @@
               }
             }
           },
-          {
-            opcode: 'atan2_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'atan2 of [A] and [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              }
-            }
-          },
           '---',
           {
-            opcode: 'trigonometric_functions_block',
+            opcode: 'pi_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] of [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'trigonometric_functions_menu'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              }
-            }
+            text: '𝜋'
           },
           {
-            opcode: 'reciprocal_trigonometric_functions_block',
+            opcode: 'e_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] of [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'reciprocal_trigonometric_functions_menu'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              }
-            }
+            text: '𝘦'
+          },
+          {
+            opcode: 'infinity_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '∞'
           },
           '---',
           {
@@ -410,7 +401,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -422,7 +413,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -433,7 +424,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           },
@@ -444,30 +435,19 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
+                defaultValue: '\n'
               }
             }
           }
-        ],
-
-        menus: {
-          trigonometric_functions_menu: {
-            acceptReporters: false,
-            items: ['sinh', 'cosh', 'tanh', 'asinh', 'acosh', 'atanh']
-          },
-          reciprocal_trigonometric_functions_menu: {
-            acceptReporters: false,
-            items: ['csc', 'sec', 'cot', 'acsc', 'asec', 'acot', 'csch', 'sech', 'coth', 'acsch', 'asech', 'acoth']
-          }
-        }
-      }
+        ]
+      };
     }
 
     exponent_block({A, B}) {
-      return cast.toNumber(A) ** cast.toNumber(B);
+      return Math.pow(cast.toNumber(A), cast.toNumber(B));
     }
     root_block({A, B}) {
-      return cast.toNumber(B) ** (1 / cast.toNumber(A));
+      return Math.pow(cast.toNumber(B), (1 / cast.toNumber(A)));
     }
     negative_block({A}) {
       return 0 - cast.toNumber(A);
@@ -487,6 +467,14 @@
     not_exactly_equal_block({A, B}) {
       return exactlyCompare(A, B) !== 0;
     }
+    almost_equal_block({A, B}) {
+      const c = cast.compare(A, B);
+      return c <= 0.5 && c >= -0.5;
+    }
+    not_almost_equal_block({A, B}) {
+      const c = cast.compare(A, B);
+      return !(c <= 0.5 && c >= -0.5);
+    }
     nand_block({A, B}) {
       return !(cast.toBoolean(A) && cast.toBoolean(B));
     }
@@ -503,10 +491,18 @@
       return cast.toString(A).includes(cast.toString(B));
     }
     trunc2_block({A, B}) {
-      return trunc2(cast.toNumber(A), cast.toNumber(B));
+      let n = Math.floor(cast.toNumber(B));
+      if (n >= 1) {
+        n = 10 ** n;
+        if (n !== Infinity) {
+          return Math.trunc(cast.toNumber(A) * n) / n;
+        }
+        return cast.toNumber(A);
+      }
+      return Math.trunc(cast.toNumber(A));
     }
     trunc_block({A}) {
-      return trunc2(cast.toNumber(A), 0);
+      return Math.trunc(cast.toNumber(A));
     }
     is_multiple_of_block({A, B}) {
       return cast.toNumber(A) % cast.toNumber(B) === 0;
@@ -514,40 +510,14 @@
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
-    atan2_block({A, B}) {
-      return Math.atan2(cast.toNumber(A), cast.toNumber(B));
+    pi_block() {
+      return Math.PI;
     }
-    trigonometric_functions_block({A, B}) {
-      const operator = cast.toString(A).toLowerCase();
-      const n = cast.toNumber(B);
-      switch (operator) {
-      case 'sinh': return Math.sinh(n);
-      case 'cosh': return Math.cosh(n);
-      case 'tanh': return Math.tanh(n);
-      case 'asinh': return Math.asinh(n);
-      case 'acosh': return Math.acosh(n);
-      case 'atanh': return Math.atanh(n);
-      }
-      return 0;
+    e_block() {
+      return Math.E;
     }
-    reciprocal_trigonometric_functions_block({A, B}) {
-      const operator = cast.toString(A).toLowerCase();
-      const n = cast.toNumber(B);
-      switch (operator) {
-      case 'csc': return 1 / Math.sin(n);
-      case 'sec': return 1 / Math.cos(n);
-      case 'cot': return 1 / Math.tan(n);
-      case 'acsc': return Math.asin(1 / n);
-      case 'asec': return Math.acos(1 / n);
-      case 'acot': return Math.atan(1 / n);
-      case 'csch': return 1 / Math.sinh(n);
-      case 'sech': return 1 / Math.cosh(n);
-      case 'coth': return 1 / Math.tanh(n);
-      case 'acsch': return Math.asinh(1 / n);
-      case 'asech': return Math.acosh(1 / n);
-      case 'acoth': return Math.atanh(1 / n);
-      }
-      return 0;
+    infinity_block() {
+      return Infinity;
     }
     is_safe_number_block({A}) {
       return Number.isSafeInteger(cast.toNumber(A));
@@ -563,5 +533,5 @@
     }
   }
 
-  Scratch.extensions.register(new ScratchBigInt());
+  Scratch.extensions.register(new ScratchMath());
 })(Scratch);
