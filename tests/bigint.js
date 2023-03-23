@@ -19,6 +19,66 @@
 
         blocks: [
           {
+            opcode: 'add_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] + [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'subtract_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] - [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'multiply_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] * [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'divide_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] / [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
             opcode: 'exponent_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] ^ [B]',
@@ -63,6 +123,18 @@
       };
     }
 
+    add_block({A, B}) {
+      return cast.toNumber(A) + cast.toNumber(B);
+    }
+    subtract_block({A, B}) {
+      return cast.toNumber(A) - cast.toNumber(B);
+    }
+    multiply_block({A, B}) {
+      return cast.toNumber(A) * cast.toNumber(B);
+    }
+    divide_block({A, B}) {
+      return cast.toNumber(A) / cast.toNumber(B);
+    }
     exponent_block({A, B}) {
       return Math.pow(cast.toNumber(A), cast.toNumber(B));
     }
