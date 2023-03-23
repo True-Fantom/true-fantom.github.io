@@ -8,7 +8,7 @@
   const toBigInt = value => {
     try {
       return BigInt(value);
-    } catch(err) {return 0}
+    } catch(err) {return 0n}
   }
 
   class ScratchBigInt {
