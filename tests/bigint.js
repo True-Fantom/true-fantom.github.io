@@ -6,12 +6,20 @@
   const cast = Scratch.Cast;
 
   const toBigInt = value => {
-    try {
-      if (typeof value === 'boolean') {
-        return BigInt(value);
+    if (typeof value === 'boolean') {
+      return BigInt(value);
+    }
+    if (typeof value === 'number') {
+      if (Number.isNaN(value)) {
+        return 0n;
       }
-      return BigInt(cast.toString(value));
-    } catch(err) {return 0n}
+      return BigInt(value);
+    }
+    const n = Number(value);
+    if (Number.isNaN(n)) {
+      return 0n;
+    }
+    return BigInt(n);
   };
 
   const powBigInt = (v1, v2) => {
