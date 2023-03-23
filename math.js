@@ -101,7 +101,7 @@
 
         menuIconURI: icon,
 
-        blocks: [
+        blocks: [ //add num.toExponential()
           {
             opcode: 'exponent_block',
             blockType: Scratch.BlockType.REPORTER,
