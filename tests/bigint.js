@@ -5,6 +5,12 @@
 
   const cast = Scratch.Cast;
 
+  const cact.toBigInt = value => {
+    try {
+      return BigInt(value);
+    } catch(err) {return 0}
+  }
+
   class ScratchBigInt {
 
     getInfo() {
@@ -124,7 +130,7 @@
     }
 
     add_block({A, B}) {
-      return cast.toNumber(A) + cast.toNumber(B);
+      return cast.toBigInt(A) + cast.toBigInt(B);
     }
     subtract_block({A, B}) {
       return cast.toNumber(A) - cast.toNumber(B);
