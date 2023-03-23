@@ -5,6 +5,10 @@
 
   const cast = Scratch.Cast;
 
+  const containsErrorBigInt = (v1, v2) => {
+    return v1 === Infinity || v2 === Infinity || v1 === -Infinity || v2 === -Infinity || v1 === 0 || v2 === 0;
+  }
+
   const toBigInt = value => {
     if (typeof value === 'boolean') {
       return BigInt(value);
@@ -145,26 +149,45 @@
     }
 
     add_block({A, B}) {
+      if (containsErrorBigInt(cast.toNumber(A), cast.toNumber(B))) {
+        return cast.toNumber(A) + cast.toNumber(B);
+      }
       return toBigInt(A) + toBigInt(B);
     }
     subtract_block({A, B}) {
+      if (containsErrorBigInt(cast.toNumber(A), cast.toNumber(B))) {
+        return cast.toNumber(A) - cast.toNumber(B);
+      }
       return toBigInt(A) - toBigInt(B);
     }
     multiply_block({A, B}) {
+      if (containsErrorBigInt(cast.toNumber(A), cast.toNumber(B))) {
+        return cast.toNumber(A) * cast.toNumber(B);
+      }
       return toBigInt(A) * toBigInt(B);
     }
     divide_block({A, B}) {
-      if (cast.toNumber(B) === 0) {return Infinity}
+      if (containsErrorBigInt(cast.toNumber(A), cast.toNumber(B))) {
+        return cast.toNumber(A) / cast.toNumber(B);
+      }
       return toBigInt(A) / toBigInt(B);
     }
     exponent_block({A, B}) {
+      if (containsErrorBigInt(cast.toNumber(A), cast.toNumber(B))) {
+        return Math.pow(cast.toNumber(A), cast.toNumber(B));
+      }
       return powBigInt(toBigInt(A), toBigInt(B));
     }
     root_block({A, B}) {
-      if (cast.toNumber(A) === 0) {return Infinity}
+      if (containsErrorBigInt(cast.toNumber(A), cast.toNumber(B))) {
+        return Math.pow(cast.toNumber(B), (1 / cast.toNumber(A)));
+      }
       return powBigInt(toBigInt(B), (1n / toBigInt(A)));
     }
     negative_block({A}) {
+      if (containsErrorBigInt(cast.toNumber(A))) {
+        return 0 - cast.toNumber(A);
+      }
       return 0n - toBigInt(A);
     }
   }
