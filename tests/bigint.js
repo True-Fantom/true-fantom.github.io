@@ -13,13 +13,13 @@
       if (Number.isNaN(value)) {
         return 0n;
       }
-      return BigInt(value);
+      return BigInt(Math.round(value));
     }
     const n = Number(value);
     if (Number.isNaN(n)) {
       return 0n;
     }
-    return BigInt(n);
+    return BigInt(Math.round(n));
   };
 
   const powBigInt = (v1, v2) => {
