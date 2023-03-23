@@ -12,6 +12,10 @@
       }
       return BigInt(cast.toString(value));
     } catch(err) {return 0n}
+  };
+
+  const powBigInt = (v1, v2) => {
+    return v1 ** v2;
   }
 
   class ScratchBigInt {
@@ -145,10 +149,10 @@
       return toBigInt(A) / toBigInt(B);
     }
     exponent_block({A, B}) {
-      return Math.pow(toBigInt(A), toBigInt(B));
+      return powBigInt(toBigInt(A), toBigInt(B));
     }
     root_block({A, B}) {
-      return Math.pow(toBigInt(B), (1n / toBigInt(A)));
+      return powBigInt(toBigInt(B), (1n / toBigInt(A)));
     }
     negative_block({A}) {
       return 0n - toBigInt(A);
