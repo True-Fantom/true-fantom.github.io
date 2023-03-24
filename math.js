@@ -379,38 +379,6 @@
           },
           '---',
           {
-            opcode: 'is_safe_number_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is safe number [A] ?',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'epsilon_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'epsilon'
-          },
-          {
-            opcode: 'max_safe_number_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'max safe number'
-          },
-          {
-            opcode: 'nearest_to_infinity_number_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'nearest to infinity number'
-          },
-          {
-            opcode: 'nearest_to_zero_number_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'nearest to zero number'
-          },
-          '---',
-          {
             opcode: 'is_number_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is number [A] ?',
@@ -442,6 +410,38 @@
                 defaultValue: '\n'
               }
             }
+          },
+          '---',
+          {
+            opcode: 'is_safe_number_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is safe number [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'epsilon_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'epsilon'
+          },
+          {
+            opcode: 'max_safe_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'max safe number'
+          },
+          {
+            opcode: 'nearest_to_infinity_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'nearest to infinity number'
+          },
+          {
+            opcode: 'nearest_to_zero_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'nearest to zero number'
           },
           '---',
           {
@@ -555,6 +555,15 @@
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
+    is_number_block({A}) {
+      return !Number.isNaN(toNaNNumber(A));
+    }
+    is_int_block({A}) {
+      return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
+    }
+    is_float_block({A}) {
+      return !isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
+    }
     is_safe_number_block({A}) {
       return Number.isSafeInteger(cast.toNumber(A));
     }
@@ -569,15 +578,6 @@
     }
     nearest_to_zero_number_block() {
       return Number.MIN_VALUE;
-    }
-    is_number_block({A}) {
-      return !Number.isNaN(toNaNNumber(A));
-    }
-    is_int_block({A}) {
-      return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
-    }
-    is_float_block({A}) {
-      return !isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
     }
     pi_block() {
       return Math.PI;
