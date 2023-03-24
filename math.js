@@ -389,6 +389,31 @@
               }
             }
           },
+          {
+            opcode: 'epsilon_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'epsilon'
+          },
+          {
+            opcode: 'max_safe_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'max safe number'
+          },
+          {
+            opcode: 'min_safe_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'min safe number'
+          },
+          {
+            opcode: 'max_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'max number'
+          },
+          {
+            opcode: 'min_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'min number'
+          },
           '---',
           {
             opcode: 'is_number_block',
@@ -537,6 +562,21 @@
     }
     is_safe_number_block({A}) {
       return Number.isSafeInteger(cast.toNumber(A));
+    }
+    epsilon_block() {
+      return Number.EPSILON;
+    }
+    max_safe_number_block() {
+      return Number.MAX_SAFE_INTEGER;
+    }
+    min_safe_number_block() {
+      return Number.MIN_SAFE_INTEGER;
+    }
+    max_number__block() {
+      return Number.MAX_VALUE;
+    }
+    min_number__block() {
+      return Number.MIN_VALUE;
     }
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
