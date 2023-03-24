@@ -572,10 +572,10 @@
     min_safe_number_block() {
       return Number.MIN_SAFE_INTEGER;
     }
-    max_number__block() {
+    max_number_block() {
       return Number.MAX_VALUE;
     }
-    min_number__block() {
+    min_number_block() {
       return Number.MIN_VALUE;
     }
     is_number_block({A}) {
