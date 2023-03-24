@@ -320,33 +320,6 @@
           },
           '---',
           {
-            opcode: 'trunc2_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'trunc of [A] with [B] digits after dot',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
-              }
-            }
-          },
-          {
-            opcode: 'trunc_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'trunc of [A]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          '---',
-          {
             opcode: 'is_multiple_of_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] is multiple of [B] ?',
@@ -374,6 +347,33 @@
               B: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 10
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'trunc2_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'trunc of [A] with [B] digits after dot',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              }
+            }
+          },
+          {
+            opcode: 'trunc_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'trunc of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
               }
             }
           },
@@ -535,6 +535,12 @@
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
     }
+    is_multiple_of_block({A, B}) {
+      return cast.toNumber(A) % cast.toNumber(B) === 0;
+    }
+    log_with_base_block({A, B}) {
+      return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
+    }
     trunc2_block({A, B}) {
       let n = Math.floor(cast.toNumber(B));
       if (n >= 1) {
@@ -548,12 +554,6 @@
     }
     trunc_block({A}) {
       return Math.trunc(cast.toNumber(A));
-    }
-    is_multiple_of_block({A, B}) {
-      return cast.toNumber(A) % cast.toNumber(B) === 0;
-    }
-    log_with_base_block({A, B}) {
-      return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
