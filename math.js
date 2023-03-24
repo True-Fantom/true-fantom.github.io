@@ -379,47 +379,6 @@
           },
           '---',
           {
-            opcode: 'pi_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '𝜋'
-          },
-          {
-            opcode: 'tau_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'τ'
-          },
-          {
-            opcode: 'e_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '𝘦'
-          },
-          {
-            opcode: 'phi_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'φ'
-          },
-          {
-            opcode: 'plastic_number_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'ρ'
-          },
-          {
-            opcode: 'euler_constant_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'γ'
-          },
-          {
-            opcode: 'omega_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'Ω'
-          },
-          {
-            opcode: 'infinity_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '∞'
-          },
-          '---',
-          {
             opcode: 'is_safe_number_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is safe number [A] ?',
@@ -463,6 +422,47 @@
                 defaultValue: '\n'
               }
             }
+          },
+          '---',
+          {
+            opcode: 'pi_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '𝜋'
+          },
+          {
+            opcode: 'tau_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'τ'
+          },
+          {
+            opcode: 'e_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '𝘦'
+          },
+          {
+            opcode: 'phi_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'φ'
+          },
+          {
+            opcode: 'plastic_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'ρ'
+          },
+          {
+            opcode: 'euler_constant_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'γ'
+          },
+          {
+            opcode: 'omega_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'Ω'
+          },
+          {
+            opcode: 'infinity_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '∞'
           }
         ]
       }
@@ -535,6 +535,18 @@
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
+    is_safe_number_block({A}) {
+      return Number.isSafeInteger(cast.toNumber(A));
+    }
+    is_number_block({A}) {
+      return !Number.isNaN(toNaNNumber(A));
+    }
+    is_int_block({A}) {
+      return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
+    }
+    is_float_block({A}) {
+      return !isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
+    }
     pi_block() {
       return Math.PI;
     }
@@ -558,18 +570,6 @@
     }
     infinity_block() {
       return Infinity;
-    }
-    is_safe_number_block({A}) {
-      return Number.isSafeInteger(cast.toNumber(A));
-    }
-    is_number_block({A}) {
-      return !Number.isNaN(toNaNNumber(A));
-    }
-    is_int_block({A}) {
-      return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
-    }
-    is_float_block({A}) {
-      return !isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
     }
   }
 
