@@ -527,7 +527,7 @@
     }
     phi_block() {
 
-      return 1.618033988749894;
+      return 1.618033988749895; //round (is 1.618033988749894...)
 
     }
     infinity_block() {
