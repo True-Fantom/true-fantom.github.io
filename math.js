@@ -384,18 +384,34 @@
             text: '𝜋'
           },
           {
+            opcode: 'tau_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'τ'
+          },
+          {
             opcode: 'e_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '𝘦'
           },
           {
-
             opcode: 'phi_block',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'φ'
-
+          },
+          {
+            opcode: 'plastic_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'ρ'
+          },
+          {
+            opcode: 'euler_constant_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'γ'
+          },
+          {
+            opcode: 'omega_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'Ω'
           },
           {
             opcode: 'infinity_block',
@@ -522,13 +538,23 @@
     pi_block() {
       return Math.PI;
     }
+    tau_block() {
+      return Math.PI * 2;
+    }
     e_block() {
       return Math.E;
     }
     phi_block() {
-
-      return 1.618033988749895; //round (is 1.618033988749894...)
-
+      return 1.618033988749895;
+    }
+    plastic_number_block() {
+      return 1.324717957244746;
+    }
+    euler_constant_block() {
+      return 0.577215664901533;
+    }
+    omega_block() {
+      return 0.567143290409784;
     }
     infinity_block() {
       return Infinity;
