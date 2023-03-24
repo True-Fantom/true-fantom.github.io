@@ -400,12 +400,12 @@
             text: 'max safe number'
           },
           {
-            opcode: 'max_number_block',
+            opcode: 'nearest_to_infinity_number_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'nearest to infinity number'
           },
           {
-            opcode: 'min_number_block',
+            opcode: 'nearest_to_zero_number_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'nearest to zero number'
           },
@@ -564,10 +564,10 @@
     max_safe_number_block() {
       return Number.MAX_SAFE_INTEGER;
     }
-    max_number_block() {
+    nearest_to_infinity_number_block() {
       return Number.MAX_VALUE;
     }
-    min_number_block() {
+    nearest_to_zero_number_block() {
       return Number.MIN_VALUE;
     }
     is_number_block({A}) {
