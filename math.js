@@ -389,6 +389,15 @@
             text: '𝘦'
           },
           {
+
+            opcode: 'phi_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: 'φ'
+
+          },
+          {
             opcode: 'infinity_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '∞'
@@ -515,6 +524,11 @@
     }
     e_block() {
       return Math.E;
+    }
+    phi_block() {
+
+      return 1.618033988749894;
+
     }
     infinity_block() {
       return Infinity;
