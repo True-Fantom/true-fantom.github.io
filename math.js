@@ -458,6 +458,27 @@
               }
             }
           },
+          {
+
+            opcode: 'normalize_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: 'normalize [A]',
+
+            arguments: {
+
+              A: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              }
+
+            }
+
+          },
           '---',
           {
             opcode: 'is_number_block',
@@ -644,6 +665,11 @@
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
+    }
+    normalize_block({A}) {
+      const n = cast.toNumber(A);
+      return cast.toNumber(n / Math.abs(n));
+
     }
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
