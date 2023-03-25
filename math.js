@@ -384,22 +384,6 @@
           },
           '---',
           {
-            opcode: 'log_with_base_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'log of [A] with base [B]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 10
-              }
-            }
-          },
-          '---',
-          {
             opcode: 'round2_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'round [A] with [B] digits after dot',
@@ -456,6 +440,22 @@
               A: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '\n'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'log_with_base_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'log of [A] with base [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 10
               }
             }
           },
@@ -626,9 +626,6 @@
     is_multiple_of_block({A, B}) {
       return cast.toNumber(A) % cast.toNumber(B) === 0;
     }
-    log_with_base_block({A, B}) {
-      return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
-    }
     round2_block({A, B}) {
       return round2(cast.toNumber(A), cast.toNumber(B));
     }
@@ -645,6 +642,9 @@
     }
     trunc_block({A}) {
       return Math.trunc(cast.toNumber(A));
+    }
+    log_with_base_block({A, B}) {
+      return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
