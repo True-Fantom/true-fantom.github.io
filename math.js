@@ -187,7 +187,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue:
+                defaultValue: undefined
               }
             }
           },
