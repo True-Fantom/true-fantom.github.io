@@ -89,6 +89,54 @@
     return false;
   };
 
+  const round2 = (val, dig) => {
+    let n = Math.floor(dig);
+    if (n >= 1) {
+      n = Math.pow(10, n);
+      if (n !== Infinity) {
+        return Math.round(val * n) / n;
+      }
+      return val;
+    }
+    return Math.round(val);
+  };
+
+  const floor2 = (val, dig) => {
+    let n = Math.floor(dig);
+    if (n >= 1) {
+      n = Math.pow(10, n);
+      if (n !== Infinity) {
+        return Math.floor(val * n) / n;
+      }
+      return val;
+    }
+    return Math.floor(val);
+  };
+
+  const ceiling2 = (val, dig) => {
+    let n = Math.floor(dig);
+    if (n >= 1) {
+      n = Math.pow(10, n);
+      if (n !== Infinity) {
+        return Math.ceil(val * n) / n;
+      }
+      return val;
+    }
+    return Math.ceil(val);
+  };
+
+  const trunc2 = (val, dig) => {
+    let n = Math.floor(dig);
+    if (n >= 1) {
+      n = Math.pow(10, n);
+      if (n !== Infinity) {
+        return Math.trunc(val * n) / n;
+      }
+      return val;
+    }
+    return Math.trunc(val);
+  };
+
   class ScratchMath {
 
     getInfo() {
@@ -352,6 +400,40 @@
           },
           '---',
           {
+            opcode: 'round2_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'round [A] with [B] digits after dot',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              }
+            }
+          },
+          {
+            opcode: 'floor2_ceiling2_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[C] of [A] with [B] digits after dot',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '1'
+              },
+              C: {
+                type: Scratch.ArgumentType.NUMBER,
+                menu: 'floor2_ceiling2_menu'
+              }
+            }
+          },
+          {
             opcode: 'trunc2_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'trunc of [A] with [B] digits after dot',
@@ -484,8 +566,14 @@
             blockType: Scratch.BlockType.REPORTER,
             text: '∞'
           }
-        ]
-      }
+        ],
+        menus: {
+          floor2_ceiling2_menu: {
+            acceptReporters: false,
+            items: ['floor', 'ceiling']
+          }
+        }
+      };
     }
 
     exponent_block({A, B}) {
@@ -541,16 +629,19 @@
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
-    trunc2_block({A, B}) {
-      let n = Math.floor(cast.toNumber(B));
-      if (n >= 1) {
-        n = 10 ** n;
-        if (n !== Infinity) {
-          return Math.trunc(cast.toNumber(A) * n) / n;
-        }
-        return cast.toNumber(A);
+    round2_block({A, B}) {
+      return round2(cast.toNumber(A), cast.toNumber(B));
+    }
+    floor2_ceiling2_block({A, B, C}) {
+      const mode = cast.toString(C).toLowerCase();
+      switch (mode) {
+        case 'floor': return floor2(cast.toNumber(A), cast.toNumber(B));
+        case 'ceiling': return ceiling2(cast.toNumber(A), cast.toNumber(B));
       }
-      return Math.trunc(cast.toNumber(A));
+      return 0;
+    }
+    trunc2_block({A, B}) {
+      return trunc2(cast.toNumber(A), cast.toNumber(B));
     }
     trunc_block({A}) {
       return Math.trunc(cast.toNumber(A));
