@@ -513,6 +513,27 @@
             }
 
           },
+          {
+
+            opcode: 'fround_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: 'fround of [A]',
+
+            arguments: {
+
+              A: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              }
+
+            }
+
+          },
           '---',
           {
             opcode: 'is_number_block',
@@ -699,6 +720,15 @@
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
+    }
+    
+
+   
+
+    fround_block({A}) {
+
+      return Math.fround(cast.toNumber(A));
+
     }
     sign_block({A}) {
 
