@@ -139,19 +139,19 @@
 
   
 
-  const normalize = val => {
-    if (isNaN(val)) {
-      return 0;
-    }
-    if (val === 0) {
-      return 0;
-    }
-    if (val === Infinity) {
-      return 1;
-    }
-    if (val === -Infinity) {
-      return -1;
-    }
+  
+   
+    
+  
+   
+     
+    
+   
+    
+    
+    
+     
+   
     
 
 
@@ -159,7 +159,7 @@
 
 
 
-    return val / Math.abs(val);
+    
 
 
 
@@ -169,7 +169,7 @@
 
 
 
-  };
+ 
 
   class ScratchMath {
 
@@ -494,11 +494,11 @@
           },
           {
 
-            opcode: 'normalize_block',
+            opcode: 'sign_block',
 
             blockType: Scratch.BlockType.REPORTER,
 
-            text: 'normalize [A]',
+            text: 'sign of [A]',
 
             arguments: {
 
@@ -700,9 +700,9 @@
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
-    normalize_block({A}) {
+    sign_block({A}) {
 
-      return normalize(cast.toNumber(A));
+      return cast.toNumber(Math.sign(cast.toNumber(A)));
 
     }
     is_number_block({A}) {
