@@ -140,7 +140,7 @@
   
 
   const normalize = val => {
-    if (isNaN(val) {
+    if (isNaN(val)) {
       return 0;
     }
     if (val === 0) {
