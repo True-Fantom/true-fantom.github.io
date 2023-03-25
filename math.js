@@ -157,11 +157,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: ''
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: ''
               }
             }
           },
@@ -172,11 +172,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: null
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: null
               }
             }
           },
