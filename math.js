@@ -382,7 +382,6 @@
               }
             }
           },
-          '---',
           {
             opcode: 'round2_block',
             blockType: Scratch.BlockType.REPORTER,
