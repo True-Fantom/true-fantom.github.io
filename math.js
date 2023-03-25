@@ -137,6 +137,40 @@
     return Math.trunc(val);
   };
 
+  
+
+  const normalize = val => {
+    if (isNaN(val) {
+      return 0;
+    }
+    if (val === 0) {
+      return 0;
+    }
+    if (val === Infinity) {
+      return 1;
+    }
+    if (val === -Infinity) {
+      return -1;
+    }
+    
+
+
+
+
+
+
+    return val / Math.abs(val);
+
+
+
+
+
+
+
+
+
+  };
+
   class ScratchMath {
 
     getInfo() {
@@ -667,8 +701,8 @@
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
     normalize_block({A}) {
-      const n = cast.toNumber(A);
-      return cast.toNumber(n / Math.abs(n));
+
+      return normalize(cast.toNumber(A));
 
     }
     is_number_block({A}) {
