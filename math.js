@@ -137,40 +137,6 @@
     return Math.trunc(val);
   };
 
-  
-
-  
-   
-    
-  
-   
-     
-    
-   
-    
-    
-    
-     
-   
-    
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
- 
-
   class ScratchMath {
 
     getInfo() {
@@ -493,46 +459,26 @@
             }
           },
           {
-
-            opcode: 'sign_block',
-
+            opcode: 'fround_block',
             blockType: Scratch.BlockType.REPORTER,
-
-            text: 'sign of [A]',
-
+            text: 'fround of [A]',
             arguments: {
-
               A: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               }
-
             }
-
           },
           {
-
-            opcode: 'fround_block',
-
+            opcode: 'sign_block',
             blockType: Scratch.BlockType.REPORTER,
-
-            text: 'fround of [A]',
-
+            text: 'sign of [A]',
             arguments: {
-
               A: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               }
-
             }
-
           },
           '---',
           {
@@ -721,19 +667,11 @@
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
-    
-
-   
-
     fround_block({A}) {
-
       return Math.fround(cast.toNumber(A));
-
     }
     sign_block({A}) {
-
       return Math.sign(cast.toNumber(A));
-
     }
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
