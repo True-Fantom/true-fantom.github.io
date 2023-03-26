@@ -193,6 +193,43 @@
           },
           '---',
           {
+
+            opcode: 'random2_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: 'pick random [A] to [B] with [C] digits after dot',
+
+            arguments: {
+
+              A: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              },
+
+              B: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              },
+              C: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '1'
+
+              }
+
+            }
+
+          },
+          '---',
+          {
             opcode: 'more_or_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≥ [B]',
