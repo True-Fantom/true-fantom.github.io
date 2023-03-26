@@ -389,6 +389,16 @@
           },
           '---',
           {
+
+            opcode: 'random_boolean_block',
+
+            blockType: Scratch.BlockType.BOOLEAN,
+
+            text: 'pick random boolean'
+
+          },
+          '---',
+          {
             opcode: 'exactly_cont_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] exactly contains [B] ?',
@@ -725,6 +735,11 @@
     }
     xnor_block({A, B}) {
       return cast.toBoolean(A) === cast.toBoolean(B);
+    }
+    random_boolean_block() {
+
+      return Math.random() < 0.5;
+
     }
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
