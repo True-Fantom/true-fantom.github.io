@@ -206,7 +206,7 @@
 
                 type: Scratch.ArgumentType.NUMBER,
 
-                defaultValue: '\n'
+                defaultValue: '1'
 
               },
 
@@ -214,7 +214,7 @@
 
                 type: Scratch.ArgumentType.NUMBER,
 
-                defaultValue: '\n'
+                defaultValue: '10'
 
               },
               C: {
@@ -670,9 +670,9 @@
     }
     random2_block({A, B, C}) {
 
-      const nFrom = Cast.toNumber(A);
+      const nFrom = cast.toNumber(A);
 
-      const nTo = Cast.toNumber(B);
+      const nTo = cast.toNumber(B);
 
       const low = nFrom <= nTo ? nFrom : nTo;
 
@@ -685,7 +685,7 @@
   
 
 
-      return trunc2((low + Math.floor(Math.random() * ((high + 1) - low))), Cast.toNumber(C));
+      return trunc2((low + Math.floor(Math.random() * ((high + 1) - low))), cast.toNumber(C));
 
 
 
