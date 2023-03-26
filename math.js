@@ -484,6 +484,29 @@
           },
           '---',
           {
+            opcode: 'exponential_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'exponential of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'text_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'text of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'is_number_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is number [A] ?',
@@ -547,29 +570,6 @@
             opcode: 'nearest_to_zero_number_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'nearest to zero number'
-          },
-          '---',
-          {
-            opcode: 'exponential_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A] as exponential',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'text_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[A] as text',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
           },
           '---',
           {
@@ -698,6 +698,12 @@
     sign_block({A}) {
       return Math.sign(cast.toNumber(A));
     }
+    exponential_block({A}) {
+      return cast.toNumber(A).toExponential();
+    }
+    text_block({A}) {
+      return cast.toNumber(A).toLocaleString();
+    }
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
     }
@@ -721,12 +727,6 @@
     }
     nearest_to_zero_number_block() {
       return Number.MIN_VALUE;
-    }
-    exponential_block({A}) {
-      return cast.toNumber(A).toExponential();
-    }
-    text_block({A}) {
-      return cast.toNumber(A).toLocaleString();
     }
     pi_block() {
       return Math.PI;
