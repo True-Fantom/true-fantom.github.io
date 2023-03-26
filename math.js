@@ -552,6 +552,81 @@
           },
           '---',
           {
+
+            opcode: 'included_clamp_block',
+
+            blockType: Scratch.BlockType.BOOLEAN,
+
+            text: '[C] included in clamp [A] to [B] ?',
+
+            arguments: {
+
+              A: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              },
+
+              B: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              },
+
+              C: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              }
+
+            }
+
+          },
+          {
+
+            opcode: 'clamp_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: 'clamp [A] to [B] of [C]',
+
+            arguments: {
+
+              A: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              },
+
+              B: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              },
+
+              C: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              }
+
+            }
+
+          },
+         '---', 
+          {
             opcode: 'log_with_base_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'log of [A] with base [B]',
@@ -833,6 +908,16 @@
     
 
     min_block({A, B}) {
+
+      return Math.min(cast.toNumber(A), cast.toNumber(B));
+
+    }
+    included_clamp_block({A, B, C}) {
+
+      return Math.min(cast.toNumber(A), cast.toNumber(B));
+
+    }
+    clamp_block({A, B, C}) {
 
       return Math.min(cast.toNumber(A), cast.toNumber(B));
 
