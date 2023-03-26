@@ -382,6 +382,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'round2_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -416,6 +417,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'trunc2_block',
             blockType: Scratch.BlockType.REPORTER,
