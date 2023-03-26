@@ -461,17 +461,6 @@
             }
           },
           {
-            opcode: 'exponential_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'exponential of [A]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
             opcode: 'fround_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'fround of [A]',
@@ -558,6 +547,29 @@
             opcode: 'nearest_to_zero_number_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'nearest to zero number'
+          },
+          '---',
+          {
+            opcode: 'exponential_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] as exponential',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'text_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] as text',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
           },
           '---',
           {
@@ -680,9 +692,6 @@
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
     }
-    exponential_block({A}) {
-      return cast.toNumber(A).toExponential();
-    }
     fround_block({A}) {
       return Math.fround(cast.toNumber(A));
     }
@@ -712,6 +721,12 @@
     }
     nearest_to_zero_number_block() {
       return Number.MIN_VALUE;
+    }
+    exponential_block({A}) {
+      return cast.toNumber(A).toExponential();
+    }
+    text_block({A}) {
+      return cast.toNumber(A).toLocaleString();
     }
     pi_block() {
       return Math.PI;
