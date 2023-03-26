@@ -685,7 +685,7 @@
   
 
 
-      return low + floor2((Math.random() * ((high + 1) - low))), cast.toNumber(C));
+      return low + floor2(((Math.random() * ((high + 1) - low))), cast.toNumber(C));
 
 
 
