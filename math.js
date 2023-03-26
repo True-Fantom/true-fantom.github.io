@@ -914,7 +914,7 @@
     }
     included_clamp_block({A, B, C}) {
 
-      return Math.min(cast.toNumber(A), cast.toNumber(B));
+      return Math.min(Math.max(cast.toNumber(A), cast.toNumber(C)), cast.toNumber(B)) === cast.toNumber(C);
 
     }
     clamp_block({A, B, C}) {
