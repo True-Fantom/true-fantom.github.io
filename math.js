@@ -919,7 +919,7 @@
     }
     clamp_block({A, B, C}) {
 
-      return Math.min(cast.toNumber(A), cast.toNumber(B));
+      return Math.min(Math.max(cast.toNumber(A), cast.toNumber(C)), cast.toNumber(B));
 
     }
     log_with_base_block({A, B}) {
