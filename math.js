@@ -732,7 +732,7 @@
     }
     sign_block({A}) {
 
-      return cast.toNumber(Math.sign(cast.toNumber(A)));
+      return Math.sign(cast.toNumber(A));
 
     }
     is_number_block({A}) {
