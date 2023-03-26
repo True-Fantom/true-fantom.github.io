@@ -149,7 +149,7 @@
 
         menuIconURI: icon,
 
-        blocks: [ //add num.toExponential()
+        blocks: [
           {
             opcode: 'exponent_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -461,6 +461,17 @@
             }
           },
           {
+            opcode: 'exponential_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'exponential of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
             opcode: 'fround_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'fround of [A]',
@@ -668,6 +679,9 @@
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
+    }
+    exponential_block({A}) {
+      return cast.toNumber(A).toExponential();
     }
     fround_block({A}) {
       return Math.fround(cast.toNumber(A));
