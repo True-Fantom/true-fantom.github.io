@@ -631,6 +631,29 @@
     negative_block({A}) {
       return 0 - cast.toNumber(A);
     }
+    random2_block({A, B, C}) {
+
+      const nFrom = Cast.toNumber(A);
+
+      const nTo = Cast.toNumber(B);
+
+      const low = nFrom <= nTo ? nFrom : nTo;
+
+      const high = nFrom <= nTo ? nTo : nFrom;
+
+      if (low === high) {
+        return low;
+      }
+
+  
+
+
+      return trunc2((low + Math.floor(Math.random() * ((high + 1) - low))), Cast.toNumber(C));
+
+
+
+
+    }
     more_or_equal_block({A, B}) {
       return cast.compare(A, B) >= 0;
     }
