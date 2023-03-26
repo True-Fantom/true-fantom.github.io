@@ -493,6 +493,65 @@
           },
           '---',
           {
+
+            opcode: 'max_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: 'max of [A] and [B]',
+
+            arguments: {
+
+              A: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              },
+
+              B: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              }
+
+            }
+
+          },
+          {
+
+            opcode: 'min_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: 'min of [A] and [B]',
+
+            arguments: {
+
+              A: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              },
+
+              B: {
+
+                type: Scratch.ArgumentType.NUMBER,
+
+                defaultValue: '\n'
+
+              }
+
+            }
+
+          },
+          '---',
+          {
             opcode: 'log_with_base_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'log of [A] with base [B]',
@@ -763,6 +822,20 @@
     }
     trunc_block({A}) {
       return Math.trunc(cast.toNumber(A));
+    }
+   
+
+    max_block({A, B}) {
+
+      return Math.max(cast.toNumber(A), cast.toNumber(B));
+
+    }
+    
+
+    min_block({A, B}) {
+
+      return Math.min(cast.toNumber(A), cast.toNumber(B));
+
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
