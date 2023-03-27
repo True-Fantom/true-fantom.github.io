@@ -913,13 +913,42 @@
 
     }
     included_clamp_block({A, B, C}) {
+      
+      const n = cast.toNumber(C);
+      const nFrom = cast.toNumber(A);
 
-      return Math.min(Math.max(cast.toNumber(A), cast.toNumber(C)), cast.toNumber(B)) === cast.toNumber(C);
+      const nTo = cast.toNumber(B);
+
+      const low = nFrom <= nTo ? nFrom : nTo;
+
+      const high = nFrom <= nTo ? nTo : nFrom;
+
+      if (low === high) {
+
+        return low === n;
+
+      }
+
+      return Math.min(Math.max(low, n), high) === n;
 
     }
     clamp_block({A, B, C}) {
+      const n = cast.toNumber(C);
 
-      return Math.min(Math.max(cast.toNumber(A), cast.toNumber(C)), cast.toNumber(B));
+      const nFrom = cast.toNumber(A);
+
+      const nTo = cast.toNumber(B);
+
+      const low = nFrom <= nTo ? nFrom : nTo;
+
+      const high = nFrom <= nTo ? nTo : nFrom;
+
+      if (low === high) {
+
+        return low;
+
+      }
+      return Math.min(Math.max(low, n), high);
 
     }
     log_with_base_block({A, B}) {
