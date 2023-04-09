@@ -349,7 +349,7 @@
       }
     }
 
-    is_json_block({JSON_STRING}) { // 9/10
+    is_json_block({JSON_STRING}) { // 10/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return true;
@@ -381,7 +381,7 @@
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
-        let path = toRawArray(toJsonData(String(JSON_PATH)));
+        let path = toArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
           currentProp = currentProp[toScratchIndex(prop, currentProp)];
         });
@@ -393,7 +393,7 @@
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
         let value = toJsonData(String(JSON_VALUE));
-        let path = toRawArray(toJsonData(String(JSON_PATH)));
+        let path = toArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
           try {
             if (index === path.length - 1) {currentProp[toScratchIndex(prop, currentProp)] = value}
@@ -407,7 +407,7 @@
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
-        let path = toRawArray(toJsonData(String(JSON_PATH)));
+        let path = toArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
           try {
             if (index === path.length - 1) {delete currentProp[toScratchIndex(prop, currentProp)]}
@@ -427,7 +427,7 @@
       try {
         let data = toJsonData(String(JSON_STRING));
         let currentProp = data;
-        let path = toRawArray(toJsonData(String(JSON_PATH)));
+        let path = toArray(toJsonData(String(JSON_PATH)));
         path.forEach((prop, index) => {
           currentProp = currentProp[toScratchIndex(prop, currentProp)];
         });
