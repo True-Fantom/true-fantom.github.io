@@ -77,7 +77,7 @@
 
   const dataToString = (data, split1, split2) => {
     let str = '';
-    for (let [k,v] of dataPairsArray(data)) {
+    for (let [k,v] of dataMap(data)) {
       if (typeof v === 'object') {v = toJsonString(v)}
       if (split2 === undefined) {str += `${v}${split1}`}
       if (split2 !== undefined) {str += `${k}${split2}${v}${split1}`}
