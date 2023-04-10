@@ -343,7 +343,7 @@
         menus: {
           components_menu: {
             acceptReporters: true,
-            items: ['values', 'keys', 'pairs (array)', 'pairs (object)']
+            items: ['values', 'keys', 'pairs', 'map']
           }
         }
       }
