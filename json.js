@@ -27,25 +27,25 @@
     return val instanceof Object && !(val instanceof Array);
   };
 
-  const toRawArray = val => {
-    return isArray(val) ? val : [val];
-  };
-  const toRawObject = val => {
-    return isObject(val) ? val : {'1':val};
-  };
+ 
+    
+  
+  
+   
+  
 
-  const arrayToObject = val => {
-    return isArray(val) ? val.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}) : val;
-  };
-  const objectToArray = val => {
-    return isObject(val) ? Object.values(val) : val;
-  };
+  
+    
+  
+  
+    
+  
 
   const toArray = val => {
-    return isArray(val) ? val : isObject(val) ? objectToArray(val) : toRawArray(val);
+    return isArray(val) ? val : isObject(val) ? Object.values(val) : [val];
   };
   const toObject = val => {
-    return isObject(val) ? val : isArray(val) ? arrayToObject(val) : toRawObject(val);
+    return isObject(val) ? val : isArray(val) ? val.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}) : {'1':val};
   };
 
   const dataValues = val => {
