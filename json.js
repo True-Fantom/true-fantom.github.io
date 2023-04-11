@@ -296,25 +296,7 @@
             }
           },
           '---',
-          {
-            opcode: 'json_split_by_split_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'values of [IMAGE] [JSON_STRING] split by [SPLIT1]',
-            arguments: {
-              JSON_STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '{"fruits":2,"vegetables":2}'
-              },
-              SPLIT1: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: ','
-              },
-              IMAGE: {
-                type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniJson
-              }
-            }
-          },
+          
           {
             opcode: 'json_split_by_splits_block',
             blockType: Scratch.BlockType.REPORTER,
