@@ -472,7 +472,7 @@
       } catch(err) {return false}
     }
 
-    }
+    
     json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) { // 6/10
       try {
         let data = toJsonData(String(JSON_STRING));
