@@ -296,7 +296,51 @@
             }
           },
           '---',
-          
+          {
+
+            opcode: 'to_json_with_splits_block',
+
+            blockType: Scratch.BlockType.REPORTER,
+
+            text: '[JSON_STRING] with splits [SPLIT1] and [SPLIT2] to [IMAGE]',
+
+            arguments: {
+
+              JSON_STRING: {
+
+                type: Scratch.ArgumentType.STRING,
+
+                defaultValue: '{"fruits":2,"vegetables":2}'
+
+              },
+
+              SPLIT1: {
+
+                type: Scratch.ArgumentType.STRING,
+
+                defaultValue: ','
+
+              },
+
+              SPLIT2: {
+
+                type: Scratch.ArgumentType.STRING,
+
+                defaultValue: ':'
+
+              },
+
+              IMAGE: {
+
+                type: Scratch.ArgumentType.IMAGE,
+
+                dataURI: miniJson
+
+              }
+
+            }
+
+          },
           {
             opcode: 'of_json_with_splits_block',
             blockType: Scratch.BlockType.REPORTER,
