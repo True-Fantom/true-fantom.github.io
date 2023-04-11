@@ -298,9 +298,9 @@
           '---',
           
           {
-            opcode: 'json_split_by_splits_block',
+            opcode: 'of_json_with_splits_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'values and keys of [IMAGE] [JSON_STRING] split by [SPLIT1] and [SPLIT2]',
+            text: '[JSON_STRING] with splits [SPLIT1] and [SPLIT2] of [IMAGE]',
             arguments: {
               JSON_STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -427,12 +427,7 @@
         return isArray(data);
       } catch(err) {return false}
     }
-    json_split_by_split_block({JSON_STRING, SPLIT1}) { // 6/10
-      try {
-        let data = toJsonData(String(JSON_STRING));
-        let split1 = String(SPLIT1);
-        return dataToString(data, split1);
-      } catch(err) {return ''}
+
     }
     json_split_by_splits_block({JSON_STRING, SPLIT1, SPLIT2}) { // 6/10
       try {
