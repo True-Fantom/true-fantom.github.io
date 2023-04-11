@@ -265,7 +265,7 @@
           },
           '---',
           {
-            opcode: 'is_object_block',
+            opcode: 'is_json_object_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is [IMAGE] object [JSON_STRING] ?',
             arguments: {
@@ -281,7 +281,7 @@
           },
           '---',
           {
-            opcode: 'is_array_block',
+            opcode: 'is_json_array_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is [IMAGE] array [JSON_STRING] ?',
             arguments: {
@@ -433,13 +433,13 @@
         return currentProp !== undefined;
       } catch(err) {return false}
     }
-    is_object_block({JSON_STRING}) { // 10/10
+    is_json_object_block({JSON_STRING}) { // 10/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return isObject(data);
       } catch(err) {return false}
     }
-    is_array_block({JSON_STRING}) { // 10/10
+    is_json_array_block({JSON_STRING}) { // 10/10
       try {
         const data = toJsonData(String(JSON_STRING));
         return isArray(data);
