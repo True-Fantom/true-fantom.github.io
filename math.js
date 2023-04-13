@@ -404,8 +404,9 @@
             }
           },
           '---',
-          /*{
-            opcode: 'exactly_cont_block', //MOVE TO "Strings" EXTENSION IN FUTURE
+          {
+            hideFromPalette: true, // Was moved to "Strings" extension
+            opcode: 'exactly_cont_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] exactly contains [B] ?',
             arguments: {
@@ -418,7 +419,7 @@
                 defaultValue: 'a'
               }
             }
-          },*/
+          },
           '---',
           {
             opcode: 'round2_block',
@@ -579,7 +580,7 @@
             }
           },
           /*{
-            opcode: 'fround_block',
+            opcode: 'fround_block', // Unfinished
             blockType: Scratch.BlockType.REPORTER,
             text: 'fround of [A]',
             arguments: {
@@ -602,7 +603,7 @@
           },
           '---',
           /*{
-            opcode: 'text_block', //MOVE TO "Strings" EXTENSION IN FUTURE
+            opcode: 'text_block', // Was moved to "Strings" extension
             blockType: Scratch.BlockType.REPORTER,
             text: 'text of [A]',
             arguments: {
@@ -686,7 +687,7 @@
             text: '𝜋'
           },
           /*{
-            opcode: 'tau_block',
+            opcode: 'tau_block', //Probably useless
             blockType: Scratch.BlockType.REPORTER,
             text: 'τ'
           },*/
@@ -711,7 +712,7 @@
             text: 'γ'
           },
           /*{
-            opcode: 'omega_block',
+            opcode: 'omega_block', //Probably useless
             blockType: Scratch.BlockType.REPORTER,
             text: 'Ω'
           },*/
@@ -725,6 +726,10 @@
           boolean_menu: {
             acceptReporters: false,
             items: ['true', 'false']
+          },
+          max_min_menu: {
+            acceptReporters: false,
+            items: ['max', 'min']
           },
           floor2_ceiling2_menu: {
             acceptReporters: false,
