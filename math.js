@@ -912,8 +912,8 @@
         let data = toArray(toJsonData(cast.toString(A)));
         const mode = cast.toString(B).toLowerCase();
         switch (mode) {
-          case 'max': return data.reduce((a, b) => Math.max(cast.toNumber(a), cast.toNumber(b)), 0);
-          case 'min': return data.reduce((a, b) => Math.min(cast.toNumber(a), cast.toNumber(b)), 0);
+          case 'max': return data.reduce((a, b) => Math.max(cast.toNumber(a), cast.toNumber(b)));
+          case 'min': return data.reduce((a, b) => Math.min(cast.toNumber(a), cast.toNumber(b)));
         }
         return 0;
       } catch(err) {return 0}
