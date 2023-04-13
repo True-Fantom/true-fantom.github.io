@@ -557,6 +557,17 @@
             }
           },
           {
+            opcode: 'exponential_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'exponential of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
             opcode: 'fround_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'fround of [A]',
@@ -579,17 +590,6 @@
             }
           },
           '---',
-          {
-            opcode: 'exponential_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'exponential of [A]',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
           /*{
             opcode: 'text_block', //MOVE TO "Strings" EXTENSION IN FUTURE
             blockType: Scratch.BlockType.REPORTER,
