@@ -199,15 +199,15 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: 1
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '10'
+                defaultValue: 10
               },
               C: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: 2
               }
             }
           },
@@ -431,7 +431,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: 2
               }
             }
           },
@@ -446,7 +446,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: 2
               },
               C: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -466,7 +466,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: 2
               }
             }
           },
@@ -493,11 +493,11 @@
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: 1
               },
               C: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: 10
               }
             }
           },
@@ -508,11 +508,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: 1
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: 10
               },
               C: {
                 type: Scratch.ArgumentType.NUMBER,
