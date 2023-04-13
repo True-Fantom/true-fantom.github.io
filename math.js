@@ -590,8 +590,8 @@
               }
             }
           },
-          {
-            opcode: 'text_block',
+          /*{
+            opcode: 'text_block', //MOVE TO "Strings" EXTENSION IN FUTURE
             blockType: Scratch.BlockType.REPORTER,
             text: 'text of [A]',
             arguments: {
@@ -600,7 +600,7 @@
                 defaultValue: '\n'
               }
             }
-          },
+          },*/
           '---',
           {
             opcode: 'is_number_block',
