@@ -193,40 +193,23 @@
           },
           '---',
           {
-
             opcode: 'random2_block',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'pick random [A] to [B] with [C] digits after dot',
-
             arguments: {
-
               A: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '1'
-
               },
-
               B: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '10'
-
               },
               C: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '1'
-
               }
-
             }
-
           },
           '---',
           {
@@ -389,13 +372,9 @@
           },
           '---',
           {
-
             opcode: 'random_boolean_block',
-
             blockType: Scratch.BlockType.BOOLEAN,
-
             text: 'pick random boolean'
-
           },
           '---',
           {
@@ -493,137 +472,73 @@
           },
           '---',
           {
-
             opcode: 'max_block',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'max of [A] and [B]',
-
             arguments: {
-
               A: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               },
-
               B: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               }
-
             }
-
           },
           {
-
             opcode: 'min_block',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'min of [A] and [B]',
-
             arguments: {
-
               A: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               },
-
               B: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               }
-
             }
-
           },
           '---',
           {
-
             opcode: 'included_clamp_block',
-
             blockType: Scratch.BlockType.BOOLEAN,
-
             text: '[C] included in clamp [A] to [B] ?',
-
             arguments: {
-
               A: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               },
-
               B: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               },
-
               C: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               }
-
             }
-
           },
           {
-
             opcode: 'clamp_block',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: 'clamp [A] to [B] of [C]',
-
             arguments: {
-
               A: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               },
-
               B: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               },
-
               C: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               }
-
             }
-
           },
          '---', 
           {
@@ -813,27 +728,14 @@
       return 0 - cast.toNumber(A);
     }
     random2_block({A, B, C}) {
-
       const nFrom = cast.toNumber(A);
-
       const nTo = cast.toNumber(B);
-
       const low = nFrom <= nTo ? nFrom : nTo;
-
       const high = nFrom <= nTo ? nTo : nFrom;
-
       if (low === high) {
         return low;
       }
-
-  
-
-
       return round2((low + (Math.random() * (high - low))), cast.toNumber(C));
-
-
-
-
     }
     more_or_equal_block({A, B}) {
       return cast.compare(A, B) >= 0;
@@ -871,9 +773,7 @@
       return cast.toBoolean(A) === cast.toBoolean(B);
     }
     random_boolean_block() {
-
       return Math.random() < 0.5;
-
     }
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
@@ -898,58 +798,33 @@
     trunc_block({A}) {
       return Math.trunc(cast.toNumber(A));
     }
-   
-
     max_block({A, B}) {
-
       return Math.max(cast.toNumber(A), cast.toNumber(B));
-
     }
-    
-
     min_block({A, B}) {
-
       return Math.min(cast.toNumber(A), cast.toNumber(B));
-
     }
     included_clamp_block({A, B, C}) {
-      
       const n = cast.toNumber(C);
       const nFrom = cast.toNumber(A);
-
       const nTo = cast.toNumber(B);
-
       const low = nFrom <= nTo ? nFrom : nTo;
-
       const high = nFrom <= nTo ? nTo : nFrom;
-
       if (low === high) {
-
         return low === n;
-
       }
-
       return Math.min(Math.max(low, n), high) === n;
-
     }
     clamp_block({A, B, C}) {
       const n = cast.toNumber(C);
-
       const nFrom = cast.toNumber(A);
-
       const nTo = cast.toNumber(B);
-
       const low = nFrom <= nTo ? nFrom : nTo;
-
       const high = nFrom <= nTo ? nTo : nFrom;
-
       if (low === high) {
-
         return low;
-
       }
       return Math.min(Math.max(low, n), high);
-
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
