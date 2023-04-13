@@ -450,7 +450,7 @@
                 defaultValue: 2
               },
               C: {
-                type: Scratch.ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.STRING,
                 menu: 'floor2_ceiling2_menu'
               }
             }
@@ -523,9 +523,9 @@
           },
           '---',
           {
-            opcode: 'max_block',
+            opcode: 'max_min_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'max of [A] and [B]',
+            text: '[C] of [A] and [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -534,21 +534,25 @@
               B: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '\n'
+              },
+              C: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'max_min_menu'
               }
             }
           },
           {
-            opcode: 'min_block',
+            opcode: 'json_max_min_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'min of [A] and [B]',
+            text: '[B] of [A]',
             arguments: {
               A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '[1,2,3,4,5,6,7,8,9]'
               },
               B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                type: Scratch.ArgumentType.STRING,
+                menu: 'max_min_menu'
               }
             }
           },
@@ -727,13 +731,13 @@
             acceptReporters: false,
             items: ['true', 'false']
           },
-          max_min_menu: {
-            acceptReporters: false,
-            items: ['max', 'min']
-          },
           floor2_ceiling2_menu: {
             acceptReporters: false,
             items: ['floor', 'ceiling']
+          },
+          max_min_menu: {
+            acceptReporters: false,
+            items: ['max', 'min']
           }
         }
       };
@@ -849,11 +853,21 @@
       }
       return Math.min(Math.max(low, n), high);
     }
-    max_block({A, B}) {
-      return Math.max(cast.toNumber(A), cast.toNumber(B));
+    max_min_block({A, B, C}) {
+      const mode = cast.toString(C).toLowerCase();
+      switch (mode) {
+        case 'max': return Math.max(cast.toNumber(A), cast.toNumber(B));
+        case 'min': return Math.min(cast.toNumber(A), cast.toNumber(B));
+      }
+      return 0;
     }
-    min_block({A, B}) {
-      return Math.min(cast.toNumber(A), cast.toNumber(B));
+    json_max_min_block({A, B}) {
+      const mode = cast.toString(B).toLowerCase();
+      switch (mode) {
+        case 'max': return Math.max(cast.toNumber(A), cast.toNumber(B));
+        case 'min': return Math.min(cast.toNumber(A), cast.toNumber(B));
+      }
+      return 0;
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
