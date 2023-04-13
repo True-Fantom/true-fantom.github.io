@@ -665,9 +665,9 @@
           },*/
           '---',
           {
-            opcode: 'is_int_block',
+            opcode: 'is_float_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is int [A] ?',
+            text: 'is float [A] ?',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -676,9 +676,9 @@
             }
           },
           {
-            opcode: 'is_float_block',
+            opcode: 'is_int_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is float [A] ?',
+            text: 'is int [A] ?',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -945,11 +945,11 @@
     nan_block() {
       return NaN;
     }
-    is_int_block({A}) {
-      return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
-    }
     is_float_block({A}) {
       return !isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
+    }
+    is_int_block({A}) {
+      return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
     }
     is_safe_number_block({A}) {
       return Number.isSafeInteger(cast.toNumber(A));
