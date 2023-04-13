@@ -665,23 +665,6 @@
           },*/
           '---',
           {
-            opcode: 'is_number_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is number [A] ?',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'nan_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'nan'
-          },
-          '---',
-          {
             opcode: 'is_int_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is int [A] ?',
@@ -702,6 +685,23 @@
                 defaultValue: '\n'
               }
             }
+          },
+          '---',
+          {
+            opcode: 'is_number_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is number [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'nan_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'nan'
           },
           '---',
           {
