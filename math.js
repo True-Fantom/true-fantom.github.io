@@ -378,22 +378,6 @@
           },
           '---',
           {
-            opcode: 'exactly_cont_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] exactly contains [B] ?',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              },
-              B: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'a'
-              }
-            }
-          },
-          '---',
-          {
             opcode: 'is_multiple_of_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] is multiple of [B] ?',
@@ -405,6 +389,22 @@
               B: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: '\n'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'exactly_cont_block', //MOVE TO "Strings" EXTENSION IN FUTURE
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A] exactly contains [B] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'a'
               }
             }
           },
