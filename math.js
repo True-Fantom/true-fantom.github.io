@@ -571,11 +571,11 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: '1'
               },
               B: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: '10'
               },
               C: {
                 type: Scratch.ArgumentType.STRING,
@@ -590,7 +590,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '[1,2,3,4,5,6,7,8,9]'
+                defaultValue: '[1,2,3,4,5,6,7,8,9,10]'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
