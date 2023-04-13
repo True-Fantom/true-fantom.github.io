@@ -648,14 +648,15 @@
             }
           },
           {
-            opcode: 'epsilon_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'epsilon'
-          },
-          {
             opcode: 'max_safe_number_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'max safe number'
+          },
+          '---',
+          {
+            opcode: 'epsilon_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'epsilon'
           },
           {
             opcode: 'nearest_to_infinity_number_block',
@@ -775,11 +776,11 @@
     random_boolean_block() {
       return Math.random() < 0.5;
     }
-    exactly_cont_block({A, B}) {
-      return cast.toString(A).includes(cast.toString(B));
-    }
     is_multiple_of_block({A, B}) {
       return cast.toNumber(A) % cast.toNumber(B) === 0;
+    }
+    exactly_cont_block({A, B}) {
+      return cast.toString(A).includes(cast.toString(B));
     }
     round2_block({A, B}) {
       return round2(cast.toNumber(A), cast.toNumber(B));
@@ -853,11 +854,11 @@
     is_safe_number_block({A}) {
       return Number.isSafeInteger(cast.toNumber(A));
     }
-    epsilon_block() {
-      return Number.EPSILON;
-    }
     max_safe_number_block() {
       return Number.MAX_SAFE_INTEGER;
+    }
+    epsilon_block() {
+      return Number.EPSILON;
     }
     nearest_to_infinity_number_block() {
       return Number.MAX_VALUE;
