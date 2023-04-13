@@ -676,6 +676,12 @@
             }
           },
           {
+            opcode: 'nan_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'nan'
+          },
+          '---',
+          {
             opcode: 'is_int_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is int [A] ?',
@@ -935,6 +941,9 @@
     }
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
+    }
+    nan_block() {
+      return NaN;
     }
     is_int_block({A}) {
       return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
