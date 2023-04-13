@@ -376,6 +376,17 @@
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'pick random boolean'
           },
+          {
+            opcode: 'boolean_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'boolean_menu'
+              }
+            }
+          },
           '---',
           {
             opcode: 'is_multiple_of_block',
@@ -711,6 +722,10 @@
           }
         ],
         menus: {
+          boolean_menu: {
+            acceptReporters: false,
+            items: ['true', 'false']
+          },
           floor2_ceiling2_menu: {
             acceptReporters: false,
             items: ['floor', 'ceiling']
@@ -774,6 +789,14 @@
       return cast.toBoolean(A) === cast.toBoolean(B);
     }
     random_boolean_block() {
+      return Math.random() < 0.5;
+    }
+    boolean_block({A}) {
+      const mode = cast.toString(A).toLowerCase();
+      switch (mode) {
+        case 'true': return true;
+        case 'false': return false;
+      }
       return Math.random() < 0.5;
     }
     is_multiple_of_block({A, B}) {
