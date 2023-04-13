@@ -674,11 +674,11 @@
             blockType: Scratch.BlockType.REPORTER,
             text: '𝜋'
           },
-          {
+          /*{
             opcode: 'tau_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'τ'
-          },
+          },*/
           {
             opcode: 'e_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -699,11 +699,11 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'γ'
           },
-          {
+          /*{
             opcode: 'omega_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'Ω'
-          },
+          },*/
           {
             opcode: 'infinity_block',
             blockType: Scratch.BlockType.REPORTER,
