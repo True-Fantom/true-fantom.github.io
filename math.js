@@ -578,7 +578,7 @@
               }
             }
           },
-          {
+          /*{
             opcode: 'fround_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'fround of [A]',
@@ -588,7 +588,7 @@
                 defaultValue: '\n'
               }
             }
-          },
+          },*/
           {
             opcode: 'sign_block',
             blockType: Scratch.BlockType.REPORTER,
