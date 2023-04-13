@@ -654,11 +654,6 @@
           },
           '---',
           {
-            opcode: 'epsilon_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'epsilon'
-          },
-          {
             opcode: 'nearest_to_infinity_number_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'nearest to infinity number'
@@ -667,6 +662,11 @@
             opcode: 'nearest_to_zero_number_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'nearest to zero number'
+          },
+          {
+            opcode: 'epsilon_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'epsilon'
           },
           '---',
           {
@@ -857,14 +857,14 @@
     max_safe_number_block() {
       return Number.MAX_SAFE_INTEGER;
     }
-    epsilon_block() {
-      return Number.EPSILON;
-    }
     nearest_to_infinity_number_block() {
       return Number.MAX_VALUE;
     }
     nearest_to_zero_number_block() {
       return Number.MIN_VALUE;
+    }
+    epsilon_block() {
+      return Number.EPSILON;
     }
     pi_block() {
       return Math.PI;
