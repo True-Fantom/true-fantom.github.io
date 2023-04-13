@@ -6,6 +6,47 @@
 
   const cast = Scratch.Cast;
 
+  const toScratchData = val => {
+    return val === undefined || typeof val === 'object' ? '' : val;
+  };
+
+  const toJsonData = val => {
+    return JSON.parse(val);
+  };
+  const toJsonString = val => {
+    return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
+  };
+
+  const isNotPrimitiveData = val => {
+    return val instanceof Object;
+  };
+  const isArray = val => {
+    return val instanceof Array;
+  };
+  const isObject = val => {
+    return val instanceof Object && !(val instanceof Array);
+  };
+
+  const toArray = val => {
+    return isArray(val) ? val : isObject(val) ? Object.values(val) : [val];
+  };
+  const toObject = val => {
+    return isObject(val) ? val : isArray(val) ? val.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}) : {'1':val};
+  };
+
+  const dataValues = val => {
+    return Object.values(toObject(val));
+  };
+  const dataKeys = val => {
+    return Object.keys(toObject(val));
+  };
+  const dataPairs = val => {
+    return toObject(val);
+  };
+  const dataMap = val => {
+    return Object.entries(toObject(val));
+  };
+
   const isNotActuallyZero = val => {
     if (typeof val !== 'string') return false;
     for (let i = 0; i < val.length; i++) {
@@ -577,8 +618,8 @@
               }
             }
           },
-          {
-            opcode: 'exponential_block',
+          /*{
+            opcode: 'exponential_block', // Was moved to "Strings" extension
             blockType: Scratch.BlockType.REPORTER,
             text: 'exponential of [A]',
             arguments: {
@@ -587,7 +628,7 @@
                 defaultValue: '\n'
               }
             }
-          },
+          },*/
           /*{
             opcode: 'fround_block', // Unfinished
             blockType: Scratch.BlockType.REPORTER,
@@ -867,12 +908,15 @@
       return 0;
     }
     json_max_min_block({A, B}) {
-      const mode = cast.toString(B).toLowerCase();
-      switch (mode) {
-        case 'max': return Math.max(cast.toNumber(A), cast.toNumber(B));
-        case 'min': return Math.min(cast.toNumber(A), cast.toNumber(B));
-      }
-      return 0;
+      try {
+        let data = toArray(toJsonData(cast.toString(A)));
+        const mode = cast.toString(B).toLowerCase();
+        switch (mode) {
+          case 'max': return data.reduce((a, b) => Math.max(cast.toNumber(a), cast.toNumber(b)), 0);
+          case 'min': return data.reduce((a, b) => Math.min(cast.toNumber(a), cast.toNumber(b)), 0);
+        }
+        return 0;
+      } catch(err) {return 0}
     }
     log_with_base_block({A, B}) {
       return Math.log(cast.toNumber(A)) / Math.log(cast.toNumber(B));
