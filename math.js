@@ -464,21 +464,6 @@
           },
           '---',
           {
-            opcode: 'round2_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'round [A] with [B] digits after dot',
-            arguments: {
-              A: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              B: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 2
-              }
-            }
-          },
-          {
             opcode: 'floor2_ceiling2_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[C] of [A] with [B] digits after dot',
@@ -494,6 +479,21 @@
               C: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'floor2_ceiling2_menu'
+              }
+            }
+          },
+          {
+            opcode: 'round2_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'round [A] with [B] digits after dot',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 2
               }
             }
           },
@@ -886,9 +886,6 @@
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
     }
-    round2_block({A, B}) {
-      return round2(cast.toNumber(A), cast.toNumber(B));
-    }
     floor2_ceiling2_block({A, B, C}) {
       const mode = cast.toString(C).toLowerCase();
       switch (mode) {
@@ -896,6 +893,9 @@
         case 'ceiling': return ceiling2(cast.toNumber(A), cast.toNumber(B));
       }
       return 0;
+    }
+    round2_block({A, B}) {
+      return round2(cast.toNumber(A), cast.toNumber(B));
     }
     trunc2_block({A, B}) {
       return trunc2(cast.toNumber(A), cast.toNumber(B));
