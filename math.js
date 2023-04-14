@@ -730,16 +730,31 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'max safe number'
           },
+          {
+            opcode: 'min_safe_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'min safe number'
+          },
           '---',
           {
             opcode: 'nearest_to_infinity_number_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'nearest to infinity number'
+            text: 'nearest to positive infinity number'
+          },
+          {
+            opcode: 'nearest_to_n_infinity_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'nearest to negative infinity number'
           },
           {
             opcode: 'nearest_to_zero_number_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'nearest to zero number'
+            text: 'nearest to zero negative number'
+          },
+          {
+            opcode: 'n_nearest_to_zero_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'nearest to zero positive number'
           },
           {
             opcode: 'epsilon_block',
@@ -968,11 +983,20 @@
     max_safe_number_block() {
       return Number.MAX_SAFE_INTEGER;
     }
+    min_safe_number_block() {
+      return Number.MIN_SAFE_INTEGER;
+    }
     nearest_to_infinity_number_block() {
       return Number.MAX_VALUE;
     }
+    nearest_to_n_infinity_number_block() {
+      return 0 - Number.MAX_VALUE;
+    }
     nearest_to_zero_number_block() {
       return Number.MIN_VALUE;
+    }
+    n_nearest_to_zero_number_block() {
+      return 0 - Number.MIN_VALUE;
     }
     epsilon_block() {
       return Number.EPSILON;
