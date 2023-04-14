@@ -952,7 +952,7 @@
       return isTrueInt(A) && !Number.isNaN(toNaNNumber(A));
     }
     is_safe_number_block({A}) {
-      return Number.isSafeInteger(cast.toNumber(A));
+      return Number.isSafeInteger(toNaNNumber(A));
     }
     max_safe_number_block() {
       return Number.MAX_SAFE_INTEGER;
