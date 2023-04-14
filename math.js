@@ -699,6 +699,16 @@
             }
           },
           {
+            opcode: 'infinity_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'positive infinity'
+          },
+          {
+            opcode: 'n_infinity_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'negative infinity'
+          },
+          {
             opcode: 'nan_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'nan'
@@ -766,17 +776,12 @@
             opcode: 'euler_constant_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'γ'
-          },
+          }
           /*{
             opcode: 'omega_block', //Probably useless
             blockType: Scratch.BlockType.REPORTER,
             text: 'Ω'
           },*/
-          {
-            opcode: 'infinity_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '∞'
-          }
         ],
         menus: {
           boolean_menu: {
@@ -942,6 +947,12 @@
     is_number_block({A}) {
       return !Number.isNaN(toNaNNumber(A));
     }
+    infinity_block() {
+      return Infinity;
+    }
+    n_infinity_block() {
+      return 0 - Infinity;
+    }
     nan_block() {
       return NaN;
     }
@@ -986,9 +997,6 @@
     }
     omega_block() {
       return 0.567143290409784;
-    }
-    infinity_block() {
-      return Infinity;
     }
   }
 
