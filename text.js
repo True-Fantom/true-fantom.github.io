@@ -155,6 +155,33 @@
           },
           '---',
           {
+            opcode: 'repeat_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'repeat [B] times [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '2'
+              }
+            }
+          },
+          {
+            opcode: 'reverse_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'reverse [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'to_unicode_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] to [IMAGE] unicode',
@@ -233,6 +260,12 @@
     }
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
+    }
+    repeat_block({A, B}) {
+      return cast.toString(A).repeat(Math.floor(cast.toNumber(B));
+    }
+    reverse_block({A}) {
+      return Array.from(cast.toString(A)).reverse().join('');
     }
     to_unicode_block({A}) {
       return toJsonString(Array.from(cast.toString(A)).map(char => char.charCodeAt(0)));
