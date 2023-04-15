@@ -262,7 +262,7 @@
       return cast.toString(A).includes(cast.toString(B));
     }
     repeat_block({A, B}) {
-      return cast.toString(A).repeat(Math.floor(cast.toNumber(B));
+      return cast.toString(A).repeat(Math.floor(cast.toNumber(B)));
     }
     reverse_block({A}) {
       return Array.from(cast.toString(A)).reverse().join('');
