@@ -155,6 +155,37 @@
           },
           '---',
           {
+            opcode: 'to_unicode_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] to [IMAGE] unicode',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniJson
+              }
+            }
+          },
+          {
+            opcode: 'of_unicode_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[A] of [IMAGE] unicode',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '[97,112,112,108,101]'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniJson
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'exponential_block', // Was moved to "Strings" extension
             blockType: Scratch.BlockType.REPORTER,
             text: 'exponential of [A]',
@@ -202,6 +233,12 @@
     }
     exactly_cont_block({A, B}) {
       return cast.toString(A).includes(cast.toString(B));
+    }
+    to_unicode_block({A}) {
+      return toJsonString(Array.from(cast.toString(A)).map(char => char.charCodeAt(0)));
+    }
+    of_unicode_block({A}) {
+      return 0;
     }
     exponential_block({A}) {
       return cast.toNumber(A).toExponential();
