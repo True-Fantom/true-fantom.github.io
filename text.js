@@ -238,7 +238,9 @@
       return toJsonString(Array.from(cast.toString(A)).map(char => char.charCodeAt(0)));
     }
     of_unicode_block({A}) {
-      return 0;
+      try {
+        return toArray(toJsonData(cast.toString(A))).map(code => String.fromCharCode(code)).join('');
+      } catch(err) {return ''}
     }
     exponential_block({A}) {
       return cast.toNumber(A).toExponential();
