@@ -222,6 +222,21 @@
             }
           },
           {
+            opcode: 'capitalize_case_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'capitalize of [A] split by [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple-banana'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '-'
+              }
+            }
+          },
+          {
             opcode: 'swap_case_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'swap case of [A]',
@@ -330,6 +345,9 @@
         case 'wave one': return Array.from(text).map((char, index) => index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()).join('');
         case 'wave two': return Array.from(text).map((char, index) => index % 2 !== 0 ? char.toUpperCase() : char.toLowerCase()).join('');
       }
+    }
+    capitalize_case_block({A, B}) {
+      return cast.toString(A).split(cast.toString(B)).map(word => word[0].toUpperCase() + word.substring(1).toLowerCase()).join('');
     }
     swap_case_block({A}) {
       return Array.from(cast.toString(A)).map(char => isUpperCase(char) ? char.toLowerCase() : char.toUpperCase()).join('');
