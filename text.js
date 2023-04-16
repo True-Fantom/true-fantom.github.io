@@ -348,7 +348,7 @@
     }
     capitalize_case_block({A, B}) {
       const split = cast.toString(B);
-      const text = cast.toString(A).split(split).map(word => word[0].toUpperCase() + word.substring(1).toLowerCase() + split).join('');
+      const text = cast.toString(A).split(split).map(word => word !== undefined ? word[0].toUpperCase() + word.substring(1).toLowerCase() + split : split).join('');
       return text.substring(0, text.length - split.length);
     }
     swap_case_block({A}) {
