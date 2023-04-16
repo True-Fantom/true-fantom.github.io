@@ -182,6 +182,22 @@
           },
           '---',
           {
+            opcode: 'case_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[B] of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'case_menu'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'to_unicode_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] to [IMAGE] unicode',
@@ -213,9 +229,9 @@
           },
           '---',
           {
-            opcode: 'exponential_block', // Was moved to "Strings" extension
+            opcode: 'exponential_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'exponential of [A]',
+            text: 'number [A] as exponential',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -224,9 +240,9 @@
             }
           },
           {
-            opcode: 'text_block', // Was moved to "Strings" extension
+            opcode: 'text_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'text of [A]',
+            text: 'number [A] as text',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -236,17 +252,9 @@
           }
         ],
         menus: {
-          boolean_menu: {
+          case_menu: {
             acceptReporters: false,
-            items: ['true', 'false']
-          },
-          floor2_ceiling2_menu: {
-            acceptReporters: false,
-            items: ['floor', 'ceiling']
-          },
-          max_min_menu: {
-            acceptReporters: false,
-            items: ['max', 'min']
+            items: ['uppercase', 'lowercase', 'wave one', 'wave two']
           }
         }
       };
@@ -266,6 +274,19 @@
     }
     reverse_block({A}) {
       return Array.from(cast.toString(A)).reverse().join('');
+    }
+    case_block({A, B}) {
+      const mode = cast.toString(B).toLowerCase();
+      const text = cast.toString(A);
+      switch (mode) {
+        case 'uppercase': return text.toUpperCase();
+        case 'lowercase': return text.split(' ');
+        case 'capitalize': return text.split(' ');
+        case 'capitalize all': return text;
+        case 'swap': return text;
+        case 'wave one': return Array.from(text).map((char, index) => index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()).join('');
+        case 'wave two': return Array.from(text).map((char, index) => index % 2 !== 0 ? char.toUpperCase() : char.toLowerCase()).join('');
+      }
     }
     to_unicode_block({A}) {
       return toJsonString(Array.from(cast.toString(A)).map(char => char.charCodeAt(0)));
