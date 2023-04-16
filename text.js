@@ -206,7 +206,6 @@
               }
             }
           },
-          '---',
           {
             opcode: 'wave_case_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -222,7 +221,6 @@
               }
             }
           },
-          '---',
           {
             opcode: 'swap_case_block',
             blockType: Scratch.BlockType.REPORTER,
