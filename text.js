@@ -280,7 +280,7 @@
       const text = cast.toString(A);
       switch (mode) {
         case 'uppercase': return text.toUpperCase();
-        case 'lowercase': return text.split(' ');
+        case 'lowercase': return text.toLowerCase();
         case 'capitalize': return text.split(' ');
         case 'capitalize all': return text;
         case 'swap': return text;
