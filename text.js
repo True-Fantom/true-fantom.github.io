@@ -47,6 +47,16 @@
     return Object.entries(toObject(val));
   };
 
+  const isUpperCase = val => {
+    return val.toUpperCase() === val && val.toUpperCase() !== val.toLowerCase();
+  };
+  const isLowerCase = val => {
+    return val.toLowerCase() === val && val.toUpperCase() !== val.toLowerCase();
+  };
+  const isNoneCase = val => {
+    return val.toUpperCase() === val.toLowerCase();
+  };
+
   const isNotActuallyZero = val => {
     if (typeof val !== 'string') return false;
     for (let i = 0; i < val.length; i++) {
@@ -198,6 +208,34 @@
           },
           '---',
           {
+            opcode: 'wave_case_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[B] of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'wave_case_menu'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'swap_case_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'swap case of [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'to_unicode_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] to [IMAGE] unicode',
@@ -254,7 +292,11 @@
         menus: {
           case_menu: {
             acceptReporters: false,
-            items: ['uppercase', 'lowercase', 'wave one', 'wave two']
+            items: ['uppercase', 'lowercase']
+          },
+          wave_case_menu: {
+            acceptReporters: false,
+            items: ['wave one', 'wave two']
           }
         }
       };
@@ -281,12 +323,18 @@
       switch (mode) {
         case 'uppercase': return text.toUpperCase();
         case 'lowercase': return text.toLowerCase();
-        case 'capitalize': return text.split(' ');
-        case 'capitalize all': return text;
-        case 'swap': return text;
+      }
+    }
+    wave_case_block({A, B}) {
+      const mode = cast.toString(B).toLowerCase();
+      const text = cast.toString(A);
+      switch (mode) {
         case 'wave one': return Array.from(text).map((char, index) => index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()).join('');
         case 'wave two': return Array.from(text).map((char, index) => index % 2 !== 0 ? char.toUpperCase() : char.toLowerCase()).join('');
       }
+    }
+    swap_case_block({A}) {
+      return Array.from(cast.toString(A)).map(char => isUpperCase(char) ? char.toLowerCase() : char.toUpperCase()).join('');
     }
     to_unicode_block({A}) {
       return toJsonString(Array.from(cast.toString(A)).map(char => char.charCodeAt(0)));
