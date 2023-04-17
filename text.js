@@ -192,6 +192,21 @@
           },
           '---',
           {
+            opcode: 'is_case_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is [B] [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'case_menu'
+              }
+            }
+          },
+          {
             opcode: 'case_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[B] of [A]',
@@ -330,12 +345,20 @@
     reverse_block({A}) {
       return Array.from(cast.toString(A)).reverse().join('');
     }
-    case_block({A, B}) {
+    is_case_block({A, B}) {
       const mode = cast.toString(B).toLowerCase();
       const text = cast.toString(A);
       switch (mode) {
         case 'uppercase': return text.toUpperCase();
         case 'lowercase': return text.toLowerCase();
+      }
+    }
+    case_block({A, B}) {
+      const mode = cast.toString(B).toLowerCase();
+      const text = cast.toString(A);
+      switch (mode) {
+        case 'uppercase': return isUpperCase(text);
+        case 'lowercase': return isLowerCase(text);
       }
     }
     wave_case_block({A, B}) {
