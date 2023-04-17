@@ -371,12 +371,13 @@
     is_wave_case_block({A, B}) {
       const mode = cast.toString(B).toLowerCase();
       const text = cast.toString(A);
+      let wave;
       switch (mode) {
         case 'wave one':
-          const wave = Array.from(text).map((char, index) => index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()).join('');
+          wave = Array.from(text).map((char, index) => index % 2 === 0 ? char.toUpperCase() : char.toLowerCase()).join('');
           return wave === text && !isNoneCase(text);
         case 'wave two':
-          const wave = Array.from(text).map((char, index) => index % 2 !== 0 ? char.toUpperCase() : char.toLowerCase()).join('');
+          wave = Array.from(text).map((char, index) => index % 2 !== 0 ? char.toUpperCase() : char.toLowerCase()).join('');
           return wave === text && !isNoneCase(text);
       }
     }
