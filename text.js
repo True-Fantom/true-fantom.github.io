@@ -247,6 +247,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'case_block',
             blockType: Scratch.BlockType.REPORTER,
