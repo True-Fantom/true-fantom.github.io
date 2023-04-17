@@ -222,6 +222,21 @@
             }
           },
           {
+            opcode: 'is_capitalize_case_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is capitalize [A] split by [B] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple-banana'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '-'
+              }
+            }
+          },
+          {
             opcode: 'case_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[B] of [A]',
@@ -380,6 +395,12 @@
           wave = Array.from(text).map((char, index) => index % 2 !== 0 ? char.toUpperCase() : char.toLowerCase()).join('');
           return wave === text && !isNoneCase(text);
       }
+    }
+    is_capitalize_case_block({A, B}) {
+      const split = cast.toString(B);
+      const text = cast.toString(A).split(split).map(word => (word !== '' ? word[0].toUpperCase() + word.substring(1).toLowerCase() : '') + split).join('');
+      const capitalize = text.substring(0, text.length - split.length);
+      return capitalize === capitalize && !isNoneCase(capitalize);
     }
     case_block({A, B}) {
       const mode = cast.toString(B).toLowerCase();
