@@ -349,16 +349,16 @@
       const mode = cast.toString(B).toLowerCase();
       const text = cast.toString(A);
       switch (mode) {
-        case 'uppercase': return text.toUpperCase();
-        case 'lowercase': return text.toLowerCase();
+        case 'uppercase': return isUpperCase(text);
+        case 'lowercase': return isLowerCase(text);
       }
     }
     case_block({A, B}) {
       const mode = cast.toString(B).toLowerCase();
       const text = cast.toString(A);
       switch (mode) {
-        case 'uppercase': return isUpperCase(text);
-        case 'lowercase': return isLowerCase(text);
+        case 'uppercase': return text.toUpperCase();
+        case 'lowercase': return text.toLowerCase();
       }
     }
     wave_case_block({A, B}) {
