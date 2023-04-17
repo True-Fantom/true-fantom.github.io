@@ -400,7 +400,7 @@
       const split = cast.toString(B);
       const text = cast.toString(A).split(split).map(word => (word !== '' ? word[0].toUpperCase() + word.substring(1).toLowerCase() : '') + split).join('');
       const capitalize = text.substring(0, text.length - split.length);
-      return capitalize === capitalize && !isNoneCase(capitalize);
+      return capitalize === text && !isNoneCase(capitalize);
     }
     case_block({A, B}) {
       const mode = cast.toString(B).toLowerCase();
