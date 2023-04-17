@@ -192,6 +192,17 @@
           },
           '---',
           {
+            opcode: 'is_case_sensitive_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is case sensitive [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
             opcode: 'is_case_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is [B] [A] ?',
@@ -374,6 +385,9 @@
     }
     reverse_block({A}) {
       return Array.from(cast.toString(A)).reverse().join('');
+    }
+    is_case_sensitive_block({A}) {
+      return !isNoneCase(cast.toString(A));
     }
     is_case_block({A, B}) {
       const mode = cast.toString(B).toLowerCase();
