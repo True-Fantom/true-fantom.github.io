@@ -7,6 +7,13 @@
 
   const cast = Scratch.Cast;
 
+  const toRegExpData = val => {
+    return new RegExp(/\/(.*)\/(.*)/.exec(val)[1], /\/(.*)\/(.*)/.exec(val)[2]);
+  };
+  const toRegExpString = val => {
+    return String(val);
+  };
+
   class ScratchRegExp {
 
     getInfo() {
@@ -126,6 +133,9 @@
       };
     }
 
+    is_regexp_block({A}) {
+      return toRegExpString(toRegExpData(cast.toString(A))) === cast.toString(A);
+    }
     regexp_test_block(args, util) {
       try {
         args.STRING = args.STRING.toString();
