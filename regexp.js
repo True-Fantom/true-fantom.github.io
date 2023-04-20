@@ -38,20 +38,16 @@
           '---',
           {
             opcode: 'regexp_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[STRING] matches [IMAGE] /[REGEX]/[FLAGS]?',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[IMAGE] with pattern [A] and flags [B]',
             arguments: {
-              STRING: {
+              A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'Hello world!'
+                defaultValue: 'a'
               },
-              REGEX: {
+              B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'hello'
-              },
-              FLAGS: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'i'
+                defaultValue: 'gi'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
