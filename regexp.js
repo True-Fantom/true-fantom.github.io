@@ -134,7 +134,9 @@
     }
 
     is_regexp_block({A}) {
-      return toRegExpString(toRegExpData(cast.toString(A))) === cast.toString(A);
+      try {
+        return toRegExpString(toRegExpData(cast.toString(A))) === cast.toString(A);
+      } catch(err) {return false}
     }
     regexp_test_block(args, util) {
       try {
