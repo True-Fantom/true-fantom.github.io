@@ -147,12 +147,12 @@
     }
     regexp_test_block({A, B}) {
       try {
-        return new toRegExpData(cast.toString(B)).test(cast.toString(A));
+        return toRegExpData(cast.toString(B)).test(cast.toString(A));
       } catch(err) {return false}
     }
     regexp_replace_block({A, B, C}) {
       try {
-        return new cast.toString(A).replace(toRegExpData(cast.toString(B)), cast.toString(C));
+        return cast.toString(A).replace(toRegExpData(cast.toString(B)), cast.toString(C));
       } catch(err) {return false}
     }
     regexp_match_block(args, util) {
