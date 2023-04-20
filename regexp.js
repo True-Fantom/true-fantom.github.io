@@ -27,7 +27,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '//'
+                defaultValue: '/apple/gi/'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -43,7 +43,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'a'
+                defaultValue: 'apple'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -59,19 +59,15 @@
           {
             opcode: 'regexp_test_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[STRING] matches [IMAGE] /[REGEX]/[FLAGS]?',
+            text: '[A] test [IMAGE] [B] ?',
             arguments: {
-              STRING: {
+              A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'Hello world!'
+                defaultValue: 'apple'
               },
-              REGEX: {
+              B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'hello'
-              },
-              FLAGS: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'i'
+                defaultValue: '/apple/gi/'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -83,23 +79,19 @@
           {
             opcode: 'regexp_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace [IMAGE] /[REGEX]/[FLAGS] in [STRING] with [REPLACE]',
+            text: 'replace [A] with [IMAGE] [B] to [C]',
             arguments: {
-              REGEX: {
+              A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '.'
+                defaultValue: 'apple'
               },
-              FLAGS: {
+              B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'g'
+                defaultValue: '/apple/gi/'
               },
-              STRING: {
+              C: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'Hello world!'
-              },
-              REPLACE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '$&$&'
+                defaultValue: 'banana'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -110,27 +102,23 @@
           {
             opcode: 'regexp_match_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'item [ITEM] of [STRING] matched by [IMAGE] /[REGEX]/[FLAGS]',
+            text: '[IMAGE2] match [A] by [IMAGE1] [B]',
             arguments: {
-              ITEM: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 1
-              },
-              STRING: {
+              A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'Hello world!'
+                defaultValue: 'apple'
               },
-              REGEX: {
+              B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '(.) (.{2})'
+                defaultValue: '/apple/gi/'
               },
-              FLAGS: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'g'
-              },
-              IMAGE: {
+              IMAGE1: {
                 type: Scratch.ArgumentType.IMAGE,
                 dataURI: miniRegExp
+              },
+              IMAGE2: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniJson
               }
             }
           }
