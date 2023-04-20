@@ -7,6 +7,47 @@
 
   const cast = Scratch.Cast;
 
+  const toScratchData = val => {
+    return val === undefined || typeof val === 'object' ? '' : val;
+  };
+
+  const toJsonData = val => {
+    return JSON.parse(val);
+  };
+  const toJsonString = val => {
+    return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
+  };
+
+  const isNotPrimitiveData = val => {
+    return val instanceof Object;
+  };
+  const isArray = val => {
+    return val instanceof Array;
+  };
+  const isObject = val => {
+    return val instanceof Object && !(val instanceof Array);
+  };
+
+  const toArray = val => {
+    return isArray(val) ? val : isObject(val) ? Object.values(val) : [val];
+  };
+  const toObject = val => {
+    return isObject(val) ? val : isArray(val) ? val.reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}) : {'1':val};
+  };
+
+  const dataValues = val => {
+    return Object.values(toObject(val));
+  };
+  const dataKeys = val => {
+    return Object.keys(toObject(val));
+  };
+  const dataPairs = val => {
+    return toObject(val);
+  };
+  const dataMap = val => {
+    return Object.entries(toObject(val));
+  };
+
   const toRegExpData = val => {
     let arr = /\/(.*)\/(.*)/.exec(val);
     return new RegExp(arr[1], arr[2]);
@@ -136,8 +177,8 @@
 
     is_regexp_block({A}) {
       try {
-        let str = cast.toString(A);
-        return toRegExpString(toRegExpData(str)) === str;
+        let restr = cast.toString(A);
+        return toRegExpString(toRegExpData(restr)) === restr;
       } catch(err) {return false}
     }
     regexp_block({A, B}) {
@@ -147,41 +188,27 @@
     }
     regexp_test_block({A, B}) {
       try {
-        return toRegExpData(cast.toString(B)).test(cast.toString(A));
+        let restr = cast.toString(B);
+        let redat = toRegExpData(restr);
+        if (toRegExpString(redat) === restr) {return redat.test(cast.toString(A))}
+        return false;
       } catch(err) {return false}
     }
     regexp_replace_block({A, B, C}) {
       try {
-        return cast.toString(A).replace(toRegExpData(cast.toString(B)), cast.toString(C));
-      } catch(err) {return false}
-    }
-    regexp_match_block(args, util) {
-      try {
-        args.STRING = args.STRING.toString();
-        args.REGEX = args.REGEX.toString();
-        args.FLAGS = args.FLAGS.toString();
-        args.ITEM = Number(args.ITEM) || 0;
-        // Cache the last matched string
-        if (!(
-          matchCache &&
-          matchCache.string === args.STRING &&
-          matchCache.regex === args.REGEX &&
-          matchCache.flags === args.FLAGS
-        )) {
-          const newFlags = args.FLAGS.includes('g') ? args.FLAGS : args.FLAGS + 'g';
-          const regex = new RegExp(args.REGEX, newFlags);
-          matchCache = {
-            string: args.STRING,
-            regex: args.REGEX,
-            flags: args.FLAGS,
-            arr: args.STRING.match(regex)
-          };
-        }
-        return matchCache.arr[args.ITEM - 1] || '';
-      } catch (e) {
-        console.error(e);
+        let restr = cast.toString(B);
+        let redat = toRegExpData(restr);
+        if (toRegExpString(redat) === restr) {return cast.toString(A).replace(redat, cast.toString(C))}
         return '';
-      }
+      } catch(err) {return ''}
+    }
+    regexp_match_block({A, B}) {
+      try {
+        let restr = cast.toString(B);
+        let redat = toRegExpData(restr);
+        if (toRegExpString(redat) === restr) {return toJsonString(cast.toString(A).match(redat) || [])}
+        return '';
+      } catch(err) {return ''}
     }
   }
 
