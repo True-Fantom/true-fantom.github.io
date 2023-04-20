@@ -268,7 +268,7 @@
       try {
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
-        if (toRegExpString(redat) === restr) {return toJsonString(cast.toString(A).matchAll(redat).map(val => val.index))}
+        if (toRegExpString(redat) === restr) {return toJsonString([...cast.toString(A).matchAll(redat)].map(val => val.index))}
         return '';
       } catch(err) {return ''}
     }
