@@ -193,6 +193,29 @@
                 dataURI: miniJson
               }
             }
+          },
+          {
+            opcode: 'regexp_match_all_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[IMAGE2] match all [A] by [IMAGE1] [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/apple/gi'
+              },
+              IMAGE1: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              },
+              IMAGE2: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniJson
+              }
+            }
           }
         ]
       };
@@ -238,6 +261,14 @@
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
         if (toRegExpString(redat) === restr) {return toJsonString(cast.toString(A).match(redat) || [])}
+        return '';
+      } catch(err) {return ''}
+    }
+    regexp_match_all_block({A, B}) {
+      try {
+        let restr = cast.toString(B);
+        let redat = toRegExpData(restr);
+        if (toRegExpString(redat) === restr) {return toJsonString(cast.toString(A).matchAll(redat).map(val => val.index))}
         return '';
       } catch(err) {return ''}
     }
