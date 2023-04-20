@@ -145,16 +145,10 @@
         return new RegExp(cast.toString(A), cast.toString(B));
       } catch(err) {return ''}
     }
-    regexp_test_block(args, util) {
+    regexp_test_block({A, B}) {
       try {
-        args.STRING = args.STRING.toString();
-        args.REGEX = args.REGEX.toString();
-        args.FLAGS = args.FLAGS.toString();
-        return new RegExp(args.REGEX, args.FLAGS).test(args.STRING);
-      } catch (e) {
-        console.error(e);
-        return false;
-      }
+        return new toRegExpData(cast.toString(B)).test(cast.toString(A));
+      } catch(err) {return false}
     }
     regexp_replace_block(args, util) {
       try {
