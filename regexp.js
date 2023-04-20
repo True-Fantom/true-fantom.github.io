@@ -149,6 +149,29 @@
             }
           },
           {
+            opcode: 'regexp_split_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[IMAGE2] split [A] by [IMAGE1] [B]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/apple/gi'
+              },
+              IMAGE1: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              },
+              IMAGE2: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniJson
+              }
+            }
+          },
+          {
             opcode: 'regexp_match_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[IMAGE2] match [A] by [IMAGE1] [B]',
@@ -199,6 +222,14 @@
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
         if (toRegExpString(redat) === restr) {return cast.toString(A).replace(redat, cast.toString(C))}
+        return '';
+      } catch(err) {return ''}
+    }
+    regexp_split_block({A, B}) {
+      try {
+        let restr = cast.toString(B);
+        let redat = toRegExpData(restr);
+        if (toRegExpString(redat) === restr) {return toJsonString(cast.toString(A).split(redat) || [])}
         return '';
       } catch(err) {return ''}
     }
