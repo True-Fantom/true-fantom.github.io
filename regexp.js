@@ -8,7 +8,8 @@
   const cast = Scratch.Cast;
 
   const toRegExpData = val => {
-    return new RegExp(/\/(.*)\/(.*)/.exec(val)[1], /\/(.*)\/(.*)/.exec(val)[2]);
+    let arr = /\/(.*)\/(.*)/.exec(val);
+    return new RegExp(arr[1], arr[2]);
   };
   const toRegExpString = val => {
     return String(val);
@@ -135,8 +136,14 @@
 
     is_regexp_block({A}) {
       try {
-        return toRegExpString(toRegExpData(cast.toString(A))) === cast.toString(A);
+        let str = cast.toString(A);
+        return toRegExpString(toRegExpData(str)) === str;
       } catch(err) {return false}
+    }
+    regexp_block({A, B}) {
+      try {
+        return new RegExp(cast.toString(A), cast.toString(B));
+      } catch(err) {return ''}
     }
     regexp_test_block(args, util) {
       try {
