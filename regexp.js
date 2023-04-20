@@ -21,9 +21,25 @@
 
         blocks: [
           {
-            opcode: 'regexp_test_block',
+            opcode: 'is_regexp_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[STRING] matches regex /[REGEX]/[FLAGS]?',
+            text: 'is [IMAGE] [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '//'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'regexp_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[STRING] matches [IMAGE] /[REGEX]/[FLAGS]?',
             arguments: {
               STRING: {
                 type: Scratch.ArgumentType.STRING,
@@ -36,6 +52,34 @@
               FLAGS: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'i'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'regexp_test_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[STRING] matches [IMAGE] /[REGEX]/[FLAGS]?',
+            arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'Hello world!'
+              },
+              REGEX: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'hello'
+              },
+              FLAGS: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'i'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
               }
             }
           },
@@ -43,7 +87,7 @@
           {
             opcode: 'regexp_replace_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'replace regex /[REGEX]/[FLAGS] in [STRING] with [REPLACE]',
+            text: 'replace [IMAGE] /[REGEX]/[FLAGS] in [STRING] with [REPLACE]',
             arguments: {
               REGEX: {
                 type: Scratch.ArgumentType.STRING,
@@ -60,13 +104,17 @@
               REPLACE: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '$&$&'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
               }
             }
           },
           {
             opcode: 'regexp_match_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'item [ITEM] of [STRING] matched by regex /[REGEX]/[FLAGS]',
+            text: 'item [ITEM] of [STRING] matched by [IMAGE] /[REGEX]/[FLAGS]',
             arguments: {
               ITEM: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -83,6 +131,10 @@
               FLAGS: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'g'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
               }
             }
           }
