@@ -20,32 +20,52 @@
 
         blocks: [
           {
-            opcode: "replaceRegex",
-            blockType: Scratch.BlockType.REPORTER,
-            text: "replace regex /[REGEX]/[FLAGS] in [STRING] with [REPLACE]",
+            opcode: 'regexp_test_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[STRING] matches regex /[REGEX]/[FLAGS]?',
             arguments: {
+              STRING: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'Hello world!'
+              },
               REGEX: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "."
+                defaultValue: 'hello'
               },
               FLAGS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "g"
+                defaultValue: 'i'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'regexp_replace_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'replace regex /[REGEX]/[FLAGS] in [STRING] with [REPLACE]',
+            arguments: {
+              REGEX: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '.'
+              },
+              FLAGS: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'g'
               },
               STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "Hello world!"
+                defaultValue: 'Hello world!'
               },
               REPLACE: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "$&$&"
+                defaultValue: '$&$&'
               }
             }
           },
           {
-            opcode: "matchRegex",
+            opcode: 'regexp_match_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: "item [ITEM] of [STRING] matched by regex /[REGEX]/[FLAGS]",
+            text: 'item [ITEM] of [STRING] matched by regex /[REGEX]/[FLAGS]',
             arguments: {
               ITEM: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -53,34 +73,15 @@
               },
               STRING: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "Hello world!"
+                defaultValue: 'Hello world!'
               },
               REGEX: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "(.) (.{2})"
+                defaultValue: '(.) (.{2})'
               },
               FLAGS: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: "g"
-              }
-            }
-          },
-          {
-            opcode: "testRegex",
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: "[STRING] matches regex /[REGEX]/[FLAGS]?",
-            arguments: {
-              STRING: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "Hello world!"
-              },
-              REGEX: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "hello"
-              },
-              FLAGS: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: "i"
+                defaultValue: 'g'
               }
             }
           }
@@ -88,7 +89,18 @@
       };
     }
 
-    replaceRegex(args, util) {
+    regexp_test_block(args, util) {
+      try {
+        args.STRING = args.STRING.toString();
+        args.REGEX = args.REGEX.toString();
+        args.FLAGS = args.FLAGS.toString();
+        return new RegExp(args.REGEX, args.FLAGS).test(args.STRING);
+      } catch (e) {
+        console.error(e);
+        return false;
+      }
+    }
+    regexp_replace_block(args, util) {
       try {
         args.STRING = args.STRING.toString();
         args.REPLACE = args.REPLACE.toString();
@@ -100,10 +112,10 @@
         );
       } catch (e) {
         console.error(e);
-        return "";
+        return '';
       }
     }
-    matchRegex(args, util) {
+    regexp_match_block(args, util) {
       try {
         args.STRING = args.STRING.toString();
         args.REGEX = args.REGEX.toString();
@@ -116,7 +128,7 @@
           matchCache.regex === args.REGEX &&
           matchCache.flags === args.FLAGS
         )) {
-          const newFlags = args.FLAGS.includes("g") ? args.FLAGS : args.FLAGS + "g";
+          const newFlags = args.FLAGS.includes('g') ? args.FLAGS : args.FLAGS + 'g';
           const regex = new RegExp(args.REGEX, newFlags);
           matchCache = {
             string: args.STRING,
@@ -125,21 +137,10 @@
             arr: args.STRING.match(regex)
           };
         }
-        return matchCache.arr[args.ITEM - 1] || "";
+        return matchCache.arr[args.ITEM - 1] || '';
       } catch (e) {
         console.error(e);
-        return "";
-      }
-    }
-    testRegex(args, util) {
-      try {
-        args.STRING = args.STRING.toString();
-        args.REGEX = args.REGEX.toString();
-        args.FLAGS = args.FLAGS.toString();
-        return new RegExp(args.REGEX, args.FLAGS).test(args.STRING);
-      } catch (e) {
-        console.error(e);
-        return false;
+        return '';
       }
     }
   }
