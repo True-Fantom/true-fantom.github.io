@@ -150,20 +150,10 @@
         return new toRegExpData(cast.toString(B)).test(cast.toString(A));
       } catch(err) {return false}
     }
-    regexp_replace_block(args, util) {
+    regexp_replace_block({A, B, C}) {
       try {
-        args.STRING = args.STRING.toString();
-        args.REPLACE = args.REPLACE.toString();
-        args.REGEX = args.REGEX.toString();
-        args.FLAGS = args.FLAGS.toString();
-        return args.STRING.replace(
-          new RegExp(args.REGEX, args.FLAGS),
-          args.REPLACE
-        );
-      } catch (e) {
-        console.error(e);
-        return '';
-      }
+        return new cast.toString(A).replace(toRegExpData(cast.toString(B)), cast.toString(C));
+      } catch(err) {return false}
     }
     regexp_match_block(args, util) {
       try {
