@@ -27,7 +27,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '/apple/gi/'
+                defaultValue: '/apple/gi'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -67,7 +67,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '/apple/gi/'
+                defaultValue: '/apple/gi'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -87,7 +87,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '/apple/gi/'
+                defaultValue: '/apple/gi'
               },
               C: {
                 type: Scratch.ArgumentType.STRING,
@@ -110,7 +110,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: '/apple/gi/'
+                defaultValue: '/apple/gi'
               },
               IMAGE1: {
                 type: Scratch.ArgumentType.IMAGE,
