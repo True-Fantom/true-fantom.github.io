@@ -56,10 +56,6 @@
     return String(val);
   };
 
-  const searchFix = val => {
-    return val === -1 ? -2 : val;
-  };
-
   class ScratchRegExp {
 
     getInfo() {
@@ -331,12 +327,21 @@
         let redat = toRegExpData(restr);
         let str = cast.toString(A);
         if (toRegExpString(redat) === restr) {
+          let gredat = redat.global ? redat : new RegExp(redat.source, redat.flags + 'g');
           const match = cast.toString(C).toLowerCase();
           switch (match) {
-            case 'values': return toJsonString(str.match(redat) || []);
-            case 'keys': return toJsonString(redat.global ? Array.from(str.matchAll(redat)).map(val => cast.toString(val.index + 1)) : [cast.toString(searchFix(str.search(redat)) + 1)]);
-            case 'pairs': let val = str.match(redat) || []; let key = redat.global ? Array.from(str.matchAll(redat)).map(val => cast.toString(val.index + 1)) : [cast.toString(searchFix(str.search(redat)) + 1)]; let obj = {}; key.forEach((k, v) => obj[k] = val[v]); return toJsonString(obj);
-            case 'map': return toJsonString(redat.global ? Array.from(str.matchAll(redat)).map(val => [cast.toString(val.index + 1), val.input]) : [[cast.toString(searchFix(str.search(redat)) + 1), (str.match(redat) || [])[0]]]);
+            case 'values':
+              return toJsonString(str.match(redat) || []);
+            case 'keys': 
+              let arr = Array.from(str.matchAll(gredat)).map(val => String(val.index + 1));
+              return toJsonString(redat.global ? arr : arr[0] ? [arr[0]] : []);
+            case 'pairs':
+              let obj = {};
+              let tobj = Array.from(str.matchAll(gredat)).map(val => obj[val.index + 1] = val.input);
+              return toJsonString(redat.global ? obj : {});
+            case 'map':
+              let map = Array.from(str.matchAll(gredat)).map(val => [String(val.index + 1), val.input]);
+              return toJsonString(redat.global ? map : map[0] ? [map[0]] : []);
           }
         }
         return '';
