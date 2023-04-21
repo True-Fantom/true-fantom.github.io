@@ -110,9 +110,9 @@
             }
           },
           {
-            opcode: 'regexp_flags_status_block',
+            opcode: 'regexp_contains_flags_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is [B] [IMAGE] [A] ?',
+            text: '[IMAGE] [A] contains flags [B] ?',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -120,7 +120,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'flags_status_menu'
+                defaultValue: 'gi'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -172,9 +172,9 @@
             }
           },
           {
-            opcode: 'regexp_add_flag_block',
+            opcode: 'regexp_add_flags_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'add flag [B] to [IMAGE] [A]',
+            text: 'add flags [B] to [IMAGE] [A]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -182,7 +182,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'flags_status_menu'
+                defaultValue: 'gi'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -191,9 +191,9 @@
             }
           },
           {
-            opcode: 'regexp_delete_flag_block',
+            opcode: 'regexp_delete_flags_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete flag [B] of [IMAGE] [A]',
+            text: 'delete flags [B] of [IMAGE] [A]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -201,7 +201,7 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'flags_status_menu'
+                defaultValue: 'gi'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -332,7 +332,7 @@
         return new RegExp(cast.toString(A), cast.toString(B));
       } catch(err) {return ''}
     }
-    regexp_flags_status_block({A, B}) {
+    regexp_contains_flags_block({A, B}) {
       try {
         let restr = cast.toString(A);
         let redat = toRegExpData(restr);
