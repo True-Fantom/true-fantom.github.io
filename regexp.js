@@ -336,9 +336,8 @@
               let arr = Array.from(str.matchAll(gredat)).map(val => String(val.index + 1));
               return toJsonString(redat.global ? arr : arr[0] ? [arr[0]] : []);
             case 'pairs':
-              let obj = {};
-              let tobj = Array.from(str.matchAll(gredat)).map(val => obj[val.index + 1] = val[0]);
-              return toJsonString(redat.global ? obj : {});
+              let obj = {}; Array.from(str.matchAll(gredat)).map(val => obj[val.index + 1] = val[0]);
+              return toJsonString(redat.global ? obj : Object.keys(obj)[0] ? {[Object.keys(obj)[0]] : Object.values(obj)[0]} : {});
             case 'map':
               let map = Array.from(str.matchAll(gredat)).map(val => [String(val.index + 1), val[0]]);
               return toJsonString(redat.global ? map : map[0] ? [map[0]] : []);
