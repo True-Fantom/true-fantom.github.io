@@ -149,6 +149,53 @@
           },
           '---',
           {
+            opcode: 'regexp_set_pattern_flags_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'set [B] of [IMAGE] [A] to [C]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/apple/gi'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'components_menu'
+              },
+              C: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'banana'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              }
+            }
+          },
+          {
+            opcode: 'regexp_add_delete_flag_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[B] flag [C] of [IMAGE] [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/apple/gi'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'components_menu'
+              },
+              C: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'flags_status_menu'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'regexp_test_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] test [IMAGE] [B] ?',
