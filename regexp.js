@@ -327,7 +327,7 @@
         let redat = toRegExpData(restr);
         let str = cast.toString(A);
         if (toRegExpString(redat) === restr) {
-          let gredat = redat.global ? redat : new RegExp(redat.source, redat.flags + 'g');
+          const gredat = redat.global ? redat : new RegExp(redat.source, redat.flags + 'g');
           const match = cast.toString(C).toLowerCase();
           switch (match) {
             case 'values':
