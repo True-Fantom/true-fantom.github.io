@@ -151,7 +151,7 @@
           {
             opcode: 'regexp_set_pattern_flags_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'set [B] of [IMAGE] [A] to [C]',
+            text: '[IMAGE] set [B] of [IMAGE] [A] to [C]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -174,7 +174,7 @@
           {
             opcode: 'regexp_add_flags_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'add flags [B] to [IMAGE] [A]',
+            text: '[IMAGE] add flags [B] to [IMAGE] [A]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -193,7 +193,7 @@
           {
             opcode: 'regexp_delete_flags_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'delete flags [B] of [IMAGE] [A]',
+            text: '[IMAGE] delete flags [B] of [IMAGE] [A]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
