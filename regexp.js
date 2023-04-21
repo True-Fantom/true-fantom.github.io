@@ -337,10 +337,10 @@
               return toJsonString(redat.global ? arr : arr[0] ? [arr[0]] : []);
             case 'pairs':
               let obj = {};
-              let tobj = Array.from(str.matchAll(gredat)).map(val => obj[val.index + 1] = val.input);
+              let tobj = Array.from(str.matchAll(gredat)).map(val => obj[val.index + 1] = val[0]);
               return toJsonString(redat.global ? obj : {});
             case 'map':
-              let map = Array.from(str.matchAll(gredat)).map(val => [String(val.index + 1), val.input]);
+              let map = Array.from(str.matchAll(gredat)).map(val => [String(val.index + 1), val[0]]);
               return toJsonString(redat.global ? map : map[0] ? [map[0]] : []);
           }
         }
