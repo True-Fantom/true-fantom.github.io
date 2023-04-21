@@ -162,7 +162,6 @@
               }
             }
           },
-          '---',
           {
             opcode: 'regexp_replace_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -212,7 +211,7 @@
           {
             opcode: 'regexp_match_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE2] match [A] by [IMAGE1] [B]',
+            text: '[IMAGE2] match [C] of [A] by [IMAGE1] [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -222,28 +221,9 @@
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: '/apple/gi'
               },
-              IMAGE1: {
-                type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniRegExp
-              },
-              IMAGE2: {
-                type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniJson
-              }
-            }
-          },
-          {
-            opcode: 'regexp_match_all_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE2] match all [A] by [IMAGE1] [B]',
-            arguments: {
-              A: {
+              C: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              },
-              B: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: '/apple/gi'
+                menu: 'match_menu'
               },
               IMAGE1: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -264,6 +244,10 @@
           flags_status_menu: {
             acceptReporters: false,
             items: ['global (g)', 'ignore case (i)', 'multiline (m)', 'dot all (s)', 'unicode (u)', 'sticky (y)']
+          },
+          match_menu: {
+            acceptReporters: false,
+            items: ['values', 'keys', 'pairs', 'map']
           }
         }
       };
@@ -336,11 +320,19 @@
         return '';
       } catch(err) {return ''}
     }
-    regexp_match_block({A, B}) {
+    regexp_match_block({A, B, C}) {
       try {
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
-        if (toRegExpString(redat) === restr) {return toJsonString(cast.toString(A).match(redat) || [])}
+        if (toRegExpString(redat) === restr) {
+          const match = cast.toString(C).toLowerCase();
+          switch (match) {
+            case 'values': return return toJsonString(cast.toString(A).match(redat) || []);
+            case 'keys': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => val.index + 1)) : toJsonString([cast.toString(A).search(redat) + 1]);
+            case 'pairs': return '';
+            case 'map': return '';
+          }
+        }
         return '';
       } catch(err) {return ''}
     }
