@@ -271,6 +271,7 @@
         if (toRegExpString(redat) === restr) {
           const status = cast.toString(B).toLowerCase();
           switch (status) {
+            case 'has indices (d)': return redat.hasIndices;
             case 'global (g)': return redat.global;
             case 'ignore case (i)': return redat.ignoreCase;
             case 'multiline (m)': return redat.multiline;
@@ -328,9 +329,9 @@
           const match = cast.toString(C).toLowerCase();
           switch (match) {
             case 'values': return toJsonString(cast.toString(A).match(redat) || []);
-            case 'keys': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => val.index + 1)) : toJsonString([cast.toString(A).search(redat) + 1]);
+            case 'keys': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => cast.toString(val.index + 1))) : toJsonString([cast.toString(cast.toString(A).search(redat) + 1)]);
             case 'pairs': return '';
-            case 'map': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => [val.index + 1, val])) : toJsonString([cast.toString(A).search(redat) + 1, (cast.toString(A).match(redat) || [])[0]]);
+            case 'map': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => [cast.toString(val.index + 1), val.input])) : toJsonString([cast.toString(cast.toString(A).search(redat) + 1), (cast.toString(A).match(redat) || [])[0]]);
           }
         }
         return '';
