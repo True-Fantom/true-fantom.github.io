@@ -325,13 +325,14 @@
       try {
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
+        let str = cast.toString(A);
         if (toRegExpString(redat) === restr) {
           const match = cast.toString(C).toLowerCase();
           switch (match) {
-            case 'values': return toJsonString(cast.toString(A).match(redat) || []);
-            case 'keys': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => cast.toString(val.index + 1))) : toJsonString([cast.toString(cast.toString(A).search(redat) + 1)]);
-            case 'pairs': return '';
-            case 'map': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => [cast.toString(val.index + 1), val.input])) : toJsonString([cast.toString(cast.toString(A).search(redat) + 1), (cast.toString(A).match(redat) || [])[0]]);
+            case 'values': return toJsonString(str.match(redat) || []);
+            case 'keys': return toJsonString(redat.global ? Array.from(str.matchAll(redat)).map(val => cast.toString(val.index + 1)) : [cast.toString(str.search(redat) + 1)]);
+            case 'pairs': let val = str.match(redat) || []; let key = redat.global ? Array.from(str.matchAll(redat)).map(val => cast.toString(val.index + 1)) : [cast.toString(str.search(redat) + 1)]; let obj = {}; key.forEach((k, v) => obj[k] = val[v]); return toJsonString(obj);
+            case 'map': return toJsonString(redat.global ? Array.from(str.matchAll(redat)).map(val => [cast.toString(val.index + 1), val.input]) : [cast.toString(str.search(redat) + 1), (str.match(redat) || [])[0]]);
           }
         }
         return '';
