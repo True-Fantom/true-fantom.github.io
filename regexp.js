@@ -330,7 +330,7 @@
             case 'values': return return toJsonString(cast.toString(A).match(redat) || []);
             case 'keys': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => val.index + 1)) : toJsonString([cast.toString(A).search(redat) + 1]);
             case 'pairs': return '';
-            case 'map': return '';
+            case 'map': return redat.global ? toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => [val.index + 1, val])) : toJsonString([cast.toString(A).search(redat) + 1, (cast.toString(A).match(redat) || [])[0]]);
           }
         }
         return '';
