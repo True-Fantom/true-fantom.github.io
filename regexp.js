@@ -106,7 +106,7 @@
           },
           {
             opcode: 'regexp_flags_status_block',
-            blockType: Scratch.BlockType.REPORTER,
+            blockType: Scratch.BlockType.BOOLEAN,
             text: 'is [B] [IMAGE] [A] ?',
             arguments: {
               A: {
