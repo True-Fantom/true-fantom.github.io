@@ -243,7 +243,7 @@
           },
           flags_status_menu: {
             acceptReporters: false,
-            items: ['global (g)', 'ignore case (i)', 'multiline (m)', 'dot all (s)', 'unicode (u)', 'sticky (y)']
+            items: ['has indices (d)', 'global (g)', 'ignore case (i)', 'multiline (m)', 'dot all (s)', 'unicode (u)', 'sticky (y)']
           },
           match_menu: {
             acceptReporters: false,
