@@ -104,6 +104,29 @@
               }
             }
           },
+          {
+            opcode: 'regexp_components_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[IMAGE2] [B] of [IMAGE1] [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/apple/gi'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'components_menu'
+              },
+              IMAGE1: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              },
+              IMAGE2: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniJson
+              }
+            }
+          },
           '---',
           {
             opcode: 'regexp_test_block',
@@ -217,7 +240,13 @@
               }
             }
           }
-        ]
+        ],
+        menus: {
+          components_menu: {
+            acceptReporters: true,
+            items: ['values', 'keys', 'pairs', 'map']
+          }
+        }
       };
     }
 
