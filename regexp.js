@@ -213,7 +213,7 @@
           {
             opcode: 'regexp_test_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: '[A] test [IMAGE] [B] ?',
+            text: '[A] matches with [IMAGE] [B] ?',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -255,7 +255,7 @@
           {
             opcode: 'regexp_split_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE2] split [A] by [IMAGE1] [B]',
+            text: '[IMAGE2] [A] split by [IMAGE1] [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
