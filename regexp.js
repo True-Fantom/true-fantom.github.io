@@ -331,13 +331,14 @@
           const match = cast.toString(C).toLowerCase();
           switch (match) {
             case 'values':
-              return toJsonString(str.match(redat) || []);
-            case 'keys': 
-              let arr = Array.from(str.matchAll(gredat)).map(val => String(val.index + 1));
-              return toJsonString(redat.global ? arr : arr[0] ? [arr[0]] : []);
+              let values = str.match(redat) || [];
+              return toJsonString(values);
+            case 'keys':
+              let keys = Array.from(str.matchAll(gredat)).map(val => String(val.index + 1));
+              return toJsonString(redat.global ? keys : keys[0] ? [keys[0]] : []);
             case 'pairs':
-              let obj = {}; Array.from(str.matchAll(gredat)).map(val => obj[val.index + 1] = val[0]);
-              return toJsonString(redat.global ? obj : Object.keys(obj)[0] ? {[Object.keys(obj)[0]] : Object.values(obj)[0]} : {});
+              let pairs = {}; Array.from(str.matchAll(gredat)).map(val => pairs[val.index + 1] = val[0]);
+              return toJsonString(redat.global ? pairs : Object.keys(pairs)[0] ? {[Object.keys(pairs)[0]] : Object.values(pairs)[0]} : {});
             case 'map':
               let map = Array.from(str.matchAll(gredat)).map(val => [String(val.index + 1), val[0]]);
               return toJsonString(redat.global ? map : map[0] ? [map[0]] : []);
