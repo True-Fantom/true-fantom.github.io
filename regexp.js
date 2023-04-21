@@ -278,7 +278,7 @@
           {
             opcode: 'regexp_match_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE2] match [C] of [A] by [IMAGE1] [B]',
+            text: '[IMAGE2] match [C] of [A] from [IMAGE1] [B]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
