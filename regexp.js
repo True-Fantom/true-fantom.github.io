@@ -172,9 +172,9 @@
             }
           },
           {
-            opcode: 'regexp_add_delete_flag_block',
+            opcode: 'regexp_add_flag_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[B] flag [C] of [IMAGE] [A]',
+            text: 'add flag [B] to [IMAGE] [A]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -182,9 +182,24 @@
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'components_menu'
+                menu: 'flags_status_menu'
               },
-              C: {
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              }
+            }
+          },
+          {
+            opcode: 'regexp_delete_flag_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'delete flag [B] of [IMAGE] [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/apple/gi'
+              },
+              B: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'flags_status_menu'
               },
