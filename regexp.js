@@ -56,6 +56,11 @@
     return String(val);
   };
 
+  const RegExpCompare = (redat, restr) => {
+    let arr = /\/(.*)\/(.*)/.exec(restr);
+    return toRegExpString(redat) === '/' + arr[1] + '/' + Array.from(arr[2]).sort().join('');
+  };
+
   class ScratchRegExp {
 
     getInfo() {
@@ -256,7 +261,8 @@
     is_regexp_block({A}) {
       try {
         let restr = cast.toString(A);
-        return toRegExpString(toRegExpData(restr)) === restr;
+        let redat = toRegExpData(restr);
+        return RegExpCompare(redat, restr);
       } catch(err) {return false}
     }
     regexp_block({A, B}) {
@@ -268,7 +274,7 @@
       try {
         let restr = cast.toString(A);
         let redat = toRegExpData(restr);
-        if (toRegExpString(redat) === restr) {
+        if (RegExpCompare(redat, restr)) {
           const status = cast.toString(B).toLowerCase();
           switch (status) {
             case 'has indices (d)': return redat.hasIndices;
@@ -287,7 +293,7 @@
       try {
         let restr = cast.toString(A);
         let redat = toRegExpData(restr);
-        if (toRegExpString(redat) === restr) {
+        if (RegExpCompare(redat, restr)) {
           const components = cast.toString(B).toLowerCase();
           switch (components) {
             case 'pattern': return redat.source;
@@ -301,7 +307,7 @@
       try {
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
-        if (toRegExpString(redat) === restr) {return redat.test(cast.toString(A))}
+        if (RegExpCompare(redat, restr)) {return redat.test(cast.toString(A))}
         return false;
       } catch(err) {return false}
     }
@@ -309,7 +315,7 @@
       try {
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
-        if (toRegExpString(redat) === restr) {return cast.toString(A).replace(redat, cast.toString(C))}
+        if (RegExpCompare(redat, restr)) {return cast.toString(A).replace(redat, cast.toString(C))}
         return '';
       } catch(err) {return ''}
     }
@@ -317,7 +323,7 @@
       try {
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
-        if (toRegExpString(redat) === restr) {return toJsonString(cast.toString(A).split(redat) || [])}
+        if (RegExpCompare(redat, restr)) {return toJsonString(cast.toString(A).split(redat) || [])}
         return '';
       } catch(err) {return ''}
     }
@@ -326,7 +332,7 @@
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
         let str = cast.toString(A);
-        if (toRegExpString(redat) === restr) {
+        if (RegExpCompare(redat, restr)) {
           const gredat = redat.global ? redat : new RegExp(redat.source, redat.flags + 'g');
           const match = cast.toString(C).toLowerCase();
           switch (match) {
@@ -351,7 +357,7 @@
       try {
         let restr = cast.toString(B);
         let redat = toRegExpData(restr);
-        if (toRegExpString(redat) === restr) {
+        if (RegExpCompare(redat, restr)) {
           if (redat.global) {return toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => val.index + 1))} 
           else {return toJsonString([cast.toString(A).search(redat) + 1])}
         }
