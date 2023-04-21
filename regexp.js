@@ -263,7 +263,7 @@
           },
           flags_status_menu: {
             acceptReporters: false,
-            items: ['pattern', 'flags']
+            items: ['global (g)', 'ignore case (i)', 'multiline (m)', 'dot all (s)', 'unicode (u)', 'sticky (y)']
           }
         }
       };
@@ -287,12 +287,12 @@
         if (toRegExpString(redat) === restr) {
           const status = cast.toString(B).toLowerCase();
           switch (status) {
-            case 'global': return redat.global;
-            case 'ignore case': return redat.ignoreCase;
-            case 'multiline': return redat.multiline;
-            case 'dot all': return redat.dotAll;
-            case 'unicode': return redat.unicode;
-            case 'sticky': return redat.sticky;
+            case 'global (g)': return redat.global;
+            case 'ignore case (i)': return redat.ignoreCase;
+            case 'multiline (m)': return redat.multiline;
+            case 'dot all (s)': return redat.dotAll;
+            case 'unicode (u)': return redat.unicode;
+            case 'sticky (y)': return redat.sticky;
           }
         }
         return false;
