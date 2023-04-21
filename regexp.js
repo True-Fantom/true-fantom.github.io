@@ -107,7 +107,7 @@
           {
             opcode: 'regexp_components_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE2] [B] of [IMAGE1] [A]',
+            text: '[B] of [IMAGE] [A]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
@@ -117,13 +117,9 @@
                 type: Scratch.ArgumentType.STRING,
                 menu: 'components_menu'
               },
-              IMAGE1: {
+              IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
                 dataURI: miniRegExp
-              },
-              IMAGE2: {
-                type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniJson
               }
             }
           },
@@ -244,7 +240,7 @@
         menus: {
           components_menu: {
             acceptReporters: true,
-            items: ['values', 'keys', 'pairs', 'map']
+            items: ['pattern', 'flags']
           }
         }
       };
@@ -259,6 +255,20 @@
     regexp_block({A, B}) {
       try {
         return new RegExp(cast.toString(A), cast.toString(B));
+      } catch(err) {return ''}
+    }
+    regexp_components_block({A, B}) {
+      try {
+        let restr = cast.toString(A);
+        let redat = toRegExpData(restr);
+        if (toRegExpString(redat) === restr) {
+          const components = cast.toString(B).toLowerCase();
+          switch (components) {
+            case 'pattern': return redat.source;
+            case 'flags': return redat.flags;
+          }
+        }
+        return '';
       } catch(err) {return ''}
     }
     regexp_test_block({A, B}) {
