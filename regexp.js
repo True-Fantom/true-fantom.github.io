@@ -308,10 +308,6 @@
             acceptReporters: false,
             items: ['pattern', 'flags']
           },
-          flags_status_menu: {
-            acceptReporters: false,
-            items: ['has indices (d)', 'global (g)', 'ignore case (i)', 'multiline (m)', 'dot all (s)', 'unicode (u)', 'sticky (y)']
-          },
           match_menu: {
             acceptReporters: false,
             items: ['values', 'keys', 'pairs', 'map']
