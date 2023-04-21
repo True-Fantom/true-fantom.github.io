@@ -332,7 +332,7 @@
             case 'values': return toJsonString(str.match(redat) || []);
             case 'keys': return toJsonString(redat.global ? Array.from(str.matchAll(redat)).map(val => cast.toString(val.index + 1)) : [cast.toString(str.search(redat) + 1)]);
             case 'pairs': let val = str.match(redat) || []; let key = redat.global ? Array.from(str.matchAll(redat)).map(val => cast.toString(val.index + 1)) : [cast.toString(str.search(redat) + 1)]; let obj = {}; key.forEach((k, v) => obj[k] = val[v]); return toJsonString(obj);
-            case 'map': return toJsonString(redat.global ? Array.from(str.matchAll(redat)).map(val => [cast.toString(val.index + 1), val.input]) : [cast.toString(str.search(redat) + 1), (str.match(redat) || [])[0]]);
+            case 'map': return toJsonString(redat.global ? Array.from(str.matchAll(redat)).map(val => [cast.toString(val.index + 1), val.input]) : [[cast.toString(str.search(redat) + 1), (str.match(redat) || [])[0]]]);
           }
         }
         return '';
