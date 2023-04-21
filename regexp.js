@@ -56,6 +56,10 @@
     return String(val);
   };
 
+  const searchFix = val => {
+    return val === -1 ? -2 : val;
+  };
+
   class ScratchRegExp {
 
     getInfo() {
