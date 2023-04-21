@@ -105,6 +105,25 @@
             }
           },
           {
+            opcode: 'regexp_flags_status_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'is [B] [IMAGE] [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: '/apple/gi'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'flags_status_menu'
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniRegExp
+              }
+            }
+          },
+          {
             opcode: 'regexp_components_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[B] of [IMAGE] [A]',
@@ -239,7 +258,11 @@
         ],
         menus: {
           components_menu: {
-            acceptReporters: true,
+            acceptReporters: false,
+            items: ['pattern', 'flags']
+          },
+          flags_status_menu: {
+            acceptReporters: false,
             items: ['pattern', 'flags']
           }
         }
@@ -256,6 +279,24 @@
       try {
         return new RegExp(cast.toString(A), cast.toString(B));
       } catch(err) {return ''}
+    }
+    regexp_flags_status_block({A, B}) {
+      try {
+        let restr = cast.toString(A);
+        let redat = toRegExpData(restr);
+        if (toRegExpString(redat) === restr) {
+          const status = cast.toString(B).toLowerCase();
+          switch (status) {
+            case 'global': return redat.global;
+            case 'ignore case': return redat.ignoreCase;
+            case 'multiline': return redat.multiline;
+            case 'dot all': return redat.dotAll;
+            case 'unicode': return redat.unicode;
+            case 'sticky': return redat.sticky;
+          }
+        }
+        return false;
+      } catch(err) {return false}
     }
     regexp_components_block({A, B}) {
       try {
