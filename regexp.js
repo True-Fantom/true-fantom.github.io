@@ -333,16 +333,9 @@
         let restr = cast.toString(A);
         let redat = toRegExpData(restr);
         if (RegExpCompare(redat, restr)) {
-          const status = cast.toString(B).toLowerCase();
-          switch (status) {
-            case 'has indices (d)': return redat.hasIndices;
-            case 'global (g)': return redat.global;
-            case 'ignore case (i)': return redat.ignoreCase;
-            case 'multiline (m)': return redat.multiline;
-            case 'dot all (s)': return redat.dotAll;
-            case 'unicode (u)': return redat.unicode;
-            case 'sticky (y)': return redat.sticky;
-          }
+          let flags = Array.from(redat.flags);
+          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags.splice(flags.indexOf(flag), 1) : return false);
+          return true;
         }
         return false;
       } catch(err) {return false}
