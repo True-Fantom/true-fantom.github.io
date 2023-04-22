@@ -387,7 +387,7 @@
         let redat = toRegExpData(restr);
         if (RegExpCompare(redat, restr)) {
           let flags = Array.from(redat.flags);
-          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags = flags : flags.splice(flags.indexOf(flag), 1));
+          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags.splice(flags.indexOf(flag), 1) : flags = flags);
           return toRegExpString(new RegExp(redat.source, flags.join('')));
         }
         return '';
