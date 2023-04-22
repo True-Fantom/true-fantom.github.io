@@ -333,9 +333,10 @@
         let restr = cast.toString(A);
         let redat = toRegExpData(restr);
         if (RegExpCompare(redat, restr)) {
+          let output = true;
           let flags = Array.from(redat.flags);
-          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags.splice(flags.indexOf(flag), 1) : return false);
-          return true;
+          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags.splice(flags.indexOf(flag), 1) : output = false);
+          return output;
         }
         return false;
       } catch(err) {return false}
