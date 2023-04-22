@@ -374,6 +374,7 @@
         let restr = cast.toString(A);
         let redat = toRegExpData(restr);
         if (RegExpCompare(redat, restr)) {
+          let flagtest = new RegExp('test', cast.toString(B));
           let flags = Array.from(redat.flags);
           Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags = flags : flags.push(flag));
           return toRegExpString(new RegExp(redat.source, flags.join('')));
@@ -386,6 +387,7 @@
         let restr = cast.toString(A);
         let redat = toRegExpData(restr);
         if (RegExpCompare(redat, restr)) {
+          let flagtest = new RegExp('test', cast.toString(B));
           let flags = Array.from(redat.flags);
           Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags.splice(flags.indexOf(flag), 1) : flags = flags);
           return toRegExpString(new RegExp(redat.source, flags.join('')));
