@@ -369,6 +369,30 @@
         return '';
       } catch(err) {return ''}
     }
+    regexp_add_flags_block({A, B}) {
+      try {
+        let restr = cast.toString(A);
+        let redat = toRegExpData(restr);
+        if (RegExpCompare(redat, restr)) {
+          let flags = Array.from(redat.flags);
+          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flag : flags.push(flag));
+          return toRegExpString(new RegExp(redat.source, flags));
+        }
+        return '';
+      } catch(err) {return ''}
+    }
+    regexp_delete_flags_block({A, B}) {
+      try {
+        let restr = cast.toString(A);
+        let redat = toRegExpData(restr);
+        if (RegExpCompare(redat, restr)) {
+          let flags = Array.from(redat.flags);
+          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flag : flags.splice(flags.indexOf(flag), 1));
+          return toRegExpString(new RegExp(redat.source, flags));
+        }
+        return '';
+      } catch(err) {return ''}
+    }
     regexp_test_block({A, B}) {
       try {
         let restr = cast.toString(B);
