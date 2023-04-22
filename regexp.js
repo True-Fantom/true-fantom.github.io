@@ -325,7 +325,7 @@
     }
     regexp_block({A, B}) {
       try {
-        return new RegExp(cast.toString(A), cast.toString(B));
+        return toRegExpString(new RegExp(cast.toString(A), cast.toString(B)));
       } catch(err) {return ''}
     }
     regexp_contains_flags_block({A, B}) {
@@ -350,6 +350,20 @@
           switch (components) {
             case 'pattern': return redat.source;
             case 'flags': return redat.flags;
+          }
+        }
+        return '';
+      } catch(err) {return ''}
+    }
+    regexp_set_pattern_flags_block({A, B, C}) {
+      try {
+        let restr = cast.toString(A);
+        let redat = toRegExpData(restr);
+        if (RegExpCompare(redat, restr)) {
+          const components = cast.toString(B).toLowerCase();
+          switch (components) {
+            case 'pattern': return toRegExpString(new RegExp(cast.toString(C), redat.flags));
+            case 'flags': return toRegExpString(new RegExp(redat.source, cast.toString(C)));
           }
         }
         return '';
