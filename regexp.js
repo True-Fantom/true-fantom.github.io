@@ -375,8 +375,8 @@
         let redat = toRegExpData(restr);
         if (RegExpCompare(redat, restr)) {
           let flags = Array.from(redat.flags);
-          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flag : flags.push(flag));
-          return toRegExpString(new RegExp(redat.source, flags));
+          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags = flags : flags.push(flag));
+          return toRegExpString(new RegExp(redat.source, flags.join('')));
         }
         return '';
       } catch(err) {return ''}
@@ -387,8 +387,8 @@
         let redat = toRegExpData(restr);
         if (RegExpCompare(redat, restr)) {
           let flags = Array.from(redat.flags);
-          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flag : flags.splice(flags.indexOf(flag), 1));
-          return toRegExpString(new RegExp(redat.source, flags));
+          Array.from(cast.toString(B)).forEach(flag => flags.includes(flag) ? flags = flags : flags.splice(flags.indexOf(flag), 1));
+          return toRegExpString(new RegExp(redat.source, flags.join('')));
         }
         return '';
       } catch(err) {return ''}
