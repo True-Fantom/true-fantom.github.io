@@ -55,8 +55,12 @@
           {
             opcode: 'timestamp_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'current utc [IMAGE]',
+            text: 'current [A] [IMAGE]',
             arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'components_menu'
+              },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
                 dataURI: miniTimestamp
@@ -66,8 +70,12 @@
           {
             opcode: 'datetime_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'current utc [IMAGE]',
+            text: 'current [A] [IMAGE]',
             arguments: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'components_menu'
+              },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
                 dataURI: miniDatetime
