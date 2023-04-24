@@ -37,6 +37,29 @@
           },
           '---',
           {
+            opcode: 'timestamp_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[IMAGE] current utc timestamp',
+            arguments: {
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniDate
+              }
+            }
+          },
+          {
+            opcode: 'datetime_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[IMAGE] current utc datetime',
+            arguments: {
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniDate
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'regexp_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[IMAGE] with pattern [A] and flags [B]',
