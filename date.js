@@ -295,7 +295,7 @@
           },
           match_menu: {
             acceptReporters: false,
-            items: ['values', 'keys', 'pairs', 'map']
+            items: [miniDatetime, 'keys', 'pairs', 'map']
           }
         }
       };
