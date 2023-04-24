@@ -90,7 +90,7 @@
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               }
             }
           },
@@ -109,7 +109,7 @@
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               }
             }
           },
@@ -128,7 +128,7 @@
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               }
             }
           },
@@ -152,7 +152,7 @@
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               }
             }
           },
@@ -171,7 +171,7 @@
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               }
             }
           },
@@ -190,7 +190,7 @@
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               }
             }
           },
@@ -210,7 +210,7 @@
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               }
             }
           },
@@ -233,7 +233,7 @@
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               }
             }
           },
@@ -252,7 +252,7 @@
               },
               IMAGE1: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               },
               IMAGE2: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -279,7 +279,7 @@
               },
               IMAGE1: {
                 type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniDate
+                dataURI: miniDatetime
               },
               IMAGE2: {
                 type: Scratch.ArgumentType.IMAGE,
