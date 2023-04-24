@@ -81,6 +81,11 @@
                 dataURI: miniDatetime
               }
             }
+          },
+          {
+            opcode: 'timezone_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'current timezone'
           }
         ],
         menus: {
