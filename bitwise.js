@@ -19,36 +19,6 @@
 
         blocks: [
           {
-            opcode: 'bitwiseLeftShift',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] << [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'bitwiseRightShift',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] >> [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
             opcode: 'bitwiseAnd',
             blockType: Scratch.BlockType.REPORTER,
             text: '[LEFT] & [RIGHT]',
@@ -92,17 +62,53 @@
                 defaultValue: '\n'
               }
             }
+          },
+          {
+            opcode: 'bitwiseNot',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '~ [CENTRAL]',
+            arguments: {
+              CENTRAL: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'bitwiseLeftShift',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[LEFT] << [RIGHT]',
+            arguments: {
+              LEFT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              RIGHT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'bitwiseRightShift',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[LEFT] >> [RIGHT]',
+            arguments: {
+              LEFT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              RIGHT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
           }
         ]
       };
     }
 
-    bitwiseLeftShift({LEFT, RIGHT}) {
-      return LEFT << RIGHT;
-    }
-    bitwiseRightShift({LEFT, RIGHT}) {
-      return LEFT >> RIGHT;
-    }
     bitwiseAnd({LEFT, RIGHT}) {
       return LEFT & RIGHT;
     }
@@ -111,6 +117,12 @@
     }
     bitwiseXor({LEFT, RIGHT}) {
       return LEFT ^ RIGHT;
+    }
+    bitwiseLeftShift({LEFT, RIGHT}) {
+      return LEFT << RIGHT;
+    }
+    bitwiseRightShift({LEFT, RIGHT}) {
+      return LEFT >> RIGHT;
     }
   }
 
