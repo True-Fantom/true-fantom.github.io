@@ -13,7 +13,7 @@
         id: 'Bitwise',
         name: 'Bitwise',
 
-        color1: '#2dc4c4',
+        color1: '#34d1d1',
 
         menuIconURI: icon,
 
