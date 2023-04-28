@@ -25,11 +25,11 @@
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '2'
+                defaultValue: '\n'
               },
               RIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '\n'
               }
             }
           },
@@ -40,11 +40,11 @@
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '2'
+                defaultValue: '\n'
               },
               RIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '\n'
               }
             }
           },
@@ -55,11 +55,11 @@
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '3'
+                defaultValue: '\n'
               },
               RIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '\n'
               }
             }
           },
@@ -70,11 +70,11 @@
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '\n'
               },
               RIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '0'
+                defaultValue: '\n'
               }
             }
           },
@@ -85,11 +85,11 @@
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '\n'
               },
               RIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '1'
+                defaultValue: '\n'
               }
             }
           }
