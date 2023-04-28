@@ -258,6 +258,7 @@
           },
           '---',
           {
+            hideFromPalette: true, // Probably useless
             opcode: 'more_or_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≥ [B]',
@@ -273,6 +274,7 @@
             }
           },
           {
+            hideFromPalette: true, // Probably useless
             opcode: 'less_or_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≤ [B]',
@@ -288,6 +290,7 @@
             }
           },
           {
+            hideFromPalette: true, // Probably useless
             opcode: 'not_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≠ [B]',
@@ -350,6 +353,7 @@
             }
           },
           { 
+            hideFromPalette: true, // Probably useless
             opcode: 'not_almost_equal_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] ≉ [B]',
@@ -366,6 +370,7 @@
           },
           '---',
           {
+            hideFromPalette: true, // Probably useless
             opcode: 'nand_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] nand [B]',
@@ -379,6 +384,7 @@
             }
           },
           {
+            hideFromPalette: true, // Probably useless
             opcode: 'nor_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] nor [B]',
@@ -405,6 +411,7 @@
             }
           },
           {
+            hideFromPalette: true, // Probably useless
             opcode: 'xnor_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[A] xnor [B]',
@@ -773,7 +780,7 @@
             text: '𝜋'
           },
           /*{
-            opcode: 'tau_block', //Probably useless
+            opcode: 'tau_block', // Probably useless
             blockType: Scratch.BlockType.REPORTER,
             text: 'τ'
           },*/
@@ -798,7 +805,7 @@
             text: 'γ'
           }
           /*{
-            opcode: 'omega_block', //Probably useless
+            opcode: 'omega_block', // Probably useless
             blockType: Scratch.BlockType.REPORTER,
             text: 'Ω'
           },*/
