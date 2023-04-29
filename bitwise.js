@@ -26,13 +26,25 @@
 
         blocks: [
           {
+            opcode: 'isBitsOfNumber',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is bits of number [CENTRAL] ?',
+            arguments: {
+              CENTRAL: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 100000
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'toBits',
             blockType: Scratch.BlockType.REPORTER,
             text: '[CENTRAL] to bits',
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: 32
               }
             }
           },
@@ -43,7 +55,7 @@
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: 100000
               }
             }
           },
@@ -79,7 +91,7 @@
             }
           },
           {
-            opcode: 'bitwiseUnsignedLeftShift',
+            opcode: 'bitwiseUnsignedRightShift',
             blockType: Scratch.BlockType.REPORTER,
             text: '[LEFT] ⇶ [RIGHT]',
             arguments: {
@@ -165,6 +177,9 @@
     }
     bitwiseLeftShift({LEFT, RIGHT}) {
       return LEFT << RIGHT;
+    }
+    bitwiseUnsignedRightShift({LEFT, RIGHT}) {
+      return LEFT >>> RIGHT;
     }
     bitwiseAnd({LEFT, RIGHT}) {
       return LEFT & RIGHT;
