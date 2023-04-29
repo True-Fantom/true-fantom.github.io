@@ -167,34 +167,34 @@
     }
 
     isBitsOfNumber({CENTRAL}) {
-      return /^[0-1]+$/.test(String(cast.toNumber(CENTRAL)));
+      return /^[0-1]{1,32}$/.test(CENTRAL);
     }
     toBits({CENTRAL}) {
-      return dec2bin(cast.toNumber(CENTRAL));
+      return dec2bin(CENTRAL);
     }
     ofBits({CENTRAL}) {
-      return bin2dec(cast.toNumber(CENTRAL));
+      return bin2dec(CENTRAL);
     }
     bitwiseRightShift({LEFT, RIGHT}) {
-      return cast.toNumber(LEFT) >> cast.toNumber(RIGHT);
+      return LEFT >> RIGHT;
     }
     bitwiseLeftShift({LEFT, RIGHT}) {
-      return cast.toNumber(LEFT) << cast.toNumber(RIGHT);
+      return LEFT << RIGHT;
     }
     bitwiseUnsignedRightShift({LEFT, RIGHT}) {
-      return cast.toNumber(LEFT) >>> cast.toNumber(RIGHT);
+      return LEFT >>> RIGHT;
     }
     bitwiseAnd({LEFT, RIGHT}) {
-      return cast.toNumber(LEFT) & cast.toNumber(RIGHT);
+      return LEFT & RIGHT;
     }
     bitwiseOr({LEFT, RIGHT}) {
-      return cast.toNumber(LEFT) | cast.toNumber(RIGHT);
+      return LEFT | RIGHT;
     }
     bitwiseXor({LEFT, RIGHT}) {
-      return cast.toNumber(LEFT) ^ cast.toNumber(RIGHT);
+      return LEFT ^ RIGHT;
     }
     bitwiseNot({CENTRAL}) {
-      return ~cast.toNumber(CENTRAL);
+      return ~CENTRAL;
     }
   }
 
