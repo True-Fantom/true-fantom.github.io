@@ -19,6 +19,28 @@
 
         blocks: [
           {
+            opcode: 'toBits',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[CENTRAL] to bits',
+            arguments: {
+              CENTRAL: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'ofBits',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[CENTRAL] of bits',
+            arguments: {
+              CENTRAL: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
             opcode: 'bitwiseRightShift',
             blockType: Scratch.BlockType.REPORTER,
             text: '[LEFT] ⇒ [RIGHT]',
@@ -109,6 +131,12 @@
       };
     }
 
+    toBits({CENTRAL}) {
+      return CENTRAL;
+    }
+    ofBits({CENTRAL}) {
+      return CENTRAL;
+    }
     bitwiseRightShift({LEFT, RIGHT}) {
       return LEFT >> RIGHT;
     }
