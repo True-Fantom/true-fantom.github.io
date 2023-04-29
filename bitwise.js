@@ -166,32 +166,35 @@
       };
     }
 
+    isBitsOfNumber({CENTRAL}) {
+      return /^[01]+$/.test(String(cast.toNumber(CENTRAL)));
+    }
     toBits({CENTRAL}) {
-      return dec2bin(CENTRAL);
+      return dec2bin(cast.toNumber(CENTRAL));
     }
     ofBits({CENTRAL}) {
-      return bin2dec(CENTRAL);
+      return bin2dec(cast.toNumber(CENTRAL));
     }
     bitwiseRightShift({LEFT, RIGHT}) {
-      return LEFT >> RIGHT;
+      return cast.toNumber(LEFT) >> cast.toNumber(RIGHT);
     }
     bitwiseLeftShift({LEFT, RIGHT}) {
-      return LEFT << RIGHT;
+      return cast.toNumber(LEFT) << cast.toNumber(RIGHT);
     }
     bitwiseUnsignedRightShift({LEFT, RIGHT}) {
-      return LEFT >>> RIGHT;
+      return cast.toNumber(LEFT) >>> cast.toNumber(RIGHT);
     }
     bitwiseAnd({LEFT, RIGHT}) {
-      return LEFT & RIGHT;
+      return cast.toNumber(LEFT) & cast.toNumber(RIGHT);
     }
     bitwiseOr({LEFT, RIGHT}) {
-      return LEFT | RIGHT;
+      return cast.toNumber(LEFT) | cast.toNumber(RIGHT);
     }
     bitwiseXor({LEFT, RIGHT}) {
-      return LEFT ^ RIGHT;
+      return cast.toNumber(LEFT) ^ cast.toNumber(RIGHT);
     }
     bitwiseNot({CENTRAL}) {
-      return ~CENTRAL;
+      return ~cast.toNumber(CENTRAL);
     }
   }
 
