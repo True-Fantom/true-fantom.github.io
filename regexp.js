@@ -431,7 +431,7 @@
           switch (match) {
             case 'values':
               data = Array.from(str.matchAll(gredat)).map(val => val[0]);
-              return toJsonString(data);
+              return toJsonString(redat.global ? data : data[0] ? [data[0]] : []);
             case 'keys':
               data = Array.from(str.matchAll(gredat)).map(val => String(val.index + 1));
               return toJsonString(redat.global ? data : data[0] ? [data[0]] : []);
