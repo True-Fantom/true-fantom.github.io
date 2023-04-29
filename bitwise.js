@@ -167,7 +167,7 @@
     }
 
     isBitsOfNumber({CENTRAL}) {
-      return /^[01]+$/.test(String(cast.toNumber(CENTRAL)));
+      return /^[0-1]+$/.test(String(cast.toNumber(CENTRAL)));
     }
     toBits({CENTRAL}) {
       return dec2bin(cast.toNumber(CENTRAL));
