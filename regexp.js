@@ -430,7 +430,7 @@
           let data;
           switch (match) {
             case 'values':
-              data = str.match(redat) || [];
+              data = Array.from(str.matchAll(gredat)).map(val => val[0]);
               return toJsonString(data);
             case 'keys':
               data = Array.from(str.matchAll(gredat)).map(val => String(val.index + 1));
@@ -442,17 +442,6 @@
               data = Array.from(str.matchAll(gredat)).map(val => [String(val.index + 1), val[0]]);
               return toJsonString(redat.global ? data : data[0] ? [data[0]] : []);
           }
-        }
-        return '';
-      } catch(err) {return ''}
-    }
-    regexp_match_all_block({A, B}) {
-      try {
-        let restr = cast.toString(B);
-        let redat = toRegExpData(restr);
-        if (RegExpCompare(redat, restr)) {
-          if (redat.global) {return toJsonString(Array.from(cast.toString(A).matchAll(redat)).map(val => val.index + 1))} 
-          else {return toJsonString([cast.toString(A).search(redat) + 1])}
         }
         return '';
       } catch(err) {return ''}
