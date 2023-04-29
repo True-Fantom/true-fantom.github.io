@@ -596,7 +596,7 @@
             }
           },
           {
-            opcode: 'json_max_min_block',
+            opcode: 'json_max_min_block', //min val, min keys, min pairs...
             blockType: Scratch.BlockType.REPORTER,
             text: '[B] of [IMAGE] [A]',
             arguments: {
