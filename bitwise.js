@@ -124,6 +124,9 @@
     bitwiseXor({LEFT, RIGHT}) {
       return LEFT ^ RIGHT;
     }
+    bitwiseNot({CENTRAL}) {
+      return ~CENTRAL;
+    }
   }
 
   Scratch.extensions.register(new Bitwise());
