@@ -5,6 +5,13 @@
 
   const cast = Scratch.Cast;
 
+  const dec2bin = dec => {
+    return (dec >>> 0).toString(2);
+  };
+  const bin2dec = bin => {
+    return parseInt(bin, 2) << 0;
+  };
+
   class Bitwise {
 
     getInfo() {
@@ -40,6 +47,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'bitwiseRightShift',
             blockType: Scratch.BlockType.REPORTER,
@@ -132,10 +140,10 @@
     }
 
     toBits({CENTRAL}) {
-      return CENTRAL;
+      return dec2bin(CENTRAL);
     }
     ofBits({CENTRAL}) {
-      return CENTRAL;
+      return bin2dec(CENTRAL);
     }
     bitwiseRightShift({LEFT, RIGHT}) {
       return LEFT >> RIGHT;
