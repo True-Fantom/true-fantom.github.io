@@ -51,7 +51,7 @@
           {
             opcode: 'bitwiseRightShift',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ⇒ [RIGHT]',
+            text: '[LEFT] ⇉ [RIGHT]',
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -66,7 +66,22 @@
           {
             opcode: 'bitwiseLeftShift',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ⇐ [RIGHT]',
+            text: '[LEFT] ⇇ [RIGHT]',
+            arguments: {
+              LEFT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              },
+              RIGHT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: '\n'
+              }
+            }
+          },
+          {
+            opcode: 'bitwiseUnsignedLeftShift',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[LEFT] ⇶ [RIGHT]',
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
