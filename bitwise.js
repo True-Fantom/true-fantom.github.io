@@ -167,7 +167,10 @@
     }
 
     isBitsOfNumber({CENTRAL}) {
-      return /^[0-1]{1,32}$/.test(CENTRAL);
+      if (/^0+$/.test(CENTRAL) {
+        return true;
+      }
+      return /^[0-1]{1,32}$/.test(CENTRAL.replace(/^0+/, ''));
     }
     toBits({CENTRAL}) {
       return dec2bin(CENTRAL);
