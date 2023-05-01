@@ -6,11 +6,11 @@
 
   const cast = Scratch.Cast;
 
-  const numToBits32 = num => {
-    return Array.from(Array.from('00000000000000000000000000000000' + (num >>> 0).toString(2)).reverse().join('').substring(0, 32)).reverse().join('');
+  const number2bits = number => {
+    return Array.from(Array.from('00000000000000000000000000000000' + (number >>> 0).toString(2)).reverse().join('').substring(0, 32)).reverse().join('');
   };
-  const bits32ToNum = bits32 => {
-    return parseInt(bits32, 2) << 0;
+  const bits2number = bits => {
+    return parseInt(bits, 2) << 0;
   };
 
   class Bitwise {
@@ -27,36 +27,48 @@
 
         blocks: [
           {
-            opcode: 'isBitsOfNumber',
+            opcode: 'isNumberBits',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is bits of number [CENTRAL] ?',
+            text: 'is [IMAGE] [CENTRAL] ?',
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 100000
+                defaultValue: 00000000000000000000000000100000
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniNumberBits
               }
             }
           },
           '---',
           {
-            opcode: 'toBits',
+            opcode: 'toNumberBits',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[CENTRAL] to bits',
+            text: '[CENTRAL] to [IMAGE]',
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 32
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniNumberBits
               }
             }
           },
           {
-            opcode: 'ofBits',
+            opcode: 'ofNumberBits',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[CENTRAL] of bits',
+            text: '[CENTRAL] of [IMAGE]',
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 100000
+                defaultValue: 00000000000000000000000000100000
+              },
+              IMAGE: {
+                type: Scratch.ArgumentType.IMAGE,
+                dataURI: miniNumberBits
               }
             }
           },
@@ -167,18 +179,14 @@
       };
     }
 
-    isBitsOfNumber({CENTRAL}) {
-      let str = cast.toString(CENTRAL);
-      if (/^0+$/.test(str)) {
-        return true;
-      }
-      return /^[0-1]{1,32}$/.test(str.replace(/^0+/, ''));
+    isNumberBits({CENTRAL}) {
+      return /^[0-1]{32}$/.test(CENTRAL);
     }
-    toBits({CENTRAL}) {
-      return numToBits32(CENTRAL);
+    toNumberBits({CENTRAL}) {
+      return number2bits(CENTRAL);
     }
-    ofBits({CENTRAL}) {
-      return bits32ToNum(CENTRAL);
+    ofNumberBits({CENTRAL}) {
+      return bits2number(CENTRAL);
     }
     bitwiseRightShift({LEFT, RIGHT}) {
       return LEFT >> RIGHT;
