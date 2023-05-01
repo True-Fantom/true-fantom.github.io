@@ -33,7 +33,7 @@
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 00000000000000000000000000100000
+                defaultValue: '00000000000000000000000000100000'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -64,7 +64,7 @@
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 00000000000000000000000000100000
+                defaultValue: '00000000000000000000000000100000'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
