@@ -6,7 +6,7 @@
   const cast = Scratch.Cast;
 
   const dec2bin = dec => {
-    return (dec >>> 0).toString(2);
+    return Array.from(Array.from('00000000000000000000000000000000' + (dec >>> 0).toString(2)).reverse().join('').substring(0, 32)).reverse().join('');
   };
   const bin2dec = bin => {
     return parseInt(bin, 2) << 0;
