@@ -259,7 +259,7 @@
     bitwiseLogicalRightShift({LEFT, RIGHT}) {
       return LEFT >>> RIGHT;
     }
-    bitwiseRCircularightShift({LEFT, RIGHT}) {
+    bitwiseCircularRightShift({LEFT, RIGHT}) {
 
       return LEFT >> RIGHT;
 
