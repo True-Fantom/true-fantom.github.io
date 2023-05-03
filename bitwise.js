@@ -124,7 +124,7 @@
 
             blockType: Scratch.BlockType.REPORTER,
 
-            text: '[LEFT] ⇉ [RIGHT]',
+            text: '[LEFT] ↻ [RIGHT]',
 
             arguments: {
 
@@ -154,7 +154,7 @@
 
             blockType: Scratch.BlockType.REPORTER,
 
-            text: '[LEFT] ⇇ [RIGHT]',
+            text: '[LEFT] ↺ [RIGHT]',
 
             arguments: {
 
