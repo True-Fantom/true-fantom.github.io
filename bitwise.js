@@ -245,7 +245,10 @@
       return number2bits(CENTRAL);
     }
     ofNumberBits({CENTRAL}) {
-      return bits2number(CENTRAL);
+      if (/^[0-1]{32}$/.test(CENTRAL)) {
+        return bits2number(CENTRAL);
+      }
+      return 0;
     }
     bitwiseRightShift({LEFT, RIGHT}) {
       return LEFT >> RIGHT;
