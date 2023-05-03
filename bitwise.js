@@ -119,63 +119,34 @@
             }
           },
          {
-
             opcode: 'bitwiseCircularRightShift',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: '[LEFT] ↻ [RIGHT]',
-
             arguments: {
-
               LEFT: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               },
-
               RIGHT: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               }
-
             }
-
           },
-
           {
-
             opcode: 'bitwiseCircularLeftShift',
-
             blockType: Scratch.BlockType.REPORTER,
-
             text: '[LEFT] ↺ [RIGHT]',
-
             arguments: {
-
               LEFT: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               },
-
               RIGHT: {
-
                 type: Scratch.ArgumentType.NUMBER,
-
                 defaultValue: '\n'
-
               }
-
             }
-
           }, 
           '---',
           {
@@ -260,15 +231,14 @@
       return LEFT >>> RIGHT;
     }
     bitwiseCircularRightShift({LEFT, RIGHT}) {
-
-      return LEFT >> RIGHT;
-
+      let arr = Array.from(number2bits(LEFT));
+      for (let i = 0; i < RIGHT; i++) {arr.unshift(arr.pop())}
+      return bits2number(arr.join(''));
     }
-
     bitwiseCircularLeftShift({LEFT, RIGHT}) {
-
-      return LEFT << RIGHT;
-
+      let arr = Array.from(number2bits(LEFT));
+      for (let i = 0; i < RIGHT; i++) {arr.push(arr.shift())}
+      return bits2number(arr.join(''));
     }
     bitwiseAnd({LEFT, RIGHT}) {
       return LEFT & RIGHT;
