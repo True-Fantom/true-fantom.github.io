@@ -237,7 +237,7 @@
     }
     bitwiseCircularLeftShift({LEFT, RIGHT}) {
       let arr = Array.from(number2bits(LEFT));
-      for (let i = 0; i < cast.toNumber(RIGHT) % 32; i++) {arr.push(arr.shift())}
+      for (let i = 0; i < number2bits(RIGHT).substring(29,33); i++) {arr.push(arr.shift())}
       return bits2number(arr.join(''));
     }
     bitwiseAnd({LEFT, RIGHT}) {
