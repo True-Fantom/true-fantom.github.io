@@ -89,11 +89,11 @@
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: ''
               },
               RIGHT: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
+                defaultValue: ''
               }
             }
           },
