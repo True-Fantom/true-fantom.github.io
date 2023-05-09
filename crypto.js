@@ -18,13 +18,13 @@
 
         blocks: [
           {
-            opcode: 'isNumberBits',
+            opcode: 'is_hash_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is [IMAGE] [CENTRAL] ?',
+            text: 'is [IMAGE] [A] ?',
             arguments: {
-              CENTRAL: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '00000000000000000000000000100000'
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
@@ -34,165 +34,33 @@
           },
           '---',
           {
-            opcode: 'toNumberBits',
+            opcode: 'hash_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[CENTRAL] to [IMAGE]',
+            text: '[IMAGE] [A] with global salt [B] and local salt [C] of [D] with [E] iterations',
             arguments: {
-              CENTRAL: {
+              A: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'sha-3-512'
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              C: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              D: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              },
+              E: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 32
+                defaultValue: 10000
               },
               IMAGE: {
                 type: Scratch.ArgumentType.IMAGE,
                 dataURI: miniHash
-              }
-            }
-          },
-          {
-            opcode: 'ofNumberBits',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[CENTRAL] of [IMAGE]',
-            arguments: {
-              CENTRAL: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '00000000000000000000000000100000'
-              },
-              IMAGE: {
-                type: Scratch.ArgumentType.IMAGE,
-                dataURI: miniHash
-              }
-            }
-          },
-          '---',
-          {
-            opcode: 'bitwiseRightShift',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ⇉ [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: ''
-              }
-            }
-          },
-          {
-            opcode: 'bitwiseLeftShift',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ⇇ [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'bitwiseLogicalRightShift',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ⇶ [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-         {
-            opcode: 'bitwiseCircularRightShift',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ↻ [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'bitwiseCircularLeftShift',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ↺ [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          }, 
-          '---',
-          {
-            opcode: 'bitwiseAnd',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] and [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'bitwiseOr',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] or [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'bitwiseXor',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] xor [RIGHT]',
-            arguments: {
-              LEFT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              },
-              RIGHT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
-              }
-            }
-          },
-          {
-            opcode: 'bitwiseNot',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'not [CENTRAL]',
-            arguments: {
-              CENTRAL: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: '\n'
               }
             }
           }
