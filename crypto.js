@@ -6299,28 +6299,34 @@
     }
     hash_block({A, B, C, D, E}) {
       const mode = cast.toString(A).toLowerCase();
+      let hashval = cast.toString(B) + cast.toString(C) + cast.toString(D);
+      let func;
       switch (mode) {
         case 'sha-3-512':
-          return CryptoJS.SHA3("Message", {outputLength: 512}).toString(CryptoJS.enc.Hex);
+          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
         case 'sha-3-384':
-          return true;
+          func = val => CryptoJS.SHA3(val, {outputLength: 384}); break;
         case 'sha-3-256':
-          return true;
+          func = val => CryptoJS.SHA3(val, {outputLength: 256}); break;
         case 'sha-3-224':
-          return true;
+          func = val => CryptoJS.SHA3(val, {outputLength: 224}); break;
         case 'sha-2-512':
-          return true;
+          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
         case 'sha-2-384':
-          return true;
+          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
         case 'sha-2-256':
-          return true;
+          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
         case 'sha-2-224':
-          return true;
+          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
         case 'sha-1-160':
-          return true;
-        case 'md-5-128':
-          return true;
+          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
+        case 'md-5-128': default:
+          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
       }
+      for (let i = 0; i <= Math.floor(cast.toNumber(E)); i++) {
+        hashval = func(hashval).toString(CryptoJS.enc.Hex);
+      }
+      return hashval;
     }
   }
 
