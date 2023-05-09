@@ -20,9 +20,13 @@
           {
             opcode: 'is_hash_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is [IMAGE] [A] ?',
+            text: 'is [IMAGE] [A] [B] ?',
             arguments: {
               A: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'hash_menu'
+              },
+              B: {
                 type: Scratch.ArgumentType.STRING,
                 defaultValue: 'apple'
               },
@@ -40,7 +44,7 @@
             arguments: {
               A: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'sha-3-512'
+                menu: 'hash_menu'
               },
               B: {
                 type: Scratch.ArgumentType.STRING,
@@ -64,7 +68,17 @@
               }
             }
           }
-        ]
+        ],
+        menus: {
+          hash_menu: {
+            acceptReporters: false,
+            items: ['sha-3-512', 'sha-3-384', 'sha-3-256', 'sha-3-224', 'sha-2-512', 'sha-2-384', 'sha-2-256', 'sha-2-224', 'sha-1-160', 'md-5-128']
+          },
+          match_menu: {
+            acceptReporters: false,
+            items: ['values', 'keys', 'pairs', 'map']
+          }
+        }
       };
     }
 
