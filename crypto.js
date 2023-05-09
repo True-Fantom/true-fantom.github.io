@@ -200,41 +200,8 @@
       };
     }
 
-    isNumberBits({CENTRAL}) {
-      return isNumberBits(CENTRAL);
-    }
-    toNumberBits({CENTRAL}) {
-      return number2bits(CENTRAL);
-    }
-    ofNumberBits({CENTRAL}) {
-      return bits2number(CENTRAL);
-    }
     bitwiseRightShift({LEFT, RIGHT}) {
       return LEFT >> RIGHT;
-    }
-    bitwiseLeftShift({LEFT, RIGHT}) {
-      return LEFT << RIGHT;
-    }
-    bitwiseLogicalRightShift({LEFT, RIGHT}) {
-      return LEFT >>> RIGHT;
-    }
-    bitwiseCircularRightShift({LEFT, RIGHT}) {
-      return circularRightShift(LEFT, RIGHT);
-    }
-    bitwiseCircularLeftShift({LEFT, RIGHT}) {
-      return circularLeftShift(LEFT, RIGHT);
-    }
-    bitwiseAnd({LEFT, RIGHT}) {
-      return LEFT & RIGHT;
-    }
-    bitwiseOr({LEFT, RIGHT}) {
-      return LEFT | RIGHT;
-    }
-    bitwiseXor({LEFT, RIGHT}) {
-      return LEFT ^ RIGHT;
-    }
-    bitwiseNot({CENTRAL}) {
-      return ~CENTRAL;
     }
   }
 
