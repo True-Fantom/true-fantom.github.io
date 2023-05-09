@@ -6301,7 +6301,7 @@
       const mode = cast.toString(A).toLowerCase();
       switch (mode) {
         case 'sha-3-512':
-          return CryptoJS.SHA3("Message", { outputLength: 512 });
+          return CryptoJS.SHA3("Message", {outputLength: 512}).toString(CryptoJS.enc.Hex);
         case 'sha-3-384':
           return true;
         case 'sha-3-256':
