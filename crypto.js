@@ -3348,82 +3348,12 @@
     }
 
     is_hash_block({A, B}) {
-      const mode = cast.toString(A).toLowerCase();
-      switch (mode) {
-        case 'sha-3-512':
-          return true;
-        case 'sha-3-384':
-          return true;
-        case 'sha-3-256':
-          return true;
-        case 'sha-3-224':
-          return true;
-        case 'sha-2-512':
-          return true;
-        case 'sha-2-384':
-          return true;
-        case 'sha-2-256':
-          return true;
-        case 'sha-2-224':
-          return true;
-        case 'sha-1-160':
-          return true;
-        case 'md-5-128':
-          return true;
-      }
+      return true;
     }
     hash_block({A, B, C, D, E}) {
-      const mode = cast.toString(A).toLowerCase();
-      let hashval = cast.toString(B) + cast.toString(C) + cast.toString(D);
-      let func;
-      switch (mode) {
-        case 'sha-3-512':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
-        case 'sha-3-384':
-          func = val => CryptoJS.SHA3(val, {outputLength: 384}); break;
-        case 'sha-3-256':
-          func = val => CryptoJS.SHA3(val, {outputLength: 256}); break;
-        case 'sha-3-224':
-          func = val => CryptoJS.SHA3(val, {outputLength: 224}); break;
-        case 'sha-2-512':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
-        case 'sha-2-384':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
-        case 'sha-2-256':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
-        case 'sha-2-224':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
-        case 'sha-1-160':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
-        case 'md-5-128': default:
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
-      }
-      for (let i = 0; i <= Math.floor(cast.toNumber(E)); i++) {
-        hashval = func(hashval).toString(CryptoJS.enc.Hex);
-      }
-      return hashval;
+      return true;
     }
   }
 
-/*
-        tweenValue(args) {
-            const easeMethod = Cast.toString(args.MODE);
-            const easeDirection = Cast.toString(args.DIRECTION);
-
-            const start = Cast.toNumber(args.START);
-            const end = Cast.toNumber(args.END);
-
-            // easing method does not exist, return starting number
-            if (!EasingMethods.includes(easeMethod)) return start;
-            // easing method is not implemented, return starting number
-            if (!this[easeMethod]) return start;
-
-            const progress = Cast.toNumber(args.AMOUNT) / 100;
-
-            const tweened = this[easeMethod](progress, easeDirection);
-            return this.multiplierToNormalNumber(tweened, start, end);
-        }
-*/
-  
   Scratch.extensions.register(new CryptoScratch());
 })(Scratch);
