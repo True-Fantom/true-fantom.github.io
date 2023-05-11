@@ -6330,5 +6330,25 @@
     }
   }
 
+/*
+        tweenValue(args) {
+            const easeMethod = Cast.toString(args.MODE);
+            const easeDirection = Cast.toString(args.DIRECTION);
+
+            const start = Cast.toNumber(args.START);
+            const end = Cast.toNumber(args.END);
+
+            // easing method does not exist, return starting number
+            if (!EasingMethods.includes(easeMethod)) return start;
+            // easing method is not implemented, return starting number
+            if (!this[easeMethod]) return start;
+
+            const progress = Cast.toNumber(args.AMOUNT) / 100;
+
+            const tweened = this[easeMethod](progress, easeDirection);
+            return this.multiplierToNormalNumber(tweened, start, end);
+        }
+*/
+  
   Scratch.extensions.register(new CryptoScratch());
 })(Scratch);
