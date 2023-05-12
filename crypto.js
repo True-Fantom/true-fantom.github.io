@@ -3382,7 +3382,7 @@
         menus: {
           hash_menu: {
             acceptReporters: false,
-            items: ['sha-3-512', 'sha-3-384', 'sha-3-256', 'sha-3-224', 'sha-2-512', 'sha-2-384', 'sha-2-256', 'sha-2-224', 'sha-1-160', 'ripemd-160', 'md-5-128']
+            items: ['sha-3-512', 'sha-3-384', 'sha-3-256', 'sha-3-224', 'sha-2-512', 'sha-2-384', 'sha-2-256', 'sha-2-224', 'ripemd-160', 'sha-1-160', 'md-5-128']
           }
         }
       };
