@@ -29,10 +29,10 @@
   **/
 
   (function (root, factory) {
-    if (typeof exports === "object") {
+    if (typeof exports === 'object') {
       module.exports = exports = factory();
     }
-    else if (typeof define === "function" && define.amd) {
+    else if (typeof define === 'function' && define.amd) {
       define([], factory);
     }
     else {
@@ -59,25 +59,25 @@
       if (!crypto && typeof require === 'function') {
         try {
           crypto = require('crypto');
-        } catch (err) { }
+        } catch (err) {}
       }
       var cryptoSecureRandomInt = function () {
         if (crypto) {
           if (typeof crypto.getRandomValues === 'function') {
             try {
               return crypto.getRandomValues(new Uint32Array(1))[0];
-            } catch (err) { }
+            } catch (err) {}
           }
           if (typeof crypto.randomBytes === 'function') {
             try {
               return crypto.randomBytes(4).readInt32LE();
-            } catch (err) { }
+            } catch (err) {}
           }
         }
         throw new Error('Native crypto module could not be used to get secure random number.');
       };
       var create = Object.create || (function () {
-        function F() { }
+        function F() {}
         return function (obj) {
           var subtype;
           F.prototype = obj;
@@ -131,7 +131,8 @@
           words = this.words = words || [];
           if (sigBytes != undefined) {
             this.sigBytes = sigBytes;
-          } else {
+          }
+          else {
             this.sigBytes = words.length * 4;
           }
         },
@@ -149,7 +150,8 @@
               var thatByte = (thatWords[i >>> 2] >>> (24 - (i % 4) * 8)) & 0xff;
               thisWords[(thisSigBytes + i) >>> 2] |= thatByte << (24 - ((thisSigBytes + i) % 4) * 8);
             }
-          } else {
+          }
+          else {
             for (var j = 0; j < thatSigBytes; j += 4) {
               thisWords[(thisSigBytes + j) >>> 2] = thatWords[j >>> 2];
             }
@@ -252,7 +254,8 @@
           var nBlocksReady = dataSigBytes / blockSizeBytes;
           if (doFlush) {
             nBlocksReady = Math.ceil(nBlocksReady);
-          } else {
+          }
+          else {
             nBlocksReady = Math.max((nBlocksReady | 0) - this._minBufferSize, 0);
           }
           var nWordsReady = nBlocksReady * blockSize;
@@ -327,7 +330,8 @@
           words = this.words = words || [];
           if (sigBytes != undefined) {
             this.sigBytes = sigBytes;
-          } else {
+          }
+          else {
             this.sigBytes = words.length * 8;
           }
         },
@@ -367,7 +371,7 @@
         }
         if (
           typedArray instanceof Int8Array ||
-          (typeof Uint8ClampedArray !== "undefined" && typedArray instanceof Uint8ClampedArray) ||
+          (typeof Uint8ClampedArray !== 'undefined' && typedArray instanceof Uint8ClampedArray) ||
           typedArray instanceof Int16Array ||
           typedArray instanceof Uint16Array ||
           typedArray instanceof Int32Array ||
@@ -384,7 +388,8 @@
             words[i >>> 2] |= typedArray[i] << (24 - (i % 4) * 8);
           }
           superInit.call(this, words, typedArrayByteLength);
-        } else {
+        }
+        else {
           superInit.apply(this, arguments);
         }
       };
@@ -765,18 +770,22 @@
           for (var i = 0; i < 80; i++) {
             if (i < 16) {
               W[i] = M[offset + i] | 0;
-            } else {
+            }
+            else {
               var n = W[i - 3] ^ W[i - 8] ^ W[i - 14] ^ W[i - 16];
               W[i] = (n << 1) | (n >>> 31);
             }
             var t = ((a << 5) | (a >>> 27)) + e + W[i];
             if (i < 20) {
               t += ((b & c) | (~b & d)) + 0x5a827999;
-            } else if (i < 40) {
+            }
+            else if (i < 40) {
               t += (b ^ c ^ d) + 0x6ed9eba1;
-            } else if (i < 60) {
+            }
+            else if (i < 60) {
               t += ((b & c) | (b & d) | (c & d)) - 0x70e44324;
-            } else {
+            }
+            else {
               t += (b ^ c ^ d) - 0x359d3e2a;
             }
             e = d;
@@ -864,7 +873,8 @@
           for (var i = 0; i < 64; i++) {
             if (i < 16) {
               W[i] = M[offset + i] | 0;
-            } else {
+            }
+            else {
               var gamma0x = W[i - 15];
               var gamma0 = ((gamma0x << 25) | (gamma0x >>> 7)) ^
                 ((gamma0x << 14) | (gamma0x >>> 18)) ^
@@ -1059,7 +1069,8 @@
             if (i < 16) {
               Wih = Wi.high = M[offset + i * 2] | 0;
               Wil = Wi.low = M[offset + i * 2 + 1] | 0;
-            } else {
+            }
+            else {
               var gamma0x = W[i - 15];
               var gamma0xh = gamma0x.high;
               var gamma0xl = gamma0x.low;
@@ -1222,13 +1233,15 @@
               var bitPosition = (1 << j) - 1;
               if (bitPosition < 32) {
                 roundConstantLsw ^= 1 << bitPosition;
-              } else {
+              }
+              else {
                 roundConstantMsw ^= 1 << (bitPosition - 32);
               }
             }
             if (LFSR & 0x80) {
               LFSR = (LFSR << 1) ^ 0x71;
-            } else {
+            }
+            else {
               LFSR <<= 1;
             }
           }
@@ -1305,7 +1318,8 @@
               if (rhoOffset < 32) {
                 tMsw = (laneMsw << rhoOffset) | (laneLsw >>> (32 - rhoOffset));
                 tLsw = (laneLsw << rhoOffset) | (laneMsw >>> (32 - rhoOffset));
-              } else {
+              }
+              else {
                 tMsw = (laneLsw << (rhoOffset - 32)) | (laneMsw >>> (64 - rhoOffset));
                 tLsw = (laneMsw << (rhoOffset - 32)) | (laneLsw >>> (64 - rhoOffset));
               }
@@ -1441,13 +1455,17 @@
             t = (al + M[offset + zl[i]]) | 0;
             if (i < 16) {
               t += f1(bl, cl, dl) + hl[0];
-            } else if (i < 32) {
+            }
+            else if (i < 32) {
               t += f2(bl, cl, dl) + hl[1];
-            } else if (i < 48) {
+            }
+            else if (i < 48) {
               t += f3(bl, cl, dl) + hl[2];
-            } else if (i < 64) {
+            }
+            else if (i < 64) {
               t += f4(bl, cl, dl) + hl[3];
-            } else {
+            }
+            else {
               t += f5(bl, cl, dl) + hl[4];
             }
             t = t | 0;
@@ -1461,13 +1479,17 @@
             t = (ar + M[offset + zr[i]]) | 0;
             if (i < 16) {
               t += f5(br, cr, dr) + hr[0];
-            } else if (i < 32) {
+            }
+            else if (i < 32) {
               t += f4(br, cr, dr) + hr[1];
-            } else if (i < 48) {
+            }
+            else if (i < 48) {
               t += f3(br, cr, dr) + hr[2];
-            } else if (i < 64) {
+            }
+            else if (i < 64) {
               t += f2(br, cr, dr) + hr[3];
-            } else {
+            }
+            else {
               t += f1(br, cr, dr) + hr[4];
             }
             t = t | 0;
@@ -1725,7 +1747,8 @@
           function selectCipherStrategy(key) {
             if (typeof key == 'string') {
               return PasswordBasedCipher;
-            } else {
+            }
+            else {
               return SerializableCipher;
             }
           }
@@ -1788,7 +1811,8 @@
           if (iv) {
             block = iv;
             this._iv = undefined;
-          } else {
+          }
+          else {
             block = this._prevBlock;
           }
           for (var i = 0; i < blockSize; i++) {
@@ -1828,13 +1852,15 @@
           var mode = cfg.mode;
           if (this._xformMode == this._ENC_XFORM_MODE) {
             modeCreator = mode.createEncryptor;
-          } else {
+          }
+          else {
             modeCreator = mode.createDecryptor;
             this._minBufferSize = 1;
           }
           if (this._mode && this._mode.__creator == modeCreator) {
             this._mode.init(this, iv && iv.words);
-          } else {
+          }
+          else {
             this._mode = modeCreator.call(mode, this, iv && iv.words);
             this._mode.__creator = modeCreator;
           }
@@ -1848,7 +1874,8 @@
           if (this._xformMode == this._ENC_XFORM_MODE) {
             padding.pad(this._data, this.blockSize);
             finalProcessedBlocks = this._process(!!'flush');
-          } else {
+          }
+          else {
             finalProcessedBlocks = this._process(!!'flush');
             padding.unpad(finalProcessedBlocks);
           }
@@ -1872,7 +1899,8 @@
           var salt = cipherParams.salt;
           if (salt) {
             wordArray = WordArray.create([0x53616c74, 0x65645f5f]).concat(salt).concat(ciphertext);
-          } else {
+          }
+          else {
             wordArray = ciphertext;
           }
           return wordArray.toString(Base64);
@@ -1918,7 +1946,8 @@
         _parse: function (ciphertext, format) {
           if (typeof ciphertext == 'string') {
             return format.parse(ciphertext, this);
-          } else {
+          }
+          else {
             return ciphertext;
           }
         }
@@ -1982,7 +2011,8 @@
         if (iv) {
           keystream = iv.slice(0);
           this._iv = undefined;
-        } else {
+        }
+        else {
           keystream = this._prevBlock;
         }
         cipher.encryptBlock(keystream, 0);
@@ -2209,7 +2239,8 @@
         for (var i = 0; i < 256; i++) {
           if (i < 128) {
             d[i] = i << 1;
-          } else {
+          }
+          else {
             d[i] = (i << 1) ^ 0x11b;
           }
         }
@@ -2235,7 +2266,8 @@
           INV_SUB_MIX_3[sx] = t;
           if (!x) {
             x = xi = 1;
-          } else {
+          }
+          else {
             x = x2 ^ d[d[d[x8 ^ x2]]];
             xi ^= d[d[xi]];
           }
@@ -2257,13 +2289,15 @@
           for (var ksRow = 0; ksRow < ksRows; ksRow++) {
             if (ksRow < keySize) {
               keySchedule[ksRow] = keyWords[ksRow];
-            } else {
+            }
+            else {
               t = keySchedule[ksRow - 1];
               if (!(ksRow % keySize)) {
                 t = (t << 8) | (t >>> 24);
                 t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff];
                 t ^= RCON[(ksRow / keySize) | 0] << 24;
-              } else if (keySize > 6 && ksRow % keySize == 4) {
+              }
+              else if (keySize > 6 && ksRow % keySize == 4) {
                 t = (SBOX[t >>> 24] << 24) | (SBOX[(t >>> 16) & 0xff] << 16) | (SBOX[(t >>> 8) & 0xff] << 8) | SBOX[t & 0xff];
               }
               keySchedule[ksRow] = keySchedule[ksRow - keySize] ^ t;
@@ -2274,12 +2308,14 @@
             var ksRow = ksRows - invKsRow;
             if (invKsRow % 4) {
               var t = keySchedule[ksRow];
-            } else {
+            }
+            else {
               var t = keySchedule[ksRow - 4];
             }
             if (invKsRow < 4 || ksRow <= 4) {
               invKeySchedule[invKsRow] = t;
-            } else {
+            }
+            else {
               invKeySchedule[invKsRow] = INV_SUB_MIX_0[SBOX[t >>> 24]] ^ INV_SUB_MIX_1[SBOX[(t >>> 16) & 0xff]] ^
                 INV_SUB_MIX_2[SBOX[(t >>> 8) & 0xff]] ^ INV_SUB_MIX_3[SBOX[t & 0xff]];
             }
