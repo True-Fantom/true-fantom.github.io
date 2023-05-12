@@ -3314,6 +3314,20 @@
 
   const cast = Scratch.Cast;
 
+  const HashingAlgorithms = [
+    'sha-3-512',
+    'sha-3-384',
+    'sha-3-256',
+    'sha-3-224',
+    'sha-2-512',
+    'sha-2-384',
+    'sha-2-256',
+    'sha-2-224',
+    'sha-1-160',
+    'ripemd-160',
+    'md-5-128'
+  ];
+
   class CryptoScratch {
 
     getInfo() {
@@ -3382,7 +3396,7 @@
         menus: {
           hash_menu: {
             acceptReporters: false,
-            items: ['sha-3-512', 'sha-3-384', 'sha-3-256', 'sha-3-224', 'sha-2-512', 'sha-2-384', 'sha-2-256', 'sha-2-224', 'ripemd-160', 'sha-1-160', 'md-5-128']
+            items: HashingAlgorithms
           }
         }
       };
@@ -3409,14 +3423,16 @@
           return true;
         case 'sha-1-160':
           return true;
-        case 'md-5-128':
+        case 'ripemd-160':
+          return true;
+        case 'md-5-128': default:
           return true;
       }
     }
     hash_block({A, B, C, D, E}) {
       const mode = cast.toString(A).toLowerCase();
       let hashval = cast.toString(B) + cast.toString(C) + cast.toString(D);
-      let func;
+      let func = val => val;
       switch (mode) {
         case 'sha-3-512':
           func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
@@ -3427,17 +3443,19 @@
         case 'sha-3-224':
           func = val => CryptoJS.SHA3(val, {outputLength: 224}); break;
         case 'sha-2-512':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
+          func = val => CryptoJS.SHA512(val); break;
         case 'sha-2-384':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
+          func = val => CryptoJS.SHA384(val); break;
         case 'sha-2-256':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
+          func = val => CryptoJS.SHA256(val); break;
         case 'sha-2-224':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
+          func = val => CryptoJS.SHA224(val); break;
         case 'sha-1-160':
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
+          func = val => CryptoJS.SHA1(val); break;
+        case 'ripemd-160':
+          func = val => CryptoJS.RIPEMD160(val); break;
         case 'md-5-128': default:
-          func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
+          func = val => CryptoJS.MD5(val); break;
       }
       for (let i = 0; i <= Math.floor(cast.toNumber(E)); i++) {
         hashval = func(hashval).toString(CryptoJS.enc.Hex);
