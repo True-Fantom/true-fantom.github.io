@@ -38,7 +38,8 @@
     else {
       root.CryptoJS = factory();
     }
-  }(this, function () {
+  }
+  (this, function () {
     var CryptoJS = CryptoJS || (function (Math, undefined) {
       var crypto;
       if (typeof window !== 'undefined' && window.crypto) {
