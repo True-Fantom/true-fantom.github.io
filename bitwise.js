@@ -38,7 +38,7 @@
           {
             opcode: 'isNumberBits',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is [IMAGE] [CENTRAL] ?',
+            text: 'is number bits [CENTRAL] ?',
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -54,7 +54,7 @@
           {
             opcode: 'toNumberBits',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[CENTRAL] to [IMAGE]',
+            text: '[CENTRAL] to number bits',
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -69,7 +69,7 @@
           {
             opcode: 'ofNumberBits',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[CENTRAL] of [IMAGE]',
+            text: '[CENTRAL] of number bits',
             arguments: {
               CENTRAL: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -85,7 +85,7 @@
           {
             opcode: 'bitwiseRightShift',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ⇉ [RIGHT]',
+            text: '[LEFT] >> [RIGHT]',
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -100,7 +100,7 @@
           {
             opcode: 'bitwiseLeftShift',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ⇇ [RIGHT]',
+            text: '[LEFT] << [RIGHT]',
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -115,7 +115,7 @@
           {
             opcode: 'bitwiseLogicalRightShift',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[LEFT] ⇶ [RIGHT]',
+            text: '[LEFT] >>> [RIGHT]',
             arguments: {
               LEFT: {
                 type: Scratch.ArgumentType.NUMBER,
