@@ -541,7 +541,12 @@
               }
             }
           },
-          `---${'test'}`,
+          '---',
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: 'config'
+          },
+          '---',
           {
             opcode: 'included_clamp_block',
             blockType: Scratch.BlockType.BOOLEAN,
