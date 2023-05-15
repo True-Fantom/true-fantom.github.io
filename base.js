@@ -17,7 +17,7 @@
           {
             opcode: 'base_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] from base [B1] to base [B2]',
+            text: '[A] from base [B] to base [C]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.NUMBER,
