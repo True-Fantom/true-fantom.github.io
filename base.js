@@ -64,7 +64,7 @@
     }
 
     is_base_block({A, B}) {
-      return chars.substring(0, cast.toNumber(B) - 1);
+      return new RegExp('^[' + chars.substring(0, cast.toNumber(B) - 1) + ']+$');
     }
     base_block({A, B, C}) {
       return parseInt(cast.toString(A), cast.toNumber(B)).toString(cast.toNumber(C));
