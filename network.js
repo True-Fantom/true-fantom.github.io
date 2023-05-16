@@ -321,6 +321,7 @@
           {
             opcode: 'redirect_link_block',
             blockType: Scratch.BlockType.COMMAND,
+            isTerminal: true,
             text: 'redirect this tab to [USER_URL]',
             arguments: {
               USER_URL: {
