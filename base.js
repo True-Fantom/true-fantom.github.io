@@ -4,7 +4,7 @@
   const cast = Scratch.Cast;
 
   const bases = ['2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30', '31', '32', '33', '34', '35', '36'];
-  const regexps = [];
+  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
   class ScratchBase {
 
@@ -64,10 +64,10 @@
     }
 
     is_base_block({A, B}) {
-      return true;
+      return chars.substring(0, cast.toNumber(B) - 1);
     }
     base_block({A, B, C}) {
-      return parseInt(cast.toNumber(A), cast.toNumber(B)).toString(cast.toNumber(C));
+      return parseInt(cast.toString(A), cast.toNumber(B)).toString(cast.toNumber(C));
     }
   }
 
