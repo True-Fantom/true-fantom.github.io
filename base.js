@@ -68,7 +68,7 @@
     }
     base_block({A, B, C}) {
       if (new RegExp('^[' + chars.substring(0, cast.toNumber(B)) + ']+$').test(cast.toString(A))) {
-        return parseInt(cast.toString(A), cast.toNumber(B)).toString(cast.toNumber(C)).toUpperCase || '0';
+        return parseInt(cast.toString(A), cast.toNumber(B)).toString(cast.toNumber(C)).toUpperCase() || '0';
       }
       return '0';
     }
