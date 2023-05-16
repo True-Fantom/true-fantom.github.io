@@ -15,6 +15,22 @@
 
         blocks: [
           {
+            opcode: 'is_base_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is base [B] [A] ?',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 10
+              },
+              B: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'base_menu',
+                defaultValue: '10'
+              }
+            }
+          },
+          {
             opcode: 'base_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] from base [B] to base [C]',
@@ -44,6 +60,9 @@
       };
     }
 
+    is_base_block({A, B}) {
+      return true;
+    }
     base_block({A, B, C}) {
       return parseInt(cast.toNumber(A), cast.toNumber(B)).toString(cast.toNumber(C));
     }
