@@ -110,8 +110,7 @@
                         arguments: {
                             constant: {
                                 type: Scratch.ArgumentType.STRING,
-                                menu: 'constant',
-                                defaultValue: '英文'
+                                menu: 'constantmenu'
                             }
                         }
                     }, '---',
@@ -145,7 +144,7 @@
                             }
                         ]
                     },
-                    constant: {
+                    constantmenu: {
                         acceptReporters: true,
                         items: [
                             {
