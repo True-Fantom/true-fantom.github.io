@@ -110,7 +110,8 @@
                         arguments: {
                             constant: {
                                 type: Scratch.ArgumentType.STRING,
-                                menu: 'constant'
+                                menu: 'constant',
+                                defaultValue: '英文'
                             }
                         }
                     }, '---',
