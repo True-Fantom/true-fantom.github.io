@@ -110,7 +110,7 @@
                         arguments: {
                             constant: {
                                 type: Scratch.ArgumentType.STRING,
-                                menu: 'constantmenu'
+                                menu: 'constant'
                             }
                         }
                     }, '---',
@@ -144,7 +144,7 @@
                             }
                         ]
                     },
-                    constantmenu: {
+                    constant: {
                         acceptReporters: true,
                         items: [
                             {
@@ -188,7 +188,7 @@
                                 value: '[\u4e00-\u9fa5]'
                             },
                             {
-                                text: '双字节字符',
+                                text: '343535345',
                                 value: '[^\x00-\xff]'
                             }
                         ]
