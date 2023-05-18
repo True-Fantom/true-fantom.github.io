@@ -215,6 +215,13 @@
               }
             }
           },
+                {
+
+                    blockType: BlockType.LABEL,
+
+                    text: "Arrays"
+
+                },
           {
             opcode: 'root_block',
             blockType: Scratch.BlockType.REPORTER,
