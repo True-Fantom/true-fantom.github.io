@@ -220,13 +220,10 @@
               }
             }
           },
-                {
-
-                    blockType: Scratch.BlockType.LABEL,
-
-                    text: 'test'
-
-                },
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: 'test 1'
+          },
           {
             opcode: 'root_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -553,15 +550,10 @@
               }
             }
           },
-          '---',
-                {
-
-                    blockType: Scratch.BlockType.LABEL,
-
-                    text: 'test 2'
-
-                },
-          '---',
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: 'test 2'
+          },
           {
             opcode: 'included_clamp_block',
             blockType: Scratch.BlockType.BOOLEAN,
