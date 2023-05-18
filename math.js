@@ -9,7 +9,6 @@
                 // анаграмма
                 // рандоманя сортировка массива
                 // рандом из массива
-                // тау
                 // факториал
                 // тригонометрия
                 // lcm, gcf, mean, mode
@@ -805,11 +804,11 @@
             blockType: Scratch.BlockType.REPORTER,
             text: '𝜋'
           },
-          /*{
-            opcode: 'tau_block', // Probably useless
+          {
+            opcode: 'tau_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'τ'
-          },*/
+          },
           {
             opcode: 'e_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -820,16 +819,16 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'φ'
           },
-          {
+          /*{
             opcode: 'plastic_number_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'ρ'
-          },
-          {
-            opcode: 'euler_constant_block',
+          },*/
+          /*{
+            opcode: 'euler_constant_block', // Probably useless
             blockType: Scratch.BlockType.REPORTER,
             text: 'γ'
-          }
+          },*/
           /*{
             opcode: 'omega_block', // Probably useless
             blockType: Scratch.BlockType.REPORTER,
