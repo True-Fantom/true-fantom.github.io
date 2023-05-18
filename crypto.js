@@ -1,4 +1,4 @@
-(Scratch => {
+(Scratch => { // Учитывая то, что нам нужно чем-то заменить encode, а для хеша может быть нужно разное представление, я предлагаю добавить все виды форматов (кроме x
   'use strict';
 
   // First we need to load the CryptoJS library that this extension uses
