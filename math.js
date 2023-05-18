@@ -217,9 +217,9 @@
           },
                 {
 
-                    blockType: BlockType.LABEL,
+                    blockType: Scratch.BlockType.LABEL,
 
-                    text: "Arrays"
+                    text: 'test'
 
                 },
           {
