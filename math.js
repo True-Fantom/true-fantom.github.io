@@ -544,7 +544,7 @@
           '---',
           {
             blockType: Scratch.BlockType.LABEL,
-            text: 'config'
+            text: 'test <>&"\''
           },
           '---',
           {
