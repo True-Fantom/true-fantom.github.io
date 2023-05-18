@@ -549,10 +549,13 @@
             }
           },
           '---',
-          {
-            blockType: Scratch.BlockType.LABEL,
-            text: 'test 2'
-          },
+                {
+
+                    blockType: Scratch.BlockType.LABEL,
+
+                    text: 'test 2'
+
+                },
           '---',
           {
             opcode: 'included_clamp_block',
