@@ -7,28 +7,16 @@
   const gl = renderer._gl;
   let channel_array = [true, true, true, true];
 
-  class ScratchRGBChannels {
+  class ScratchColorMask {
     getInfo() {
       return {
 
-        id: 'lbdrawtest',
-        name: 'RGB Channels',
+        id: 'truefantomcolormask',
+        name: 'Mask',
         color1: '#4cba8e',
         menuIconURI: icon,
 
         blocks: [
-          {
-            opcode: 'true',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'true',
-            hideFromPalette: true
-          },
-          {
-            opcode: 'false',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'false',
-            hideFromPalette: true
-          },
           {
             opcode: 'enabledCheck',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -93,14 +81,6 @@
       };
     }
 
-    true() {
-      return true;
-    }
-
-    false() {
-      return false;
-    }
-
     enabledCheck({COLOR}) {
       if ((COLOR == 'red' && channel_array[0]) || (COLOR == 'green' && channel_array[1]) || (COLOR == 'blue' && channel_array[2]))  {
         return true;
@@ -108,13 +88,11 @@
         return false;
       }
     }
-
     draw({R, G, B}) {
       channel_array = [R, G, B, true];
       gl.colorMask(channel_array[0], channel_array[1], channel_array[2], channel_array[3]);
       Scratch.vm.renderer.dirty = true;
     }
-
     drawOneColor({COLOR}) {
       if (COLOR == 'red') {
         channel_array = [true, false, false, true];
@@ -126,12 +104,10 @@
       gl.colorMask(channel_array[0], channel_array[1], channel_array[2], channel_array[3]);
       Scratch.vm.renderer.dirty = true;
     }
-
     drawDepth({DRAW}) {
       gl.depthMask(DRAW);
       Scratch.vm.renderer.dirty = true;
     }
-
     clearEffects() {
       channel_array = [true, true, true, true];
       gl.colorMask(channel_array[0], channel_array[1], channel_array[2], channel_array[3]);
@@ -140,5 +116,5 @@
     }
   }
 
-  Scratch.extensions.register(new ScratchRGBChannels());
+  Scratch.extensions.register(new ScratchColorMask());
 })(Scratch);
