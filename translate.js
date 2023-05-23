@@ -20,12 +20,12 @@
     getInfo() {
       return {
         id: 'testl10n',
-        name: Scratch.translate({id: 'name', default: 'Test', description: 'description'}),
+        name: Scratch.translate({id: 'name', default: 'Test'}),
         blocks: [
           {
             opcode: 'TestBlock',
             blockType: Scratch.BlockType.REPORTER,
-            text: Scratch.translate({id: 'testblock', default: 'test block', description: 'description'})
+            text: Scratch.translate({id: 'testblock', default: 'test block'})
           }
         ]
       };
