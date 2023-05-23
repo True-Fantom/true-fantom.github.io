@@ -1,41 +1,40 @@
 (function(Scratch) {
-
   'use strict';
 
   Scratch.translate.setup({
-
     en: {
-
-      test: 'EN message'
-
+      name: 'Test',
+      testblock: 'test block'
     },
-
-    es: {
-
-      test: 'ES message'
-
-    }
-
+    ru: {
+      name: 'Тест',
+      testblock: 'тест блок'
+    },
+    zh: {
+      name: '测试',
+      testblock: '测试块'
+    },
   });
 
-  class Test {
-
+  class TestClass {
     getInfo() {
-
       return {
-
         id: 'testl10n',
-
-        name: Scratch.translate('Default message'),
-
-        blocks: []
-
+        name: Scratch.translate({id: 'name', default: 'Test', description: 'description'}),
+        blocks: [
+          {
+            opcode: 'TestBlock',
+            blockType: Scratch.BlockType.REPORTER,
+            text: Scratch.translate({id: 'testblock', default: 'test block', description: 'description'})
+          }
+        ]
       };
-
     }
 
+    TestBlock() {
+      return '';
+    }
   }
 
-  Scratch.extensions.register(new Test());
-
+  Scratch.extensions.register(new TestClass());
 })(Scratch);
