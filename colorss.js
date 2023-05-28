@@ -27,13 +27,17 @@
 
         blocks: [
           {
-            opcode: 'test_block',
+            opcode: 'random_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'test [A]',
+            text: 'pick random [TYPE] with [WITH]',
             arguments: {
-              A: {
+              TYPE: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'test'
+                menu: 'type_menu'
+              },
+              WITH: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'with_menu'
               }
             }
           }
@@ -48,7 +52,7 @@
             acceptReporters: false,
             items: ['array', 'object', 'map']
           },
-          random_menu: {
+          with_menu: {
             acceptReporters: false,
             items: ['not opacity', 'opacity']
           },
