@@ -48,6 +48,10 @@
             acceptReporters: false,
             items: ['array', 'object', 'map']
           },
+          random_menu: {
+            acceptReporters: false,
+            items: ['not opacity', 'opacity']
+          },
           // RGBA
           rgba_color_menu: {
             acceptReporters: false,
@@ -56,6 +60,14 @@
           rgba_alpha_menu: {
             acceptReporters: false,
             items: ['test', 'test']
+          },
+          rgba_components_menu: {
+            acceptReporters: false,
+            items: ['red', 'green', 'blue', 'alpha']
+          },
+          rgb_components_menu: {
+            acceptReporters: false,
+            items: ['red', 'green', 'blue']
           },
           // HSVA
           hsva_color_menu: {
@@ -70,6 +82,14 @@
             acceptReporters: false,
             items: ['test', 'test']
           },
+          hsva_components_menu: {
+            acceptReporters: false,
+            items: ['hue', 'saturation', 'value', 'alpha']
+          },
+          hsv_components_menu: {
+            acceptReporters: false,
+            items: ['hue', 'saturation', 'value']
+          },
           // HSLA
           hsla_color_menu: {
             acceptReporters: false,
@@ -83,10 +103,22 @@
             acceptReporters: false,
             items: ['test', 'test']
           },
+          hsla_components_menu: {
+            acceptReporters: false,
+            items: ['hue', 'saturation', 'lightness', 'alpha']
+          },
+          hsl_components_menu: {
+            acceptReporters: false,
+            items: ['hue', 'saturation', 'lightness']
+          },
           // CMYK
           cmyk_color_menu: {
             acceptReporters: false,
             items: ['test', 'test']
+          },
+          cmyk_components_menu: {
+            acceptReporters: false,
+            items: ['cyan', 'magenta', 'yellow', 'key', 'key color']
           }
         }
       };
