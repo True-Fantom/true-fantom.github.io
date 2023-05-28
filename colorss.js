@@ -407,6 +407,7 @@
         const color = Color.hsvToRgb(validateJSON(args.color).object);
         return Color.rgbToDecimal(color);
     }
-}
+  }
 
-module.exports = colorBlocks;
+  Scratch.extensions.register(new ScratchColors());
+})(Scratch);
