@@ -6,10 +6,15 @@
 
   const cast = Scratch.Cast;
 
-  const deafultHsv = '{"h": 360, "s": 1, "v": 1}';
-  const deafultRgb = '{"r": 255, "g": 0, "b": 0}';
   const deafultHex = '#ff0000';
-  const deafultDecimal = '16711680';
+  const deafultDec = '16711680';
+  const deafultRGBA = '{"r":255,"g":255,"b":255,"a":1}';
+  const deafultRGB = '{"r":255,"g":255,"b":255}';
+  const deafultHSVA = '{"h":360,"s":100,"v":100,"a":1}';
+  const deafultHSV = '{"h":360,"s":100,"v":100}';
+  const deafultHSLA = '{"h":360,"s":100,"l":100,"a":1}';
+  const deafultHSL = '{"h":360,"s":100,"l":100}';
+  const deafultCMYK = '{"s":255,"m":255,"y":255,"k":0,"key":"#ff0000"}';
 
   class ScratchColors {
     getInfo() {
@@ -35,7 +40,51 @@
         ],
 
         menus: {
-          test_menu: {
+          colors_menu: {
+            acceptReporters: false,
+            items: ['hex', 'dec']
+          },
+          type_menu: {
+            acceptReporters: false,
+            items: ['array', 'object', 'map']
+          },
+          // RGBA
+          rgba_color_menu: {
+            acceptReporters: false,
+            items: ['test', 'test']
+          },
+          rgba_alpha_menu: {
+            acceptReporters: false,
+            items: ['test', 'test']
+          },
+          // HSVA
+          hsva_color_menu: {
+            acceptReporters: false,
+            items: ['test', 'test']
+          },
+          hsva_parm_menu: {
+            acceptReporters: false,
+            items: ['test', 'test']
+          },
+          hsva_alpha_menu: {
+            acceptReporters: false,
+            items: ['test', 'test']
+          },
+          // HSLA
+          hsla_color_menu: {
+            acceptReporters: false,
+            items: ['test', 'test']
+          },
+          hsla_parm_menu: {
+            acceptReporters: false,
+            items: ['test', 'test']
+          },
+          hsla_alpha_menu: {
+            acceptReporters: false,
+            items: ['test', 'test']
+          },
+          // CMYK
+          cmyk_color_menu: {
             acceptReporters: false,
             items: ['test', 'test']
           }
