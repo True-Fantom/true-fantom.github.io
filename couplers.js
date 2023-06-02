@@ -15,7 +15,6 @@
         menuIconURI: icon,
 
         blocks: [
-          
           {
             opcode: 'value_in_boolean_block',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -110,6 +109,10 @@
                 defaultValue: 'apple'
               }
             }
+          },
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: 'Types'
           },
           //
           // Hidden!
