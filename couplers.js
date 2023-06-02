@@ -6,15 +6,12 @@
   const cast = Scratch.Cast;
 
   class Couplers {
-
     getInfo() {
       return {
 
         id: 'truefantomcouplers',
         name: 'Couplers',
-
         color1: '#404040',
-
         menuIconURI: icon,
 
         blocks: [
