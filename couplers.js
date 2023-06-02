@@ -18,7 +18,7 @@
           {
             opcode: 'value1_or_value2_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[BOOLEAN] ? [VALUE1] : [VALUE2]',
+            text: 'if [BOOLEAN] then [VALUE1] else [VALUE2]',
             arguments: {
               BOOLEAN: {
                 type: Scratch.ArgumentType.BOOLEAN
@@ -34,6 +34,7 @@
             }
           },
           {
+            hideFromPalette: true, // Was moved to "Math" extension!
             opcode: 'boolean_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[MENU]',
@@ -67,20 +68,20 @@
             }
           },
           {
+            hideFromPalette: true, // Probably useless
             opcode: 'true_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'true',
-            hideFromPalette: true
+            text: 'true'
           },
           {
+            hideFromPalette: true, // Probably useless
             opcode: 'false_block',
             blockType: Scratch.BlockType.BOOLEAN,
-            text: 'false',
-            hideFromPalette: true
+            text: 'false'
           }
         ],
         menus: {
-          boolean_menu: {
+          boolean_menu: { // Was moved to "Math" extension!
             acceptReporters: true,
             items: ['true', 'false', 'random']
           }
