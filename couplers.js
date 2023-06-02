@@ -15,6 +15,33 @@
         menuIconURI: icon,
 
         blocks: [
+          
+          {
+            opcode: 'value_in_boolean_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[VALUE]',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
+            opcode: 'value_in_string_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[VALUE]',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: 'If else'
+          },
           {
             opcode: 'value1_or_value2_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -32,6 +59,10 @@
                 defaultValue: 'banana'
               }
             }
+          },
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: 'Waiting'
           },
           {
             opcode: 'value_with_wait_block',
@@ -80,6 +111,10 @@
               }
             }
           },
+          //
+          // Hidden!
+          // Hidden!
+          //
           {
             hideFromPalette: true, // Was moved to "Math" extension!
             opcode: 'boolean_block',
@@ -89,28 +124,6 @@
               MENU: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'boolean_menu'
-              }
-            }
-          },
-          {
-            opcode: 'value_in_boolean_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[VALUE]',
-            arguments: {
-              VALUE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              }
-            }
-          },
-          {
-            opcode: 'value_in_string_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: '[VALUE]',
-            arguments: {
-              VALUE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
               }
             }
           },
