@@ -64,6 +64,24 @@
             text: 'Waiting'
           },
           {
+            opcode: 'value_with_wait_or_wait_until_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'wait [WAIT] seconds or until [BOOLEAN] then [VALUE]',
+            arguments: {
+              WAIT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 1
+              },
+              BOOLEAN: {
+                type: Scratch.ArgumentType.BOOLEAN
+              },
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
             opcode: 'value_with_wait_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'wait [WAIT] seconds then [VALUE]',
@@ -93,31 +111,35 @@
             }
           },
           {
-            opcode: 'value_with_wait_or_wait_until_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'wait [WAIT] seconds or until [BOOLEAN] then [VALUE]',
-            arguments: {
-              WAIT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 1
-              },
-              BOOLEAN: {
-                type: Scratch.ArgumentType.BOOLEAN
-              },
-              VALUE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              }
-            }
-          },
-          {
             blockType: Scratch.BlockType.LABEL,
             text: 'Types'
           },
-          //
+          {
+            opcode: 'block_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'block...'
+          },
+          {
+            blockType: Scratch.BlockType.LABEL,
+            text: 'Values'
+          },
+          {
+            opcode: 'random_boolean_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'pick random boolean'
+          },
+          {
+            opcode: 'true_false_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[MENU]',
+            arguments: {
+              MENU: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'true_false_menu'
+              }
+            }
+          },
           // Hidden!
-          // Hidden!
-          //
           {
             hideFromPalette: true, // Was moved to "Math" extension!
             opcode: 'boolean_block',
@@ -144,7 +166,11 @@
           }
         ],
         menus: {
-          boolean_menu: { // Was moved to "Math" extension!
+          true_false_menu: {
+            acceptReporters: false,
+            items: ['true', 'false']
+          },
+          boolean_menu: {
             acceptReporters: true,
             items: ['true', 'false', 'random']
           }
@@ -152,8 +178,28 @@
       };
     }
 
+    value_in_boolean_block({VALUE}) {
+      return VALUE;
+    }
+    value_in_string_block({VALUE}) {
+      return VALUE;
+    }
     value1_or_value2_block({BOOLEAN, VALUE1, VALUE2}) {
       return cast.toBoolean(BOOLEAN) ? VALUE1 : VALUE2;
+    }
+    value_with_wait_or_wait_until_block({WAIT, BOOLEAN, VALUE}, util) {
+      const condition = cast.toBoolean(BOOLEAN);
+      if (!condition) {
+        if (util.stackTimerNeedsInit()) {
+          const duration = Math.max(0, 1000 * cast.toNumber(WAIT));
+          util.startStackTimer(duration);
+          util.yield();
+        } else if (!util.stackTimerFinished()) {
+          util.yield();
+        }
+        return VALUE;
+      }
+      return VALUE;
     }
     value_with_wait_block({WAIT, VALUE}, util) {
       if (util.stackTimerNeedsInit()) {
@@ -172,20 +218,17 @@
       }
       return VALUE;
     }
-    value_with_wait_or_wait_until_block({WAIT, BOOLEAN, VALUE}, util) {
-      const condition = cast.toBoolean(BOOLEAN);
-      if (!condition) {
-        if (util.stackTimerNeedsInit()) {
-          const duration = Math.max(0, 1000 * cast.toNumber(WAIT));
-          util.startStackTimer(duration);
-          util.yield();
-        } else if (!util.stackTimerFinished()) {
-          util.yield();
-        }
-        return VALUE;
+    true_false_block({MENU}) {
+      const menu = cast.toString(MENU).toLowerCase();
+      switch (menu) {
+        case 'true': return true;
+        case 'false': default: return false;
       }
-      return VALUE;
     }
+    random_boolean_block() {
+      return Math.random() < 0.5;
+    }
+    // Hidden!
     boolean_block({MENU}) {
       const menu = cast.toString(MENU).toLowerCase();
       switch (menu) {
@@ -193,12 +236,6 @@
         case 'false': return false;
         case 'random': default: return Math.random() < 0.5;
       }
-    }
-    value_in_boolean_block({VALUE}) {
-      return VALUE;
-    }
-    value_in_string_block({VALUE}) {
-      return VALUE;
     }
     true_block() {
       return true;
