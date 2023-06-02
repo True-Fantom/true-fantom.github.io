@@ -34,6 +34,21 @@
             }
           },
           {
+            opcode: 'value_with_wait_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'wait [WAIT] seconds then [VALUE]',
+            arguments: {
+              WAIT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 1
+              },
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
             hideFromPalette: true, // Was moved to "Math" extension!
             opcode: 'boolean_block',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -91,6 +106,17 @@
 
     value1_or_value2_block({BOOLEAN, VALUE1, VALUE2}) {
       return cast.toBoolean(BOOLEAN) ? VALUE1 : VALUE2;
+    }
+    value_with_wait_block({WAIT, VALUE}, util) {
+      if (util.stackTimerNeedsInit()) {
+        const duration = Math.max(0, 1000 * cast.toNumber(WAIT));
+        util.startStackTimer(duration);
+        this.runtime.requestRedraw();
+        util.yield();
+      } else if (!util.stackTimerFinished()) {
+        util.yield();
+      }
+      return VALUE;
     }
     boolean_block({MENU}) {
       const menu = cast.toString(MENU).toLowerCase();
