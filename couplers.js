@@ -111,7 +111,6 @@
       if (util.stackTimerNeedsInit()) {
         const duration = Math.max(0, 1000 * cast.toNumber(WAIT));
         util.startStackTimer(duration);
-        this.runtime.requestRedraw();
         util.yield();
       } else if (!util.stackTimerFinished()) {
         util.yield();
