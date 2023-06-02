@@ -64,24 +64,6 @@
             text: 'Waiting'
           },
           {
-            opcode: 'value_with_wait_or_wait_until_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'wait [WAIT] seconds or until [BOOLEAN] then [VALUE]',
-            arguments: {
-              WAIT: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 1
-              },
-              BOOLEAN: {
-                type: Scratch.ArgumentType.BOOLEAN
-              },
-              VALUE: {
-                type: Scratch.ArgumentType.STRING,
-                defaultValue: 'apple'
-              }
-            }
-          },
-          {
             opcode: 'value_with_wait_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'wait [WAIT] seconds then [VALUE]',
@@ -101,6 +83,24 @@
             blockType: Scratch.BlockType.REPORTER,
             text: 'wait until [BOOLEAN] then [VALUE]',
             arguments: {
+              BOOLEAN: {
+                type: Scratch.ArgumentType.BOOLEAN
+              },
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
+            opcode: 'value_with_wait_or_wait_until_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'wait [WAIT] seconds or until [BOOLEAN] then [VALUE]',
+            arguments: {
+              WAIT: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 1
+              },
               BOOLEAN: {
                 type: Scratch.ArgumentType.BOOLEAN
               },
@@ -187,20 +187,6 @@
     value1_or_value2_block({BOOLEAN, VALUE1, VALUE2}) {
       return cast.toBoolean(BOOLEAN) ? VALUE1 : VALUE2;
     }
-    value_with_wait_or_wait_until_block({WAIT, BOOLEAN, VALUE}, util) {
-      const condition = cast.toBoolean(BOOLEAN);
-      if (!condition) {
-        if (util.stackTimerNeedsInit()) {
-          const duration = Math.max(0, 1000 * cast.toNumber(WAIT));
-          util.startStackTimer(duration);
-          util.yield();
-        } else if (!util.stackTimerFinished()) {
-          util.yield();
-        }
-        return VALUE;
-      }
-      return VALUE;
-    }
     value_with_wait_block({WAIT, VALUE}, util) {
       if (util.stackTimerNeedsInit()) {
         const duration = Math.max(0, 1000 * cast.toNumber(WAIT));
@@ -215,6 +201,20 @@
       const condition = cast.toBoolean(BOOLEAN);
       if (!condition) {
         util.yield();
+      }
+      return VALUE;
+    }
+    value_with_wait_or_wait_until_block({WAIT, BOOLEAN, VALUE}, util) {
+      const condition = cast.toBoolean(BOOLEAN);
+      if (!condition) {
+        if (util.stackTimerNeedsInit()) {
+          const duration = Math.max(0, 1000 * cast.toNumber(WAIT));
+          util.startStackTimer(duration);
+          util.yield();
+        } else if (!util.stackTimerFinished()) {
+          util.yield();
+        }
+        return VALUE;
       }
       return VALUE;
     }
