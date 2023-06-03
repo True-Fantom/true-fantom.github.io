@@ -39,7 +39,7 @@
           },
           {
             blockType: Scratch.BlockType.LABEL,
-            text: 'If else'
+            text: 'If Else'
           },
           {
             opcode: 'value1_or_value2_block',
