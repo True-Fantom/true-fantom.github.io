@@ -180,7 +180,7 @@
           },
           // Hidden!
           {
-            hideFromPalette: true, // Was moved to "Math" extension!
+            hideFromPalette: true, // Was moved to "Math" extension
             opcode: 'boolean_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: '[MENU]',
@@ -252,6 +252,24 @@
         return VALUE;
       }
       return VALUE;
+    }
+    is_string_block({VALUE}) {
+      return typeof VALUE === 'string';
+    }
+    to_string_block({VALUE}) {
+      return cast.toString(VALUE);
+    }
+    is_number_block({VALUE}) {
+      return typeof VALUE === 'number';
+    }
+    to_number_block({VALUE}) {
+      return cast.toNumber(VALUE);
+    }
+    is_boolean_block({VALUE}) {
+      return typeof VALUE === 'boolean';
+    }
+    to_boolean_block({VALUE}) {
+      return cast.toBoolean(VALUE);
     }
     // Hidden!
     boolean_block({MENU}) {
