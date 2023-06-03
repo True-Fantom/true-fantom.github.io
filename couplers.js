@@ -42,7 +42,7 @@
               }
             }
           },
-          makeLabel('If Else'),
+          makeLabel('If else'),
           {
             opcode: 'value1_or_value2_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -110,6 +110,74 @@
             }
           },
           makeLabel('Types'),
+          {
+            opcode: 'is_string_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is string [VALUE] ?',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
+            opcode: 'to_string_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[VALUE] to string',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'is_number_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is number [VALUE] ?',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
+            opcode: 'to_number_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[VALUE] to number',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          '---',
+          {
+            opcode: 'is_boolean_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is boolean [VALUE] ?',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          {
+            opcode: 'to_boolean_block',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: '[VALUE] to boolean',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
           // Hidden!
           {
             hideFromPalette: true, // Was moved to "Math" extension!
