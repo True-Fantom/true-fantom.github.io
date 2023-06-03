@@ -5,6 +5,11 @@
 
   const cast = Scratch.Cast;
 
+  const makeLabel = (text) => ({
+    blockType: 'label',
+    text: text
+  });
+
   class Couplers {
     getInfo() {
       return {
@@ -37,10 +42,7 @@
               }
             }
           },
-          {
-            blockType: Scratch.BlockType.LABEL,
-            text: 'If Else'
-          },
+          makeLabel('If Else'),
           {
             opcode: 'value1_or_value2_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -59,10 +61,7 @@
               }
             }
           },
-          {
-            blockType: Scratch.BlockType.LABEL,
-            text: 'Waiting'
-          },
+          makeLabel('Waiting'),
           {
             opcode: 'value_with_wait_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -110,35 +109,7 @@
               }
             }
           },
-          {
-            blockType: Scratch.BlockType.LABEL,
-            text: 'Types'
-          },
-          {
-            opcode: 'block_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'block...'
-          },
-          {
-            blockType: Scratch.BlockType.LABEL,
-            text: 'Values'
-          },
-          {
-            opcode: 'random_boolean_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'pick random boolean'
-          },
-          {
-            opcode: 'true_false_block',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: '[MENU]',
-            arguments: {
-              MENU: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'true_false_menu'
-              }
-            }
-          },
+          makeLabel('Types'),
           // Hidden!
           {
             hideFromPalette: true, // Was moved to "Math" extension!
@@ -166,10 +137,6 @@
           }
         ],
         menus: {
-          true_false_menu: {
-            acceptReporters: false,
-            items: ['true', 'false']
-          },
           boolean_menu: {
             acceptReporters: true,
             items: ['true', 'false', 'random']
@@ -217,16 +184,6 @@
         return VALUE;
       }
       return VALUE;
-    }
-    true_false_block({MENU}) {
-      const menu = cast.toString(MENU).toLowerCase();
-      switch (menu) {
-        case 'true': return true;
-        case 'false': default: return false;
-      }
-    }
-    random_boolean_block() {
-      return Math.random() < 0.5;
     }
     // Hidden!
     boolean_block({MENU}) {
