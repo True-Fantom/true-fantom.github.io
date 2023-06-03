@@ -42,7 +42,7 @@
               }
             }
           },
-          makeLabel('If else'),
+          makeLabel('Conditions'),
           {
             opcode: 'value1_or_value2_block',
             blockType: Scratch.BlockType.REPORTER,
