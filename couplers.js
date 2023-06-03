@@ -111,6 +111,18 @@
           },
           makeLabel('Types'),
           {
+            opcode: 'type_of_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'type of [VALUE]',
+            arguments: {
+              VALUE: {
+                type: Scratch.ArgumentType.STRING,
+                defaultValue: 'apple'
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'is_string_block',
             blockType: Scratch.BlockType.BOOLEAN,
             text: 'is string [VALUE] ?',
@@ -252,6 +264,9 @@
         return VALUE;
       }
       return VALUE;
+    }
+    type_of_block({VALUE}) {
+      return typeof VALUE;
     }
     is_string_block({VALUE}) {
       return typeof VALUE === 'string';
