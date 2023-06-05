@@ -40,10 +40,10 @@
     }
 
     broadcasts_block() {
-      return JSON.stringify(runtime.getTargetForStage().getAllBroadcastMessages());
+      return Scratch.vm.runtime.getTargetForStage().getAllBroadcastMessages();
     }
     broadcast_block() {
-      return runtime.getTargetForStage().getAllBroadcastMessages();
+      return Scratch.vm.runtime.getTargetForStage().getAllBroadcastMessages();
     }
   }
 
