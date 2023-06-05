@@ -40,7 +40,7 @@
     }
 
     broadcasts_block() {
-      return Scratch.vm.runtime.getTargetForStage().getAllBroadcastMessages();
+      return Scratch.vm.runtime.getTargetForStage().broadcast;
     }
     broadcast_block() {
       return Scratch.vm.runtime.getTargetForStage().getAllBroadcastMessages();
