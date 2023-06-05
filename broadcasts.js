@@ -1,6 +1,8 @@
 (Scratch => {
   'use strict';
 
+  const vm = Scratch.vm;
+
   class ScratchTest {
     getInfo() {
       return {
@@ -32,7 +34,7 @@
     }
 
     broadcast_block() {
-      return true;
+      return vm.getTargetForStage().getAllBroadcastMessages();
     }
   }
 
