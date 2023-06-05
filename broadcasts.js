@@ -13,6 +13,11 @@
 
         blocks: [
           {
+            opcode: 'broadcasts_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'all broadcasts',
+          },
+          {
             opcode: 'broadcast_block',
             blockType: Scratch.BlockType.COMMAND,
             text: 'broadcast [MENU]',
@@ -33,6 +38,9 @@
       };
     }
 
+    broadcasts_block() {
+      return JSON.stringify(vm.getTargetForStage().getAllBroadcastMessages());
+    }
     broadcast_block() {
       return vm.getTargetForStage().getAllBroadcastMessages();
     }
