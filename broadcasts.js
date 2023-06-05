@@ -2,6 +2,7 @@
   'use strict';
 
   const vm = Scratch.vm;
+  const runtime = vm.runtime;
 
   class ScratchTest {
     getInfo() {
@@ -39,10 +40,10 @@
     }
 
     broadcasts_block() {
-      return JSON.stringify(vm.getTargetForStage().getAllBroadcastMessages());
+      return JSON.stringify(runtime.getTargetForStage().getAllBroadcastMessages());
     }
     broadcast_block() {
-      return vm.getTargetForStage().getAllBroadcastMessages();
+      return runtime.getTargetForStage().getAllBroadcastMessages();
     }
   }
 
