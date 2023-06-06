@@ -46,8 +46,8 @@
     }
 
     broadcastsSort(A, B) {
-      const textA = A.text;
-      const textB = B.text;
+      const textA = A.text.toLowerCase();
+      const textB = B.text.toLowerCase();
       let comparison = 0;
       if (textA > textB) {
         comparison = 1;
