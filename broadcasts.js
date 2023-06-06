@@ -14,12 +14,18 @@
 
         blocks: [
           {
-            opcode: 'broadcasts_block',
+            opcode: 'broadcast_rep_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'all broadcasts',
+            text: 'broadcast [MENU]',
+            arguments: {
+              MENU: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'broadcasts_menu'
+              }
+            }
           },
           {
-            opcode: 'broadcast_block',
+            opcode: 'broadcast_com_block',
             blockType: Scratch.BlockType.COMMAND,
             text: 'broadcast [MENU]',
             arguments: {
@@ -33,17 +39,33 @@
         menus: {
           broadcasts_menu: {
             acceptReporters: true,
-            items: ['test1', 'test2']
+            items: 'getBroadcasts'
           }
         }
       };
     }
 
-    broadcasts_block() {
-      return Scratch.vm.runtime.getTargetForStage().getAllBroadcastMessages()[0].name;
+    getBroadcasts() {
+      // @ts-expect-error - Blockly not typed yet
+      // eslint-disable-next-line no-undef
+      const broadcasts = typeof Blockly === 'undefined' ? [] : Blockly.getMainWorkspace()
+        .getVariableMap()
+        .getVariablesOfType('broadcast_msg')
+        .map(model => ({
+          text: model.name,
+          value: model.getId()
+        }));
+      if (broadcasts.length > 0) {
+        return broadcasts;
+      } else {
+        return [{text: 'message1', value: ''}];
+      }
     }
-    broadcast_block() {
-      return Scratch.vm.runtime.getTargetForStage().getAllBroadcastMessages()[0].name;
+    broadcast_rep_block({MENU}) {
+      return MENU;
+    }
+    broadcas_com_block({MENU}) {
+      Blockly.getMainWorkspace().editor.refreshWorkspace();
     }
   }
 
