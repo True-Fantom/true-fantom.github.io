@@ -45,6 +45,17 @@
       };
     }
 
+    broadcastsSort(A, B) {
+      const textA = A.text;
+      const textB = B.text;
+      let comparison = 0;
+      if (textA > textB) {
+        comparison = 1;
+      } else if (textA < textB) {
+        comparison = -1;
+      }
+      return comparison;
+    }
     getBroadcasts() {
       // @ts-expect-error - Blockly not typed yet
       // eslint-disable-next-line no-undef
@@ -56,9 +67,9 @@
           value: model.getId()
         }));
       if (broadcasts.length > 0) {
-        return broadcasts;
+        return broadcasts.sort(this.broadcastsSort);
       } else {
-        return [{text: 'message1', value: ''}];
+        return [{text: '', value: ''}];
       }
     }
     broadcast_rep_block({MENU}) {
