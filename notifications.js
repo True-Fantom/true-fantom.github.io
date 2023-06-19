@@ -331,17 +331,15 @@
       }
     }
     request_permission_and_wait_block({SOURCE}) {
-      if (cast.toString(SOURCE).toLowerCase() === 'project and browser') {
-        if (permissionTypeByVM() !== 'granted') {
+      if (permissionTypeByVM() !== 'granted') {
+        if (cast.toString(SOURCE).toLowerCase() === 'project and browser') {
           return askVmForNotificationPermission().then(() => {
             if (permissionTypeByVM() === 'granted' && permissionTypeByBrowser() !== 'granted') {
               return askBrowserForNotificationPermission();
             }
           });
         }
-      }
-      else {
-        if (permissionTypeByVM() !== 'granted') {
+        else {
           return askVmForNotificationPermission().then(() => {
             if (permissionTypeByVM() === 'granted' && permissionTypeByBrowser() !== 'granted') {
               askBrowserForNotificationPermission();
