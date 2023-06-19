@@ -26,7 +26,7 @@
   let allNotifications = [];
   /** @type {Object.<string, string>} */
   let allGroups = {};
-  /** @type {{click: Object.<string, string>, close: Object.<string, string>, error: Object.<string, string>, show: Object.<string, string>}} */
+  /** @type {{click: Object.<string, string>, close: Object.<string, string>, show: Object.<string, string>, error: Object.<string, string>}} */
   let allBroadcasts = {};
 
   const askVmForNotificationPermission = async () => {
@@ -263,6 +263,10 @@
           notification_info_type_menu: {
             acceptReporters: false,
             items: ['name', 'title', 'text', 'icon', 'image', 'duration', 'volume']
+          },
+          event_menu: {
+            acceptReporters: true,
+            items: ['click', 'close', 'show', 'error']
           },
           json_menu: {
             acceptReporters: false,
