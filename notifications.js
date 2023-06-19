@@ -237,7 +237,13 @@
                 defaultValue: 'notification'
               }
             }
-          }
+          },
+          makeLabel('Groups'),
+
+
+          makeLabel('Broadcasts'),
+
+
         ],
         menus: {
           mini_permission_source_menu: {
