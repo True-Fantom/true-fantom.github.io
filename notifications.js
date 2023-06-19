@@ -309,7 +309,7 @@
       return broadcasts;
     }
 
-    async show_notification_function(REQUIREINTERACTION, SILENT, DATA, TITLE, BODY, ICON, IMAGE) {
+    async show_notification_function(REQUIREINTERACTION, SILENT, NAME, TITLE, BODY, ICON, IMAGE) {
       allNotifications.push(new Notification(
         TITLE, {
         requireInteraction: REQUIREINTERACTION,
@@ -317,7 +317,7 @@
         body: BODY,
         icon: ICON,
         image: IMAGE,
-        data: DATA}
+        data: NAME}
       ));
     }
 
