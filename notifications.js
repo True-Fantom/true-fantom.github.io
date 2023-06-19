@@ -443,13 +443,13 @@
         case 'values': newAllNotifications = allNotifications.map(notification => [notification.data, notification.title, notification.body, notification.icon, notification.image, notification.requireInteraction ? 'eternal' : 'temporary', notification.silent ? 'silent' : 'noisy']); break;
         case 'keys': newAllNotifications = allNotifications.map(notification => ['name', 'title', 'text', 'icon', 'image', 'duration', 'volume']); break;
         case 'pairs': default: newAllNotifications = allNotifications.map(notification => [notification.data, notification.title, notification.body, notification.icon, notification.image, notification.requireInteraction ? 'eternal' : 'temporary', notification.silent ? 'silent' : 'noisy']).reduce((array, currentValue, currentIndex) => ({...array, [['name', 'title', 'text', 'icon', 'image', 'duration', 'volume'][currentIndex]] : currentValue}), {}); break;
-        case 'map': return newAllNotifications = 0; break;
+        case 'map': newAllNotifications = allNotifications.map(notification => [['name', notification.data], ['title', notification.title], ['text', notification.body], ['icon', notification.icon], ['image', notification.image], ['duration', notification.requireInteraction ? 'eternal' : 'temporary'], ['volume', notification.silent ? 'silent' : 'noisy']]); break;
       }
       switch (json_type) {
-        case 'values': return toJsonString(allNotifications.map((notification, index) => notification.data));
-        case 'keys': return toJsonString(allNotifications.map((notification, index) => String(index + 1)));
-        case 'pairs': default: return toJsonString(allNotifications.map((notification, index) => notification.data).reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}));
-        case 'map': return toJsonString(allNotifications.map((notification, index) => [String(index + 1), notification.data]));
+        case 'values': return toJsonString(newAllNotifications.map((values, index) => values));
+        case 'keys': return toJsonString(newAllNotifications.map((values, index) => String(index + 1)));
+        case 'pairs': default: return toJsonString(newAllNotifications.map((values, index) => values).reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}));
+        case 'map': return toJsonString(newAllNotifications.map((values, index) => [String(index + 1), values]));
       }
     }
     notification_info_block({INDEX, NOTIFICATION_INFO_TYPE}) {
