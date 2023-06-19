@@ -1,27 +1,34 @@
 (Scratch => {
   'use strict';
+
   const menuIconURI = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMjUuMzU0OCIgaGVpZ2h0PSIyMjUuMzU0OCIgdmlld0JveD0iMCwwLDIyNS4zNTQ4LDIyNS4zNTQ4Ij48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTg3LjMyMjk3LC0zNy4zMjI1OSkiPjxnIGRhdGEtcGFwZXItZGF0YT0ieyZxdW90O2lzUGFpbnRpbmdMYXllciZxdW90Ozp0cnVlfSIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2Utd2lkdGg9IjAiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLWRhc2hhcnJheT0iIiBzdHJva2UtZGFzaG9mZnNldD0iMCIgc3R5bGU9Im1peC1ibGVuZC1tb2RlOiBub3JtYWwiPjxwYXRoIGQ9Ik0xODcuMzIyOTgsMTUwYzAsLTYyLjIzMDAxIDUwLjQ0NzM5LC0xMTIuNjc3NCAxMTIuNjc3NCwtMTEyLjY3NzRjNjIuMjMwMDEsMCAxMTIuNjc3NCw1MC40NDczOSAxMTIuNjc3NCwxMTIuNjc3NGMwLDYyLjIzMDAxIC01MC40NDczOSwxMTIuNjc3NCAtMTEyLjY3NzQsMTEyLjY3NzRjLTYyLjIzMDAxLDAgLTExMi42Nzc0LC01MC40NDczOSAtMTEyLjY3NzQsLTExMi42Nzc0eiIgZmlsbD0iI2EyYjQ3ZSIgc3Ryb2tlPSJub25lIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIvPjxnIGZpbGw9IiNmZmZmZmYiPjxwYXRoIGQ9Ik0zMjAuNDU3NDgsMTU3LjY0MTU5bDE3Ljc2NTI3LDQxLjYzMTY5YzUuMDE5NzcsMTMuMDUyOTggLTEuNjg5MTksMjcuNzkzNDggLTE0Ljc0MjE5LDMyLjgxMzI0bC0yLjY0ODQyLDEuMDE4NWMtMTMuMDUyOTksNS4wMTk3OCAtMjcuOTA5OTQsLTEuNDI3MjYgLTMyLjkyOTcsLTE0LjQ4MDM2bC0xOS4xMjY5MSwtNDAuMDY5OTJ6IiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik0zNjMuNTM3ODYsMTg1Ljg4MjExbC0wLjc3MzgsMC4zNTE3bC0xMDQuMzMzMzYsNDAuMTAxMTlsLTAuNTYyOTcsMC4yMTA4NWMtNS44MzkwMSwyLjI1MTM1IC0xMi43MzM4NiwwLjM1MTcgLTE1LjgyOTM5LC01LjA2NTE5Yy0xLjg5OTI1LC0zLjIzNjM4IC0yLjA0MDA5LC02LjgyNDQ0IC0wLjk4NDU4LC05LjkxOTk2YzEuODI5MjUsLTUuNDE2ODkgMy4wMjUxLC0xMS4xODU4OSAyLjc0MzQsLTE2Ljg4NDM5Yy0wLjE0MDQyLC00LjU3MzA3IC0wLjk4NDU5LC05LjAwNTM3IC0yLjY3Mjk5LC0xMy4yOTY3NmwtOS4wNzU4LC0yMy43MDg5MmMtOS4zNTcwOCwtMjQuMzQyMjMgLTAuNDkyNTQsLTUxLjA3NjI0IDE5LjkxLC02NS42MzkzNGMyMC40MDI1NCwtMTQuNTYzMSAzOC4wMDIxMywtOS40NjMwMiAzOC4wMDIxMywtOS40NjMwMmMwLDAgLTguNjQyMjcsMjMuMjY1MDkgMTAuNjMzMDgsNDQuMTY5NTZjMTkuMjc1MzUsMjAuOTA0NDggNDMuMjY2NywxMy4yNzg5NCA0My4yNjY3LDEzLjI3ODk0YzQuNDMyMjMsNi44MjQwMiAxMy44MzgxNiwxOC43NzkyNiAxOS4zMjU4OSwyMi41Nzg1MmwwLjI4MTI3LDAuMDdjMS44MjkyNSwwLjYzMzM5IDMuMzc3MjIsMS43NTg4MyA0Ljc4MzkzLDMuMDk1NTNjMS40Nzc1NiwxLjY4ODgyIDIuNjczNCwzLjUxNzY1IDMuMjM2MzYsNi4zMzE5MWMxLjA1NTUsNS45MDk5OSAtMi4zOTE3MSwxMS42Nzg1NyAtNy45NDk4NywxMy43ODk0NHoiIHN0cm9rZS1vcGFjaXR5PSIwLjE0OTAyIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS1saW5lY2FwPSJidXR0IiBzdHJva2UtbGluZWpvaW49Im1pdGVyIi8+PHBhdGggZD0iTTM2NC4yMTIxLDk1Ljc5OTY2YzAsMTYuOTA0MTYgLTEzLjcwMzUzLDMwLjYwNzY5IC0zMC42MDc2OSwzMC42MDc2OWMtMTYuOTA0MTYsMCAtMzAuNjA3NjksLTEzLjcwMzUyIC0zMC42MDc2OSwtMzAuNjA3NjljMCwtMTYuOTA0MTcgMTMuNzAzNTMsLTMwLjYwNzY4IDMwLjYwNzY5LC0zMC42MDc2OGMxNi45MDQxNiwwIDMwLjYwNzY5LDEzLjcwMzUyIDMwLjYwNzY5LDMwLjYwNzY5eiIgZGF0YS1wYXBlci1kYXRhPSJ7JnF1b3Q7aW5kZXgmcXVvdDs6bnVsbH0iIHN0cm9rZT0iIzAwMDAwMCIgc3Ryb2tlLWxpbmVjYXA9ImJ1dHQiIHN0cm9rZS1saW5lam9pbj0ibWl0ZXIiLz48L2c+PC9nPjwvZz48L3N2Zz48IS0tcm90YXRpb25DZW50ZXI6MTEyLjY3NzAyNDk5OTk5OTk5OjExMi42Nzc0MDUtLT4=';
   const jsonIconURI = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIxOS4yMDkxNiIgaGVpZ2h0PSIxOS4wNzY2MiIgdmlld0JveD0iMCwwLDE5LjIwOTE2LDE5LjA3NjYyIj48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMjMwLjEwNDY5LC0xNzAuODMzNTYpIj48ZyBkYXRhLXBhcGVyLWRhdGE9InsmcXVvdDtpc1BhaW50aW5nTGF5ZXImcXVvdDs6dHJ1ZX0iIGZpbGw9IiNmZmZmZmYiIGZpbGwtcnVsZT0ibm9uemVybyIgc3Ryb2tlPSIjODI5MDY1IiBzdHJva2Utd2lkdGg9IjAuOTc1IiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PHBhdGggZD0iTTI0MS4wMTI1MiwxODUuMzM3NzNjNC42MzY1OCwtMy41MjM2NiAxLjQ1MjgsLTEwLjgxNjQ4IC0yLjU0OTY0LC0xMC4xOTE2MmMtNy4wNzAyNywxLjEwMzgxIC01Ljg0MDM1LDEwLjM5ODYzIC0zLjU4Njk1LDEzLjEzODFjMC4xMTM0MywwLjEzNzg5IC0wLjA4MTQyLDAuMTYwOTIgLTAuMjMyOTgsMC4wNjY1M2MtMy40MjgsLTIuMTM0ODQgLTQuODAwMDUsLTYuNjE2MjMgLTMuNjUzODUsLTEwLjQ1OTM5YzAuOTY2MDksLTMuMjM5MjMgMy45Nzg0MiwtNi40NDczMyA4LjU0MjA1LC02LjU3MDI4YzcuMjAyNTEsLTAuNjU2OTcgOS4zNDg0NCwxMy4zNTcxNiAxLjQ4MTM3LDE0LjAxNjY2eiIvPjxwYXRoIGQ9Ik0yNDEuNjQ5MjgsMTg1LjQyODljNS40NTM4LC0xLjM5MDQzIDUuNjMyODksLTguOTc4MTMgMi41NjgwNywtMTMuMTMzNTRjLTAuMDg0OTUsLTAuMTE1MTggLTAuMTY2ODIsLTAuMzQyMTMgLTAuMDQ3ODUsLTAuMjYyNTdjOC45MDM1Myw1Ljk1Mzk5IDMuNDQ5NzQsMTYuMzAyNDkgLTMuMTM3MDUsMTcuMzg5OWMtNC4zMzk1MywwLjcxNjQyIC03LjExODg2LC0yLjEzMTMgLTcuNjEyODYsLTYuNTE3MjdjLTAuMzM4NTgsLTMuMDA2MDYgMC41NDk4NywtNy4xNjY1NSA0LjY2ODksLTcuMzc2NjNjLTQuMDcxMiwzLjAxNDU2IC0xLjY4MzYxLDExLjQ4MTA1IDMuNTYwNzksOS45MDAxMXoiLz48L2c+PC9nPjwvc3ZnPjwhLS1yb3RhdGlvbkNlbnRlcjo5Ljg5NTMwODI4MDc3MDg0ODo5LjE2NjQzNTAwMDAwMDAwNy0tPg==';
+
   const cast = Scratch.Cast;
+
   const makeLabel = (text) => ({
     blockType: 'label',
     text: text
   });
+
   const toJsonData = val => {
     return JSON.parse(val);
   };
   const toJsonString = val => {
     return JSON.stringify(val, (key, value) => {return value === undefined ? '' : value}, 0);
   };
+
   let permissionTypeByVM = () => 'default';
   let permissionTypeByBrowser = () => Notification.permission;
   let permissionTypeByGlobal = () => (permissionTypeByVM() === 'default' && permissionTypeByBrowser() === 'default') || (permissionTypeByVM() === 'granted' && permissionTypeByBrowser() === 'default') ? 'default' : permissionTypeByVM() === 'granted' && permissionTypeByBrowser() === 'granted' ? 'granted' : 'denied';
+
   /** @type {Array.<Notification>} */
   let allNotifications = [];
   /** @type {Object.<string, string>} */
   let allGroups = {};
-  /** @type {Object.<string, string>} */
+  /** @type {{click: Object.<string, string>, close: Object.<string, string>, error: Object.<string, string>, show: Object.<string, string>}} */
   let allBroadcasts = {};
+
   const askVmForNotificationPermission = async () => {
     try {
       // @ts-expect-error - canNotify is too old.
@@ -35,6 +42,7 @@
       permissionTypeByVM = () => 'denied';
     }
   };
+
   const askBrowserForNotificationPermission = async () => {
     try {
       const allowed = await Notification.requestPermission();
@@ -45,30 +53,17 @@
       console.warn('Could not request notification permissions', err);
     }
   };
+
   class ScratchNotifications {
     getInfo() {
       return {
+
         id: 'truefantomnotifications',
         name: 'Notifications',
         color1: '#a2b47e',
         menuIconURI: menuIconURI,
+
         blocks: [
-          {
-            opcode: 'when_request_permission_block',
-            blockType: Scratch.BlockType.HAT,
-            text: 'when notification permission request is [PERMISSION_TYPE] for [SOURCE]',
-            isEdgeActivated: false,
-            arguments: {
-              SOURCE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'permission_source_menu'
-              },
-              PERMISSION_TYPE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'permission_type_menu'
-              }
-            }
-          },
           {
             opcode: 'request_permission_block',
             blockType: Scratch.BlockType.COMMAND,
@@ -85,7 +80,6 @@
               }
             }
           },
-          '---',
           {
             opcode: 'permission_block',
             blockType: Scratch.BlockType.BOOLEAN,
@@ -281,6 +275,7 @@
         }
       };
     }
+
     broadcasts_sort_function(A, B) {
       const text_a = A.text.toLowerCase();
       const text_b = B.text.toLowerCase();
@@ -302,14 +297,14 @@
           text: model.name,
           value: model.getId()
         }));
-      const epmty = {text: '', value: ''};
       if (broadcasts.length > 0) {
-        broadcasts.sort(this.broadcasts_sort_function).push(epmty);
+        broadcasts.sort(this.broadcasts_sort_function);
       } else {
-        broadcasts = [epmty];
+        broadcasts = [{text: '', value: ''}];
       }
       return broadcasts;
     }
+
     async show_notification_function(REQUIREINTERACTION, SILENT, DATA, TITLE, BODY, ICON, IMAGE) {
       allNotifications.push(new Notification(
         TITLE, {
@@ -321,7 +316,8 @@
         data: DATA}
       ));
     }
-    request_permission_block({}, util) {
+
+    request_permission_block() {
       if (permissionTypeByVM() !== 'granted') {
         askVmForNotificationPermission().then(() => {
           if (permissionTypeByVM() === 'granted' && permissionTypeByBrowser() !== 'granted') {
@@ -329,38 +325,8 @@
           }
         });
       }
-      let project_and_browser_source;
-      let project_source;
-      let browser_source;
-      switch (permissionTypeByGlobal()) {
-        case 'granted': project_and_browser_source = 'granted'; break;
-        case 'denied': project_and_browser_source = 'denied'; break;
-        case 'default': default: project_and_browser_source = 'did not define'; break;
-      }
-      switch (permissionTypeByVM()) {
-        case 'granted': project_source = 'granted'; break;
-        case 'denied': project_source = 'denied'; break;
-        case 'default': default: project_source = 'did not define'; break;
-      }
-      switch (permissionTypeByBrowser()) {
-        case 'granted': browser_source = 'granted'; break;
-        case 'denied': browser_source = 'denied'; break;
-        case 'default': default: browser_source = 'did not define'; break;
-      }
-      util.startHats('truefantomnotifications_when_request_permission_block', {
-        SOURCE: 'project and browser',
-        PERMISSION_TYPE: project_and_browser_source
-      });
-      util.startHats('truefantomnotifications_when_request_permission_block', {
-        SOURCE: 'project',
-        PERMISSION_TYPE: project_source
-      });
-      util.startHats('truefantomnotifications_when_request_permission_block', {
-        SOURCE: 'browser',
-        PERMISSION_TYPE: browser_source
-      });
     }
-    request_permission_and_wait_block({SOURCE}, util) {
+    request_permission_and_wait_block({SOURCE}) {
       if (cast.toString(SOURCE).toLowerCase() === 'project and browser') {
         if (permissionTypeByVM() !== 'granted') {
           return askVmForNotificationPermission().then(() => {
@@ -379,36 +345,6 @@
           });
         }
       }
-      let project_and_browser_source;
-      let project_source;
-      let browser_source;
-      switch (permissionTypeByGlobal()) {
-        case 'granted': project_and_browser_source = 'granted'; break;
-        case 'denied': project_and_browser_source = 'denied'; break;
-        case 'default': default: project_and_browser_source = 'did not define'; break;
-      }
-      switch (permissionTypeByVM()) {
-        case 'granted': project_source = 'granted'; break;
-        case 'denied': project_source = 'denied'; break;
-        case 'default': default: project_source = 'did not define'; break;
-      }
-      switch (permissionTypeByBrowser()) {
-        case 'granted': browser_source = 'granted'; break;
-        case 'denied': browser_source = 'denied'; break;
-        case 'default': default: browser_source = 'did not define'; break;
-      }
-      util.startHats('truefantomnotifications_when_request_permission_block', {
-        SOURCE: 'project and browser',
-        PERMISSION_TYPE: project_and_browser_source
-      });
-      util.startHats('truefantomnotifications_when_request_permission_block', {
-        SOURCE: 'project',
-        PERMISSION_TYPE: project_source
-      });
-      util.startHats('truefantomnotifications_when_request_permission_block', {
-        SOURCE: 'browser',
-        PERMISSION_TYPE: browser_source
-      });
     }
     permission_block({SOURCE, PERMISSION_TYPE}) {
       const source = cast.toString(SOURCE).toLowerCase();
