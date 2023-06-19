@@ -184,14 +184,14 @@
           {
             opcode: 'json_notifications_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[IMAGE] notifications [JSON_TYPE] where values is [JSON_VALUES]',
+            text: '[IMAGE] notifications [JSON_TYPE] where values is [JSON_VALUES_TYPE]',
             disableMonitor: true,
             arguments: {
               JSON_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'json_menu'
               },
-              JSON_VALUES: {
+              JSON_VALUES_TYPE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'json_menu'
               },
@@ -435,8 +435,16 @@
     notification_count_block() {
       return allNotifications.length;
     }
-    json_notifications_block({JSON_TYPE, JSON_VALUES}) {
+    json_notifications_block({JSON_TYPE, JSON_VALUES_TYPE}) {
       const json_type = cast.toString(JSON_TYPE).toLowerCase();
+      const json_values_type = cast.toString(JSON_VALUES_TYPE).toLowerCase();
+      let newAllNotifications;
+      switch (json_values_type) {
+        case 'values': newAllNotifications = allNotifications.map(notification => [notification.data, notification.title, notification.body, notification.icon, notification.image, notification.requireInteraction ? 'eternal' : 'temporary', notification.silent ? 'silent' : 'noisy']); break;
+        case 'keys': newAllNotifications = allNotifications.map(notification => ['name', 'title', 'text', 'icon', 'image', 'duration', 'volume']); break;
+        case 'pairs': default: newAllNotifications = allNotifications.map(notification => [notification.data, notification.title, notification.body, notification.icon, notification.image, notification.requireInteraction ? 'eternal' : 'temporary', notification.silent ? 'silent' : 'noisy']).reduce((array, currentValue, currentIndex) => ({...array, [['name', 'title', 'text', 'icon', 'image', 'duration', 'volume'][currentIndex]] : currentValue}), {}); break;
+        case 'map': return newAllNotifications = 0; break;
+      }
       switch (json_type) {
         case 'values': return toJsonString(allNotifications.map((notification, index) => notification.data));
         case 'keys': return toJsonString(allNotifications.map((notification, index) => String(index + 1)));
