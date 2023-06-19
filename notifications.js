@@ -353,23 +353,23 @@
       const permission_type = cast.toString(PERMISSION_TYPE).toLowerCase();
       let func;
       switch (source) {
-        case 'project and browser': func = permissionTypeByGlobal; break;
+        case 'project and browser': default: func = permissionTypeByGlobal; break;
         case 'project': func = permissionTypeByVM; break;
-        case 'browser': default: func = permissionTypeByBrowser; break;
+        case 'browser': func = permissionTypeByBrowser; break;
       }
       switch (permission_type) {
-        case 'granted': return func() === 'granted';
+        case 'granted': default: return func() === 'granted';
         case 'denied': return func() === 'denied';
-        case 'did not define': default: return func() === 'default';
+        case 'did not define': return func() === 'default';
       }
     }
     permission_type_block({SOURCE}) {
       const source = cast.toString(SOURCE).toLowerCase();
       let func;
       switch (source) {
-        case 'project and browser': func = permissionTypeByGlobal; break;
+        case 'project and browser': default: func = permissionTypeByGlobal; break;
         case 'project': func = permissionTypeByVM; break;
-        case 'browser': default: func = permissionTypeByBrowser; break;
+        case 'browser': func = permissionTypeByBrowser; break;
       }
       switch (func()) {
         case 'granted': return 'granted';
@@ -400,8 +400,8 @@
       switch (json_type) {
         case 'values': return toJsonString([project_and_browser_source, project_source, browser_source]);
         case 'keys': return toJsonString(['project and browser', 'project', 'browser']);
-        case 'pairs': return toJsonString({'project and browser': project_and_browser_source, 'project': project_source, 'browser': browser_source});
-        case 'map': default: return toJsonString([['project and browser', project_and_browser_source], ['project', project_source], ['browser', browser_source]]);
+        case 'pairs': default: return toJsonString({'project and browser': project_and_browser_source, 'project': project_source, 'browser': browser_source});
+        case 'map': return toJsonString([['project and browser', project_and_browser_source], ['project', project_source], ['browser', browser_source]]);
       }
     }
     show_notification_block({DURATION, VOLUME, NAME, TITLE, TEXT, ICON, IMAGE}) {
@@ -440,8 +440,8 @@
       switch (json_type) {
         case 'values': return toJsonString(allNotifications.map((notification, index) => notification.data));
         case 'keys': return toJsonString(allNotifications.map((notification, index) => String(index + 1)));
-        case 'pairs': return toJsonString(allNotifications.map((notification, index) => notification.data).reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}));
-        case 'map': default: return toJsonString(allNotifications.map((notification, index) => [String(index + 1), notification.data]));
+        case 'pairs': default: return toJsonString(allNotifications.map((notification, index) => notification.data).reduce((array, currentValue, currentIndex) => ({...array, [currentIndex + 1] : currentValue}), {}));
+        case 'map': return toJsonString(allNotifications.map((notification, index) => [String(index + 1), notification.data]));
       }
     }
     notification_info_block({INDEX, NOTIFICATION_INFO_TYPE}) {
@@ -450,13 +450,13 @@
         if (allNotifications.length >= index && index > 0) {
           const notification_info_type = cast.toString(NOTIFICATION_INFO_TYPE).toLowerCase();
           switch (notification_info_type) {
-            case 'name': return allNotifications[index - 1].data;
+            case 'name': default: return allNotifications[index - 1].data;
             case 'title': return allNotifications[index - 1].title;
             case 'text': return allNotifications[index - 1].body;
             case 'icon': return allNotifications[index - 1].icon;
             case 'image': return allNotifications[index - 1].image;
             case 'duration': return allNotifications[index - 1].requireInteraction ? 'eternal' : 'temporary';
-            case 'volume': default: return allNotifications[index - 1].silent ? 'silent' : 'noisy';
+            case 'volume': return allNotifications[index - 1].silent ? 'silent' : 'noisy';
           }
         }
       }
