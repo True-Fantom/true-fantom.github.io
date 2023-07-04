@@ -101,14 +101,14 @@
       const x = Math.round(Math.sin((Math.PI * alpha) / 180) * 1e10) / 1e10;
       const y = Math.round(Math.cos((Math.PI * alpha) / 180) * 1e10) / 1e10;
       const sum = Math.abs(x) + Math.abs(y);
-      return (x / sum) * cast.toNumber(B);
+      return cast.toNumber((x / sum) * cast.toNumber(B));
     }
     ay_block({A, B}) {
       const alpha = cast.toNumber(A);
       const x = Math.round(Math.sin((Math.PI * alpha) / 180) * 1e10) / 1e10;
       const y = Math.round(Math.cos((Math.PI * alpha) / 180) * 1e10) / 1e10;
       const sum = Math.abs(x) + Math.abs(y);
-      return (y / sum) * cast.toNumber(B);
+      return cast.toNumber((y / sum) * cast.toNumber(B));
     }
     angle_block({A, B}) {
       return (Math.atan2(cast.toNumber(A), cast.toNumber(B)) * 180) / Math.PI;
