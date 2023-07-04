@@ -31,7 +31,7 @@
           {
             opcode: 'ax_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] to [B] steps x',
+            text: 'angle [A] to [B] steps x',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.ANGLE,
@@ -46,7 +46,7 @@
           {
             opcode: 'ay_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: '[A] to [B] steps y',
+            text: 'angle [A] to [B] steps y',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.ANGLE,
@@ -111,7 +111,7 @@
       return (y / sum) * cast.toNumber(B);
     }
     angle_block({A, B}) {
-      return (Math.atan(cast.toNumber(A) / cast.toNumber(B)) * 180) / Math.PI;
+      return (Math.atan2(cast.toNumber(A), cast.toNumber(B)) * 180) / Math.PI;
     }
     steps_block({A, B}) {
       return Math.abs(cast.toNumber(A)) + Math.abs(cast.toNumber(B));
