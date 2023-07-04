@@ -12221,7 +12221,7 @@
 
         id: 'griffpatch',
         name: 'Physics',
-        color1: '#00a9bf',
+        color1: '#00b0c7',
         menuIconURI: menuIconURI,
         docsURI: 'https://extensions.turbowarp.org/box2d.html',
 
