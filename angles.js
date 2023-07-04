@@ -34,9 +34,9 @@
 
         blocks: [
           {
-            opcode: 'a_block',
+            opcode: 'to_angle_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'angle [A]',
+            text: 'to angle [A]',
             arguments: {
               A: {
                 type: Scratch.ArgumentType.ANGLE,
@@ -110,7 +110,7 @@
       }
     }
 
-    a_block({A}) {
+    to_angle_block({A}) {
       return toAngle(cast.toNumber(A));
     }
     ax_block({A, B}) {
