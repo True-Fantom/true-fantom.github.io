@@ -9,11 +9,11 @@
     const angle = cast.toNumber(val);
     if (Math.abs(angle) > 180) {
       const normalized_angle = (angle - 180) % 360;
-      if (normalized_angle < 0) {
-        return normalized_angle + 180;
+      if (normalized_angle > 180) {
+        return normalized_angle - 360;
       } 
-      if (normalized_angle > 0) {
-        return normalized_angle - 180;
+      if (normalized_angle < -180) {
+        return normalized_angle + 360;
       }
       return normalized_angle;
     }
