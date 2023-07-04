@@ -11834,7 +11834,7 @@
   const BlockType = Scratch.BlockType;
   // const MathUtil = require('../../util/math-util');
   // const Clone = require('../../util/clone');
-  const Cast = Scrath.Cast;
+  const Cast = Scratch.Cast;
   // const Cast = require('../../util/cast');
   // const Runtime = require('../../engine/runtime');
   // const RenderedTarget = require('../../sprites/rendered-target');
