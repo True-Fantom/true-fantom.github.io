@@ -6,7 +6,7 @@
   'use strict';
 
   if (!Scratch.extensions.unsandboxed) {
-    throw new Error('Box2D Physics must be run unsandboxed');
+    throw new Error('Physics2D must be run unsandboxed');
   }
 
   // First we need to load the Box2D Physics library that this extension uses.
@@ -12168,7 +12168,7 @@
   const menuIconURI = 'data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHdpZHRoPSIyMjUuMzU0OCIgaGVpZ2h0PSIyMjUuMzU0OCIgdmlld0JveD0iMCwwLDIyNS4zNTQ4LDIyNS4zNTQ4Ij48ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTI3LjMyMjk0LC02Ny4zMjI2NCkiPjxnIGRhdGEtcGFwZXItZGF0YT0ieyZxdW90O2lzUGFpbnRpbmdMYXllciZxdW90Ozp0cnVlfSIgZmlsbC1ydWxlPSJub256ZXJvIiBzdHJva2UtbGluZWNhcD0iYnV0dCIgc3Ryb2tlLWxpbmVqb2luPSJtaXRlciIgc3Ryb2tlLW1pdGVybGltaXQ9IjEwIiBzdHJva2UtZGFzaGFycmF5PSIiIHN0cm9rZS1kYXNob2Zmc2V0PSIwIiBzdHlsZT0ibWl4LWJsZW5kLW1vZGU6IG5vcm1hbCI+PHBhdGggZD0iTTEyNy4zMjI5NCwxODAuMDAwMDRjMCwtNjIuMjMwMDEgNTAuNDQ3MzksLTExMi42Nzc0IDExMi42Nzc0LC0xMTIuNjc3NGM2Mi4yMzAwMSwwIDExMi42Nzc0LDUwLjQ0NzM5IDExMi42Nzc0LDExMi42Nzc0YzAsNjIuMjMwMDEgLTUwLjQ0NzM5LDExMi42Nzc0IC0xMTIuNjc3NCwxMTIuNjc3NGMtNjIuMjMwMDEsMCAtMTEyLjY3NzQsLTUwLjQ0NzM5IC0xMTIuNjc3NCwtMTEyLjY3NzR6IiBmaWxsPSIjMDBiMGM3IiBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMCIvPjxnIGZpbGw9Im5vbmUiIHN0cm9rZT0iI2ZmZmZmZiIgc3Ryb2tlLXdpZHRoPSIxNy41Ij48cGF0aCBkPSJNMjA5LjgxODk2LDExNy4xMzc4N2g2MC4zNjIxM3Y2MC4zNjIxNGgtNjAuMzYyMTN6Ii8+PHBhdGggZD0iTTI0MCwxNzcuNTAwMDRoNjAuMzYyMTN2NjAuMzYyMWgtNjAuMzYyMTN6Ii8+PHBhdGggZD0iTTE3OS42Mzc4OCwxNzcuNTAwMDRoNjAuMzYyMTN2NjAuMzYyMWgtNjAuMzYyMTN6Ii8+PC9nPjwvZz48L2c+PC9zdmc+PCEtLXJvdGF0aW9uQ2VudGVyOjExMi42NzcwNjoxMTIuNjc3MzY1LS0+';
   const vm = Scratch.vm;
 
-  class ScratchBox2DPhysics {
+  class ScratchPhysics2D {
     constructor() {
       /**
        * The runtime instantiating this block package.
@@ -12219,8 +12219,8 @@
     getInfo() {
       return {
 
-        id: 'griffpatch',
-        name: 'Physics',
+        id: 'truefantomphysics2d',
+        name: 'Physics2D',
         color1: '#00b0c7',
         menuIconURI: menuIconURI,
         docsURI: 'https://extensions.turbowarp.org/box2d.html',
@@ -13673,5 +13673,5 @@
     }
   }
 
-  Scratch.extensions.register(new ScratchBox2DPhysics());
+  Scratch.extensions.register(new ScratchPhysics2D());
 })(Scratch);
