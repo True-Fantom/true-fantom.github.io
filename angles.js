@@ -17,6 +17,18 @@
 
         blocks: [
           {
+            opcode: 'a_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'angle [A]',
+            arguments: {
+              A: {
+                type: Scratch.ArgumentType.ANGLE,
+                defaultValue: 90
+              }
+            }
+          },
+          '---',
+          {
             opcode: 'ax_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] to [B] steps x',
@@ -81,6 +93,9 @@
       }
     }
 
+    a_block({A}) {
+      return cast.toNumber(A);
+    }
     ax_block({A, B}) {
       const alpha = cast.toNumber(A);
       const x = Math.round(Math.sin((Math.PI * alpha) / 180) * 1e10) / 1e10;
