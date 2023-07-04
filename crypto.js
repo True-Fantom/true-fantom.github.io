@@ -1,11 +1,15 @@
 (Scratch => { // Учитывая то, что нам нужно чем-то заменить encode, а для хеша может быть нужно разное представление, я предлагаю добавить все виды форматов (кроме hex), в которые можно преобразовывать хеш сразу, и в дальнейшем (также меню в форматом для соли), и рандом
   'use strict';
 
+  if (!Scratch.extensions.unsandboxed) {
+    throw new Error('Crypto must be run unsandboxed');
+  }
+
   // First we need to load the CryptoJS library that this extension uses
   // It's not currently advised to load more scripts in custom extensions, so i copied and pasted
   // The source code below. Yes, this is really ugly
 
-  /**
+  /*!
   Copyright (c) 2009-2013 Jeff Mott  
   Copyright (c) 2013-2016 Evan Vosberg
 
@@ -26,7 +30,7 @@
   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
   THE SOFTWARE.
-  **/
+  */
 
   (function (root, factory) {
     if (typeof exports === 'object') {
