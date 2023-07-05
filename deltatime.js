@@ -1,7 +1,7 @@
-// TurboWarp Extension : Deltatime by XeroName
+// TurboWarp Extension : Deltatime by XeroName & True-Fantom
 // First generation at 2023-06-21 KST
-// Latest update at 2023-07-11 KST
-// v1.3.0
+// Latest update at 2023-07-12 KST
+// v1.3.3
 
 
 /*
@@ -10,10 +10,12 @@ Referenced articles :
 - https://stackoverflow.com/questions/4787431/how-do-i-check-framerate-in-javascript
 - https://developer.mozilla.org/en-US/docs/Web/API/Performance/now
 
-Thanks to the "TheShovel", one of the TurboWarp Extension's developer named "ShovelUtils".
-I learned how to use "Runtime Steps" of Scratch VM through that code.
+Thanks to the "XeroName", for creating the extension.
 
 Thanks to the "True-Fantom", for modifying the extension and the image to it.
+
+Thanks to the "TheShovel", one of the TurboWarp Extension's developer named "ShovelUtils".
+I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
 */
 
 
@@ -36,6 +38,10 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
 
   let dtLimit = Infinity; // Limit value of DT
 
+  let dtSpeed = 100; // Speed value in % of DT
+
+  let dtPause = false; // Bool value of DT Pause
+
   let maxFiltStren = 907; // Max value of Filter Strength
   let filtStren = 1; // Default value of Filter Strength = 1
 //==================== Var Zone END ====================//
@@ -51,7 +57,7 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
     frameTime += (thisFrameTime - frameTime) / filtStren;
 
     vmFPS = 1000 / frameTime;
-    vmDt = Math.min(1 / vmFPS, dtLimit);
+    vmDt = Math.min(1 / vmFPS, dtLimit) * (dtSpeed / 100) * !dtPause;
 
     lastLoop = now;
   };
@@ -64,7 +70,7 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
     getInfo() {
       return {
 
-        id: 'xeronamedt',
+        id: 'xeronametruefantomdt',
         name: 'DeltaTime',
         color1: '#470059',
         menuIconURI: icon,
@@ -107,6 +113,7 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
             hideFromPalette: true
           },
 //==================== Calculator Blocks ====================//
+          '---',
           {
             blockType: 'label',
             text: 'Calculator',
@@ -115,32 +122,29 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
           {
             opcode: 'setCalculatorStandard',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set calculator standard to [FPS] fps',
+            text: 'set calculation fps to [FPS]',
             arguments: {
               FPS: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 60
               }
-            },
-            hideFromPalette: true
-          },
-          {
-            opcode: 'getCalculatorStandard',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'standard fps of calculator',
-            hideFromPalette: true
+            }
           },
           {
             opcode: 'calcMultiplyValue',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'value to move/rotate [DISTANCE]',
+            text: 'calculation [DISTANCE]',
             arguments: {
               DISTANCE: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 10
               }
-            },
-            hideFromPalette: true
+            }
+          },
+          {
+            opcode: 'getCalculatorStandard',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'calculation fps'
           },
 //========== DT Limit Blocks ==========//
           '---',
@@ -159,6 +163,42 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
             opcode: 'getDtLimit',
             blockType: Scratch.BlockType.REPORTER,
             text: 'Δt limit'
+          },
+//========== DT Speed Blocks ==========//
+          '---',
+          {
+            opcode: 'setDtSpeed',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'set Δt speed to [SPEED] %',
+            arguments: {
+              SPEED: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 100
+              }
+            }
+          },
+          {
+            opcode: 'getDtSpeed',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'Δt speed%'
+          },
+//========== DT Pause Blocks ==========//
+          '---',
+          {
+            opcode: 'setDtPause',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'set Δt pause to [MODE]',
+            arguments: {
+              MODE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'pause_menu'
+              }
+            }
+          },
+          {
+            opcode: 'getDtPause',
+            blockType: Scratch.BlockType.BOOLEAN,
+            text: 'is Δt pause enabled?'
           },
 //==================== Time Filter Blocks ====================//
           {
@@ -207,7 +247,7 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
             acceptReporters: true,
             items: [
               {
-                text: 'This Project',
+                text: 'this project',
                 value: 'vm'
               }
             ]
@@ -222,10 +262,17 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
               },
 
               {
-                text: 'FPS',
+                text: 'fps',
                 value: 'fps'
               }
             ]
+          }
+        },
+
+        menus: {
+          pause_menu: {
+            acceptReporters: true,
+            items: ['enabled', 'disabled']
           }
         }
 //==================== Menu Zone END ====================//
@@ -254,39 +301,41 @@ Thanks to the "True-Fantom", for modifying the extension and the image to it.
     }
 //========== Calculators ==========//
     setCalculatorStandard({ FPS }) {
-      calcStandFPS = cast.toNumber(FPS);
+      calcStandFPS = Math.max(0, cast.toNumber(FPS));
+    }
+    calcMultiplyValue({ DISTANCE }) {
+      return calcStandFPS * cast.toNumber(DISTANCE);
     }
     getCalculatorStandard() {
       return calcStandFPS;
     }
-    calcMultiplyValue({ DISTANCE }) {
-      const moveDist = cast.toNumber(DISTANCE);
-      return moveDist * calcStandFPS;
-    }
 //========== DT Limit ==========//
-    getDtLimit() {
-      return dtLimit;
-    }
     setDtLimit({ LIMIT }) {
       dtLimit = Math.max(0, cast.toNumber(LIMIT));
     }
+    getDtLimit() {
+      return dtLimit;
+    }
+//========== DT Speed ==========//
+    setDtSpeed({ SPEED }) {
+      dtSpeed = Math.max(0, cast.toNumber(SPEED));
+    }
+    getDtSpeed() {
+      return dtSpeed;
+    }
+//========== DT Pause ==========//
+    setDtPause({ MODE }) {
+      dtPause = cast.toString(MODE).toLowerCase() === 'enabled';
+    }
+    getDtPause() {
+      return dtPause;
+    }
 //========== Filter Strength ==========//
+    setFilterStrength({ STRENGTH }) {
+      fStren = Math.min(Math.max(1, cast.toNumber(STRENGTH)), maxFiltStren);
+    }
     getFilterStrength() {
       return filtStren;
-    }
-    setFilterStrength({ STRENGTH }) {
-      const fStren = cast.toNumber(STRENGTH);
-
-      if (fStren <= 1) {
-        filtStren = 1;
-      }
-      else if (fStren >= maxFiltStren) {
-        filtStren = maxFiltStren;
-      }
-      else {
-        filtStren = fStren;
-      }
-
     }
 //========== Block Function/Return Sections END ==========//
 
