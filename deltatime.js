@@ -1,7 +1,7 @@
 // TurboWarp Extension : Deltatime by XeroName & True-Fantom
 // First generation at 2023-06-21 KST
 // Latest update at 2023-07-12 KST
-// v1.3.3
+// v1.3.4
 
 
 /*
@@ -133,7 +133,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
           {
             opcode: 'calcMultiplyValue',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'calculation [DISTANCE]',
+            text: 'calculate [DISTANCE]',
             arguments: {
               DISTANCE: {
                 type: Scratch.ArgumentType.NUMBER,
