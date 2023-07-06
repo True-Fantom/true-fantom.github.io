@@ -1,7 +1,7 @@
 // TurboWarp Extension : Deltatime by XeroName & True-Fantom
 // First generation at 2023-06-21 KST
-// Latest update at 2023-07-6 KST
-// v1.3.9
+// Latest update at 2023-07-6 MSK
+// v1.3.12
 
 
 /*
@@ -45,6 +45,10 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
 //==================== Var Zone END ====================//
 
 //==================== "Deltatime Watcher" Zone ====================//
+  const infinityToZero = val => {
+    return val === Infinity ? 0 : val;
+  };
+  
   let lastFrameTime = performance.now();
   let vmFPS, vmDt;
 
@@ -58,7 +62,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     const filter = 10 ** filterMode;
 
     vmFPS = Math.round(1000 / changeFrameTime * filter) / filter;
-    vmDt = Math.min(1 / vmFPS, dtLimit) * (dtSpeed / 100) * !dtPause;
+    vmDt = Math.min(infinityToZero(1 / vmFPS), dtLimit) * (dtSpeed / 100) * !dtPause;
 
     lastFrameTime = thisFrameTime;
   };
