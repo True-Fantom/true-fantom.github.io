@@ -37,7 +37,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
 
   let calculateFps = 30; // FPS value of Calculator
 
-  let filterPower = 100; // % value of Filter Strength
+  let filterMode = 16; // Number value of Filter Mode
 
   let dtPause = false; // Bool value of DT Pause
   let dtSpeed = 100; // % value of DT Speed
@@ -45,19 +45,22 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
 //==================== Var Zone END ====================//
 
 //==================== "Deltatime Watcher" Zone ====================//
-  let frameTime = 0, lastLoop = performance.now(), vmFPS, vmDt;
+  let lastFrameTime = performance.now();
+  let vmFPS, vmDt;
+
   const oldStep = vm.runtime._step;
 
   vm.runtime._step = function () {
     oldStep.call(this);
-    const now = performance.now();
-    let thisFrameTime = now - lastLoop;
-    frameTime += (thisFrameTime - frameTime) / filterPower;
 
-    vmFPS = 1000 / frameTime;
+    const thisFrameTime = performance.now();
+    const changeFrameTime = thisFrameTime - lastFrameTime;
+    const filter = 10 ** filterMode;
+
+    vmFPS = Math.round(1000 / changeFrameTime * filter) / filter;
     vmDt = Math.min(1 / vmFPS, dtLimit) * (dtSpeed / 100) * !dtPause;
 
-    lastLoop = now;
+    lastFrameTime = thisFrameTime;
   };
 //==================== "Deltatime Watcher" Zone END ====================//
 
@@ -117,20 +120,20 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
 //==================== Filter Blocks ====================//
           '---',
           {
-            opcode: 'setFilterPower',
+            opcode: 'setFilterMode',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set noise filter power to [POWER] %',
+            text: 'set noise filter to [MODE] digits after dot',
             arguments: {
-              POWER: {
+              MODE: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0
               }
             }
           },
           {
-            opcode: 'getFilterPower',
+            opcode: 'getFilterMode',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'noise filter power'
+            text: 'noise filter digits'
           },
 //========== DT Settings Set/Change Blocks ==========//
           '---',
@@ -215,11 +218,11 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
       return calculateFps;
     }
 //========== Filter ==========//
-    setFilterPower({ POWER }) {
-      filterPower = Math.max(0, cast.toNumber(POWER));
+    setFilterMode({ MODE }) {
+      filterMode = Math.min(Math.max(0, Math.floor(cast.toNumber(MODE))), 16);
     }
-    getFilterPower() {
-      return filterPower;
+    getFilterMode() {
+      return filterMode;
     }
 //========== DT Settings Set/Change ==========//
     setDtPause({ MODE }) {
