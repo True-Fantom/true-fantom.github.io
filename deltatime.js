@@ -131,7 +131,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             opcode: 'getFilterPower',
             blockType: Scratch.BlockType.REPORTER,
             text: 'noise filter power'
-          }
+          },
 //========== DT Settings Set/Change Blocks ==========//
           '---',
           {
