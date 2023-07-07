@@ -62,10 +62,12 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     const changeFrameTime = thisFrameTime - lastFrameTime;
     const filter = 10 ** filterMode;
 
-    vmFPS = Math.floor((1000 / changeFrameTime + leftovers) * filter) / filter;
+    const frames = 1000 / changeFrameTime + leftovers;
+
+    vmFPS = Math.floor(frames * filter) / filter;
     vmDt = Math.min(infinityToZero(1 / vmFPS), dtLimit) * (dtSpeed / 100) * !dtPause;
 
-    leftovers = (1000 / changeFrameTime + leftovers) - vmFPS;
+    leftovers = frames - vmFPS;
     lastFrameTime = thisFrameTime;
   };
 //==================== "Deltatime Watcher" Zone END ====================//
