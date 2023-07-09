@@ -70,6 +70,10 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     leftovers = frames - vmFPS;
     lastFrameTime = thisFrameTime;
   };
+
+  vm.on('PROJECT_START', () => {
+    leftovers = 0;
+  });
 //==================== "Deltatime Watcher" Zone END ====================//
 
 
