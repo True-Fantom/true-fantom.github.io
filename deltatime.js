@@ -33,11 +33,6 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
   const vm = Scratch.vm;
   const cast = Scratch.Cast;
 
-  const makeLabel = (text) => ({
-    blockType: 'label',
-    text: text
-  });
-
   let calculateFps = 30; // FPS value of Calculator
 
   let filterPower = 16; // Number value of Filter Mode
