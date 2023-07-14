@@ -42,8 +42,6 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
 
   let filterPower = 16; // Number value of Filter Mode
 
-  let dtPause = false; // Bool value of DT Pause
-  let dtSpeed = 100; // % value of DT Speed
   let dtLimit = 1; // Number value of DT Limit
 //==================== Var Zone END ====================//
 
@@ -70,7 +68,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     const frames = 1000 / changeFrameTime + leftovers;
 
     vmFPS = Math.floor(frames * filter) / filter;
-    vmDt = Math.min(infinityToZero(1 / vmFPS), dtLimit) * (dtSpeed / 100) * !dtPause;
+    vmDt = Math.min(infinityToZero(1 / vmFPS), dtLimit);
 
     leftovers = frames - vmFPS;
     lastFrameTime = thisFrameTime;
@@ -182,53 +180,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             blockType: Scratch.BlockType.REPORTER,
             text: 'noise filter interpolation',
           },
-//========== DT Settings Blocks ==========//
-          makeLabel('DeltaTime Settings'),
-          {
-            opcode: 'setDtPause',
-            blockType: Scratch.BlockType.COMMAND,
-            text: 'set Δt pause to [MODE]',
-            arguments: {
-              MODE: {
-                type: Scratch.ArgumentType.STRING,
-                menu: 'pause_menu',
-                defaultValue: 'disabled',
-              },
-            },
-          },
-          {
-            opcode: 'getDtPause',
-            blockType: Scratch.BlockType.BOOLEAN,
-            text: 'is Δt pause enabled?',
-          },
-          '---',
-          {
-            opcode: 'changeDtSpeed',
-            blockType: Scratch.BlockType.COMMAND,
-            text: 'change Δt speed by [SPEED] %',
-            arguments: {
-              SPEED: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 25,
-              },
-            },
-          },
-          {
-            opcode: 'setDtSpeed',
-            blockType: Scratch.BlockType.COMMAND,
-            text: 'set Δt speed to [SPEED] %',
-            arguments: {
-              SPEED: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 100,
-              },
-            },
-          },
-          {
-            opcode: 'getDtSpeed',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'Δt speed%',
-          },
+//========== DT Limit Blocks ==========//
           '---',
           {
             opcode: 'changeDtLimit',
@@ -257,8 +209,8 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             blockType: Scratch.BlockType.REPORTER,
             text: 'Δt limit',
           },
-//==================== Frames Blocks ====================//
-          makeLabel('Frames Utills'),
+//==================== Frames Utility Blocks ====================//
+          '---',
           {
             opcode: 'waitTicks',
             blockType: Scratch.BlockType.COMMAND,
@@ -329,22 +281,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     getFilterPower() {
       return filterPower;
     }
-//========== DT Settings ==========//
-    setDtPause({ MODE }) {
-      dtPause = cast.toString(MODE).toLowerCase() === 'enabled';
-    }
-    getDtPause() {
-      return dtPause;
-    }
-    setDtSpeed({ SPEED }) {
-      dtSpeed = Math.max(0, cast.toNumber(SPEED));
-    }
-    changeDtSpeed({ SPEED }) {
-      dtSpeed = Math.max(0, dtSpeed + cast.toNumber(SPEED));
-    }
-    getDtSpeed() {
-      return dtSpeed;
-    }
+//========== DT Limit ==========//
     setDtLimit({ LIMIT }) {
       dtLimit = Math.max(0, cast.toNumber(LIMIT));
     }
@@ -354,7 +291,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     getDtLimit() {
       return dtLimit;
     }
-//==================== Frames Blocks ====================//
+//==================== Frames Utility ====================//
     waitTicks({ TICKS }, util) {
       if (util.getParam('ticks_timer') === null) {
         util.initParams();
