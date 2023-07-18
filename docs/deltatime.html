@@ -128,14 +128,16 @@
 			}
 
 			hr {
-			    display: block;
-			    margin-top: 0.5em;
-			    margin-bottom: 0.5em;
-			    margin-left: auto;
-			    margin-right: auto;
-			    border-style: inset;
-			    border-width: 1px;
+			    margin-top: 1em;
+			    margin-bottom: 1em;
+			    border: 1px solid #ccc;
+				  border-radius: 8px;
 			}
+      @media (prefers-color-scheme: dark) {
+        hr {
+          border-color: #333;
+        }
+      }
 
       .hidden {
 				display: none;
