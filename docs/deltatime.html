@@ -202,17 +202,37 @@
     </div>
 
     <div style="text-align: center;"><div class="inbox">
-      <h2>About this extension</h2>
+      <h2>About This Extension</h2>
       <ul>
-        <li>This extension allows you to perform bit shifts and logic operations on integers as if they were encoded in binary. These operations can be used to create programmer calculators and more.</li>
-        <li>The extension uses signed 32-bit integers, which can range from -2,147,483,648 to 2,147,483,647.</li>
+        <li>This extension allows you to make your project equally fast on all devices and in all its parts!</li>
+        <li>Which also allows you to make a multiplayer game where players will not lag behind each other due to freezes!</li>
       </ul>
 
-      <h2>Blocks</h2>
+      <hr>
+
+      <h2>How It Works</h2>
+
+      <p>This extension allows you to use <a href="https://en.wikipedia.org/wiki/Delta_timing">DeltaTime</a> (the time in seconds it took to draw the last frame). So now we will rely not on our <a href="https://en.wikipedia.org/wiki/Frame_rate">FPS</a> (frames per second), but on the actual time, which is the same for all devices.</p>
+
+      <hr>
+
+      <h2>Main Blocks</h2>
 
       <div class="imgBox"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="35.1" height="28.35" viewBox="0 0 35.1 28.35"><g style="transform: scale(0.675)"><g transform="translate(0 0)"><g transform="translate(2 1)"><rect class="sb3-" rx="20" ry="20" x="0" y="0" width="48" height="40" fill="#af55dd" stroke="rgba(0, 0, 0, 0.2)"/><text class="sb3-label sb3-" x="0" y="13" transform="translate(16.5 13)">Δt</text></g></g></g></svg></div>
+
+      <p>The most important block for which the expansion was made. The symbol "Δ" is the Greek letter "Delta", and "t" is an abbreviation of "Time", so as you have already understood, this reporter returns cherished DeltaTime.</p>
+
+      <hr>
+
       <div class="imgBox"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="35.1" height="28.35" viewBox="0 0 35.1 28.35"><g style="transform: scale(0.675)"><g transform="translate(0 0)"><g transform="translate(2 1)"><rect class="sb3-" rx="20" ry="20" x="0" y="0" width="48" height="40" fill="#af55dd" stroke="rgba(0, 0, 0, 0.2)"/><text class="sb3-label sb3-" x="0" y="13" transform="translate(13.5 13)">fps</text></g></g></g></svg></div>
-      <p>Returns true if the input is a binary number. Binary numbers can only contain 0s and 1s, so this essentially tells you if the input only contains 0s and 1s.</p>
+
+      <p>Returns your "actual" FPS. This value is not equal to the "FPS limit" of the project, which you can get using <a href="https://turbowarp.org/editor?extension=https://extensions.turbowarp.org/runtime-options.js">Runtime Options</a>, most often it is slightly lower, depends on the device and sometimes likes to jump a lot :)</p>
+
+      <hr>
+
+      <h2>Calculation Blocks & Simple Examples</h2>
+
+      <p>Returns your "actual" FPS. This value is not equal to the "FPS limit" of the project, which you can get using <a href="https://turbowarp.org/editor?extension=https://extensions.turbowarp.org/runtime-options.js">Runtime Options</a>
 
       <hr>
 
