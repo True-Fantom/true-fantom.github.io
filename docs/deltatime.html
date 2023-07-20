@@ -151,19 +151,6 @@
         margin-left: 20px;
       }
 
-      .line {
-        word-wrap: break-word;
-        text-align: left;
-        display: inline-block;
-        width: 100%;
-        border-left: 4px solid;
-        padding-left: 10px;
-        padding-right: 8px;
-        margin-left: 5px;
-        margin-top: 0.5em;
-        margin-bottom: 0.25em;
-      }
-
       hr {
         margin-top: 1em;
         margin-bottom: 1em;
@@ -265,28 +252,14 @@
       <p>Running this script, you will notice that the sprite on which it is placed constantly turns by 15 degrees. The catch is that the rotation always happens at the same speed, despite the lower block, which changes the "FPS limit", and therefore the speed of a normal project. Let's figure it out!</p>
       <p>The fact is that now, instead of simple values of type <span class="box">15</span>, we will use a construction of type <span class="box">calculate(Δt) * 15</span>. Using this is already enough to fulfill the goals set above, but let's go a little deeper.</p>
 
-      <div class="line">The "Set FPS limit" block is needed only for clarity, it is not needed in the real project!</div>
-
-      <div class="line">If you tested this example and saw that the sprite sometimes moves jerkily, this is normal, because thanks to the last block, your FPS may even be lower than 1. In real projects, this will not happen, so the animation will almost always be smooth, but by the way, despite these jerks, the sprite still does not lose speed! And that's exactly what we wanted to see ^-^</div>
+      <ul>
+        <li>The "Set FPS limit" block is needed only for clarity, it is not needed in the real project!</li>
+        <li>If you tested this example and saw that the sprite sometimes moves jerkily, this is normal, because thanks to the last block, your FPS may even be lower than 1. In real projects, this will not happen, so the animation will almost always be smooth, but by the way, despite these jerks, the sprite still does not lose speed! And that's exactly what we wanted to see ^-^</li>
+      <ul>
 
       <hr>
 
       <h2>Calculation Blocks</h2>
-
-      <ul>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-      </ul>
 
       <p>Returns your "actual" FPS. This value is not equal to the "FPS limit" of the project, which you can get using <a href="https://turbowarp.org/editor?extension=https://extensions.turbowarp.org/runtime-options.js">Runtime Options</a>
 
