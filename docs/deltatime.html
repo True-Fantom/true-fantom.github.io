@@ -291,8 +291,8 @@
       <p>The fact is that DeltaTime, as already mentioned, uses the actual time, exactly the same as in the waiting blocks. Look at the example above. These 2 scripts implement the timer through the standard blocks and through DT. If you test the scripts from the example above together, you will see that they give the same result (look at the values of the variables "Classic Wait" and "ΔT Wait"). So use the usual waiting from Scratch 3, because it's shorter, more familiar and loads your device less :)</p>
 
       <ul>
-        <li>!</li>
-        <li>.</li>
+        <li>The variable "i" in the first script is used to remember the value of DeltaTime.</li>
+        <li>In the first script, the value of the variable contains a fractional part, and in the second it does not. This is done for convenience, so as not to lengthen the script. If you want to get equal values, add set it to floor of "ΔT Wait". Note that these values will be slightly different in any case due to the features of Scratch, as well as lag behind the usual timer. That's why I recommend using <a href="https://turbowarp.org/editor?extension=https://extensions.turbowarp.org/Lily/MoreTimers.js">More Timers</a> instead of homemade timers.</li>
       </ul>
 
       <hr>
