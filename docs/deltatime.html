@@ -268,6 +268,10 @@
       <p>You have already seen one of these blocks above, but the rest are new. So what are they all doing? The first 2 blocks, as the name implies, set and return the value of a certain "Calculation Standard". This value uses the 3 block. In fact, it just multiplies by it the number that you enter, yes, it's that simple :)</p>
       <p>These blocks are only needed to shorten the code. As shown in the first example, you use not just DeltaTime, but calculated, that is, multiplied by a certain number, by default, <span class="box">30</span>. This number can be perceived as the "FPS limit", which, in terms of speed, the project will match perfectly.</p>
 
+      <ul>
+        <li>"Calculation Standard" can be set to any positive value (even float number) and zero. If you enter a number below zero, it will automatically become <span class="box">0</span>.</li>
+      </ul>
+
       <hr>
 
       <h2>Adaptation Example</h2>
@@ -279,7 +283,6 @@
 
       <ul>
         <li>If you have integrated DT into your project with 30 "FPS limit", you can most likely set "Calculation Standard" to 30 and "FPS limit" to 60, and make all smoother without breaking anything, but this is inaccurate because it depends on the project itself.</li>
-        <li>"Calculation Standard" can be set to any positive value (even float number) and zero. If you enter a number below zero, it will automatically become <span class="box">0</span>.</li>
       </ul>
 
       <hr>
