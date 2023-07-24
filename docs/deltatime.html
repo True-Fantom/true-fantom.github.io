@@ -163,6 +163,25 @@
         }
       }
 
+      iframe {
+        width: 100%;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -msie-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
+      }
+      @media (prefers-color-scheme: dark) {
+        iframe {
+          border-color: #333;
+        }
+      }
+
       .hidden {
         display: none;
       }
@@ -256,6 +275,8 @@
         <li>The "Set FPS limit" block is needed only for clarity, it is not needed in the real project!</li>
         <li>If you tested this example and saw that the sprite sometimes moves jerkily, this is normal, because thanks to the last block, your FPS may even be lower than 1. In real projects, this will not happen, so the animation will almost always be smooth, but by the way, despite these jerks, the sprite still does not lose speed! And that's exactly what we wanted to see ^-^</li>
       </ul>
+
+      <iframe src="https://true-fantom.github.io/docs/deltatime/example1.html">Your browser doesn't support iframes :(</iframe>
 
       <hr>
 
