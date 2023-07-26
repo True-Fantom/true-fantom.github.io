@@ -37,6 +37,41 @@
         margin: 8px 0;
       }
 
+      hr {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+      }
+      @media (prefers-color-scheme: dark) {
+        hr {
+          border-color: #333;
+        }
+      }
+
+      ul {
+        padding: 0;
+        margin-left: 20px;
+      }
+
+      details {
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        padding: 0.5em;
+      }
+      summary {
+        font-weight: bold;
+        padding: -0.5em;
+      }
+      details[open] summary {
+        padding-bottom: 0.5em;
+      }
+      @media (prefers-color-scheme: dark) {
+        details {
+          border-color: #333;
+        }
+      }
+
       .section {
         max-width: 928px;
         margin: 24px auto;
@@ -81,16 +116,6 @@
         margin-bottom: 4px;
       }
 
-      footer {
-        opacity: 0.8;
-        width: 100%;
-        text-align: center;
-        margin-bottom: 16px;
-      }
-      footer p {
-        margin: 0 0 8px 0;
-      }
-
       .inbox {
         text-align: left;
         display: inline-block;
@@ -133,7 +158,7 @@
         }
       }
 
-      .imgBox {
+      .imgBox, .project {
         width: 100%;
         overflow: auto;
         user-select: none;
@@ -146,41 +171,25 @@
         -webkit-touch-callout: none;
       }
 
-      ul {
-        padding: 0;
-        margin-left: 20px;
-      }
-
-      hr {
-        margin-top: 1em;
-        margin-bottom: 1em;
-        border: 1px solid #ccc;
-        border-radius: 8px;
-      }
-      @media (prefers-color-scheme: dark) {
-        hr {
-          border-color: #333;
-        }
-      }
-
-      iframe {
-        width: 100%;
-        aspect-ratio: 480/360;
+      .project {
         border: 2px solid #ccc;
         border-radius: 8px;
-        user-select: none;
-        -o-user-select: none;
-        -ms-user-select: none;
-        -moz-user-select: none;
-        -msie-user-select: none;
-        -khtml-user-select: none;
-        -webkit-user-select: none;
-        -webkit-touch-callout: none;
+        aspect-ratio: 480/360;
       }
       @media (prefers-color-scheme: dark) {
-        iframe {
+        .project {
           border-color: #333;
         }
+      }
+
+      footer {
+        opacity: 0.8;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 16px;
+      }
+      footer p {
+        margin: 0 0 8px 0;
       }
 
       .hidden {
@@ -277,7 +286,22 @@
         <li>If you tested this example and saw that the sprite sometimes moves jerkily, this is normal, because thanks to the last block, your FPS may even be lower than 1. In real projects, this will not happen, so the animation will almost always be smooth, but by the way, despite these jerks, the sprite still does not lose speed! And that's exactly what we wanted to see ^-^</li>
       </ul>
 
-      <iframe src="https://true-fantom.github.io/docs/deltatime/example1.html">Your browser doesn't support iframes :(</iframe>
+      <details>
+        <summary>Example Project 1</summary>
+        <iframe class="project" src="https://true-fantom.github.io/docs/deltatime/example1.html"></iframe>
+        <p>If you don't have a project displayed, there is no fullscreen button in it, or there is some other problem, you can try using a <a href="https://true-fantom.github.io/docs/deltatime/example1.html">direct link</a> to the project.</p>
+      </details>
+
+      <p></p>
+
+      <details>
+        <summary>Example Project 2</summary>
+        <iframe class="project" src="https://true-fantom.github.io/docs/deltatime/example1.html"></iframe>
+        <p>If you don't have a project displayed, there is no fullscreen button in it, or there is some other problem, you can try using a <a href="https://true-fantom.github.io/docs/deltatime/example1.html">direct link</a> to the project.</p>
+        <ul>
+          <li>...</li>
+        </ul>
+      </details>
 
       <hr>
 
