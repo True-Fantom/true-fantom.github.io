@@ -29,7 +29,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
   let dt, fps;
   let frame_timer = 0;
 
-  let calculation_standard = 30;
+  let calculation_framerate = 30;
   let filter_rounding = 16;
   let filter_interpolation = 0;
 
@@ -70,31 +70,31 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
 
         blocks: [
           {
-            opcode: 'get_dt_block',
+            opcode: 'dt_reporter',
             blockType: Scratch.BlockType.REPORTER,
             text: 'Δt'
           },
           {
-            opcode: 'get_fps_block',
+            opcode: 'fps_reporter',
             blockType: Scratch.BlockType.REPORTER,
             text: 'fps'
           },
           '---',
           {
-            opcode: 'get_frame_timer_block',
+            opcode: 'frame_timer_reporter',
             blockType: Scratch.BlockType.REPORTER,
             text: 'frame timer'
           },
           {
-            opcode: 'reset_frame_timer_block',
+            opcode: 'reset_frame_timer_command',
             blockType: Scratch.BlockType.COMMAND,
             text: 'reset frame timer'
           },
           '---',
           {
-            opcode: 'set_calculation_standard_block',
+            opcode: 'set_calculation_framerate_command',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set calculation standard to [FPS] fps',
+            text: 'set calculation framerate to [FPS] fps',
             arguments: {
               FPS: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -103,24 +103,18 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             }
           },
           {
-            opcode: 'get_calculation_standard_block',
+            opcode: 'calculation_framerate_reporter',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'calculation standard'
+            text: 'calculation framerate'
           },
           {
-            opcode: 'calculate_block',
+            opcode: 'calculation_dt_reporter',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'calculate [DISTANCE]',
-            arguments: {
-              DISTANCE: {
-                type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 1
-              }
-            }
+            text: 'calculation Δt'
           },
           '---',
           {
-            opcode: 'set_filter_rounding_block',
+            opcode: 'set_filter_rounding_command',
             blockType: Scratch.BlockType.COMMAND,
             text: 'set noise filter rounding to [ROUNDING] digits after dot',
             arguments: {
@@ -131,12 +125,12 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             }
           },
           {
-            opcode: 'get_filter_rounding_block',
+            opcode: 'filter_rounding_reporter',
             blockType: Scratch.BlockType.REPORTER,
             text: 'noise filter rounding'
           },
           {
-            opcode: 'set_filter_interpolation_block',
+            opcode: 'set_filter_interpolation_command',
             blockType: Scratch.BlockType.COMMAND,
             text: 'set noise filter interpolation to [INTERPOLATION] steps',
             arguments: {
@@ -147,13 +141,13 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             }
           },
           {
-            opcode: 'get_filter_interpolation_block',
+            opcode: 'filter_interpolation_reporter',
             blockType: Scratch.BlockType.REPORTER,
             text: 'noise filter interpolation'
           },
           '---',
           {
-            opcode: 'wait_frames_block',
+            opcode: 'wait_frames_command',
             blockType: Scratch.BlockType.COMMAND,
             text: 'wait [FRAMES] frames',
             arguments: {
@@ -164,7 +158,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             }
           },
           {
-            opcode: 'wait_ticks_block',
+            opcode: 'wait_ticks_command',
             blockType: Scratch.BlockType.COMMAND,
             text: 'wait [TICKS] ticks',
             arguments: {
@@ -178,40 +172,40 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
       };
     }
 
-    get_dt_block() {
+    dt_reporter() {
       return dt;
     }
-    get_fps_block() {
+    fps_reporter() {
       return fps;
     }
-    get_frame_timer_block() {
+    frame_timer_reporter() {
       return frame_timer;
     }
-    reset_frame_timer_block() {
+    reset_frame_timer_command() {
       frame_timer = 0;
     }
-    set_calculation_standard_block({FPS}) {
-      calculation_standard = Math.max(0, cast.toNumber(FPS));
+    set_calculation_framerate_command({FPS}) {
+      calculation_framerate = Math.max(0, cast.toNumber(FPS));
     }
-    get_calculation_standard_block() {
-      return calculation_standard;
+    calculation_framerate_reporter() {
+      return calculation_framerate;
     }
-    calculate_block({DISTANCE}) {
-      return calculation_standard * cast.toNumber(DISTANCE);
+    calculation_dt_reporter() {
+      return calculation_framerate * dt;
     }
-    set_filter_rounding_block({ROUNDING}) {
+    set_filter_rounding_command({ROUNDING}) {
       filter_rounding = Math.min(Math.max(0, Math.floor(cast.toNumber(ROUNDING))), 16);
     }
-    get_filter_rounding_block() {
+    filter_rounding_reporter() {
       return filter_rounding;
     }
-    set_filter_interpolation_block({INTERPOLATION}) {
+    set_filter_interpolation_command({INTERPOLATION}) {
       filter_interpolation = Math.max(0, Math.floor(cast.toNumber(INTERPOLATION)));
     }
-    get_filter_interpolation_block() {
+    filter_interpolation_reporter() {
       return filter_interpolation;
     }
-    wait_frames_block({FRAMES}, util) {
+    wait_frames_command({FRAMES}, util) {
       const times = Math.round(cast.toNumber(FRAMES));
       if (typeof util.stackFrame.loopCounter === 'undefined') {
         util.stackFrame.loopCounter = times;
@@ -221,7 +215,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
         util.yieldTick();
       }
     }
-    wait_ticks_block({TICKS}, util) {
+    wait_ticks_command({TICKS}, util) {
       const times = Math.round(cast.toNumber(TICKS));
       if (typeof util.stackFrame.loopCounter === 'undefined') {
         util.stackFrame.loopCounter = times;
