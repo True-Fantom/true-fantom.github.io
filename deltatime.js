@@ -142,7 +142,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             arguments: {
               INTERPOLATION: {
                 type: Scratch.ArgumentType.NUMBER,
-                defaultValue: 16
+                defaultValue: 0
               }
             }
           },
