@@ -1,4 +1,4 @@
-// TurboWarp Extension : Deltatime by XeroName & True-Fantom v7.2.1
+// TurboWarp Extension : Deltatime by XeroName & True-Fantom v7.4.0
 
 /*
 Referenced articles :
@@ -32,7 +32,6 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
   let calculation_standard = 30;
   let filter_power = 16;
   let filter_interpolation = 0;
-  let dt_limit = 1;
 
   const infinityToZero = val => {
     return val === Infinity ? 0 : val;
@@ -49,7 +48,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     const filter = 10 ** filter_power;
     const frames = 1000 / changed_frame_time + leftovers;
     fps = Math.floor(frames * filter) / filter;
-    dt = Math.min(infinityToZero(1 / fps), dt_limit);
+    dt = infinityToZero(1 / fps);
     leftovers = frames - fps;
     last_frame_time = this_frame_time;
     frame_timer++;
@@ -67,7 +66,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
         name: 'DeltaTime',
         color1: '#af55dd',
         menuIconURI: icon_uri,
-        docsURI: 'https://extensions.turbowarp.org/XeroName/Deltatime.html',
+        docsURI: 'https://true-fantom.github.io/docs/deltatime.html',
 
         blocks: [
           {
@@ -154,20 +153,26 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
           },
           '---',
           {
-            opcode: 'set_dt_limit_block',
+            opcode: 'wait_frames_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set Δt limit to [LIMIT]',
+            text: 'wait [FRAMES] frames',
             arguments: {
-              LIMIT: {
+              FRAMES: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 1
               }
             }
           },
           {
-            opcode: 'get_dt_limit_block',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'Δt limit'
+            opcode: 'wait_ticks_block',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'wait [TICKS] ticks',
+            arguments: {
+              TICKS: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 1
+              }
+            }
           }
         ]
       };
@@ -206,13 +211,26 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     get_filter_interpolation_block() {
       return filter_interpolation;
     }
-    set_dt_limit_block({LIMIT}) {
-      dt_limit = Math.max(0, cast.toNumber(LIMIT));
+    wait_frames_block({FRAMES}, util) {
+      const times = Math.round(cast.toNumber(FRAMES));
+      if (typeof util.stackFrame.loopCounter === 'undefined') {
+        util.stackFrame.loopCounter = times;
+      }
+      util.stackFrame.loopCounter--;
+      if (util.stackFrame.loopCounter >= 0) {
+        util.yieldTick();
+      }
     }
-    get_dt_limit_block() {
-      return dt_limit;
+    wait_ticks_block({TICKS}, util) {
+      const times = Math.round(cast.toNumber(TICKS));
+      if (typeof util.stackFrame.loopCounter === 'undefined') {
+        util.stackFrame.loopCounter = times;
+      }
+      util.stackFrame.loopCounter--;
+      if (util.stackFrame.loopCounter >= 0) {
+        util.yield();
+      }
     }
   }
-
   Scratch.extensions.register(new ScratchDeltaTime());
 })(Scratch);
