@@ -232,5 +232,6 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
       }
     }
   }
+
   Scratch.extensions.register(new ScratchDeltaTime());
 })(Scratch);
