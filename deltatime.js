@@ -1,4 +1,4 @@
-// TurboWarp Extension : Deltatime by XeroName & True-Fantom v7.4.0
+// TurboWarp Extension : Deltatime by XeroName & True-Fantom v7.4.1
 
 /*
 Referenced articles :
@@ -30,7 +30,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
   let frame_timer = 0;
 
   let calculation_standard = 30;
-  let filter_power = 16;
+  let filter_rounding = 16;
   let filter_interpolation = 0;
 
   const infinityToZero = val => {
@@ -42,16 +42,16 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
   const oldStep = vm.runtime._step;
 
   vm.runtime._step = function () {
-    oldStep.call(this);
     const this_frame_time = performance.now();
     const changed_frame_time = this_frame_time - last_frame_time;
-    const filter = 10 ** filter_power;
+    const rounding = 10 ** filter_rounding;
     const frames = 1000 / changed_frame_time + leftovers;
-    fps = Math.floor(frames * filter) / filter;
+    fps = Math.floor(frames * rounding) / rounding;
     dt = infinityToZero(1 / fps);
     leftovers = frames - fps;
     last_frame_time = this_frame_time;
     frame_timer++;
+    oldStep.call(this);
   };
 
   vm.on('PROJECT_START', () => {
@@ -120,20 +120,20 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
           },
           '---',
           {
-            opcode: 'set_filter_power_block',
+            opcode: 'set_filter_rounding_block',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set noise filter power to [POWER] digits after dot',
+            text: 'set noise filter rounding to [ROUNDING] digits after dot',
             arguments: {
-              POWER: {
+              ROUNDING: {
                 type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 16
               }
             }
           },
           {
-            opcode: 'get_filter_power_block',
+            opcode: 'get_filter_rounding_block',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'noise filter power'
+            text: 'noise filter rounding'
           },
           {
             opcode: 'set_filter_interpolation_block',
@@ -199,11 +199,11 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     calculate_block({DISTANCE}) {
       return calculation_standard * cast.toNumber(DISTANCE);
     }
-    set_filter_power_block({POWER}) {
-      filter_power = Math.min(Math.max(0, Math.floor(cast.toNumber(POWER))), 16);
+    set_filter_rounding_block({ROUNDING}) {
+      filter_rounding = Math.min(Math.max(0, Math.floor(cast.toNumber(ROUNDING))), 16);
     }
-    get_filter_power_block() {
-      return filter_power;
+    get_filter_rounding_block() {
+      return filter_rounding;
     }
     set_filter_interpolation_block({INTERPOLATION}) {
       filter_interpolation = Math.max(0, Math.floor(cast.toNumber(INTERPOLATION)));
