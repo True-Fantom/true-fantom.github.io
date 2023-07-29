@@ -116,7 +116,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
           {
             opcode: 'set_filter_rounding_command',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set noise filter rounding to [ROUNDING] digits after dot',
+            text: 'set frame noise filter rounding to [ROUNDING] digits after dot',
             arguments: {
               ROUNDING: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -127,12 +127,12 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
           {
             opcode: 'filter_rounding_reporter',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'noise filter rounding'
+            text: 'frame noise filter rounding'
           },
           {
             opcode: 'set_filter_interpolation_command',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set noise filter interpolation to [INTERPOLATION] steps',
+            text: 'set frame noise filter interpolation to [INTERPOLATION] steps',
             arguments: {
               INTERPOLATION: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -143,7 +143,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
           {
             opcode: 'filter_interpolation_reporter',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'noise filter interpolation'
+            text: 'frame noise filter interpolation'
           },
           '---',
           {
