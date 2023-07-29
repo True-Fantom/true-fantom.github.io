@@ -108,9 +108,9 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
             text: 'calculation framerate'
           },
           {
-            opcode: 'calculation_dt_reporter',
+            opcode: 'calculation_coefficient_reporter',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'calculation Δt'
+            text: 'calculation coefficient'
           },
           '---',
           {
@@ -190,7 +190,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
     calculation_framerate_reporter() {
       return calculation_framerate;
     }
-    calculation_dt_reporter() {
+    calculation_coefficient_reporter() {
       return calculation_framerate * dt;
     }
     set_filter_rounding_command({ROUNDING}) {
