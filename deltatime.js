@@ -94,7 +94,7 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
           {
             opcode: 'set_calculation_framerate_command',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set calculation framerate to [FPS] fps',
+            text: 'set frame simulation framerate to [FPS] fps',
             arguments: {
               FPS: {
                 type: Scratch.ArgumentType.NUMBER,
@@ -105,12 +105,12 @@ I learned how to use "Runtime Steps" of Scratch VM through that code. (XeroName)
           {
             opcode: 'calculation_framerate_reporter',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'calculation framerate'
+            text: 'frame simulation framerate'
           },
           {
             opcode: 'calculation_coefficient_reporter',
             blockType: Scratch.BlockType.REPORTER,
-            text: 'calculation coefficient'
+            text: 'frame simulation coefficient'
           },
           '---',
           {
