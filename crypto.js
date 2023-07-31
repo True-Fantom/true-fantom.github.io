@@ -3409,7 +3409,7 @@
     is_hash_block({A, B}) {
       const mode = cast.toString(A).toLowerCase();
       switch (mode) {
-        case 'sha-3-512':
+        case 'sha-3-512': default:
           return true;
         case 'sha-3-384':
           return true;
@@ -3429,16 +3429,17 @@
           return true;
         case 'ripemd-160':
           return true;
-        case 'md-5-128': default:
+        case 'md-5-128':
           return true;
       }
     }
     hash_block({A, B, C, D, E}) {
       const mode = cast.toString(A).toLowerCase();
+      const iterations = Math.floor(cast.toNumber(E));
       let hashval = cast.toString(B) + cast.toString(C) + cast.toString(D);
-      let func = val => val;
+      let func;
       switch (mode) {
-        case 'sha-3-512':
+        case 'sha-3-512': default:
           func = val => CryptoJS.SHA3(val, {outputLength: 512}); break;
         case 'sha-3-384':
           func = val => CryptoJS.SHA3(val, {outputLength: 384}); break;
@@ -3458,10 +3459,10 @@
           func = val => CryptoJS.SHA1(val); break;
         case 'ripemd-160':
           func = val => CryptoJS.RIPEMD160(val); break;
-        case 'md-5-128': default:
+        case 'md-5-128':
           func = val => CryptoJS.MD5(val); break;
       }
-      for (let i = 0; i <= Math.floor(cast.toNumber(E)); i++) {
+      for (let i = 0; i < iterations; i++) {
         hashval = func(hashval).toString(CryptoJS.enc.Hex);
       }
       return hashval;
