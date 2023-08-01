@@ -86,7 +86,6 @@
   };
 
   class ScratchJson {
-
     getInfo() {
       return {
 
