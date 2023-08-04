@@ -148,7 +148,7 @@ Special Thanks:
       frame_timer = 0;
     }
     set_framesim_framerate_command({FPS}) {
-      calculation_framerate = Math.max(0, cast.toNumber(FPS));
+      framesim_framerate = Math.max(0, cast.toNumber(FPS));
     }
     framesim_framerate_reporter() {
       return framesim_framerate;
