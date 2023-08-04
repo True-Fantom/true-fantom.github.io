@@ -1,4 +1,4 @@
-// TurboWarp Extension: Deltatime by True-Fantom & XeroName v8.0.1
+// TurboWarp Extension: Deltatime by True-Fantom & XeroName v8.0.2
 
 /*
 Official Documentations:
@@ -30,7 +30,7 @@ Special Thanks:
   const vm = Scratch.vm;
   const cast = Scratch.Cast;
 
-  let dt, fps;
+  let fps, dt;
   let frame_timer = 0;
   let framesim_framerate = 30;
 
@@ -66,14 +66,14 @@ Special Thanks:
 
         blocks: [
           {
-            opcode: 'dt_reporter',
-            blockType: Scratch.BlockType.REPORTER,
-            text: 'Δt'
-          },
-          {
             opcode: 'fps_reporter',
             blockType: Scratch.BlockType.REPORTER,
             text: 'fps'
+          },
+          {
+            opcode: 'dt_reporter',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'Δt'
           },
           '---',
           {
@@ -135,11 +135,11 @@ Special Thanks:
       };
     }
 
-    dt_reporter() {
-      return dt;
-    }
     fps_reporter() {
       return fps;
+    }
+    dt_reporter() {
+      return dt;
     }
     frame_timer_reporter() {
       return frame_timer;
