@@ -1,4 +1,4 @@
-// TurboWarp Extension: Deltatime by True-Fantom & XeroName v8.0.2
+// TurboWarp Extension: DeltaTime by TrueFantom & XeroName v8.0.2
 
 /*
 Official Documentations:
@@ -15,7 +15,7 @@ Referenced Articles:
 Special Thanks:
 - Thanks to the "TheShovel", for showing how to use runtime steps to TurboWarp extension creators.
 - Thanks to the "XeroName", for creating the original extension.
-- Thanks to the "True-Fantom", for modifying the extension and the image to it.
+- Thanks to the "TrueFantom", for modifying the extension and the image to it.
 */
 
 (Scratch => {
