@@ -60,7 +60,7 @@ Special Thanks:
 
         id: 'truefantomxeronamedeltatime',
         name: 'DeltaTime',
-        color1: '#af55dd',
+        color1: '#AF55DD',
         menuIconURI: icon_uri,
         docsURI: 'https://true-fantom.github.io/docs/deltatime.html',
 
