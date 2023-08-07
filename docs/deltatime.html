@@ -38,8 +38,8 @@
       }
 
       hr {
-        margin-top: 1em;
-        margin-bottom: 1em;
+        margin-top: 8px;
+        margin-bottom: 8px;
         border: 1px solid #ccc;
         border-radius: 8px;
       }
@@ -51,20 +51,21 @@
 
       ul {
         padding: 0;
-        margin-left: 20px;
+        margin: 0 0 0 20px;
       }
 
       details {
+        padding: 8px;
+        margin-top: 8px;
         border: 2px solid #ccc;
         border-radius: 8px;
-        padding: 0.5em;
       }
       summary {
         font-weight: bold;
-        padding: -0.5em;
+        padding: -8px;
       }
       details[open] summary {
-        padding-bottom: 0.5em;
+        padding-bottom: 8px;
       }
       @media (prefers-color-scheme: dark) {
         details {
@@ -121,11 +122,11 @@
         display: inline-block;
         max-width: 928px;
         width: 100%;
+        overflow: hidden;
+        padding: 0 8px 8px 8px;
+        margin: 4px 0 0 0;
         border: 2px solid #ccc;
         border-radius: 8px;
-        padding: 0 8px 8px 8px;
-        overflow: hidden;
-        margin: 4px 0 0 0;
       }
       @media (prefers-color-scheme: dark) {
         .inbox {
@@ -135,7 +136,7 @@
 
       .box {
         background-color: #d9d9d9;
-        padding: 0 0.2em;
+        padding: 0 2px;
         border-radius: 4px;
       }
       @media (prefers-color-scheme: dark) {
@@ -146,10 +147,10 @@
 
       .code {
         background-color: #f2f2f2;
-        border: 2px solid #ccc;
-        border-radius: 4px;
         resize: none;
         width: 100%;
+        border: 2px solid #ccc;
+        border-radius: 4px;
       }
       @media (prefers-color-scheme: dark) {
         .code {
@@ -158,7 +159,7 @@
         }
       }
 
-      .bannerbox, .imgbox, .projectbox {
+      .borderbox, .projectbox, .bannerbox, .imgbox {
         width: 100%;
         overflow: auto;
         user-select: none;
@@ -170,22 +171,26 @@
         -webkit-user-select: none;
         -webkit-touch-callout: none;
       }
-
-      .projectbox {
+      .borderbox, .projectbox {
         border: 2px solid #ccc;
         border-radius: 8px;
-        aspect-ratio: 480/360;
       }
       @media (prefers-color-scheme: dark) {
-        .projectbox {
+        .borderbox, .projectbox {
           border-color: #333;
         }
       }
+      .projectbox {
+        aspect-ratio: 480/360;
+      }
+      .bannerbox {
+        
+      }
 
       footer {
-        opacity: 0.8;
-        width: 100%;
         text-align: center;
+        width: 100%;
+        opacity: 0.8;
         margin-bottom: 16px;
       }
       footer p {
@@ -232,19 +237,21 @@
 
       <div class="infobox infobox-warning">
         <div class="infobox-title">This extension is not compatible with Scratch.</div>
-        Projects that use this extension can't be uploaded to the Scratch website.
-        They can, however, be used in <a href="https://packager.turbowarp.org/">the packager</a>.
+          Projects that use this extension can't be uploaded to the Scratch website.
+          They can, however, be used in <a href="https://packager.turbowarp.org/">the packager</a>.
       </div>
 
       <div class="infobox">
-          <div class="infobox-title">This extension may not work in TurboWarp Desktop.</div>
+        <div class="infobox-title">This extension may not work in TurboWarp Desktop.</div>
           For compatibility, security, and offline support, each <a href="https://desktop.turbowarp.org/">TurboWarp Desktop</a> update contains an offline copy of this extension from its release date, so it may be outdated or missing.
           Use the latest update for best results.
       </div>
     </div>
 
     <div style="text-align: center;"><div class="inbox">
+
       <h2>This Extension Allows You To:</h2>
+
       <ul>
         <li>Make your project run at the same speed on all devices and in all its parts. While, this speed will be the one that you want!</li>
         <li>Test the speed of your game under different circumstances!</li>
@@ -252,10 +259,6 @@
         <li>Make a multiplayer game where players will not lag behind each other due to freezes!</li>
         <li>And many more interesting things!</li>
       </ul>
-
-      <hr>
-
-      <h2>How It Works</h2>
 
       <p>The extension helps you to use <a href="https://en.wikipedia.org/wiki/Delta_timing">DeltaTime</a> (the time in seconds it took to draw the last frame). So now we will rely not on our <a href="https://en.wikipedia.org/wiki/Frame_rate">FPS</a> (frames per second), but on the actual time, which is the same for all devices.</p>
 
