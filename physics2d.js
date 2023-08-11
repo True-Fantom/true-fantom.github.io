@@ -12244,14 +12244,10 @@ Special Thanks:
           {
             opcode: "setStage",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setStage",
-              default: "setup stage [stageType]",
-              description: "Set the stage type",
-            }),
+            text: "setup stage [stageType]",
             arguments: {
               stageType: {
-                type: ArgumentType.STRING,
+                type: Scratch.ArgumentType.STRING,
                 menu: "StageTypes",
                 defaultValue: STAGE_TYPE_OPTIONS.BOXED,
               },
@@ -12260,18 +12256,14 @@ Special Thanks:
           {
             opcode: "setGravity",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setGravity",
-              default: "set gravity to x: [gx] y: [gy]",
-              description: "Set the gravity",
-            }),
+            text: "set gravity to x: [gx] y: [gy]",
             arguments: {
               gx: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
               gy: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: -10,
               },
             },
@@ -12279,107 +12271,74 @@ Special Thanks:
           {
             opcode: "getGravityX",
             blockType: Scratch.BlockType.REPORTER,
-            text: formatMessage({
-              id: "griffpatch.getGravityX",
-              default: "gravity x",
-              description: "Get the gravity's x value",
-            }),
+            text: "gravity x",
           },
           {
             opcode: "getGravityY",
             blockType: Scratch.BlockType.REPORTER,
-            text: formatMessage({
-              id: "griffpatch.getGravityY",
-              default: "gravity y",
-              description: "Get the gravity's y value",
-            }),
+            text: "gravity y",
           },
-
           "---",
-
           {
             opcode: "setPhysics",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setPhysics",
-              default: "enable for [shape] mode [mode]",
-              description: "Enable Physics for this Sprite",
-            }),
+            text: "enable for [shape] mode [mode]",
             arguments: {
               shape: {
-                type: ArgumentType.STRING,
+                type: Scratch.ArgumentType.STRING,
                 menu: "ShapeTypes",
                 defaultValue: "costume",
               },
               mode: {
-                type: ArgumentType.STRING,
+                type: Scratch.ArgumentType.STRING,
                 menu: "EnableModeTypes",
                 defaultValue: "normal",
               },
             },
             filter: [Scratch.TargetType.SPRITE],
           },
-
           "---",
-
           {
             opcode: "doTick",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.doTick",
-              default: "step simulation",
-              description: "Run a single tick of the physics simulation",
-            }),
+            text: "step simulation",
           },
-
           "---",
-
           {
             opcode: "setPosition",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setPosition",
-              default: "go to x: [x] y: [y] [space]",
-              description: "Position Sprite",
-            }),
+            text: "go to x: [x] y: [y] [space]",
             arguments: {
               x: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
               y: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
               space: {
-                type: ArgumentType.STRING,
+                type: Scratch.ArgumentType.STRING,
                 menu: "SpaceTypes",
                 defaultValue: "world",
               },
             },
             filter: [Scratch.TargetType.SPRITE],
           },
-
           "---",
-
           // applyForce (target, ftype, x, y, dir, pow) {
           // applyAngForce (target, pow) {
-
           {
             opcode: "setVelocity",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setVelocity",
-              default: "set velocity to sx: [sx] sy: [sy]",
-              description: "Set Velocity",
-            }),
+            text: "set velocity to sx: [sx] sy: [sy]",
             arguments: {
               sx: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
               sy: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
             },
@@ -12388,18 +12347,14 @@ Special Thanks:
           {
             opcode: "changeVelocity",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.changeVelocity",
-              default: "change velocity by sx: [sx] sy: [sy]",
-              description: "Change Velocity",
-            }),
+            text: "change velocity by sx: [sx] sy: [sy]",
             arguments: {
               sx: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
               sy: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
             },
@@ -12407,42 +12362,28 @@ Special Thanks:
           },
           {
             opcode: "getVelocityX",
-            text: formatMessage({
-              id: "griffpatch.getVelocityX",
-              default: "x velocity",
-              description: "get the x velocity",
-            }),
+            text: "x velocity",
             blockType: Scratch.BlockType.REPORTER,
             filter: [Scratch.TargetType.SPRITE],
           },
           {
             opcode: "getVelocityY",
-            text: formatMessage({
-              id: "griffpatch.getVelocityY",
-              default: "y velocity",
-              description: "get the y velocity",
-            }),
+            text: "y velocity",
             blockType: Scratch.BlockType.REPORTER,
             filter: [Scratch.TargetType.SPRITE],
           },
-
           "---",
-
           {
             opcode: "applyForce",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.applyForce",
-              default: "push with force [force] in direction [dir]",
-              description: "Push this object in a given direction",
-            }),
+            text: "push with force [force] in direction [dir]",
             arguments: {
               force: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 25,
               },
               dir: {
-                type: ArgumentType.ANGLE,
+                type: Scratch.ArgumentType.ANGLE,
                 defaultValue: 0,
               },
             },
@@ -12451,33 +12392,23 @@ Special Thanks:
           {
             opcode: "applyAngForce",
             blockType: blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.applyAngForce",
-              default: "spin with force [force]",
-              description: "Push this object in a given direction",
-            }),
+            text: "spin with force [force]",
             arguments: {
               force: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 500,
               },
             },
             filter: [Scratch.TargetType.SPRITE],
           },
-
           '---',
-
           {
             opcode: "setAngVelocity",
             blockType: blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setAngVelocity",
-              default: "set angular velocity to [force]",
-              description: "Set the angular velocity of the sprite",
-            }),
+            text: "set angular velocity to [force]",
             arguments: {
               force: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 30,
               },
             },
@@ -12486,27 +12417,17 @@ Special Thanks:
           {
             opcode: "getAngVelocity",
             blockType: blockType: Scratch.BlockType.REPORTER,
-            text: formatMessage({
-              id: "griffpatch.getAngVelocity",
-              default: "angular velocity",
-              description: "Get the angular velocity of the sprite",
-            }),
+            text: "angular velocity",
             filter: [Scratch.TargetType.SPRITE],
           },
-            
           "---",
-
           {
             opcode: "setStatic",
             blockType: blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setStatic",
-              default: "set fixed [static]",
-              description: "Sets whether this block is static or dynamic",
-            }),
+            text: "set fixed [static]",
             arguments: {
               static: {
-                type: ArgumentType.STRING,
+                type: Scratch.ArgumentType.STRING,
                 menu: "StaticTypes",
                 defaultValue: "static",
               },
@@ -12515,28 +12436,18 @@ Special Thanks:
           },
           {
             opcode: "getStatic",
-            text: formatMessage({
-              id: "griffpatch.getStatic",
-              default: "fixed?",
-              description: "get whether this sprite is fixed"
-            }),
+            text: "fixed?",
             blockType: Scratch.BlockType.BOOLEAN,
             filter: [Scratch.TargetType.SPRITE]
           },
-
           "---",
-
           {
             opcode: "setDensity",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setDensity",
-              default: "set density [density]",
-              description: "Set the density of the object"
-            }),
+            text: "set density [density]",
             arguments: {
               density: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 menu: "DensityTypes",
                 defaultValue: 100,
               },
@@ -12547,14 +12458,10 @@ Special Thanks:
             opcode: "setDensityValue",
             func: "setDensity",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setDensityValue",
-              default: "set density to [density]",
-              description: "Set the density of the object"
-            }),
+            text: "set density to [density]",
             arguments: {
               density: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 100
               }
             },
@@ -12563,11 +12470,7 @@ Special Thanks:
           {
             opcode: "getDensity",
             blockType: Scratch.BlockType.REPORTER,
-            text: formatMessage({
-              id: "griffpatch.getDensity",
-              default: "density",
-              description: "Get the density of the object",
-            }),
+            text: "density",
             filter: [Scratch.TargetType.SPRITE],
           },
 
@@ -12576,14 +12479,10 @@ Special Thanks:
           {
             opcode: "setFriction",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setFriction",
-              default: "set friction [friction]",
-              description: "Set the friction of the object",
-            }),
+            text: "set friction [friction]",
             arguments: {
               friction: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 menu: "FrictionTypes",
                 defaultValue: 50,
               },
@@ -12594,14 +12493,10 @@ Special Thanks:
             opcode: "setFrictionValue",
             func: "setFriction",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setFrictionValue",
-              default: "set friction to [friction]",
-              description: "Set the friction value of the object",
-            }),
+            text: "set friction to [friction]",
             arguments: {
               friction: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 50,
               },
             },
@@ -12610,27 +12505,17 @@ Special Thanks:
           {
             opcode: "getFriction",
             blockType: Scratch.BlockType.REPORTER,
-            text: formatMessage({
-              id: "griffpatch.getFriction",
-              default: "friction",
-              description: "Get the friction of the object",
-            }),
+            text: "friction",
             filter: [Scratch.TargetType.SPRITE],
           },
-
           "---",
-
           {
             opcode: "setRestitution",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setRestitution",
-              default: "set bounce [restitution]",
-              description: "Set the bounce of the object",
-            }),
+            text: "set bounce [restitution]",
             arguments: {
               restitution: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 menu: "RestitutionTypes",
                 defaultValue: 20,
               },
@@ -12641,14 +12526,10 @@ Special Thanks:
             opcode: "setRestitutionValue",
             func: "setRestitution",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setRestitutionValue",
-              default: "set bounce to [restitution]",
-              description: "Set the bounce value of the object",
-            }),
+            text: "set bounce to [restitution]",
             arguments: {
               restitution: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 20,
               },
             },
@@ -12657,53 +12538,36 @@ Special Thanks:
           {
             opcode: "getRestitution",
             blockType: Scratch.BlockType.REPORTER,
-            text: formatMessage({
-              id: "griffpatch.getRestitution",
-              default: "bounce",
-              description: "Get the bounce value of the object",
-            }),
+            text: "bounce",
             filter: [Scratch.TargetType.SPRITE],
           },
-
           "---",
-
           {
             opcode: "getTouching",
-            text: formatMessage({
-              id: "griffpatch.getTouching",
-              default: "touching [where]",
-              description: "get the name of any sprites we are touching",
-            }),
+            text: "touching [where]",
             blockType: Scratch.BlockType.REPORTER,
             arguments: {
               where: {
-                type: ArgumentType.STRING,
+                type: Scratch.ArgumentType.STRING,
                 menu: "WhereTypes",
                 defaultValue: "any",
               },
             },
             filter: [Scratch.TargetType.SPRITE],
           },
-
           // Scene Scrolling -------------------
-
           "---",
-
           {
             opcode: "setScroll",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.setScroll",
-              default: "set scroll x: [ox] y: [oy]",
-              description: "Sets whether this block is static or dynamic",
-            }),
+            text: "set scroll x: [ox] y: [oy]",
             arguments: {
               ox: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
               oy: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
             },
@@ -12711,38 +12575,26 @@ Special Thanks:
           {
             opcode: "changeScroll",
             blockType: Scratch.BlockType.COMMAND,
-            text: formatMessage({
-              id: "griffpatch.changeScroll",
-              default: "change scroll by x: [ox] y: [oy]",
-              description: "Sets whether this block is static or dynamic",
-            }),
+            text: "change scroll by x: [ox] y: [oy]",
             arguments: {
               ox: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
               oy: {
-                type: ArgumentType.NUMBER,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 0,
               },
             },
           },
           {
             opcode: "getScrollX",
-            text: formatMessage({
-              id: "griffpatch.getScrollX",
-              default: "x scroll",
-              description: "get the x scroll",
-            }),
+            text: "x scroll",
             blockType: Scratch.BlockType.REPORTER,
           },
           {
             opcode: "getScrollY",
-            text: formatMessage({
-              id: "griffpatch.getScrollY",
-              default: "y scroll",
-              description: "get the y scroll",
-            }),
+            text: "y scroll",
             blockType: Scratch.BlockType.REPORTER,
           }
         ],
@@ -12768,7 +12620,6 @@ Special Thanks:
         { text: "open (no floor)", value: STAGE_TYPE_OPTIONS.OPEN },
       ];
     }
-
     get SPACE_TYPE_MENU() {
       return [
         { text: "in world", value: SPACE_TYPE_OPTIONS.WORLD },
@@ -12776,14 +12627,12 @@ Special Thanks:
         { text: "relative", value: SPACE_TYPE_OPTIONS.RELATIVE },
       ];
     }
-
     get WHERE_TYPE_MENU() {
       return [
         { text: "any", value: WHERE_TYPE_OPTIONS.ANY },
         { text: "feet", value: WHERE_TYPE_OPTIONS.FEET },
       ];
     }
-
     get SHAPE_TYPE_MENU() {
       return [
         { text: "this costume", value: SHAPE_TYPE_OPTIONS.COSTUME },
@@ -12792,14 +12641,12 @@ Special Thanks:
         { text: "all sprites", value: SHAPE_TYPE_OPTIONS.ALL },
       ];
     }
-
     get ENABLE_TYPES_TYPE_MENU() {
       return [
         { text: "normal", value: "normal" },
         { text: "precision", value: "bullet" },
       ];
     }
-
     get STATIC_TYPE_MENU() {
       return [
         { text: "free", value: "dynamic" },
@@ -12807,7 +12654,6 @@ Special Thanks:
         { text: "fixed (but can rotate)", value: "pinned" },
       ];
     }
-
     get DENSITY_TYPE_MENU() {
       return [
         { text: "very light", value: "25" },
@@ -12817,7 +12663,6 @@ Special Thanks:
         { text: "very heavy", value: "400" },
       ];
     }
-
     get FRICTION_TYPE_MENU() {
       return [
         { text: "none", value: "0" },
@@ -12827,7 +12672,6 @@ Special Thanks:
         { text: "extremely rough", value: "100" },
       ];
     }
-
     get RESTITUTION_TYPE_MENU() {
       return [
         { text: "none", value: "0" },
