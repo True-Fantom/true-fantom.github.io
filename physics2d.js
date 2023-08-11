@@ -1794,7 +1794,7 @@ Special Thanks:
         __this.m_tree.Query(QueryCallback, fatAABB);
       }
       __this.m_moveBuffer.length = 0;
-      for (var i = 0; i < __this.m_pairCount; ) {
+      for (let i = 0; i < __this.m_pairCount; ) {
         let primaryPair = __this.m_pairBuffer[i];
         let userDataA = __this.m_tree.GetUserData(primaryPair.proxyA);
         let userDataB = __this.m_tree.GetUserData(primaryPair.proxyB);
