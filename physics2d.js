@@ -12416,14 +12416,14 @@ Special Thanks:
           },
           {
             opcode: "getAngVelocity",
-            blockType: blockType: Scratch.BlockType.REPORTER,
+            blockType: Scratch.BlockType.REPORTER,
             text: "angular velocity",
             filter: [Scratch.TargetType.SPRITE],
           },
           "---",
           {
             opcode: "setStatic",
-            blockType: blockType: Scratch.BlockType.COMMAND,
+            blockType: Scratch.BlockType.COMMAND,
             text: "set fixed [static]",
             arguments: {
               static: {
