@@ -11845,9 +11845,25 @@ Special Thanks:
   // Now comes the main code itself
   // :)
 
+  const ArgumentType = Scratch.ArgumentType;
+  const BlockType = Scratch.BlockType;
+  // const MathUtil = require('../../util/math-util');
+  // const Clone = require('../../util/clone');
   const Cast = Scratch.Cast;
-
+  // const Cast = require('../../util/cast');
+  // const Runtime = require('../../engine/runtime');
+  // const RenderedTarget = require('../../sprites/rendered-target');
+  // const formatMessage = require('format-message');
+  const formatMessage = (obj) => obj.default;
+  // const MathUtil = require('../../util/math-util');
+  // const Timer = require('../../util/timer');
+  // const Matter = require('matterJs/matter');
+  // const Matter = require('matter-js');
   const ROTATION_STYLE_ALL_AROUND = "all around";
+
+  // const Box2D = require('./Box2d.min').box2d;
+
+  // window.decomp = require('poly-decomp');
 
   const b2World = Box2D.Dynamics.b2World;
   const b2Vec2 = Box2D.Common.Math.b2Vec2;
@@ -12375,7 +12391,7 @@ Special Thanks:
           },
           {
             opcode: "applyAngForce",
-            blockType: blockType: Scratch.BlockType.COMMAND,
+            blockType: Scratch.BlockType.COMMAND,
             text: "spin with force [force]",
             arguments: {
               force: {
@@ -12388,7 +12404,7 @@ Special Thanks:
           '---',
           {
             opcode: "setAngVelocity",
-            blockType: blockType: Scratch.BlockType.COMMAND,
+            blockType: Scratch.BlockType.COMMAND,
             text: "set angular velocity to [force]",
             arguments: {
               force: {
