@@ -78,6 +78,9 @@
       th:last-child {
         border-radius: 0 6px 0 0;
       }
+      .symmetricaltable {
+        table-layout: fixed;
+      }
       .toptable th {
         background-color: #f2f2f2;
         font-weight: bold;
@@ -91,9 +94,6 @@
       }
       .lefttable td:last-child {
         width: 100%;
-      }
-      .symmetricaltable {
-        table-layout: fixed;
       }
       @media (prefers-color-scheme: dark) {
         table {
@@ -764,7 +764,7 @@ far = depth of far plane</div>
           </tr>
         </table>
 
-        <table class="toptable symmetricaltable">
+        <table class="symmetricaltable toptable">
           <tr>
             <th>Extension</th>
             <th>Author</th>
@@ -792,7 +792,7 @@ far = depth of far plane</div>
           </tr>
         </table>
 
-        <table class="lefttable symmetricaltable">
+        <table class="symmetricaltable lefttable">
           <tr>
             <th>Extension</th>
             <th>Author</th>
@@ -820,7 +820,7 @@ far = depth of far plane</div>
           </tr>
         </table>
 
-        <table class="lefttable toptable symmetricaltable">
+        <table class="symmetricaltable lefttable toptable">
           <tr>
             <th>Extension</th>
             <th>Author</th>
