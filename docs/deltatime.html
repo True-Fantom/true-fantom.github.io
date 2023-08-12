@@ -115,25 +115,6 @@
         }
       }
 
-      textarea {
-        background-color: #f2f2f2;
-        width: 100%;
-        resize: none;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        box-shadow: none;
-        -webkit-box-shadow: none;
-        -moz-box-shadow: none;
-        -ms-box-shadow: none;
-        -o-box-shadow: none;
-      }
-      @media (prefers-color-scheme: dark) {
-        textarea {
-          background-color: #1f1f1f;
-          border-color: #333;
-        }
-      }
-
       /* font-family from https://gist.github.com/heiswayi/50a3307696f1f70da28fa29d4c7f5201 */
       code {
         font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
@@ -212,13 +193,22 @@
         }
       }
 
+      /* font-family from https://gist.github.com/heiswayi/50a3307696f1f70da28fa29d4c7f5201 */
       .textbox {
-        outline: none;
-        appearance: none;
-        -webkit-appearance: none;
-        -moz-apperarance: none;
-        -ms-appearance: none;
-        -o-appearance: none;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+        white-space: pre;
+        background-color: #f2f2f2;
+        width: 100%;
+        overflow: auto;
+        margin-bottom: 11.5px;
+        border: 2px solid #ccc;
+        border-radius: 4px;
+      }
+      @media (prefers-color-scheme: dark) {
+        .textbox {
+          background-color: #1f1f1f;
+          border-color: #333;
+        }
       }
 
       .borderedbox, .projectbox, .bannerbox, .imgbox {
@@ -598,8 +588,7 @@
 
       <h2>Text Area Test</h2>
 
-      <textarea readonly class=textbox rows=12 wrap=off>
-                                      /\
+      <div class="textbox">                                      /\
                                      /||\
                                       ||     OUT
    IN                                 ||  [X,Y,Z,W]
@@ -610,7 +599,7 @@ _______\    [                0, 2 * dist / height,                             0
       /     [                0,                 0, near * far / (near - far) * 2,  0 ]  [ 13,14,15,16 ]
 
 near = depth of near plane
-far = depth of far plane</textarea>
+far = depth of far plane</div>
 
       <hr>
 
@@ -648,7 +637,7 @@ far = depth of far plane</textarea>
 
       <h2>Code Test</h2>
 
-      <code class="lang-js">function by(propName) {
+      <div class="textbox"><code class="lang-js">function by(propName) {
     return function(a, b) {
         return a[propName] - b[propName];
     }
@@ -660,7 +649,7 @@ const person3 = {name: 'nicholas', height: 66};
 
 const arr_ = [person1, person2, person3];
 
-const arr_sorted = arr_.sort(by('height')); // [ { name: 'nicholas', height: 66 }, { name: 'rob', height: 70 },{ name: 'joe', height: 72 } ]</code>
+const arr_sorted = arr_.sort(by('height')); // [ { name: 'nicholas', height: 66 }, { name: 'rob', height: 70 },{ name: 'joe', height: 72 } ]</code></div>
 
       <hr>
 
