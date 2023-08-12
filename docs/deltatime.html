@@ -125,6 +125,11 @@
         width: 100%;
         border: 2px solid #ccc;
         border-radius: 4px;
+        box-shadow: none;
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        -ms-box-shadow: none;
+        -o-box-shadow: none;
       }
       @media (prefers-color-scheme: dark) {
         textarea {
@@ -203,7 +208,11 @@
       .code {
         resize: none;
         outline: none;
-        -moz-appearance: none;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-apperarance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
       }
 
       .borderbox, .projectbox, .bannerbox, .imgbox {
