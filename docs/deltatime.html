@@ -54,6 +54,47 @@
         margin: 0 0 0 20px;
       }
 
+      table {
+        width: 100%;
+        margin-bottom: 11.5px;
+        border-spacing: 0;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+      }
+      th, td {
+        text-align: left;
+        padding: 8px;
+      }
+      th {
+        background-color: #ccc;
+      }
+      td {
+        border-top: 2px solid #ccc;
+      }
+      th:not(:first-child), td:not(:first-child) {
+        border-left: 2px solid #ccc;
+      }
+      th:first-child {
+        border-radius: 4px 0 0 0;
+      }
+      th:last-child {
+        border-radius: 0 4px 0 0;
+      }
+      @media (prefers-color-scheme: dark) {
+        table {
+          border-color: #333;
+        }
+        th {
+          background-color: #333;
+        }
+        td {
+          border-top-color: #333;
+        }
+        th:not(:first-child), td:not(:first-child) {
+          border-left-color: #333;
+        }
+      }
+
       details {
         padding: 8px;
         margin-top: 8px;
