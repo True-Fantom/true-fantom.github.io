@@ -401,6 +401,24 @@
 
       <hr>
 
+      <h2>Code Area Test</h2>
+
+      <textarea readonly class=code rows=12 wrap=off>
+                                      /\
+                                     /||\
+                                      ||     OUT
+   IN                                 ||  [X,Y,Z,W]
+[x,y,z,1]                             ||
+      \     [ 2 * dist / width,                 0,                             0,  0 ]  [  1, 2, 3, 4 ]
+_______\    [                0, 2 * dist / height,                             0,  0 ]  [  5, 6, 7, 8 ]
+^^^^^^^/    [                0,                 0,   (near + far) / (near - far), -1 ]  [  9,10,11,12 ]
+      /     [                0,                 0, near * far / (near - far) * 2,  0 ]  [ 13,14,15,16 ]
+
+near = depth of near plane
+far = depth of far plane</textarea>
+
+      <hr>
+
       <h2>Credits</h2>
       <p>This site was created by <a href="https://scratch.mit.edu/users/TrueFantom">TrueFantom</a>.</p>
       <p>The text of the documentation was written by <a href="https://scratch.mit.edu/users/TrueFantom">TrueFantom</a>.</p>
