@@ -137,6 +137,7 @@
       /* font-family from https://gist.github.com/heiswayi/50a3307696f1f70da28fa29d4c7f5201 */
       code {
         font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+        white-space: pre;
       }
 
       .section {
@@ -647,7 +648,19 @@ far = depth of far plane</textarea>
 
       <h2>Code Test</h2>
 
-      <code class="lang-js">const a = 888;</code>
+      <code class="lang-js">function by(propName) {
+    return function(a, b) {
+        return a[propName] - b[propName];
+    }
+}
+
+const person1 = {name: 'joe', height: 72};
+const person2 = {name: 'rob', height: 70};
+const person3 = {name: 'nicholas', height: 66};
+
+const arr_ = [person1, person2, person3];
+
+const arr_sorted = arr_.sort(by('height')); // [ { name: 'nicholas', height: 66 }, { name: 'rob', height: 70 },{ name: 'joe', height: 72 } ]</code>
 
       <hr>
 
