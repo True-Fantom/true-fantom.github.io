@@ -118,6 +118,7 @@
       textarea {
         background-color: #f2f2f2;
         width: 100%;
+        resize: none;
         border: 2px solid #ccc;
         border-radius: 4px;
         box-shadow: none;
@@ -206,7 +207,6 @@
       }
 
       .textbox {
-        resize: none;
         outline: none;
         appearance: none;
         -webkit-appearance: none;
@@ -634,5 +634,10 @@ far = depth of far plane</textarea>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
+    <script type="text/javascript">
+      hljs.configure({
+        cssSelector: 'code'
+      });
+    </script>
   </body>
 </html>
