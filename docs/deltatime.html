@@ -63,10 +63,8 @@
       }
       th, td {
         text-align: left;
+        font-weight: normal;
         padding: 8px;
-      }
-      th {
-        background-color: #f2f2f2;
       }
       td {
         border-top: 2px solid #ccc;
@@ -80,18 +78,32 @@
       th:last-child {
         border-radius: 0 6px 0 0;
       }
+      .toptable th {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      .lefttable td:first-child, .lefttable th:first-child {
+        background-color: #f2f2f2;
+        font-weight: bold;
+      }
+      .symmetricaltable {
+        table-layout: fixed;
+      }
       @media (prefers-color-scheme: dark) {
         table {
           border-color: #333;
-        }
-        th {
-          background-color: #1f1f1f;
         }
         td {
           border-top-color: #333;
         }
         th:not(:first-child), td:not(:first-child) {
           border-left-color: #333;
+        }
+        .toptable th {
+          background-color: #1f1f1f;
+        }
+        .lefttable td:first-child, .lefttable th:first-child {
+          background-color: #1f1f1f;
         }
       }
 
@@ -607,6 +619,202 @@ far = depth of far plane</div>
       <h2>Table Test</h2>
 
         <table>
+          <tr>
+            <th>Extension</th>
+            <th>Author</th>
+            <th>Information</th>
+          </tr>
+          <tr>
+            <td>Stretch</td>
+            <td>GarboMuffin</td>
+            <td>Stretch sprites.</td>
+          </tr>
+          <tr>
+            <td>Files</td>
+            <td>GarboMuffin</td>
+            <td>Read and download files.</td>
+          </tr>
+          <tr>
+            <td>Base</td>
+            <td>TrueFantom</td>
+            <td>Convert numbers between bases.</td>
+          </tr>
+          <tr>
+            <td>Math</td>
+            <td>TrueFantom</td>
+            <td>A lot of operators blocks.</td>
+          </tr>
+        </table>
+
+        <table class="toptable">
+          <tr>
+            <th>Extension</th>
+            <th>Author</th>
+            <th>Information</th>
+          </tr>
+          <tr>
+            <td>Stretch</td>
+            <td>GarboMuffin</td>
+            <td>Stretch sprites.</td>
+          </tr>
+          <tr>
+            <td>Files</td>
+            <td>GarboMuffin</td>
+            <td>Read and download files.</td>
+          </tr>
+          <tr>
+            <td>Base</td>
+            <td>TrueFantom</td>
+            <td>Convert numbers between bases.</td>
+          </tr>
+          <tr>
+            <td>Math</td>
+            <td>TrueFantom</td>
+            <td>A lot of operators blocks.</td>
+          </tr>
+        </table>
+
+        <table class="lefttable">
+          <tr>
+            <th>Extension</th>
+            <th>Author</th>
+            <th>Information</th>
+          </tr>
+          <tr>
+            <td>Stretch</td>
+            <td>GarboMuffin</td>
+            <td>Stretch sprites.</td>
+          </tr>
+          <tr>
+            <td>Files</td>
+            <td>GarboMuffin</td>
+            <td>Read and download files.</td>
+          </tr>
+          <tr>
+            <td>Base</td>
+            <td>TrueFantom</td>
+            <td>Convert numbers between bases.</td>
+          </tr>
+          <tr>
+            <td>Math</td>
+            <td>TrueFantom</td>
+            <td>A lot of operators blocks.</td>
+          </tr>
+        </table>
+
+        <table class="lefttable toptable">
+          <tr>
+            <th>Extension</th>
+            <th>Author</th>
+            <th>Information</th>
+          </tr>
+          <tr>
+            <td>Stretch</td>
+            <td>GarboMuffin</td>
+            <td>Stretch sprites.</td>
+          </tr>
+          <tr>
+            <td>Files</td>
+            <td>GarboMuffin</td>
+            <td>Read and download files.</td>
+          </tr>
+          <tr>
+            <td>Base</td>
+            <td>TrueFantom</td>
+            <td>Convert numbers between bases.</td>
+          </tr>
+          <tr>
+            <td>Math</td>
+            <td>TrueFantom</td>
+            <td>A lot of operators blocks.</td>
+          </tr>
+        </table>
+
+        <table class="symmetricaltable">
+          <tr>
+            <th>Extension</th>
+            <th>Author</th>
+            <th>Information</th>
+          </tr>
+          <tr>
+            <td>Stretch</td>
+            <td>GarboMuffin</td>
+            <td>Stretch sprites.</td>
+          </tr>
+          <tr>
+            <td>Files</td>
+            <td>GarboMuffin</td>
+            <td>Read and download files.</td>
+          </tr>
+          <tr>
+            <td>Base</td>
+            <td>TrueFantom</td>
+            <td>Convert numbers between bases.</td>
+          </tr>
+          <tr>
+            <td>Math</td>
+            <td>TrueFantom</td>
+            <td>A lot of operators blocks.</td>
+          </tr>
+        </table>
+
+        <table class="toptable symmetricaltable">
+          <tr>
+            <th>Extension</th>
+            <th>Author</th>
+            <th>Information</th>
+          </tr>
+          <tr>
+            <td>Stretch</td>
+            <td>GarboMuffin</td>
+            <td>Stretch sprites.</td>
+          </tr>
+          <tr>
+            <td>Files</td>
+            <td>GarboMuffin</td>
+            <td>Read and download files.</td>
+          </tr>
+          <tr>
+            <td>Base</td>
+            <td>TrueFantom</td>
+            <td>Convert numbers between bases.</td>
+          </tr>
+          <tr>
+            <td>Math</td>
+            <td>TrueFantom</td>
+            <td>A lot of operators blocks.</td>
+          </tr>
+        </table>
+
+        <table class="lefttable symmetricaltable">
+          <tr>
+            <th>Extension</th>
+            <th>Author</th>
+            <th>Information</th>
+          </tr>
+          <tr>
+            <td>Stretch</td>
+            <td>GarboMuffin</td>
+            <td>Stretch sprites.</td>
+          </tr>
+          <tr>
+            <td>Files</td>
+            <td>GarboMuffin</td>
+            <td>Read and download files.</td>
+          </tr>
+          <tr>
+            <td>Base</td>
+            <td>TrueFantom</td>
+            <td>Convert numbers between bases.</td>
+          </tr>
+          <tr>
+            <td>Math</td>
+            <td>TrueFantom</td>
+            <td>A lot of operators blocks.</td>
+          </tr>
+        </table>
+
+        <table class="lefttable toptable symmetricaltable">
           <tr>
             <th>Extension</th>
             <th>Author</th>
