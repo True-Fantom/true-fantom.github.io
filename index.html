@@ -56,6 +56,14 @@
         height: 56px;
         flex-shrink: 0;
         margin: 0 8px 0 0;
+        user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none;
+        -moz-user-select: none;
+        -msie-user-select: none;
+        -khtml-user-select: none;
+        -webkit-user-select: none;
+        -webkit-touch-callout: none;
       }
       @media (max-width: 750px) {
         .header h1 {
@@ -202,7 +210,7 @@
   <body>
     <div class="section header">
       <h1>
-        <img aria-hidden="true" style="user-select: none; -o-user-select: none; -ms-user-select: none; -moz-user-select: none; -msie-user-select: none; -khtml-user-select: none; -webkit-user-select: none; -webkit-touch-callout: none;" src="website/logo.png">
+        <img aria-hidden="true" src="website/logo.png">
         <div>True Fantøm's Extension Gallery</div>
       </h1>
 
@@ -256,8 +264,8 @@
             <div class="extension-banner">
               <img loading="lazy" src="images/math.svg" class="extension-image">
               <div class="extension-buttons">
-                <button class="copy" data-copy="https://true-fantom.github.io/extensions/math.js">Copy Code</button>
-                <a class="open" href="https://true-fantom.github.io/extensions/math.js">Open Code</a>
+                <button class="copy" data-copy="extensions/math.js">Copy Code</button>
+                <a class="open" href="extensions/math.js">Open Code</a>
               </div>
             </div>
             <h2>Math</h2>
