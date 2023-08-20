@@ -27,32 +27,46 @@
 
         blocks: [
           {
-            opcode: 'random_block',
+            opcode: 'color_block',
+            blockType: Scratch.BlockType.REPORTER,
+            text: '[COLOR] as [TYPE]',
+            arguments: {
+              COLOR: {
+                type: Scratch.ArgumentType.COLOR
+              },
+              TYPE: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'color_type_menu'
+              }
+            }
+          },
+          {
+            opcode: 'random_color_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'pick random [TYPE] with [WITH]',
             arguments: {
               TYPE: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'type_menu'
+                menu: 'color_type_menu'
               },
               WITH: {
                 type: Scratch.ArgumentType.STRING,
-                menu: 'with_menu'
+                menu: 'color_mode_menu'
               }
             }
           }
         ],
 
         menus: {
-          colors_menu: {
-            acceptReporters: false,
-            items: ['hex', 'dec']
-          },
-          type_menu: {
+          json_type_menu: {
             acceptReporters: false,
             items: ['array', 'object', 'map']
           },
-          with_menu: {
+          color_type_menu: {
+            acceptReporters: false,
+            items: ['hex', 'dec']
+          },
+          color_mode_menu: {
             acceptReporters: false,
             items: ['not opacity', 'opacity']
           },
@@ -128,8 +142,12 @@
       };
     }
 
-    test_block() {
-      return true;
+    color_block({COLOR, TYPE}) {
+      return COLOR;
+    }
+
+    random_color_block({TYPE, MODE}) {
+      return '#ff4c4c';
     }
   }
 
