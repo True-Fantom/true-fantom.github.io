@@ -4,12 +4,12 @@
   const vm = Scratch.vm;
   const cast = Scratch.Cast;
 
-  class ScratchWaitTicks {
+  class ScratchBlockParams {
     getInfo() {
       return {
 
-        id: 'truefantomwaitticks',
-        name: 'Wait Ticks',
+        id: 'truefantomscrathblockparams',
+        name: 'Params-Test',
 
         blocks: [
           {
@@ -116,5 +116,5 @@
     }
   }
 
-  Scratch.extensions.register(new ScratchWaitTicks());
+  Scratch.extensions.register(new ScratchBlockParams());
 })(Scratch);
