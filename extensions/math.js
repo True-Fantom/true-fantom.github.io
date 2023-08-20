@@ -222,10 +222,6 @@
             }
           },
           {
-            blockType: Scratch.BlockType.LABEL,
-            text: 'test 1'
-          },
-          {
             opcode: 'root_block',
             blockType: Scratch.BlockType.REPORTER,
             text: '[A] √ [B]',
@@ -550,10 +546,6 @@
                 defaultValue: '\n'
               }
             }
-          },
-          {
-            blockType: Scratch.BlockType.LABEL,
-            text: 'test 2'
           },
           {
             opcode: 'included_clamp_block',
