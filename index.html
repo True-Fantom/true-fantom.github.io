@@ -219,7 +219,9 @@
 
     <script>
       document.addEventListener('click', function (e) {
-        var toCopy = e.target.getAttribute('data-copy');
+        var toCopy = fetch(e.target.getAttribute('data-copy'))
+          .then(r => {return r.text()})
+          .catch(e => {console.error(e); return;});
         if (toCopy) {
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(toCopy);
@@ -251,8 +253,8 @@
             <div class="extension-banner">
               <img loading="lazy" src="images/math.svg" class="extension-image">
               <div class="extension-buttons">
-                <button class="copy" data-copy="https://extensions.turbowarp.org/lab/text.js">Copy Code</button>
-                <a class="open" href="https://turbowarp.org/editor?extension=https://extensions.turbowarp.org/lab/text.js">Open Code</a>
+                <button class="copy" data-copy="https://true-fantom.github.io/extensions/math.js">Copy Code</button>
+                <a class="open" href="https://true-fantom.github.io/extensions/math.js">Open Code</a>
               </div>
             </div>
             <h2>Math</h2>
