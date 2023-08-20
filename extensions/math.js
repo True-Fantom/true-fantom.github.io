@@ -789,11 +789,11 @@
             blockType: Scratch.BlockType.REPORTER,
             text: '𝜋'
           },
-          {
+          /*{
             opcode: 'tau_block',
             blockType: Scratch.BlockType.REPORTER,
             text: 'τ'
-          },
+          },*/
           {
             opcode: 'e_block',
             blockType: Scratch.BlockType.REPORTER,
