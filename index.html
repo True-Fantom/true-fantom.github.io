@@ -220,8 +220,8 @@
     <script>
       document.addEventListener('click', function (e) {
         var toCopy = fetch(e.target.getAttribute('data-copy'))
-          .then(r => {return r.text()})
-          .catch(e => {console.error(e); return;});
+          .then(r => r.text())
+          .catch(e => {console.error(e)});
         if (toCopy) {
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(toCopy);
