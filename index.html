@@ -163,12 +163,10 @@
       }
       .extension-buttons > * {
         padding: 8px;
-        background-color: #00cc44;
         border-radius: 8px;
         border: none;
         font: inherit;
         cursor: pointer;
-        color: white;
         text-decoration: none;
         pointer-events: auto;
         transition: filter 0.15s;
@@ -181,18 +179,20 @@
       .extension-buttons *:active {
         filter: brightness(0.85) drop-shadow(0px 1px 2px #00000075);
       }
+      .extension-buttons :disabled {
+        opacity: 0.5;
+      }
       .extension-buttons *:disabled {
         opacity: 0.5;
       }
-      .extension-buttons .copy {
+      .extension-buttons .download {
+        background-color: #00cc44;
+        color: white;
         margin: 0 8px 0 0;
       }
       .extension-buttons .open {
         background-color: #ff4c4c;
         color: white;
-      }
-      .extension-buttons :disabled {
-        opacity: 0.5;
       }
 
       footer {
@@ -226,37 +226,6 @@
       </div>
     </div>
 
-    <script>
-      document.addEventListener('click', async function (e) {
-        var toCopy = await fetch(e.target.getAttribute('data-copy'))
-          .then(r => r.text())
-          .catch(e => {
-            console.error(e)
-          });
-        if (toCopy) {
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(toCopy);
-          } else {
-            var input = document.createElement('input');
-            input.value = toCopy;
-            input.style.top = '0';
-            input.style.left = '0';
-            input.style.position = 'fixed';
-            document.body.appendChild(input);
-            input.focus();
-            input.select();
-            try {
-              document.execCommand('copy');
-            } catch (e) {
-              console.error(e);
-            }
-            document.body.removeChild(input);
-            e.target.focus();
-          }
-        }
-      });
-    </script>
-
     <div class="section extensions-outer">
       <div class="extensions">
 
@@ -264,7 +233,7 @@
             <div class="extension-banner">
               <img loading="lazy" src="images/math.svg" class="extension-image">
               <div class="extension-buttons">
-                <button class="copy" data-copy="extensions/math.js">Copy Code</button>
+                <a class="download" href="extensions/math.js" download>Download File</a>
                 <a class="open" href="extensions/math.js">Open Code</a>
               </div>
             </div>
