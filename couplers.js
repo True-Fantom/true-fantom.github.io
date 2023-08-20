@@ -5,7 +5,7 @@
 
   const cast = Scratch.Cast;
 
-  const makeLabel = (text) => ({
+  const make_label = (text) => ({
     blockType: 'label',
     text: text
   });
@@ -42,7 +42,7 @@
               }
             }
           },
-          makeLabel('Conditions'),
+          make_label('Conditions'),
           {
             opcode: 'value1_or_value2_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -61,7 +61,7 @@
               }
             }
           },
-          makeLabel('Waiting'),
+          make_label('Waiting'),
           {
             opcode: 'value_with_wait_block',
             blockType: Scratch.BlockType.REPORTER,
@@ -109,7 +109,7 @@
               }
             }
           },
-          makeLabel('Types'),
+          make_label('Types'),
           {
             opcode: 'type_of_block',
             blockType: Scratch.BlockType.REPORTER,
