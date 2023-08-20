@@ -218,7 +218,7 @@
     </div>
 
     <script>
-      document.addEventListener('click', function (e) {
+      document.addEventListener('click', async function (e) {
         var toCopy = await fetch(e.target.getAttribute('data-copy'))
           .then(r => r.text())
           .catch(e => {
