@@ -105,6 +105,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'sam_set_option_command',
             blockType: Scratch.BlockType.COMMAND,
