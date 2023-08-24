@@ -101,7 +101,7 @@
             arguments: {
               TEXT: {
                 type: Scratch.ArgumentType.STRING,
-                defaultValue: 'hello'
+                defaultValue: 'Hello, my name is Sam!'
               }
             }
           },
