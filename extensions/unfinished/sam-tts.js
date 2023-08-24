@@ -122,21 +122,53 @@
             }
           },
           {
+            opcode: 'sam_pitch_reporter',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'sam pitch'
+          },
+          {
+            opcode: 'sam_speed_reporter',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'sam speed'
+          },
+          {
+            opcode: 'sam_mouth_reporter',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'sam mouth'
+          },
+          {
+            opcode: 'sam_throat_reporter',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'sam throat'
+          },
+          '---',
+          {
             opcode: 'sam_set_language_command',
             blockType: Scratch.BlockType.COMMAND,
-            text: 'set sam language to speech [LANGUAGE]',
+            text: 'set sam language to [LANGUAGE]',
             arguments: {
               LANGUAGE: {
                 type: Scratch.ArgumentType.STRING,
                 menu: 'languages_menu'
               }
             }
+          },
+          {
+            opcode: 'sam_language_reporter',
+            blockType: Scratch.BlockType.REPORTER,
+            text: 'sam language'
           }
         ],
 
         menus: {
-          options_menu: all_options,
-          languages_menu: all_languages
+          options_menu: {
+            acceptReporters: true,
+            items: all_options
+          },
+          languages_menu: {
+            acceptReporters: true,
+            items: all_languages
+          }
         }
       };
     }
@@ -195,11 +227,26 @@
         sam_options[option] = optionClamp(cast.toNumber(VALUE));
       }
     }
+    sam_pitch_reporter() {
+      return sam_options.pitch;
+    }
+    sam_speed_reporter() {
+      return sam_options.speed;
+    }
+    sam_mouth_reporter() {
+      return sam_options.mouth;
+    }
+    sam_throat_reporter() {
+      return sam_options.throat;
+    }
     sam_set_language_command({LANGUAGE}) {
       const language = cast.toString(LANGUAGE).charAt(0).toUpperCase() + cast.toString(LANGUAGE).slice(1).toLowerCase();
       if (all_languages.includes(language)) {
         sam_language = language;
       }
+    }
+    sam_language_reporter() {
+      return sam_language;
     }
   }
 
