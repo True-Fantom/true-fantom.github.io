@@ -122,6 +122,21 @@
             }
           },
           {
+            opcode: 'sam_change_option_command',
+            blockType: Scratch.BlockType.COMMAND,
+            text: 'change sam [OPTION] by [VALUE]',
+            arguments: {
+              OPTION: {
+                type: Scratch.ArgumentType.STRING,
+                menu: 'options_menu'
+              },
+              VALUE: {
+                type: Scratch.ArgumentType.NUMBER,
+                defaultValue: 16
+              }
+            }
+          },
+          {
             opcode: 'sam_pitch_reporter',
             blockType: Scratch.BlockType.REPORTER,
             text: 'sam pitch'
@@ -225,6 +240,12 @@
       const option = cast.toString(OPTION).toLowerCase();
       if (all_options.includes(option)) {
         sam_options[option] = optionClamp(cast.toNumber(VALUE));
+      }
+    }
+    sam_change_option_command({OPTION, VALUE}) {
+      const option = cast.toString(OPTION).toLowerCase();
+      if (all_options.includes(option)) {
+        sam_options[option] = optionClamp(sam_options[option] + cast.toNumber(VALUE));
       }
     }
     sam_pitch_reporter() {
