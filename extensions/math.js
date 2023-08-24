@@ -547,6 +547,7 @@
               }
             }
           },
+          '---',
           {
             opcode: 'included_clamp_block',
             blockType: Scratch.BlockType.BOOLEAN,
