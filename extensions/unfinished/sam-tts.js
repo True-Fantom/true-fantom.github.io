@@ -115,7 +115,7 @@
                 menu: 'options_menu'
               },
               VALUE: {
-                type: Scratch.ArgumentType.Number,
+                type: Scratch.ArgumentType.NUMBER,
                 defaultValue: 64
               }
             }
